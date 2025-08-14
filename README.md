@@ -2,6 +2,7 @@
 
 
 ## LOG
+[08/14] Incluidos paths y dependencias necesarios para un funcionamiento básico del plugin.  
 [08/12] Actualizado a UE 5.6 y solucionados problemas de compatibilidad.  
 &emsp;Creada base del plugin para el cálculo de irradiancia por DXR.  
 [08/07] Añadidos archivos base del proyecto de UE para el plugin del cálculo de irradiancia mediante DXR.  

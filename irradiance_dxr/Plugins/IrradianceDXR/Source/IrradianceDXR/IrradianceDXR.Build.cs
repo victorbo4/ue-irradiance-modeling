@@ -1,5 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
+using System.IO;
 using UnrealBuildTool;
 
 public class IrradianceDXR : ModuleRules
@@ -8,46 +9,61 @@ public class IrradianceDXR : ModuleRules
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
+		/*	PATHS	*/
 		PublicIncludePaths.AddRange(
 			new string[] {
-				// ... add public include paths required here ...
+
+				Path.Combine(ModuleDirectory, "Public")
+
 			}
 			);
 				
 		
 		PrivateIncludePaths.AddRange(
 			new string[] {
-				// ... add other private include paths required here ...
+
+                Path.Combine(ModuleDirectory, "Private"),
+
+                Path.Combine(EngineDirectory, "Source", "Runtime", "Renderer", "Private"),
+                Path.Combine(EngineDirectory, "Source", "Runtime", "RenderCore", "Private"),
+                Path.Combine(EngineDirectory, "Source", "Runtime", "RHI", "Private"),
+                Path.Combine(EngineDirectory, "Source", "Runtime", "D3D12RHI", "Private")	// DX12
+
 			}
 			);
 			
 		
+		/*	DEPENDENCIES	*/
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
 				"Core",
-				// ... add other public dependencies that you statically link with here ...
-			}
+                "CoreUObject",
+                "Engine",
+                "Projects",
+                "RenderCore",
+                "RHI"
+
+            }
 			);
 			
 		
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"CoreUObject",
-				"Engine",
-				"Slate",
-				"SlateCore",
-				// ... add private dependencies that you statically link with here ...	
-			}
-			);
+                "Renderer",
+                "Slate",
+                "SlateCore",
+                "RHICore"
+
+            }
+            );
 		
 		
 		DynamicallyLoadedModuleNames.AddRange(
 			new string[]
-			{
-				// ... add any modules that your module loads dynamically here ...
-			}
+			{	}
 			);
-	}
+
+    }
 }
