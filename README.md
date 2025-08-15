@@ -2,6 +2,7 @@
 
 
 ## LOG
+[08/15] Añadido pseudo-código del shader del plugin.  
 [08/14] Incluidos paths y dependencias necesarios para un funcionamiento básico del plugin.  
 [08/12] Actualizado a UE 5.6 y solucionados problemas de compatibilidad.  
 &emsp;Creada base del plugin para el cálculo de irradiancia por DXR.  

@@ -1,0 +1,37 @@
+// verificar funciones Path Tracing
+// revisar PathTracing.usf, PathTracingCore.ush...
+// si no se puede -> usar ray tracing
+#include "/Engine/Private/PathTracing/PathTracingCommon.ush"
+
+
+//	MUESTREO - DESARROLLO (Ver si existen librerias accesibles para ello en UE)
+
+// RESULTADO
+RWTexture2D<float4> IrradianceTx;
+
+
+[numthreads(64, 1, 1)]
+
+void MainCS(
+	uint3 dtid : SV_DispatchThreadID)
+{
+	
+	// nº samples
+	
+	
+	// muestreo (hemisferico + QMC?)
+	
+	
+	// PATH TRACING o RAY TRACING
+		// crear rayo
+		// payload
+		// traceray
+		// leer resultado radiancia
+		
+	// conversión irradiancia
+	
+	// acumulación
+	
+	
+}
+	
