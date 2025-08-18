@@ -6,7 +6,9 @@ Recopilación de recursos útiles para la comprensión y elaboración del proyec
 ### Shaders
 
 * **Documentación oficial**:  
-[Overview of shaders in plugins UE](https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-shaders-in-plugins-unreal-engine)  
+[Overview of shaders in plugins UE](https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-shaders-in-plugins-unreal-engine)
+* **Unreal Community**:   
+[How to Create a Custom Ray Tracing Shader as a plugin](https://dev.epicgames.com/community/learning/tutorials/1lGL/unreal-engine-how-to-create-a-custom-ray-tracing-shader-as-a-plugin)  
 * **Tutoriales**:  
 [Adding Global Shaders to UE4](https://rcaloca.blogspot.com/2017/05/adding-global-shaders-to-ue4.html)  
 [Using Unreal's RDG for Compute-Shaders](https://github.com/nfgrep/CustomComputeExample/wiki) // [Example](https://github.com/nfgrep/CustomComputeExample)  
