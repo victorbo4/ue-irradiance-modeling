@@ -1,0 +1,32 @@
+/*=============================================================================
+	RayTracingIrradiance.usf: Ray Tracing Shader
+=============================================================================*/
+
+#include "/Engine/Public/Platform.ush"
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/RayTracing/RayTracingCommon.ush"
+#include "/Engine/Private/RayTracing/RayTracingHitGroupCommon.ush"
+
+
+RWTexture2D<float4> OutRadiance;
+RaytracingAccelerationStructure TLAS;
+
+
+[shader("raygeneration")]
+void RayTracingIrradianceRGS()
+{
+    const uint2 pixel = DispatchRaysIndex().xy;
+	
+	// consider opaque geometries and front facing triangles only
+    uint RayFlags = RAY_FLAG_FORCE_OPAQUE | RAY_FLAG_CULL_BACK_FACING_TRIANGLES;
+	
+    OutRadiance[pixel] = float4(1, 0, 0, 1); // DE PRUEBA -- ROJO
+}
+
+
+[shader("closesthit")]
+void RayTracingIrradianceCHS(inout FMinimalPayload Payload, BuiltInTriangleIntersectionAttributes Attribs)
+{
+	// ejemplo minimo
+    Payload.HitT = 1.0f;
+}

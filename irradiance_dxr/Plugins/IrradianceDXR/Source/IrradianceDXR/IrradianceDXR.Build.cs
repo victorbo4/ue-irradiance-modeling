@@ -14,7 +14,6 @@ public class IrradianceDXR : ModuleRules
 			new string[] {
 
 				Path.Combine(ModuleDirectory, "Public")
-
 			}
 			);
 				
@@ -23,13 +22,11 @@ public class IrradianceDXR : ModuleRules
 			new string[] {
 
                 Path.Combine(ModuleDirectory, "Private"),
-
                 Path.Combine(EngineDirectory, "Source", "Runtime", "Renderer", "Private"),
                 Path.Combine(EngineDirectory, "Source", "Runtime", "RenderCore", "Private"),
                 Path.Combine(EngineDirectory, "Source", "Runtime", "RHI", "Private"),
-                Path.Combine(EngineDirectory, "Source", "Runtime", "D3D12RHI", "Private")	// DX12
-
-			}
+				Path.Combine(EngineDirectory, "Source/Runtime/Renderer/Internal") 
+            }
 			);
 			
 		
@@ -42,6 +39,7 @@ public class IrradianceDXR : ModuleRules
                 "Engine",
                 "Projects",
                 "RenderCore",
+				"Renderer",
                 "RHI"
 
             }
@@ -54,7 +52,9 @@ public class IrradianceDXR : ModuleRules
                 "Renderer",
                 "Slate",
                 "SlateCore",
-                "RHICore"
+                "RHICore",
+                "Renderer",
+                "D3D12RHI"
 
             }
             );
@@ -64,6 +64,13 @@ public class IrradianceDXR : ModuleRules
 			new string[]
 			{	}
 			);
+
+        bEnableUndefinedIdentifierWarnings = false; // deprecated?
+        bUseUnity = true;
+        bEnforceIWYU = false; // deprecated?
+
+        // asegura de activar RT
+        PublicDefinitions.Add("RHI_RAYTRACING=1");
 
     }
 }

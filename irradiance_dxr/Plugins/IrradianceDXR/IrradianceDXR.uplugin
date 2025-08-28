@@ -18,7 +18,7 @@
 		{
 			"Name": "IrradianceDXR",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "PostConfigInit"
 		}
 	]
 }
