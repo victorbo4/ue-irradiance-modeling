@@ -3,10 +3,11 @@
 Recopilación de recursos útiles para la comprensión y elaboración del proyecto.
 
 
-### Shaders
+### Shaders & RT  
 
 * **Documentación oficial**:  
-[Overview of shaders in plugins UE](https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-shaders-in-plugins-unreal-engine)
+[Overview of shaders in plugins UE](https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-shaders-in-plugins-unreal-engine)  
+[DXR Functional Spec](https://microsoft.github.io/DirectX-Specs/d3d/Raytracing.html)  
 * **Unreal Community**:   
 [How to Create a Custom Ray Tracing Shader as a plugin](https://dev.epicgames.com/community/learning/tutorials/1lGL/unreal-engine-how-to-create-a-custom-ray-tracing-shader-as-a-plugin)  
 * **Tutoriales**:  
@@ -18,3 +19,4 @@ Recopilación de recursos útiles para la comprensión y elaboración del proyec
 
 * **Documentación oficial**:  
 [Render Dependency Graph in UE](https://dev.epicgames.com/documentation/en-us/unreal-engine/render-dependency-graph-in-unreal-engine)
+
