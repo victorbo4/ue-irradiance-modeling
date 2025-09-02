@@ -16,17 +16,17 @@
 
 
 
-class FRayTracingIrradianceCHS : public FGlobalShader
+class FRayTracingIrradianceCHS : public FGlobalShader 
 {
 public:
     DECLARE_GLOBAL_SHADER(FRayTracingIrradianceCHS);
-
+    
 
     static bool ShouldCompilePermutation(const FGlobalShaderPermutationParameters& Params) {
         return ShouldCompileRayTracingShadersForProject(Params.Platform);
     }
 
-    static ERayTracingPayloadType GetRayTracingPayloadType(const int32) {
+    static ERayTracingPayloadType GetRayTracingPayloadType(const int32) { 
         return ERayTracingPayloadType::Default; // options --> Minimal
     }
 
@@ -34,16 +34,15 @@ public:
         return RayTracing::GetShaderBindingLayout(Params.Platform);
     }
 
-    static void ModifyCompilationEnvironment(const FGlobalShaderPermutationParameters& Params, FShaderCompilerEnvironment& OutEnv) {
-        FGlobalShader::ModifyCompilationEnvironment(Params, OutEnv);
+    static void ModifyCompilationEnvironment(const FGlobalShaderPermutationParameters& Params, FShaderCompilerEnvironment& OutEnv){
+    	FGlobalShader::ModifyCompilationEnvironment(Params, OutEnv);
     }
 
     // Esto es solo si no usas SHADER_USE_ROOT_PARAMETER_STRUCT
-    FRayTracingIrradianceCHS() = default;
+     FRayTracingIrradianceCHS() = default;
     FRayTracingIrradianceCHS(const ShaderMetaType::CompiledShaderInitializerType& Initializer)
         : FGlobalShader(Initializer)
-    {
-    }
+    {}
 
 };
 

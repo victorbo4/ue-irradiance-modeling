@@ -37,6 +37,6 @@ private:
     TUniquePtr<FRHIGPUTextureReadback> TextureReadback;
     FLinearColor LastSample = FLinearColor::Black;
     bool bHasNewSample = false;
-
+    
 };
 

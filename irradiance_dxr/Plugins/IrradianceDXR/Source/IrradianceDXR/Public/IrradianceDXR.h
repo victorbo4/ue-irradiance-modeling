@@ -4,6 +4,7 @@
 
 #include "Modules/ModuleManager.h"
 
+
 class FIrradianceDXRModule : public IModuleInterface
 {
 public:

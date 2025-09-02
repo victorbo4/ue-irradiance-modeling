@@ -1,4 +1,4 @@
-/*=============================================================================
+﻿/*=============================================================================
 	IrradiancePass.cpp
 =============================================================================*/
 /*
@@ -80,7 +80,7 @@ static FRTBuiltPipeline BuildRTPSOAndSBT(
 	FRayTracingPipelineStateInitializer Init;
 	Init.MaxPayloadSizeInBytes = GetRayTracingPayloadTypeMaxSize(ERayTracingPayloadType::Default); // OJO mismo payload que shaders
 
-	if (const FShaderBindingLayout* Layout = RayTracing::GetShaderBindingLayout(View.GetShaderPlatform())) {
+	if (const FShaderBindingLayout* Layout = RayTracing::GetShaderBindingLayout(View.GetShaderPlatform())){
 		Init.ShaderBindingLayout = &Layout->RHILayout;
 	}
 
@@ -90,17 +90,17 @@ static FRTBuiltPipeline BuildRTPSOAndSBT(
 
 	// Builds PSO + SBT
 	FRTBuiltPipeline Out;
-	Out.Pipeline = PipelineStateCache::GetAndOrCreateRayTracingPipelineState(RHICmdList, Init);
+	Out.Pipeline = PipelineStateCache::GetAndOrCreateRayTracingPipelineState(RHICmdList, Init); 
 	Out.SBT = Scene->RayTracingSBT.AllocateTransientRHI( // AllocateRHI deprecated in 5.6.1
 		RHICmdList,
 		ERayTracingShaderBindingMode::RTPSO,
 		ERayTracingHitGroupIndexingMode::Disallow,
-		Init.GetMaxLocalBindingDataSize());
+		Init.GetMaxLocalBindingDataSize()); 
 
 	return Out;
 }
 
-/** A�ade RDG Pass con dispatch de rayos */
+/** Añade RDG Pass con dispatch de rayos */
 FRDGTextureRef FIrradiancePass::AddPass_Render(
 	FRDGBuilder& GraphBuilder,
 	FScene* Scene,
@@ -118,7 +118,7 @@ FRDGTextureRef FIrradiancePass::AddPass_Render(
 	// Creates output texture
 	FRDGTextureDesc Desc = FRDGTextureDesc::Create2D(
 		Resolution,
-		PF_FloatRGBA,
+		PF_FloatRGBA,                          
 		FClearValueBinding::Black,
 		TexCreate_UAV | TexCreate_ShaderResource);
 	FRDGTextureRef OutTex = GraphBuilder.CreateTexture(Desc, TEXT("Pyranometer.Out"));
@@ -135,7 +135,7 @@ FRDGTextureRef FIrradiancePass::AddPass_Render(
 	Params->TLAS = Scene->RayTracingScene.GetLayerView(ERayTracingSceneLayer::Base);
 	Params->View = View.ViewUniformBuffer;
 	Params->SceneTextures = CreateSceneTextureShaderParameters(
-		GraphBuilder, View, ESceneTextureSetupMode::All);
+			GraphBuilder, View, ESceneTextureSetupMode::All);
 
 	// Uniform buffers
 	FRHIUniformBuffer* SceneUniformBuffer = GetSceneUniformBufferRef(GraphBuilder, View)->GetRHI();
@@ -146,8 +146,8 @@ FRDGTextureRef FIrradiancePass::AddPass_Render(
 	Dispatch->Params = Params;
 	Dispatch->RayGen = RayGen.GetRayTracingShader();
 	Dispatch->ClosestHit = ClosestHit.GetRayTracingShader();
-	Dispatch->SceneUB = SceneUniformBuffer;
-	Dispatch->NaniteUB = NaniteUB;
+	Dispatch->SceneUB = SceneUniformBuffer;   
+	Dispatch->NaniteUB = NaniteUB;             
 	Dispatch->Resolution = Resolution;
 
 	/* RDG PASS */
@@ -202,12 +202,12 @@ void FIrradiancePass::EnqueuePassAndReadback(
 	const FResolveRect Rect(0, 0, 1, 1); // x1,y1 = ancho/alto absolutos
 
 	AddReadbackTexturePass(
-		GraphBuilder,
-		RDG_EVENT_NAME("Pyranometer_Readback"),
-		OutTex,
+		GraphBuilder, 
+		RDG_EVENT_NAME("Pyranometer_Readback"), 
+		OutTex,                                    
 		[this, OutTex, Rect](FRHICommandListImmediate& RHICmdList)
 		{
-			if (!TextureReadback.IsValid()) {
+			if (!TextureReadback.IsValid()){
 				TextureReadback = MakeUnique<FRHIGPUTextureReadback>(TEXT("PyranometerReadback"));
 			}
 
@@ -233,7 +233,7 @@ void FIrradiancePass::RenderAndEnqueueReadback(
 		GraphBuilder, Scene, View, Resolution,
 		SensorOriginWS, SensorNormalWS, MaxBounces, TemporalSeed);
 
-	if (Out) {
+	if (Out){
 		EnqueuePassAndReadback(GraphBuilder, Out);
 	}
 
@@ -249,8 +249,8 @@ void FIrradiancePass::RenderAndEnqueueReadback(
 bool FIrradiancePass::TryConsumeReadback(FLinearColor& OutPixelRGBA)
 {
 
-	if (!TextureReadback) { return false; }
-	if (!TextureReadback->IsReady()) { return false; }
+	if (!TextureReadback){ return false; }
+	if (!TextureReadback->IsReady()){ return false; }
 
 	uint32 RowPitch = 0;
 	void* DataPtr = TextureReadback->Lock(RowPitch);

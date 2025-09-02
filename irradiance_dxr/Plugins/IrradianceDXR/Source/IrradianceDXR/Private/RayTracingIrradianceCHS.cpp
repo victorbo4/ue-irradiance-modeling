@@ -5,9 +5,9 @@
 
 
 IMPLEMENT_GLOBAL_SHADER(
-	FRayTracingIrradianceCHS,
-	"/Plugin/IrradianceDXR/RayTracingIrradiance.usf",
-	"RayTracingIrradianceCHS",
+	FRayTracingIrradianceCHS, 
+	"/Plugin/IrradianceDXR/RayTracingIrradiance.usf", 
+	"RayTracingIrradianceCHS", 
 	SF_RayHitGroup
 );
 
