@@ -5,7 +5,8 @@
 **[09/02]** Render hook migrado a SceneViewExtension (compatible con Path Tracing).  
 - Sustituido PostOpaque por SceneViewExtension:PrePostProcessPass_RenderThread (pre-tonemap, HDR).  
 - Añadido UEngineSubsystem que instancia la SceneViewExt y registra comandos.  
-- Probado con viewport de PT, con resultado correcto.  
+- Probado con viewport de PT, con resultado correcto.
+
 **[08/28] Plugin IrradianceDXR – Primer pase funcional (UE 5.6.1)**
 - Shader de prueba (`RayTracingIrradiance.usf`): RayGen + ClosestHit mínimos, salida rojo, miss por defecto  
 - Pase RDG: textura UAV, PSO + SBT, `RayTraceDispatch`  
