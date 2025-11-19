@@ -1,0 +1,169 @@
+// =============================================================================
+//	 IrradianceIntegrate.usf
+//  Compute Shader
+// =============================================================================
+
+#include "/Engine/Public/Platform.ush"
+#include "/Engine/Private/Common.ush"
+#include "/Plugin/Pyrano/Public/IrradianceCommon.ush"
+
+// ====== CONFIG ======
+
+#ifndef IRR_SCALE
+#define IRR_SCALE 1.0f     // multiplies final result
+#endif
+
+#ifndef IRR_DEBUG_PI
+#define IRR_DEBUG_PI 0       // constant radiance test (result = PI)
+#endif
+
+// ============================================================================
+// PERMUTATIONS
+//  - USE_WAVE_OPS : 0/1  (1 if platform supports SM6 + WaveIntrinsics)
+//  - Requirements: TGX*TGY power of 2 (8x8=64 OK)
+//  - Dispatch: (GroupsX, GroupsY, 6)  ->  Gid.z = cubemap face
+//  - Output:   Step 1 writes partials (u0). Step 2 (ReduceCS) saves total in u1[0].
+// ============================================================================
+
+#ifndef TGX
+#define TGX 8
+#endif
+#ifndef TGY
+#define TGY 8
+#endif
+#ifndef USE_WAVE_OPS
+#define USE_WAVE_OPS 1  // optional
+#endif
+
+// ============================================================================
+// STEP 1: INTEGRATE
+// ============================================================================
+
+uint L;       // cubemap side px
+uint GroupsX; // = ceil(L / TGX / 2) if striding 2x2
+uint GroupsY;
+
+float3 SensorN; 
+float k; // 4 / (L*L)
+
+Texture2DArray<float4> Faces;
+RWStructuredBuffer<float> PartialSums;
+groupshared float gTile[TGX * TGY];
+
+
+[numthreads(TGX, TGY, 1)]
+void CS(uint3 Gid : SV_GroupID, uint3 Tid : SV_GroupThreadID, uint3 Did : SV_DispatchThreadID)
+{
+    const uint face = Gid.z; // dispatch with z=0..5
+    const uint2 base = uint2(Gid.xy) * uint2(TGX, TGY);
+
+    float acc = 0.0;
+
+    // Light striding, 2x2 per thread to cover up to 2*TGX x 2*TGY
+    // Adjust to 1x1 for 1:1 coverage
+    [unroll]
+    for (uint oy = 0; oy < 2; ++oy)
+    {
+        uint y = base.y + Tid.y + oy * TGY;
+        if (y >= L)
+            break;
+
+        [unroll]
+        for (uint ox = 0; ox < 2; ++ox)
+        {
+            uint x = base.x + Tid.x + ox * TGX;
+            if (x >= L)
+                break;
+
+            const float2 uv = TexelUV(x, y, L);
+            const float3 a = AFromFaceUV(uv, face);
+            const float dotNa = dot(SensorN, a);
+            if (dotNa > 0.0)
+            {
+                const float t = 1.0 + uv.x * uv.x + uv.y * uv.y;
+                const float w = k * dotNa * rcp(t * t); // 4/L^2 * (N·a)/(1+u^2+v^2)^2
+                
+				 #if IRR_DEBUG_PI
+                    const float Y = 1.0; // ct radiance -> E (sanity test)
+                #else
+                    const float3 rgb = Faces.Load(int4(x, y, face, 0)).rgb;
+                    const float  Y   = RGBtoY(rgb); // Rec.709 lineal
+                #endif
+				
+                acc += Y * w;
+            }
+        }
+    }
+
+#if USE_WAVE_OPS
+    acc = WaveActiveSum(acc);
+    const uint lane = WaveGetLaneIndex();
+    if (lane != 0)
+    {
+        acc = 0.0f;
+    }
+#endif
+
+    // Binary tree
+    const uint lin = Tid.y * TGX + Tid.x;
+    gTile[lin] = acc;
+    GroupMemoryBarrierWithGroupSync();
+
+    [unroll]
+    for (uint stride = (TGX * TGY) / 2; stride > 0; stride >>= 1)
+    {
+        if (lin < stride)
+        {
+            gTile[lin] += gTile[lin + stride];
+        }
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    if (lin == 0)
+    {
+        const uint idx = Gid.x + Gid.y * GroupsX + face * (GroupsX * GroupsY);
+        PartialSums[idx] = gTile[0];
+    }
+}
+
+
+// ============================================================================
+// STEP 2: REDUCE
+// ============================================================================
+
+uint TotalPartials; // TotalPartials = GroupsX * GroupsY * 6 (faces)
+
+StructuredBuffer<float> InPartialSums; // reads from SRV in t0
+
+RWStructuredBuffer<float> OutY; // final result in OutY[0]
+
+groupshared float gAcc[256]; // shared for final reduction
+
+[numthreads(256, 1, 1)]
+void ReduceCS(uint3 Gid : SV_GroupID, uint tid : SV_GroupThreadID, uint3 Did : SV_DispatchThreadID)
+{
+    // Accumulates doing "grid-stride" over PartialSums
+    float sum = 0.0;
+    for (uint i = tid; i < TotalPartials; i += 256)
+    {
+        sum += InPartialSums[i];
+    }
+
+    gAcc[tid] = sum;
+    GroupMemoryBarrierWithGroupSync();
+
+    // shared reduction (256 -> 1)
+    [unroll]
+    for (uint s = 128; s > 0; s >>= 1)
+    {
+        if (tid < s)
+            gAcc[tid] += gAcc[tid + s];
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    if (tid == 0)
+    {
+        OutY[0] = gAcc[0] * IRR_SCALE; 
+    }
+}
+

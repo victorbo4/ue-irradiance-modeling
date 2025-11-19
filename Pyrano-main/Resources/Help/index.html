@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pyrano – Capture Planner Help</title>
+
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e6e6e6;
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            max-width: 900px;
+            line-height: 1.65;
+        }
+
+        /* Title Bar */
+        .titlebar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .titlebar img {
+                width: 28px;
+                height: 28px;
+            }
+
+        h1 {
+            color: #f2a33a; 
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #ffb35b;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #ffc788;
+            margin-top: 20px;
+        }
+
+        p, li {
+            color: #d6d6d6;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+
+        code {
+            background: #333;
+            color: #ffe0b3;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .box {
+            background: #262626;
+            padding: 15px;
+            border-left: 4px solid #f2a33a;
+            border-radius: 4px;
+            margin: 25px 0;
+        }
+
+        a {
+            color: #f2a33a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="titlebar">
+        <img src="icon.png" alt="Icon">
+        <h1>Pyrano – Capture Planner</h1>
+    </div>
+
+    <div class="box">
+        Pyrano automates solar irradiance capturing in Unreal Engine using
+        sensors and time-based simulation.
+        This documentation covers how to configure, run and export data properly.
+    </div>
+
+    <h2>1. Scene Setup</h2>
+
+    <p>To use Pyrano, make sure your level contains:</p>
+
+    <ul>
+        <li><strong>SunSky</strong> — comes with official plugin SunPosition.</li>
+        <li><strong>PyranometerComponent</strong> — Add it to any actor.</li>
+        <li>Enable sensors you want to simulate (<code>bEnabled = true</code>). You can also enable them in the Pyranometer's tab.</li>
+    </ul>
+
+    <h2>2. Planner Configuration</h2>
+
+    <p>The Capture Planner window allows you to define:</p>
+
+    <ul>
+        <li><strong>Latitude / Longitude</strong> — Geographic coordinates.</li>
+        <li><strong>Timezone</strong> — Local offset relative to UTC.</li>
+        <li><strong>North Offset</strong> - Adjusts SunSky orientation so your map's north matches real-world true north. 
+        Use it when your scene is not oriented to real-world north.</li>
+        <li><strong>Start Time / End Time</strong> — Simulation range.</li>
+        <li><strong>Sample Interval</strong> — Time step between captures.</li>
+        <li><strong>Resolution Px</strong> — Cubemap size (256 or 512 recommended).</li>
+        <li><strong>Path Tracing</strong> — More accurate, but slower. <strong>Path Tracing may not be supported on all PCs.</strong></li>
+        <li><strong>Export CSV</strong> — Saves irradiance results to disk.</li>
+    </ul>
+
+    <h2>3. Running Captures</h2>
+
+    <h3>Capture Once</h3>
+    <p>
+        Runs a single irradiance measurement for every enabled sensor,
+        using <strong>Start Time</strong> as the timestamp.
+    </p>
+
+    <h3>Start Simulation</h3>
+    <p>
+        Runs all sensors from <strong>Start Time</strong> to <strong>End Time</strong>,
+        advancing by <strong>Sample Interval</strong>.
+    </p>
+
+    <p>Pyrano will:</p>
+    <ul>
+        <li>Open a dedicated PIE window.</li>
+        <li>Run captures automatically.</li>
+        <li>Close the window when finished.</li>
+    </ul>
+
+    <h2>4. Tips & Good Practice</h2>
+
+    <ul>
+        <li>Do not close the PIE window manually — the plugin handles it.</li>
+        <li>Make sure that at least one sensor is enabled.</li>
+        <li>If exporting CSV, make sure the output path is valid.</li>
+        <li>Higher cubemap resolution increases time, but doesn’t significantly affect irradiance accuracy.</li>
+        <li>It is recommended to split long simulations into smaller ones.</li>
+
+    </ul>
+
+</body>
+</html>

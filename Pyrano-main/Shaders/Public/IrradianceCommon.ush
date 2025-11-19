@@ -1,0 +1,57 @@
+// =============================================================================
+//	  IrradianceCommon.ush
+//  Utilities for Irradiance Integrate Shader
+// =============================================================================
+
+#ifndef IRR_COMMON_USH
+#define IRR_COMMON_USH
+
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+#define IRR_FACE_COUNT 6
+
+#ifndef IRR_STRIDE
+#define IRR_STRIDE 2
+#endif
+
+// ============================================================================
+// UTILITIES
+// ============================================================================
+
+float2 TexelUV(uint i, uint j, uint L)
+{
+    float u = ((i + 0.5f) / L) * 2.0f - 1.0f;
+    float v = ((j + 0.5f) / L) * 2.0f - 1.0f;
+    return float2(u, v);
+}
+
+
+// Face order: 0:+X, 1:-X, 2:+Y, 3:-Y, 4:+Z (Top, Up=-Y), 5:-Z (Bottom, Up=+Y)
+float3 AFromFaceUV(float2 uv, uint face)
+{
+    float u = uv.x, v = uv.y;
+
+    if (face == 0)
+        return float3(1, v, -u); // +X,  Up=+Z
+    if (face == 1)
+        return float3(-1, v, u); // -X,  Up=+Z
+    if (face == 2)
+        return float3(u, 1, v); // +Y,  Up=+Z   
+    if (face == 3)
+        return float3(u, -1, -v); // -Y,  Up=+Z  
+    if (face == 4)
+        return float3(u, -v, 1); // +Z,  Up=-Y   
+    /*face==5*/
+    return float3(u, v, -1); // -Z,  Up=+Y
+}
+
+
+float RGBtoY(float3 rgb)
+{
+    // Rec. 709 (lineal)
+    return dot(rgb, float3(0.2126729, 0.7151522, 0.0721750));
+}
+
+#endif
