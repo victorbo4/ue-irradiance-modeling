@@ -1,0 +1,10 @@
+<map id="UIrradianceScheduler::PrepareSimulation" name="UIrradianceScheduler::PrepareSimulation">
+<area shape="rect" id="Node000001" title="Prepares SunSky, export and viewport settings for a simulation." alt="" coords="410,39,556,81"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a4395030c4e2b089982300a7d5cb43417" title="Captures irradiance once at Sim.StartTime for all active sensors." alt="" coords="216,5,362,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="392,45,362,42,362,37,397,45"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_scheduler.html#a820fe9375420d4934dd45811ba7a419e" title="Starts a full time&#45;series simulation using the given configuration." alt="" coords="216,72,362,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="397,75,362,83,362,78,392,76"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_scheduler.html#acad46ea7c860e2a972fb7debd56651e9" title=" " alt="" coords="5,39,168,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="198,42,169,49,168,44,203,40"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="198,79,168,76,168,71,203,79"/>
+</map>

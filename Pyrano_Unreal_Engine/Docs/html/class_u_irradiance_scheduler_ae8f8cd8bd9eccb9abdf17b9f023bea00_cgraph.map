@@ -1,0 +1,5 @@
+<map id="UIrradianceScheduler::RestoreViewport" name="UIrradianceScheduler::RestoreViewport">
+<area shape="rect" id="Node000001" title="Restores the viewport if it was previously forced." alt="" coords="5,5,152,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a3a1998734dd679049d860179bf9b0222" title="Ensures the IrradianceSubsystem pointer is valid for the current world." alt="" coords="200,5,346,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,24,187,26,182,27,152,29"/>
+</map>

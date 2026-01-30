@@ -1,0 +1,35 @@
+<map id="UIrradianceScheduler::OnCaptureCompleted" name="UIrradianceScheduler::OnCaptureCompleted">
+<area shape="rect" id="Node000001" title="Handles a completed capture and advances the flow." alt="" coords="5,156,161,199"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#ab400b6f7f8c6768537088d0eca221f90" title="Advances to the next time slot, or finalizes the simulation if finished." alt="" coords="216,123,398,165"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,163,203,159,198,161,162,168"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_scheduler.html#a2c93371fc51e45b8af73ce9b4d2c690a" title="Launches the next capture for the current time slot and sensor index." alt="" coords="453,56,659,99"/>
+<area shape="poly" id="edge19_Node000001_Node000003" title=" " alt="" coords="115,153,158,129,208,108,266,94,325,84,440,76,435,78,326,89,267,99,210,113,160,133,118,158"/>
+<area shape="rect" id="Node000013" href="$class_u_irradiance_scheduler.html#aa0a5a5137cd16afa6cfd83fd90026d8b" title="Returns true if running a multi&#45;slot simulation." alt="" coords="234,256,380,299"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="122,196,210,242,226,250,221,250,208,246,121,202"/>
+<area shape="rect" id="Node000014" href="$class_u_irradiance_scheduler.html#add6eff6a074954268d370e6ab2d7a060" title="Launches the next pending one&#45;shot capture request, or finalizes if none." alt="" coords="209,189,405,232"/>
+<area shape="poly" id="edge16_Node000001_Node000014" title=" " alt="" coords="161,186,196,193,191,195,161,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="397,126,490,103,485,105,399,131"/>
+<area shape="rect" id="Node000011" href="$class_u_irradiance_scheduler.html#ae8f8cd8bd9eccb9abdf17b9f023bea00" title="Restores the viewport if it was previously forced." alt="" coords="483,189,629,232"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="389,163,470,187,465,187,389,169"/>
+<area shape="rect" id="Node000012" href="$class_u_irradiance_scheduler.html#aebff31185ed2941c1c7abcc423e1b25a" title="Sets the SunSky UTC time." alt="" coords="483,123,629,165"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="398,141,470,143,465,145,398,147"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="450,97,376,120,375,115,455,95"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_scheduler.html#a4f3d8698a24d9ab3b2f5df9fcd4364e4" title="Starts a six&#45;face capture for the given request." alt="" coords="746,131,893,173"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="634,97,734,127,729,127,634,102"/>
+<area shape="rect" id="Node000007" href="$class_u_irradiance_scheduler.html#ac45df7ef85d6d364e7724f7e853a32c6" title="Builds a capture request for the given sensor and simulation settings." alt="" coords="746,5,893,48"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="659,55,734,43,729,44,660,60"/>
+<area shape="rect" id="Node000010" href="$struct_f_capture_request.html#a5283a5b56514b3ae55663480e05d7980" title=" " alt="" coords="707,72,932,99"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="659,78,694,81,689,82,660,83"/>
+<area shape="rect" id="Node000005" href="$class_u_irradiance_scheduler.html#a3a1998734dd679049d860179bf9b0222" title="Ensures the IrradianceSubsystem pointer is valid for the current world." alt="" coords="997,189,1143,232"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="893,166,984,190,979,190,893,172"/>
+<area shape="rect" id="Node000006" href="$struct_f_capture_request.html#ab63ce8c8eadcb5393d9993aeab920660" title=" " alt="" coords="980,139,1160,165"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="893,149,967,152,962,152,893,155"/>
+<area shape="rect" id="Node000008" href="$struct_f_capture_request.html#ae17362dae77f57d0c2245cecef01b38b" title="Factory method." alt="" coords="988,16,1152,43"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="893,25,975,28,970,29,893,30"/>
+<area shape="rect" id="Node000009" href="$struct_f_capture_request.html#ae828b8d1f7d31ecf6e4669f223f1ec5d" title=" " alt="" coords="1208,35,1394,77"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="1152,36,1195,43,1190,44,1153,41"/>
+<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="932,76,1195,62,1190,63,932,81"/>
+<area shape="poly" id="edge13_Node000011_Node000005" title=" " alt="" coords="630,208,984,210,979,211,630,213"/>
+<area shape="poly" id="edge17_Node000014_Node000004" title=" " alt="" coords="382,230,443,243,513,252,587,253,659,241,691,230,723,215,776,184,781,182,725,219,693,235,660,247,587,258,512,257,442,248,382,235"/>
+<area shape="poly" id="edge18_Node000014_Node000011" title=" " alt="" coords="405,208,470,210,465,211,406,213"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="UIrradianceScheduler::BuildTimeSlots" name="UIrradianceScheduler::BuildTimeSlots">
+<area shape="rect" id="Node000001" title="Builds the list of time slots between StartUTC and EndUTC (inclusive)." alt="" coords="410,5,556,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a820fe9375420d4934dd45811ba7a419e" title="Starts a full time&#45;series simulation using the given configuration." alt="" coords="216,5,362,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="392,27,362,29,362,24,397,27"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_scheduler.html#acad46ea7c860e2a972fb7debd56651e9" title=" " alt="" coords="5,5,168,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,27,168,29,168,24,203,26"/>
+</map>

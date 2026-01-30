@@ -1,0 +1,13 @@
+<map id="Source/PyranoEditor/Private/Data/IrradianceConfiguration.h" name="Source/PyranoEditor/Private/Data/IrradianceConfiguration.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="208,5,455,48"/>
+<area shape="rect" id="Node000002" href="$_simulation_config_8h.html" title=" " alt="" coords="46,96,243,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,50,189,92,187,87,286,47"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="267,96,396,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="333,46,334,82,329,79,330,51"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="420,96,533,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="369,46,443,88,438,88,368,51"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,171,111,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="132,122,86,163,83,159,127,124"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="135,171,328,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="161,121,208,161,202,161,159,126"/>
+</map>

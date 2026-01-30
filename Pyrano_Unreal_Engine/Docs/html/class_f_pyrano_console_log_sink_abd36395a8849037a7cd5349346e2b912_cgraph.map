@@ -1,0 +1,7 @@
+<map id="FPyranoConsoleLogSink::Serialize" name="FPyranoConsoleLogSink::Serialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,171,48"/>
+<area shape="rect" id="Node000002" href="$namespace_irradiance_common_1_1_console.html#a5b00949ee3f78394587a3b4cc23391a7" title="Returns true if a log entry for the given category / verbosity should be forwarded to the engine cons..." alt="" coords="219,5,406,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,24,206,26,200,27,171,29"/>
+<area shape="rect" id="Node000003" href="$namespace_irradiance_common_1_1_console.html#a413e99873dadaa8b357090c4d48e526b" title="Set &#45; Get." alt="" coords="454,5,641,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="407,24,441,27,436,27,407,29"/>
+</map>

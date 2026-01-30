@@ -1,0 +1,7 @@
+<map id="UPyranoEditorSubsystem" name="UPyranoEditorSubsystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,360,319,1597"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="15,112,136,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,193,100,360,95,360,81,199"/>
+<area shape="rect" id="Node000003" href="$struct_f_sim_config.html" title=" " alt="" coords="160,5,340,288"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,285,232,343,227,343,235,290"/>
+</map>

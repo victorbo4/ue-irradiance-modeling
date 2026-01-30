@@ -1,0 +1,11 @@
+<map id="UIrradianceScheduler::LaunchNextOneShotCapture" name="UIrradianceScheduler::LaunchNextOneShotCapture">
+<area shape="rect" id="Node000001" title="Launches the next pending one&#45;shot capture request, or finalizes if none." alt="" coords="419,39,615,81"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a4395030c4e2b089982300a7d5cb43417" title="Captures irradiance once at Sim.StartTime for all active sensors." alt="" coords="220,5,366,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="401,43,367,40,367,35,406,43"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_scheduler.html#ac79a70849af28bdcf62ac8214ccaeee5" title="Handles a completed capture and advances the flow." alt="" coords="216,72,371,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="407,77,372,84,371,79,401,77"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_scheduler.html#acad46ea7c860e2a972fb7debd56651e9" title=" " alt="" coords="5,5,168,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="202,27,169,29,168,24,207,26"/>
+<area shape="rect" id="Node000005" href="$class_u_irradiance_scheduler.html#a46ab4ac00573e109d595d80669a8e156" title=" " alt="" coords="13,72,160,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="198,94,160,96,160,91,203,93"/>
+</map>

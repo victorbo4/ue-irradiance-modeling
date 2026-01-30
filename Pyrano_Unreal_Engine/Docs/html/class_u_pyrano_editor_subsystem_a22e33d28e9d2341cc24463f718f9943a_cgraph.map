@@ -1,0 +1,5 @@
+<map id="UPyranoEditorSubsystem::SetSensorEnabled" name="UPyranoEditorSubsystem::SetSensorEnabled">
+<area shape="rect" id="Node000001" title="Enables or disables a pyranometer sensor by GUID." alt="" coords="5,5,178,48"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#a2adad0d3fd5864acbe4205b167cf4937" title="Returns the PIE world if running, otherwise the editor world." alt="" coords="226,5,398,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,24,213,26,208,27,178,29"/>
+</map>

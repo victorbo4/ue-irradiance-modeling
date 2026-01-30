@@ -1,0 +1,5 @@
+<map id="FPlanStorage::LoadPlan" name="FPlanStorage::LoadPlan">
+<area shape="rect" id="Node000001" title=" " alt="" coords="216,13,378,40"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_blueprint_library.html#aeff0c5054d30f558ec4aea0798fffcc4" title="Opens &quot;Open File Dialog&quot; and loads plan in JSON." alt="" coords="5,5,168,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,27,168,29,168,24,203,26"/>
+</map>

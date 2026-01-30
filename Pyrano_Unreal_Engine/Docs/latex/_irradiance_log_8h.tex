@@ -1,0 +1,196 @@
+\doxysection{Source/\+Pyrano/\+Public/\+Logging/\+Irradiance\+Log.h File Reference}
+\hypertarget{_irradiance_log_8h}{}\label{_irradiance_log_8h}\index{Source/Pyrano/Public/Logging/IrradianceLog.h@{Source/Pyrano/Public/Logging/IrradianceLog.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+Include dependency graph for Irradiance\+Log.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{_irradiance_log_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_log_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_ab6429af29195f432572fe6230a48f8ce}{PYRANO\+\_\+\+ICON\+\_\+\+INFO}}~TEXT("{}▶"{})
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a4a7b0e00d1d79a9b299df651b095e75c}{PYRANO\+\_\+\+ICON\+\_\+\+WARN}}~TEXT("{}⚠"{})
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_acb7595e33a64245d5ccf8cd0f1c5dbc0}{PYRANO\+\_\+\+ICON\+\_\+\+ERR}}~TEXT("{}❌"{})
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a6bf5de4562ef10f2a1c3cf725113a55f}{PYRANO\+\_\+\+ICON\+\_\+\+VERBOSE}}~TEXT("{}…"{})
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a8fa8be99a484924c99b87364dfc16131}{PYRANO\+\_\+\+ICON\+\_\+\+SUCCESS}}~TEXT("{}✓"{})
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a817897c8d63467ef4f2e9a7c73953d3d}{PYRANO\+\_\+\+ICON\+\_\+\+CONSOLE}}~TEXT("{}◆"{})
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\+\_\+\+PYRANO\+\_\+\+COMPACT\+\_\+\+LOG}}(Verbosity,  Icon,  Format, ...)
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a190a272fc4af308673e139f18ab8fad3}{PYRANO\+\_\+\+VERBOSE}}(Format, ...)
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_ab22e52b899ad9f1280fe7683bddfc489}{PYRANO\+\_\+\+INFO}}(Format, ...)
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a44f891affc9100d7d32d36d1bbc64605}{PYRANO\+\_\+\+WARN}}(Format, ...)
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a69dbea10f71bb72339d1e174d728bca9}{PYRANO\+\_\+\+ERR}}(Format, ...)
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_a23f39112dfd2b68bcf86644c94f82e9c}{PYRANO\+\_\+\+SUCCESS}}(Format, ...)
+\item 
+\#define \mbox{\hyperlink{_irradiance_log_8h_ab93940fdbbc206483c4f6e459d781d51}{PYRANO\+\_\+\+CONSOLE}}(Format, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+PYRANO\+\_\+\+API \mbox{\hyperlink{_irradiance_log_8h_a084875edc417da902f0f1e5419359543}{DECLARE\+\_\+\+LOG\+\_\+\+CATEGORY\+\_\+\+EXTERN}} (Log\+Pyrano, Log, All)
+\item 
+FORCEINLINE FString \mbox{\hyperlink{_irradiance_log_8h_a3dec0c1eab666505c7872a7c0a02b34d}{Pyrano\+Timestamp}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_irradiance_log_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}\index{IrradianceLog.h@{IrradianceLog.h}!\_PYRANO\_COMPACT\_LOG@{\_PYRANO\_COMPACT\_LOG}}
+\index{\_PYRANO\_COMPACT\_LOG@{\_PYRANO\_COMPACT\_LOG}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{\_PYRANO\_COMPACT\_LOG}{\_PYRANO\_COMPACT\_LOG}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d} 
+\#define \+\_\+\+PYRANO\+\_\+\+COMPACT\+\_\+\+LOG(\begin{DoxyParamCaption}\item[{}]{Verbosity}{, }\item[{}]{Icon}{, }\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ UE\_LOG(\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ LogPyrano,\ Verbosity,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ TEXT(\textcolor{stringliteral}{"{}\%s\ \%s\ "{}}\ Format),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *\mbox{\hyperlink{_irradiance_log_8h_a3dec0c1eab666505c7872a7c0a02b34d}{PyranoTimestamp}}(),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Icon,\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \#\#\_\_VA\_ARGS\_\_\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ )}
+
+\end{DoxyCode}
+\Hypertarget{_irradiance_log_8h_ab93940fdbbc206483c4f6e459d781d51}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_CONSOLE@{PYRANO\_CONSOLE}}
+\index{PYRANO\_CONSOLE@{PYRANO\_CONSOLE}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_CONSOLE}{PYRANO\_CONSOLE}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_ab93940fdbbc206483c4f6e459d781d51} 
+\#define PYRANO\+\_\+\+CONSOLE(\begin{DoxyParamCaption}\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\_PYRANO\_COMPACT\_LOG}}(Display,\ \ \mbox{\hyperlink{_irradiance_log_8h_a817897c8d63467ef4f2e9a7c73953d3d}{PYRANO\_ICON\_CONSOLE}},\ Format,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{_irradiance_log_8h_a69dbea10f71bb72339d1e174d728bca9}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ERR@{PYRANO\_ERR}}
+\index{PYRANO\_ERR@{PYRANO\_ERR}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ERR}{PYRANO\_ERR}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a69dbea10f71bb72339d1e174d728bca9} 
+\#define PYRANO\+\_\+\+ERR(\begin{DoxyParamCaption}\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\_PYRANO\_COMPACT\_LOG}}(Error,\ \ \ \ \mbox{\hyperlink{_irradiance_log_8h_acb7595e33a64245d5ccf8cd0f1c5dbc0}{PYRANO\_ICON\_ERR}},\ \ \ \ \ Format,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{_irradiance_log_8h_a817897c8d63467ef4f2e9a7c73953d3d}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ICON\_CONSOLE@{PYRANO\_ICON\_CONSOLE}}
+\index{PYRANO\_ICON\_CONSOLE@{PYRANO\_ICON\_CONSOLE}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ICON\_CONSOLE}{PYRANO\_ICON\_CONSOLE}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a817897c8d63467ef4f2e9a7c73953d3d} 
+\#define PYRANO\+\_\+\+ICON\+\_\+\+CONSOLE~TEXT("{}◆"{})}
+
+\Hypertarget{_irradiance_log_8h_acb7595e33a64245d5ccf8cd0f1c5dbc0}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ICON\_ERR@{PYRANO\_ICON\_ERR}}
+\index{PYRANO\_ICON\_ERR@{PYRANO\_ICON\_ERR}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ICON\_ERR}{PYRANO\_ICON\_ERR}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_acb7595e33a64245d5ccf8cd0f1c5dbc0} 
+\#define PYRANO\+\_\+\+ICON\+\_\+\+ERR~TEXT("{}❌"{})}
+
+\Hypertarget{_irradiance_log_8h_ab6429af29195f432572fe6230a48f8ce}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ICON\_INFO@{PYRANO\_ICON\_INFO}}
+\index{PYRANO\_ICON\_INFO@{PYRANO\_ICON\_INFO}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ICON\_INFO}{PYRANO\_ICON\_INFO}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_ab6429af29195f432572fe6230a48f8ce} 
+\#define PYRANO\+\_\+\+ICON\+\_\+\+INFO~TEXT("{}▶"{})}
+
+\Hypertarget{_irradiance_log_8h_a8fa8be99a484924c99b87364dfc16131}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ICON\_SUCCESS@{PYRANO\_ICON\_SUCCESS}}
+\index{PYRANO\_ICON\_SUCCESS@{PYRANO\_ICON\_SUCCESS}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ICON\_SUCCESS}{PYRANO\_ICON\_SUCCESS}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a8fa8be99a484924c99b87364dfc16131} 
+\#define PYRANO\+\_\+\+ICON\+\_\+\+SUCCESS~TEXT("{}✓"{})}
+
+\Hypertarget{_irradiance_log_8h_a6bf5de4562ef10f2a1c3cf725113a55f}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ICON\_VERBOSE@{PYRANO\_ICON\_VERBOSE}}
+\index{PYRANO\_ICON\_VERBOSE@{PYRANO\_ICON\_VERBOSE}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ICON\_VERBOSE}{PYRANO\_ICON\_VERBOSE}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a6bf5de4562ef10f2a1c3cf725113a55f} 
+\#define PYRANO\+\_\+\+ICON\+\_\+\+VERBOSE~TEXT("{}…"{})}
+
+\Hypertarget{_irradiance_log_8h_a4a7b0e00d1d79a9b299df651b095e75c}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_ICON\_WARN@{PYRANO\_ICON\_WARN}}
+\index{PYRANO\_ICON\_WARN@{PYRANO\_ICON\_WARN}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_ICON\_WARN}{PYRANO\_ICON\_WARN}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a4a7b0e00d1d79a9b299df651b095e75c} 
+\#define PYRANO\+\_\+\+ICON\+\_\+\+WARN~TEXT("{}⚠"{})}
+
+\Hypertarget{_irradiance_log_8h_ab22e52b899ad9f1280fe7683bddfc489}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_INFO@{PYRANO\_INFO}}
+\index{PYRANO\_INFO@{PYRANO\_INFO}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_INFO}{PYRANO\_INFO}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_ab22e52b899ad9f1280fe7683bddfc489} 
+\#define PYRANO\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\_PYRANO\_COMPACT\_LOG}}(Display,\ \ \mbox{\hyperlink{_irradiance_log_8h_ab6429af29195f432572fe6230a48f8ce}{PYRANO\_ICON\_INFO}},\ \ \ \ Format,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{_irradiance_log_8h_a23f39112dfd2b68bcf86644c94f82e9c}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_SUCCESS@{PYRANO\_SUCCESS}}
+\index{PYRANO\_SUCCESS@{PYRANO\_SUCCESS}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_SUCCESS}{PYRANO\_SUCCESS}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a23f39112dfd2b68bcf86644c94f82e9c} 
+\#define PYRANO\+\_\+\+SUCCESS(\begin{DoxyParamCaption}\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\_PYRANO\_COMPACT\_LOG}}(Display,\ \ \mbox{\hyperlink{_irradiance_log_8h_a8fa8be99a484924c99b87364dfc16131}{PYRANO\_ICON\_SUCCESS}},\ Format,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{_irradiance_log_8h_a190a272fc4af308673e139f18ab8fad3}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_VERBOSE@{PYRANO\_VERBOSE}}
+\index{PYRANO\_VERBOSE@{PYRANO\_VERBOSE}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_VERBOSE}{PYRANO\_VERBOSE}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a190a272fc4af308673e139f18ab8fad3} 
+\#define PYRANO\+\_\+\+VERBOSE(\begin{DoxyParamCaption}\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\_PYRANO\_COMPACT\_LOG}}(Verbose,\ \ \mbox{\hyperlink{_irradiance_log_8h_a6bf5de4562ef10f2a1c3cf725113a55f}{PYRANO\_ICON\_VERBOSE}},\ Format,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{_irradiance_log_8h_a44f891affc9100d7d32d36d1bbc64605}\index{IrradianceLog.h@{IrradianceLog.h}!PYRANO\_WARN@{PYRANO\_WARN}}
+\index{PYRANO\_WARN@{PYRANO\_WARN}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PYRANO\_WARN}{PYRANO\_WARN}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a44f891affc9100d7d32d36d1bbc64605} 
+\#define PYRANO\+\_\+\+WARN(\begin{DoxyParamCaption}\item[{}]{Format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{_irradiance_log_8h_a3cd0a1c79b6967fa541be7939d7b444d}{\_PYRANO\_COMPACT\_LOG}}(Warning,\ \ \mbox{\hyperlink{_irradiance_log_8h_a4a7b0e00d1d79a9b299df651b095e75c}{PYRANO\_ICON\_WARN}},\ \ \ \ Format,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{_irradiance_log_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_irradiance_log_8h_a084875edc417da902f0f1e5419359543}\index{IrradianceLog.h@{IrradianceLog.h}!DECLARE\_LOG\_CATEGORY\_EXTERN@{DECLARE\_LOG\_CATEGORY\_EXTERN}}
+\index{DECLARE\_LOG\_CATEGORY\_EXTERN@{DECLARE\_LOG\_CATEGORY\_EXTERN}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{DECLARE\_LOG\_CATEGORY\_EXTERN()}{DECLARE\_LOG\_CATEGORY\_EXTERN()}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a084875edc417da902f0f1e5419359543} 
+PYRANO\+\_\+\+API DECLARE\+\_\+\+LOG\+\_\+\+CATEGORY\+\_\+\+EXTERN (\begin{DoxyParamCaption}\item[{Log\+Pyrano}]{}{, }\item[{Log}]{}{, }\item[{All}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_irradiance_log_8h_a3dec0c1eab666505c7872a7c0a02b34d}\index{IrradianceLog.h@{IrradianceLog.h}!PyranoTimestamp@{PyranoTimestamp}}
+\index{PyranoTimestamp@{PyranoTimestamp}!IrradianceLog.h@{IrradianceLog.h}}
+\doxysubsubsection{\texorpdfstring{PyranoTimestamp()}{PyranoTimestamp()}}
+{\footnotesize\ttfamily \label{_irradiance_log_8h_a3dec0c1eab666505c7872a7c0a02b34d} 
+FORCEINLINE FString Pyrano\+Timestamp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+

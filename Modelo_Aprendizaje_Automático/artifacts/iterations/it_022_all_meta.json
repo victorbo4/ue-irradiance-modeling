@@ -1,0 +1,432 @@
+{
+  "exp_id": "it_022_all_c5de630638",
+  "cfg": {
+    "iteration_id": "it_022_all",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Prácticamente todas las features disponibles.\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "all": [
+        "sim_irradiance_wm2",
+        "sim_dhi_r_lux",
+        "sim_dhi_g_lux",
+        "sim_dhi_b_lux",
+        "sim_dhi_lux",
+        "sim_dni_lux",
+        "cloud_opacity",
+        "sim_cs_ghi",
+        "sim_geom_factor",
+        "sim_sky_view_factor",
+        "air_temp",
+        "wind_speed_10m",
+        "dewpoint_temp",
+        "pm10",
+        "precipitable_water",
+        "precipitation_rate",
+        "relative_humidity",
+        "surface_pressure",
+        "cloud_diff",
+        "cloud_std_60m",
+        "cloud_mean_60m",
+        "day_volatility",
+        "day_cloudiness"
+      ]
+    },
+    "feature_set_name": "all",
+    "model_params": {
+      "n_estimators": 2000,
+      "learning_rate": 0.01,
+      "max_depth": 4,
+      "min_child_weight": 50,
+      "subsample": 0.8,
+      "colsample_bytree": 0.4,
+      "reg_alpha": 2.0,
+      "reg_lambda": 3.0,
+      "gamma": 0.1,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "sim_irradiance_wm2",
+    "sim_dhi_r_lux",
+    "sim_dhi_g_lux",
+    "sim_dhi_b_lux",
+    "sim_dhi_lux",
+    "sim_dni_lux",
+    "cloud_opacity",
+    "sim_cs_ghi",
+    "sim_geom_factor",
+    "sim_sky_view_factor",
+    "air_temp",
+    "wind_speed_10m",
+    "dewpoint_temp",
+    "pm10",
+    "precipitable_water",
+    "precipitation_rate",
+    "relative_humidity",
+    "surface_pressure",
+    "cloud_diff",
+    "cloud_std_60m",
+    "cloud_mean_60m",
+    "day_volatility",
+    "day_cloudiness"
+  ],
+  "metrics_global": {
+    "r2": 0.7876615773567587,
+    "mae": 85.11720984073088,
+    "rmse": 139.65758169662922,
+    "mbe": -17.082456294693763
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.5527951309595833,
+      "mae": 104.15714431020577,
+      "rmse": 154.14752661939363,
+      "mbe": 22.645589527021606
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.6830218033444442,
+      "mae": 124.75549361471617,
+      "rmse": 182.1892537689149,
+      "mbe": -51.77385654243765
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9826279207008218,
+      "mae": 26.438991597270707,
+      "rmse": 39.47576755810138,
+      "mbe": -22.119101868665258
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "precipitation_rate",
+        "importance": 36.404991149902344,
+        "importance_pct": 24.80210657781868
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 20.62314224243164,
+        "importance_pct": 14.050199044415264
+      },
+      {
+        "feature": "surface_pressure",
+        "importance": 20.282461166381836,
+        "importance_pct": 13.81809877216301
+      },
+      {
+        "feature": "day_cloudiness",
+        "importance": 15.317463874816895,
+        "importance_pct": 10.435529841520513
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 14.860742568969727,
+        "importance_pct": 10.124373317478552
+      },
+      {
+        "feature": "precipitable_water",
+        "importance": 6.1157636642456055,
+        "importance_pct": 4.166566655126828
+      },
+      {
+        "feature": "sim_dhi_g_lux",
+        "importance": 4.327444553375244,
+        "importance_pct": 2.9482150010823904
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 3.2998440265655518,
+        "importance_pct": 2.2481280904603844
+      },
+      {
+        "feature": "sim_dhi_lux",
+        "importance": 2.922736883163452,
+        "importance_pct": 1.9912113527690274
+      },
+      {
+        "feature": "relative_humidity",
+        "importance": 2.8980906009674072,
+        "importance_pct": 1.974420256315899
+      },
+      {
+        "feature": "air_temp",
+        "importance": 2.639270782470703,
+        "importance_pct": 1.7980906784188813
+      },
+      {
+        "feature": "sim_dhi_b_lux",
+        "importance": 2.4710519313812256,
+        "importance_pct": 1.68348601182413
+      },
+      {
+        "feature": "day_volatility",
+        "importance": 2.3240420818328857,
+        "importance_pct": 1.5833306803347336
+      },
+      {
+        "feature": "pm10",
+        "importance": 1.9697964191436768,
+        "importance_pct": 1.3419890839429065
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 1.7993696928024292,
+        "importance_pct": 1.2258802291702362
+      },
+      {
+        "feature": "dewpoint_temp",
+        "importance": 1.4709872007369995,
+        "importance_pct": 1.0021587747971226
+      },
+      {
+        "feature": "sim_geom_factor",
+        "importance": 1.385050892829895,
+        "importance_pct": 0.9436118173527457
+      },
+      {
+        "feature": "sim_cs_ghi",
+        "importance": 1.335633635520935,
+        "importance_pct": 0.9099446732649054
+      },
+      {
+        "feature": "sim_dni_lux",
+        "importance": 1.1344609260559082,
+        "importance_pct": 0.7728890986555009
+      },
+      {
+        "feature": "sim_dhi_r_lux",
+        "importance": 0.9316898584365845,
+        "importance_pct": 0.6347445895884788
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 0.8855766654014587,
+        "importance_pct": 0.6033284487743975
+      },
+      {
+        "feature": "wind_speed_10m",
+        "importance": 0.7980631589889526,
+        "importance_pct": 0.5437069725843829
+      },
+      {
+        "feature": "sim_sky_view_factor",
+        "importance": 0.5841771364212036,
+        "importance_pct": 0.39799003214103185
+      }
+    ],
+    "weight": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 747.0
+      },
+      {
+        "feature": "sim_cs_ghi",
+        "importance": 679.0
+      },
+      {
+        "feature": "sim_dni_lux",
+        "importance": 621.0
+      },
+      {
+        "feature": "dewpoint_temp",
+        "importance": 609.0
+      },
+      {
+        "feature": "pm10",
+        "importance": 550.0
+      },
+      {
+        "feature": "surface_pressure",
+        "importance": 520.0
+      },
+      {
+        "feature": "wind_speed_10m",
+        "importance": 499.0
+      },
+      {
+        "feature": "relative_humidity",
+        "importance": 485.0
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 482.0
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 467.0
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 462.0
+      },
+      {
+        "feature": "precipitable_water",
+        "importance": 436.0
+      },
+      {
+        "feature": "sim_geom_factor",
+        "importance": 413.0
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 299.0
+      },
+      {
+        "feature": "sim_dhi_b_lux",
+        "importance": 231.0
+      },
+      {
+        "feature": "air_temp",
+        "importance": 229.0
+      },
+      {
+        "feature": "sim_sky_view_factor",
+        "importance": 203.0
+      },
+      {
+        "feature": "sim_dhi_r_lux",
+        "importance": 186.0
+      },
+      {
+        "feature": "sim_dhi_g_lux",
+        "importance": 163.0
+      },
+      {
+        "feature": "sim_dhi_lux",
+        "importance": 129.0
+      },
+      {
+        "feature": "day_volatility",
+        "importance": 120.0
+      },
+      {
+        "feature": "day_cloudiness",
+        "importance": 103.0
+      },
+      {
+        "feature": "precipitation_rate",
+        "importance": 20.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "precipitation_rate",
+        "importance": 5302.39990234375
+      },
+      {
+        "feature": "sim_dhi_r_lux",
+        "importance": 5113.22021484375
+      },
+      {
+        "feature": "sim_dhi_lux",
+        "importance": 4609.47265625
+      },
+      {
+        "feature": "pm10",
+        "importance": 4582.998046875
+      },
+      {
+        "feature": "wind_speed_10m",
+        "importance": 4412.232421875
+      },
+      {
+        "feature": "sim_dhi_b_lux",
+        "importance": 4381.099609375
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 4204.8994140625
+      },
+      {
+        "feature": "sim_cs_ghi",
+        "importance": 4083.326904296875
+      },
+      {
+        "feature": "sim_dhi_g_lux",
+        "importance": 4044.582763671875
+      },
+      {
+        "feature": "sim_dni_lux",
+        "importance": 3917.4267578125
+      },
+      {
+        "feature": "surface_pressure",
+        "importance": 3880.353759765625
+      },
+      {
+        "feature": "sim_geom_factor",
+        "importance": 3851.69970703125
+      },
+      {
+        "feature": "day_volatility",
+        "importance": 3735.85009765625
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 3640.686767578125
+      },
+      {
+        "feature": "day_cloudiness",
+        "importance": 3593.796142578125
+      },
+      {
+        "feature": "precipitable_water",
+        "importance": 3488.699462890625
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 3203.494873046875
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 2935.890869140625
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 2863.978271484375
+      },
+      {
+        "feature": "dewpoint_temp",
+        "importance": 2755.789794921875
+      },
+      {
+        "feature": "relative_humidity",
+        "importance": 2175.10107421875
+      },
+      {
+        "feature": "sim_sky_view_factor",
+        "importance": 1749.1527099609375
+      },
+      {
+        "feature": "air_temp",
+        "importance": 1154.034912109375
+      }
+    ]
+  }
+}

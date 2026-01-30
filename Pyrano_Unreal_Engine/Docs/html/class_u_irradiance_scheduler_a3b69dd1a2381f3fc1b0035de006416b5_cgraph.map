@@ -1,0 +1,5 @@
+<map id="UIrradianceScheduler::ConsumeIrradianceResult" name="UIrradianceScheduler::ConsumeIrradianceResult">
+<area shape="rect" id="Node000001" title="Consumes the latest irradiance value from the subsystem, if available." alt="" coords="5,5,186,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a3a1998734dd679049d860179bf9b0222" title="Ensures the IrradianceSubsystem pointer is valid for the current world." alt="" coords="234,5,380,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,24,220,26,215,27,186,29"/>
+</map>

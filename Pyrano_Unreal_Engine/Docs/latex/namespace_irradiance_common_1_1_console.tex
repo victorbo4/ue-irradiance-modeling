@@ -1,0 +1,114 @@
+\doxysection{Irradiance\+Common\+::Console Namespace Reference}
+\hypertarget{namespace_irradiance_common_1_1_console}{}\label{namespace_irradiance_common_1_1_console}\index{IrradianceCommon::Console@{IrradianceCommon::Console}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+PYRANO\+\_\+\+API ELog\+Verbosity\+::\+Type \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b}{Get\+Console\+Verbosity\+Limit}} ()
+\begin{DoxyCompactList}\small\item\em Set -\/ Get. \end{DoxyCompactList}\item 
+PYRANO\+\_\+\+API void \mbox{\hyperlink{namespace_irradiance_common_1_1_console_aa42053d9f39d75e15f93229d3f047af7}{Set\+Console\+Verbosity\+Limit}} (ELog\+Verbosity\+::\+Type New\+Limit)
+\item 
+bool \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7}{Should\+Forward\+To\+Console}} (const FName \&Category, ELog\+Verbosity\+::\+Type Verbosity)
+\begin{DoxyCompactList}\small\item\em Returns true if a log entry for the given category / verbosity should be forwarded to the engine console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+PYRANO\+\_\+\+API ELog\+Verbosity\+::\+Type \mbox{\hyperlink{namespace_irradiance_common_1_1_console_aa43a8c456bc07e4b42cb35d2c847e037}{GConsole\+Verbosity\+Limit}} = ELog\+Verbosity\+::\+Log
+\begin{DoxyCompactList}\small\item\em Global \doxylink{namespace_irradiance_common_1_1_console}{Console} Verbosity Limit. \end{DoxyCompactList}\item 
+static const FName \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a6e7930a09334e2e782e2d5df2024c8d9}{Console\+Allowed\+Categories}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespace_irradiance_common_1_1_console}{Console} categories allowed in the widget\textquotesingle{}s console output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_irradiance_common_1_1_console_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b}\index{IrradianceCommon::Console@{IrradianceCommon::Console}!GetConsoleVerbosityLimit@{GetConsoleVerbosityLimit}}
+\index{GetConsoleVerbosityLimit@{GetConsoleVerbosityLimit}!IrradianceCommon::Console@{IrradianceCommon::Console}}
+\doxysubsubsection{\texorpdfstring{GetConsoleVerbosityLimit()}{GetConsoleVerbosityLimit()}}
+{\footnotesize\ttfamily \label{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b} 
+ELog\+Verbosity\+::\+Type Irradiance\+Common\+::\+Console\+::\+Get\+Console\+Verbosity\+Limit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Set -\/ Get. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_irradiance_common_1_1_console_aa42053d9f39d75e15f93229d3f047af7}\index{IrradianceCommon::Console@{IrradianceCommon::Console}!SetConsoleVerbosityLimit@{SetConsoleVerbosityLimit}}
+\index{SetConsoleVerbosityLimit@{SetConsoleVerbosityLimit}!IrradianceCommon::Console@{IrradianceCommon::Console}}
+\doxysubsubsection{\texorpdfstring{SetConsoleVerbosityLimit()}{SetConsoleVerbosityLimit()}}
+{\footnotesize\ttfamily \label{namespace_irradiance_common_1_1_console_aa42053d9f39d75e15f93229d3f047af7} 
+void Irradiance\+Common\+::\+Console\+::\+Set\+Console\+Verbosity\+Limit (\begin{DoxyParamCaption}\item[{ELog\+Verbosity\+::\+Type}]{New\+Limit}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_irradiance_common_1_1_console_aa42053d9f39d75e15f93229d3f047af7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7}\index{IrradianceCommon::Console@{IrradianceCommon::Console}!ShouldForwardToConsole@{ShouldForwardToConsole}}
+\index{ShouldForwardToConsole@{ShouldForwardToConsole}!IrradianceCommon::Console@{IrradianceCommon::Console}}
+\doxysubsubsection{\texorpdfstring{ShouldForwardToConsole()}{ShouldForwardToConsole()}}
+{\footnotesize\ttfamily \label{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7} 
+bool Irradiance\+Common\+::\+Console\+::\+Should\+Forward\+To\+Console (\begin{DoxyParamCaption}\item[{const FName \&}]{Category}{, }\item[{ELog\+Verbosity\+::\+Type}]{Verbosity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns true if a log entry for the given category / verbosity should be forwarded to the engine console. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{namespace_irradiance_common_1_1_console_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_irradiance_common_1_1_console_a6e7930a09334e2e782e2d5df2024c8d9}\index{IrradianceCommon::Console@{IrradianceCommon::Console}!ConsoleAllowedCategories@{ConsoleAllowedCategories}}
+\index{ConsoleAllowedCategories@{ConsoleAllowedCategories}!IrradianceCommon::Console@{IrradianceCommon::Console}}
+\doxysubsubsection{\texorpdfstring{ConsoleAllowedCategories}{ConsoleAllowedCategories}}
+{\footnotesize\ttfamily \label{namespace_irradiance_common_1_1_console_a6e7930a09334e2e782e2d5df2024c8d9} 
+const FName Irradiance\+Common\+::\+Console\+::\+Console\+Allowed\+Categories\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxylink{namespace_irradiance_common_1_1_console}{Console} categories allowed in the widget\textquotesingle{}s console output. 
+
+\Hypertarget{namespace_irradiance_common_1_1_console_aa43a8c456bc07e4b42cb35d2c847e037}\index{IrradianceCommon::Console@{IrradianceCommon::Console}!GConsoleVerbosityLimit@{GConsoleVerbosityLimit}}
+\index{GConsoleVerbosityLimit@{GConsoleVerbosityLimit}!IrradianceCommon::Console@{IrradianceCommon::Console}}
+\doxysubsubsection{\texorpdfstring{GConsoleVerbosityLimit}{GConsoleVerbosityLimit}}
+{\footnotesize\ttfamily \label{namespace_irradiance_common_1_1_console_aa43a8c456bc07e4b42cb35d2c847e037} 
+ELog\+Verbosity\+::\+Type Irradiance\+Common\+::\+Console\+::\+GConsole\+Verbosity\+Limit = ELog\+Verbosity\+::\+Log\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global \doxylink{namespace_irradiance_common_1_1_console}{Console} Verbosity Limit. 
+

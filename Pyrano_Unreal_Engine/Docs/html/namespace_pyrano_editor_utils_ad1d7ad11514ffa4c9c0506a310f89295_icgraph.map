@@ -1,0 +1,23 @@
+<map id="PyranoEditorUtils::GetPIEWorld" name="PyranoEditorUtils::GetPIEWorld">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1128,39,1259,81"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#ac3e1f1b78bd830e95a7b52fc3bff7ed9" title="Ensures that the PIE world exists and is ready; retries if not." alt="" coords="905,5,1078,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1110,47,1078,44,1078,38,1115,47"/>
+<area shape="rect" id="Node000009" href="$class_u_pyrano_editor_subsystem.html#aac7636240544517fce7c46ac0df245a3" title="Delays simulation start and monitors when it finishes." alt="" coords="903,72,1080,115"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="1115,73,1081,81,1080,76,1110,74"/>
+<area shape="rect" id="Node000003" href="$class_u_pyrano_editor_subsystem.html#ae6108e9fda1f9471c24a39988d5122d6" title="Internal callback executed once PIE has fully started." alt="" coords="682,5,855,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="887,36,855,38,855,33,892,35"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="870,15,908,18,902,18,870,20"/>
+<area shape="rect" id="Node000004" href="$class_u_pyrano_editor_subsystem.html#a5bd1813278b5277f9b9677faf4bc9d85" title="Verifies that the game viewport is initialized and visible." alt="" coords="462,5,634,48"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="664,36,635,38,634,33,669,35"/>
+<area shape="rect" id="Node000005" href="$class_u_pyrano_editor_subsystem.html#ab0ad1482f10e23d383332295e0ddac03" title="Packs config and registers delegates before launching PIE." alt="" coords="462,72,634,115"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="684,52,622,74,621,69,679,53"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="649,15,684,18,679,18,650,20"/>
+<area shape="rect" id="Node000006" href="$class_u_pyrano_editor_subsystem.html#acdc7acb4e1599227d50feefdf1867c66" title="Starts a single capture pass in PIE and ends automatically." alt="" coords="242,39,414,81"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="444,78,414,76,414,70,449,78"/>
+<area shape="rect" id="Node000008" href="$class_u_pyrano_editor_subsystem.html#a4b539f64f46c286822e4015811c08afc" title="Starts a full multi&#45;sensor, multi&#45;time simulation in PIE." alt="" coords="242,105,414,148"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="449,108,415,116,414,111,444,109"/>
+<area shape="rect" id="Node000007" href="$class_u_pyrano_editor_subsystem.html#a66b820c9aae05fb59340fae1abe43379" title=" " alt="" coords="5,72,194,115"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="224,76,195,82,194,77,229,74"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="224,112,194,110,194,104,229,112"/>
+<area shape="poly" id="edge12_Node000009_Node000003" title=" " alt="" coords="901,67,842,51,843,46,906,67"/>
+</map>

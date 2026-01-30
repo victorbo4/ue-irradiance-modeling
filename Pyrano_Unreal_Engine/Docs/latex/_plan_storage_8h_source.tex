@@ -1,0 +1,24 @@
+\doxysection{Plan\+Storage.\+h}
+\hypertarget{_plan_storage_8h_source}{}\label{_plan_storage_8h_source}\index{Source/PyranoEditor/Private/UI/PlanStorage.h@{Source/PyranoEditor/Private/UI/PlanStorage.h}}
+\mbox{\hyperlink{_plan_storage_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ PlanStorage.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Provides\ JSON-\/based\ save/load\ utilities\ for\ PyranoBlueprintLibrary.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_config_8h}{Simulation/SimulationConfig.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_f_plan_storage}{FPlanStorage}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_f_plan_storage_addcd8beee4a987dbf567feded60c37c5}{SavePlan}}(\textcolor{keyword}{const}\ FString\&\ FilePath,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Config);}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_f_plan_storage_aec8e45477afe4c1a58ab43fc1450079b}{LoadPlan}}(\textcolor{keyword}{const}\ FString\&\ FilePath,\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ OutConfig);}
+\DoxyCodeLine{00018\ \};}
+
+\end{DoxyCode}

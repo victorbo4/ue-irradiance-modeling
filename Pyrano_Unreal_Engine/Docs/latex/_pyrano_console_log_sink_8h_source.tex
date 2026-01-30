@@ -1,0 +1,38 @@
+\doxysection{Pyrano\+Console\+Log\+Sink.\+h}
+\hypertarget{_pyrano_console_log_sink_8h_source}{}\label{_pyrano_console_log_sink_8h_source}\index{Source/PyranoEditor/Private/Logging/PyranoConsoleLogSink.h@{Source/PyranoEditor/Private/Logging/PyranoConsoleLogSink.h}}
+\mbox{\hyperlink{_pyrano_console_log_sink_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ PyranoConsoleLogSink.h\ }}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Custom\ log\ sink\ for\ Pyrano.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Misc/OutputDevice.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_pyrano_console_raw_line}{FPyranoConsoleRawLine}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ FString\ \mbox{\hyperlink{struct_f_pyrano_console_raw_line_ade16344c6a641bbdb44ea619ffc71c07}{Text}};}
+\DoxyCodeLine{00014\ \ \ \ \ ELogVerbosity::Type\ \mbox{\hyperlink{struct_f_pyrano_console_raw_line_aebea84d3d6182b253123c1a0194cf239}{Verbosity}}\ =\ ELogVerbosity::Log;}
+\DoxyCodeLine{00015\ \ \ \ \ FName\ \mbox{\hyperlink{struct_f_pyrano_console_raw_line_a3954ee38ffee2c767ba094300e0cefc9}{Category}}\ =\ NAME\_None;}
+\DoxyCodeLine{00016\ \ \ \ \ FDateTime\ \mbox{\hyperlink{struct_f_pyrano_console_raw_line_a40418bf4e9e21046180bd7f62896c0d0}{Timestamp}}\ =\ FDateTime::UtcNow();}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ TQueue<FPyranoConsoleRawLine,\ EQueueMode::Mpsc>\ \mbox{\hyperlink{_pyrano_console_log_sink_8cpp_ad4b002aa2f269fd39c6facd030bb79df}{GPyranoConsolePendingLines}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_f_pyrano_console_log_sink}{FPyranoConsoleLogSink}}\ :\ \textcolor{keyword}{public}\ FOutputDevice}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_f_pyrano_console_log_sink_abd36395a8849037a7cd5349346e2b912}{Serialize}}(\textcolor{keyword}{const}\ TCHAR*\ V,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ ELogVerbosity::Type\ Verbosity,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FName\&\ Category)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ -\/-\/-\/\ Helpers\ -\/-\/-\/}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_pyrano_console_log_sink_8h_a087e7c4e6d620e9331bbc109e283a882}{InstallPyranoConsoleLogSink}}();}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_pyrano_console_log_sink_8h_a86136d5a6748aa19feba6c727ccc502f}{RemovePyranoConsoleLogSink}}();}
+
+\end{DoxyCode}

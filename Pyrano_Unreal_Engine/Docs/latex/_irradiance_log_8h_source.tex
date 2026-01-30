@@ -1,0 +1,56 @@
+\doxysection{Irradiance\+Log.\+h}
+\hypertarget{_irradiance_log_8h_source}{}\label{_irradiance_log_8h_source}\index{Source/Pyrano/Public/Logging/IrradianceLog.h@{Source/Pyrano/Public/Logging/IrradianceLog.h}}
+\mbox{\hyperlink{_irradiance_log_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ IrradianceLog.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ PYRANO\_API\ \mbox{\hyperlink{_irradiance_log_8h_a084875edc417da902f0f1e5419359543}{DECLARE\_LOG\_CATEGORY\_EXTERN}}(LogPyrano,\ Log,\ All);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \ \ \ \ \ TIMESTAMP\ HELPER\ (HH:MM:SS.mmm)}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00014\ FORCEINLINE\ FString\ \mbox{\hyperlink{_irradiance_log_8h_a3dec0c1eab666505c7872a7c0a02b34d}{PyranoTimestamp}}()}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{const}\ FDateTime\ Now\ =\ FDateTime::Now();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{return}\ Now.ToString(TEXT(\textcolor{stringliteral}{"{}\%H:\%M:\%S.\%s"{}}));}
+\DoxyCodeLine{00018\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ \ \ \ \ \ PREFIXES}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ PYRANO\_ICON\_INFO\ \ \ \ \ TEXT("{}▶"{})}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ PYRANO\_ICON\_WARN\ \ \ \ \ TEXT("{}⚠"{})}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ PYRANO\_ICON\_ERR\ \ \ \ \ \ TEXT("{}❌"{})}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ PYRANO\_ICON\_VERBOSE\ \ TEXT("{}…"{})}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ PYRANO\_ICON\_SUCCESS\ \ TEXT("{}✓"{})}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ PYRANO\_ICON\_CONSOLE\ \ TEXT("{}◆"{})}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ \ \ \ \ \ INTERNAL\ FORMATTER}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ \_PYRANO\_COMPACT\_LOG(Verbosity,\ Icon,\ Format,\ ...)\ \(\backslash\)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ UE\_LOG(\ \(\backslash\)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ LogPyrano,\ Verbosity,\ \(\backslash\)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ TEXT("{}\%s\ \%s\ "{}\ Format),\ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ *PyranoTimestamp(),\ \(\backslash\)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ Icon,\ \(\backslash\)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#\#\_\_VA\_ARGS\_\_\ \(\backslash\)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ )}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00043\ \textcolor{comment}{//\ \ \ \ \ \ PUBLIC\ MACROS}}
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ PYRANO\_VERBOSE(Format,\ ...)\ \_PYRANO\_COMPACT\_LOG(Verbose,\ \ PYRANO\_ICON\_VERBOSE,\ Format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ PYRANO\_INFO(Format,\ ...)\ \ \ \ \_PYRANO\_COMPACT\_LOG(Display,\ \ PYRANO\_ICON\_INFO,\ \ \ \ Format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ PYRANO\_WARN(Format,\ ...)\ \ \ \ \_PYRANO\_COMPACT\_LOG(Warning,\ \ PYRANO\_ICON\_WARN,\ \ \ \ Format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ PYRANO\_ERR(Format,\ ...)\ \ \ \ \ \_PYRANO\_COMPACT\_LOG(Error,\ \ \ \ PYRANO\_ICON\_ERR,\ \ \ \ \ Format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ PYRANO\_SUCCESS(Format,\ ...)\ \_PYRANO\_COMPACT\_LOG(Display,\ \ PYRANO\_ICON\_SUCCESS,\ Format,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ PYRANO\_CONSOLE(Format,\ ...)\ \_PYRANO\_COMPACT\_LOG(Display,\ \ PYRANO\_ICON\_CONSOLE,\ Format,\ \#\#\_\_VA\_ARGS\_\_)}}
+
+\end{DoxyCode}

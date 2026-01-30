@@ -1,0 +1,27 @@
+<map id="UPyranoEditorSubsystem::EnsurePIEWorld" name="UPyranoEditorSubsystem::EnsurePIEWorld">
+<area shape="rect" id="Node000001" title="Ensures that the PIE world exists and is ready; retries if not." alt="" coords="5,127,178,169"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#a2adad0d3fd5864acbe4205b167cf4937" title="Returns the PIE world if running, otherwise the editor world." alt="" coords="226,5,398,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,124,224,64,250,53,246,57,227,69,128,128"/>
+<area shape="rect" id="Node000003" href="$namespace_pyrano_editor_utils.html#ad1d7ad11514ffa4c9c0506a310f89295" title=" " alt="" coords="700,93,831,136"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,134,304,119,446,108,540,106,634,108,687,111,682,112,634,113,540,111,446,113,305,125,179,139"/>
+<area shape="rect" id="Node000004" href="$class_u_pyrano_editor_subsystem.html#ae6108e9fda1f9471c24a39988d5122d6" title="Internal callback executed once PIE has fully started." alt="" coords="226,189,398,232"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="142,167,213,190,208,192,143,173"/>
+<area shape="poly" id="edge10_Node000004_Node000001" title=" " alt="" coords="259,190,193,170,193,165,264,188"/>
+<area shape="rect" id="Node000005" href="$class_u_pyrano_editor_subsystem.html#ab354ffee4ea9cc5e40566874111fd461" title="Applies Render/Irradiance CVars before starting PIE." alt="" coords="454,189,626,232"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="398,208,441,210,436,211,399,213"/>
+<area shape="rect" id="Node000009" href="$class_u_pyrano_editor_subsystem.html#ab0de335beccfcc58219f322f7d03a67c" title="Ensures the PIE world is standalone or client (not server)." alt="" coords="446,256,634,299"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="387,230,453,251,447,251,387,235"/>
+<area shape="rect" id="Node000010" href="$class_u_pyrano_editor_subsystem.html#a5bd1813278b5277f9b9677faf4bc9d85" title="Verifies that the game viewport is initialized and visible." alt="" coords="454,323,626,365"/>
+<area shape="poly" id="edge11_Node000004_Node000010" title=" " alt="" coords="329,230,376,272,443,319,438,319,373,276,328,235"/>
+<area shape="rect" id="Node000011" href="$class_u_pyrano_editor_subsystem.html#aac7636240544517fce7c46ac0df245a3" title="Delays simulation start and monitors when it finishes." alt="" coords="452,123,629,165"/>
+<area shape="poly" id="edge13_Node000004_Node000011" title=" " alt="" coords="386,186,453,169,448,171,388,191"/>
+<area shape="rect" id="Node000006" href="$namespace_f_irradiance_render_config.html#a2880f5d9df2d1f4e81ecb89ca2f4e0e6" title=" " alt="" coords="682,189,849,232"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="627,208,669,210,664,211,627,213"/>
+<area shape="rect" id="Node000007" href="$namespaceanonymous__namespace_02_irradiance_configuration_8cpp_03.html#aad684e2485baaa38779ecb26af25cc94" title=" " alt="" coords="897,148,1059,207"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="849,195,884,192,879,193,850,200"/>
+<area shape="rect" id="Node000008" href="$namespaceanonymous__namespace_02_irradiance_configuration_8cpp_03.html#aca5fa9f954f01057940a973680cd4d9a" title=" " alt="" coords="1107,181,1269,240"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="849,214,897,216,1059,216,1094,217,1089,218,1059,221,897,221,849,219"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="1059,188,1094,195,1089,195,1059,193"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="498,322,445,301,400,273,361,244,362,239,403,269,447,296,503,322"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="628,130,687,124,682,126,629,135"/>
+</map>

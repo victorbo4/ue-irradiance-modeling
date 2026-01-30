@@ -1,0 +1,23 @@
+<map id="Source/PyranoEditor/Private/UI/ConsoleLogLineEntry.cpp" name="Source/PyranoEditor/Private/UI/ConsoleLogLineEntry.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="705,5,886,64"/>
+<area shape="rect" id="Node000002" href="$_console_log_line_entry_8h.html" title=" " alt="" coords="500,112,673,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="730,64,631,108,629,103,725,65"/>
+<area shape="rect" id="Node000008" href="$_console_log_line_item_8h.html" title=" " alt="" coords="899,112,1068,139"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="857,62,946,105,940,105,856,67"/>
+<area shape="rect" id="Node000010" href="$_irradiance_log_8h.html" title=" " alt="" coords="716,112,875,139"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="797,62,798,98,793,94,794,66"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="840,195,946,221"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="641,137,828,184,841,190,836,190,827,189,640,142"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,195,162,221"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="497,138,347,161,173,189,152,193,151,188,172,184,346,156,502,137"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="185,187,352,229"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="539,139,366,185,365,180,534,140"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="376,187,575,229"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="571,138,517,180,515,175,566,140"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="599,195,816,221"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="606,137,679,187,674,186,604,142"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="972,138,919,187,917,182,967,140"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="969,195,1182,221"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="999,137,1053,185,1048,184,997,142"/>
+<area shape="poly" id="edge11_Node000010_Node000003" title=" " alt="" coords="812,137,869,186,864,184,810,142"/>
+</map>

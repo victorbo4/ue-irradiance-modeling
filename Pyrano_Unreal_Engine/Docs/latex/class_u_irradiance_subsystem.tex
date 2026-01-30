@@ -1,0 +1,650 @@
+\doxysection{UIrradiance\+Subsystem Class Reference}
+\hypertarget{class_u_irradiance_subsystem}{}\label{class_u_irradiance_subsystem}\index{UIrradianceSubsystem@{UIrradianceSubsystem}}
+
+
+{\ttfamily \#include $<$Irradiance\+Subsystem.\+h$>$}
+
+
+
+Inheritance diagram for UIrradiance\+Subsystem\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_irradiance_subsystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UIrradiance\+Subsystem\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_irradiance_subsystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_u_irradiance_subsystem_a4f7c8b64d5535835f83975cd7d10189f}{Initialize}} (FSubsystem\+Collection\+Base \&Collection) override
+\item 
+virtual void \mbox{\hyperlink{class_u_irradiance_subsystem_a6a6bf9fbdea8547a1ca8adb550c132db}{Deinitialize}} () override
+\item 
+virtual bool \mbox{\hyperlink{class_u_irradiance_subsystem_aa39325519944418c4584b788788af3af}{Should\+Create\+Subsystem}} (UObject \texorpdfstring{$\ast$}{*}Outer) const override
+\item 
+virtual void \mbox{\hyperlink{class_u_irradiance_subsystem_ad3336fe0d04f79cf1c1eb2ecdb226325}{Tick}} (float Delta\+Time) override
+\item 
+virtual TStat\+Id \mbox{\hyperlink{class_u_irradiance_subsystem_a8ec30d9390d84774c315f6d5cab53a59}{Get\+Stat\+Id}} () const override
+\item 
+virtual ETickable\+Tick\+Type \mbox{\hyperlink{class_u_irradiance_subsystem_a0e6420f63e09e41da61a9a03cd4f84f0}{Get\+Tickable\+Tick\+Type}} () const override
+\item 
+virtual UWorld \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_irradiance_subsystem_a12a3fafc46b8c62e6d431f1ee77e7f8e}{Get\+Tickable\+Game\+Object\+World}} () const override
+\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a1ea6ae410e0b596d1500aeacaf2b2110}{Start\+Six\+Face\+Capture}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req)
+\begin{DoxyCompactList}\small\item\em Begin a new 6-\/face capture using the given request description. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a04a740dfef481b9b856933e3c443e434}{Configure\+Export}} (bool b\+CSV, bool b\+Export\+Images, const FString \&Output\+Dir\+Path)
+\begin{DoxyCompactList}\small\item\em Configure optional export of capture data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_irradiance_subsystem_a04b6e98a2662b94a1117321c3d6c70f9}{Consume\+Latest\+Irradiance}} (float \&Out\+Value, float Min\+Sun\+Altitude=0.f)
+\begin{DoxyCompactList}\small\item\em Consume the latest available irradiance value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_ac26df4fbd46235fc64937d2f51f8a0d4}{Flush\+Exporter}} ()
+\item 
+bool \mbox{\hyperlink{class_u_irradiance_subsystem_a83c48c8eb81fa9030764fe107709a9b0}{Force\+Square\+Viewport\+PIE}} (int32 Side\+Px)
+\begin{DoxyCompactList}\small\item\em Force the PIE client viewport and window to be square (Side\+Px x Side\+Px). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_aa126dad64d4c3cf35ccff9c8cf82655a}{Restore\+Viewport\+PIE}} ()
+\begin{DoxyCompactList}\small\item\em Restore previous PIE viewport and window size if it had been forced. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_ac681ad537e5994e1cfb9470866b87dd4}{End\+Hijack\+View}} ()
+\begin{DoxyCompactList}\small\item\em Restore the previous player view target if the camera was hijacked. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_u_irradiance_subsystem_a829bcf13473f19c81677ad4908caecb1}{Compute\+Sky\+View\+Factor}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req, int32 Num\+Samples) const
+\begin{DoxyCompactList}\small\item\em Computes Sky\+View\+Factor using Monte Carlo sampling. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_u_clear_sky_service}{UClear\+Sky\+Service}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_irradiance_subsystem_a675b139159a8c27f5bccac86c40ba3cf}{Get\+Clear\+Sky}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_afec011af7207461bc6c02e2c03e06bc3}{Tick\+Capturing}} ()
+\begin{DoxyCompactList}\small\item\em Handle per-\/frame logic while faces are being captured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a2ef94233017fe8e81cf63e7bc5b514a3}{Tick\+Readback}} ()
+\begin{DoxyCompactList}\small\item\em Handle per-\/frame logic while waiting for GPU readback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a24988c0d2a42f487480bbd2820c3ad14}{Enqueue\+Readback\+Copy}} ()
+\begin{DoxyCompactList}\small\item\em Enqueue a GPU readback copy of the extracted irradiance buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_afac39e6628fd78f1833b02ef96b881ba}{Enqueue\+Readback\+Polling}} ()
+\begin{DoxyCompactList}\small\item\em Enqueue a polling command to read back the irradiance value when ready. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a07d7292927f509ea227ab101994ab4b6}{Ensure\+Capture\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Ensure that the capture camera exists and is configured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a10314c056f1375fa327c1bdd2c0c79b6}{Start\+Face\+Capture}} (const FVector \&Pos\+WS, const FQuat \&Rot\+WS)
+\begin{DoxyCompactList}\small\item\em Start capture of a single face at Pos\+WS / Rot\+WS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_subsystem_a140204594c38cf4c1696276e7e9a4450}{Compute\+Final\+Irradiance}} ()
+\begin{DoxyCompactList}\small\item\em Dispatch the irradiance compute shader using the captured faces. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_irradiance_subsystem_a6dfafba98439f52bbf4df4d39dd4c317}{Compute\+Sun\+Occlusion}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req, bool \&b\+Out\+Sun\+Occluded, float \&Out\+Hit\+DistanceM) const
+\begin{DoxyCompactList}\small\item\em Perform a single-\/ray solar occlusion test from the sensor towards the sun direction. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_u_irradiance_subsystem_a9d9c69b7bfaee73c69034a5d5f10fd34}{Compute\+Sun\+Visibility}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req, int32 Num\+Samples) const
+\begin{DoxyCompactList}\small\item\em Estimate solar visibility by sampling multiple rays around the sun direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_f_capture_context}{FCapture\+Context}} \mbox{\hyperlink{class_u_irradiance_subsystem_a2feb8a14a141983c15815292c6310138}{Capture}}
+\begin{DoxyCompactList}\small\item\em Per-\/capture context. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023}{ECapture\+State}} \mbox{\hyperlink{class_u_irradiance_subsystem_a4ede1df50d8a4260c5454d4ac0a6ce48}{State}} = \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae599161956d626eda4cb0a5ffb85271c}{ECapture\+State\+::\+Idle}}
+\begin{DoxyCompactList}\small\item\em Current high-\/level capture state. \end{DoxyCompactList}\item 
+TShared\+Ptr$<$ class \mbox{\hyperlink{class_f_irradiance_view_extension}{FIrradiance\+View\+Extension}}, ESPMode\+::\+Thread\+Safe $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a378a10af536b26d52e9c2e7841ce011e}{View\+Ext}}
+\begin{DoxyCompactList}\small\item\em View extension used to intercept the scene render target and produce cubemap faces. \end{DoxyCompactList}\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_af4c43fc33b02171907d2a2abb9e0de10}{b\+Irradiance\+Value\+Ready}} \{ false \}
+\begin{DoxyCompactList}\small\item\em Atomic flag indicating a new irradiance value is available. \end{DoxyCompactList}\item 
+std\+::atomic$<$ float $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a7e58f8fcd1716b0b38001f0363975b91}{Last\+Irradiance\+Mean}} \{ 0.\+0f \}
+\begin{DoxyCompactList}\small\item\em Last irradiance value produced by the GPU path. \end{DoxyCompactList}\item 
+std\+::atomic$<$ float $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_af133834f2c35250f19a3e9d73ea9bcd5}{Last\+IrradianceR}} \{ 0.\+0f \}
+\item 
+std\+::atomic$<$ float $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a7a8bda9667b0836ab6a0e79afda3c1ec}{Last\+IrradianceG}} \{ 0.\+0f \}
+\item 
+std\+::atomic$<$ float $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a8e7818f0f748e60ed21fe0699079a89f}{Last\+IrradianceB}} \{ 0.\+0f \}
+\item 
+bool \mbox{\hyperlink{class_u_irradiance_subsystem_a52b3533e90998e4897ed6f52adce5ff4}{b\+Forced\+Res}} = false
+\item 
+TWeak\+Ptr$<$ class SWindow $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a6f73cd68e330b30cfb6887b55f2777ec}{Prev\+PIEWindow}}
+\item 
+FInt\+Point \mbox{\hyperlink{class_u_irradiance_subsystem_ab8868668e247e3ef52f8aacbb79963c4}{Prev\+Viewport\+Size}} = FInt\+Point\+::\+Zero\+Value
+\item 
+FInt\+Point \mbox{\hyperlink{class_u_irradiance_subsystem_a1117688f07b56ad559e8cb8235ec2c56}{Prev\+PIEWindow\+Size}} = FInt\+Point\+::\+Zero\+Value
+\item 
+TObject\+Ptr$<$ \mbox{\hyperlink{class_u_irradiance_exporter}{UIrradiance\+Exporter}} $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a4721b22feb3b45178fed9473ba7b6e93}{Exporter}} = nullptr
+\item 
+\mbox{\hyperlink{struct_f_export_options}{FExport\+Options}} \mbox{\hyperlink{class_u_irradiance_subsystem_a16aa6a87908fc23af4218d7fd66dfd07}{Export\+Options}}
+\item 
+bool \mbox{\hyperlink{class_u_irradiance_subsystem_a35c3422727eddb569d945aab06a4bad1}{b\+Is\+Hijacked}} = false
+\item 
+TWeak\+Object\+Ptr$<$ AActor $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a831ca02563d00d47e90d386e607515c7}{Prev\+View\+Target}} = nullptr
+\item 
+TWeak\+Object\+Ptr$<$ ACamera\+Actor $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_a93d5dbd784754cadeb8d216b45caabeb}{Capture\+Cam}} = nullptr
+\item 
+TObject\+Ptr$<$ \mbox{\hyperlink{class_u_clear_sky_service}{UClear\+Sky\+Service}} $>$ \mbox{\hyperlink{class_u_irradiance_subsystem_ac960b22a9534dd11f85df1a511861cc7}{Clear\+Sky}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_u_irradiance_subsystem_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_irradiance_subsystem_a140204594c38cf4c1696276e7e9a4450}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ComputeFinalIrradiance@{ComputeFinalIrradiance}}
+\index{ComputeFinalIrradiance@{ComputeFinalIrradiance}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ComputeFinalIrradiance()}{ComputeFinalIrradiance()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a140204594c38cf4c1696276e7e9a4450} 
+void UIrradiance\+Subsystem\+::\+Compute\+Final\+Irradiance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dispatch the irradiance compute shader using the captured faces. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a140204594c38cf4c1696276e7e9a4450_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a140204594c38cf4c1696276e7e9a4450_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a829bcf13473f19c81677ad4908caecb1}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ComputeSkyViewFactor@{ComputeSkyViewFactor}}
+\index{ComputeSkyViewFactor@{ComputeSkyViewFactor}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ComputeSkyViewFactor()}{ComputeSkyViewFactor()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a829bcf13473f19c81677ad4908caecb1} 
+float UIrradiance\+Subsystem\+::\+Compute\+Sky\+View\+Factor (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{, }\item[{int32}]{Num\+Samples}{}\end{DoxyParamCaption}) const}
+
+
+
+Computes Sky\+View\+Factor using Monte Carlo sampling. 
+
+\Hypertarget{class_u_irradiance_subsystem_a6dfafba98439f52bbf4df4d39dd4c317}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ComputeSunOcclusion@{ComputeSunOcclusion}}
+\index{ComputeSunOcclusion@{ComputeSunOcclusion}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ComputeSunOcclusion()}{ComputeSunOcclusion()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a6dfafba98439f52bbf4df4d39dd4c317} 
+bool UIrradiance\+Subsystem\+::\+Compute\+Sun\+Occlusion (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{, }\item[{bool \&}]{b\+Out\+Sun\+Occluded}{, }\item[{float \&}]{Out\+Hit\+DistanceM}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Perform a single-\/ray solar occlusion test from the sensor towards the sun direction. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a6dfafba98439f52bbf4df4d39dd4c317_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a9d9c69b7bfaee73c69034a5d5f10fd34}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ComputeSunVisibility@{ComputeSunVisibility}}
+\index{ComputeSunVisibility@{ComputeSunVisibility}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ComputeSunVisibility()}{ComputeSunVisibility()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a9d9c69b7bfaee73c69034a5d5f10fd34} 
+float UIrradiance\+Subsystem\+::\+Compute\+Sun\+Visibility (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{, }\item[{int32}]{Num\+Samples}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Estimate solar visibility by sampling multiple rays around the sun direction. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a9d9c69b7bfaee73c69034a5d5f10fd34_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a04a740dfef481b9b856933e3c443e434}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ConfigureExport@{ConfigureExport}}
+\index{ConfigureExport@{ConfigureExport}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ConfigureExport()}{ConfigureExport()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a04a740dfef481b9b856933e3c443e434} 
+void UIrradiance\+Subsystem\+::\+Configure\+Export (\begin{DoxyParamCaption}\item[{bool}]{b\+CSV}{, }\item[{bool}]{b\+Export\+Images}{, }\item[{const FString \&}]{Output\+Dir\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Configure optional export of capture data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b\+CSV} & Enable/disable CSV export of irradiance samples. \\
+\hline
+{\em b\+Export\+Images} & Enable/disable EXR export of cubemap faces. \\
+\hline
+{\em Output\+Dir\+Path} & Optional custom output directory (empty = Saved/\+Irradiance). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_u_irradiance_subsystem_a04b6e98a2662b94a1117321c3d6c70f9}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ConsumeLatestIrradiance@{ConsumeLatestIrradiance}}
+\index{ConsumeLatestIrradiance@{ConsumeLatestIrradiance}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ConsumeLatestIrradiance()}{ConsumeLatestIrradiance()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a04b6e98a2662b94a1117321c3d6c70f9} 
+bool UIrradiance\+Subsystem\+::\+Consume\+Latest\+Irradiance (\begin{DoxyParamCaption}\item[{float \&}]{Out\+Value}{, }\item[{float}]{Min\+Sun\+Altitude}{ = {\ttfamily 0.f}}\end{DoxyParamCaption})}
+
+
+
+Consume the latest available irradiance value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Out\+Value} & Output irradiance value (possibly clamped by sun altitude). \\
+\hline
+{\em Min\+Sun\+Altitude} & Minimum sun altitude (deg); below this, the value is clamped to 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a new value was available and consumed. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a04b6e98a2662b94a1117321c3d6c70f9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a6a6bf9fbdea8547a1ca8adb550c132db}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!Deinitialize@{Deinitialize}}
+\index{Deinitialize@{Deinitialize}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{Deinitialize()}{Deinitialize()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a6a6bf9fbdea8547a1ca8adb550c132db} 
+void UIrradiance\+Subsystem\+::\+Deinitialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_subsystem_ac681ad537e5994e1cfb9470866b87dd4}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!EndHijackView@{EndHijackView}}
+\index{EndHijackView@{EndHijackView}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{EndHijackView()}{EndHijackView()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_ac681ad537e5994e1cfb9470866b87dd4} 
+void UIrradiance\+Subsystem\+::\+End\+Hijack\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restore the previous player view target if the camera was hijacked. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_ac681ad537e5994e1cfb9470866b87dd4_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a24988c0d2a42f487480bbd2820c3ad14}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!EnqueueReadbackCopy@{EnqueueReadbackCopy}}
+\index{EnqueueReadbackCopy@{EnqueueReadbackCopy}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{EnqueueReadbackCopy()}{EnqueueReadbackCopy()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a24988c0d2a42f487480bbd2820c3ad14} 
+void UIrradiance\+Subsystem\+::\+Enqueue\+Readback\+Copy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Enqueue a GPU readback copy of the extracted irradiance buffer. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a24988c0d2a42f487480bbd2820c3ad14_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_afac39e6628fd78f1833b02ef96b881ba}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!EnqueueReadbackPolling@{EnqueueReadbackPolling}}
+\index{EnqueueReadbackPolling@{EnqueueReadbackPolling}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{EnqueueReadbackPolling()}{EnqueueReadbackPolling()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_afac39e6628fd78f1833b02ef96b881ba} 
+void UIrradiance\+Subsystem\+::\+Enqueue\+Readback\+Polling (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Enqueue a polling command to read back the irradiance value when ready. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_afac39e6628fd78f1833b02ef96b881ba_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a07d7292927f509ea227ab101994ab4b6}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!EnsureCaptureCamera@{EnsureCaptureCamera}}
+\index{EnsureCaptureCamera@{EnsureCaptureCamera}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{EnsureCaptureCamera()}{EnsureCaptureCamera()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a07d7292927f509ea227ab101994ab4b6} 
+void UIrradiance\+Subsystem\+::\+Ensure\+Capture\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ensure that the capture camera exists and is configured. 
+
+Path Tracing only allows one view(player). Solution\+: "{}hijack"{} the player\textquotesingle{}s camera by creating a Camera\+Component and putting it in its place.Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a07d7292927f509ea227ab101994ab4b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a07d7292927f509ea227ab101994ab4b6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_ac26df4fbd46235fc64937d2f51f8a0d4}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!FlushExporter@{FlushExporter}}
+\index{FlushExporter@{FlushExporter}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{FlushExporter()}{FlushExporter()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_ac26df4fbd46235fc64937d2f51f8a0d4} 
+void UIrradiance\+Subsystem\+::\+Flush\+Exporter (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_irradiance_subsystem_a83c48c8eb81fa9030764fe107709a9b0}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ForceSquareViewportPIE@{ForceSquareViewportPIE}}
+\index{ForceSquareViewportPIE@{ForceSquareViewportPIE}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ForceSquareViewportPIE()}{ForceSquareViewportPIE()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a83c48c8eb81fa9030764fe107709a9b0} 
+bool UIrradiance\+Subsystem\+::\+Force\+Square\+Viewport\+PIE (\begin{DoxyParamCaption}\item[{int32}]{Side\+Px}{}\end{DoxyParamCaption})}
+
+
+
+Force the PIE client viewport and window to be square (Side\+Px x Side\+Px). 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a83c48c8eb81fa9030764fe107709a9b0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a675b139159a8c27f5bccac86c40ba3cf}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!GetClearSky@{GetClearSky}}
+\index{GetClearSky@{GetClearSky}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{GetClearSky()}{GetClearSky()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a675b139159a8c27f5bccac86c40ba3cf} 
+\mbox{\hyperlink{class_u_clear_sky_service}{UClear\+Sky\+Service}} \texorpdfstring{$\ast$}{*} UIrradiance\+Subsystem\+::\+Get\+Clear\+Sky (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a8ec30d9390d84774c315f6d5cab53a59}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!GetStatId@{GetStatId}}
+\index{GetStatId@{GetStatId}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{GetStatId()}{GetStatId()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a8ec30d9390d84774c315f6d5cab53a59} 
+virtual TStat\+Id UIrradiance\+Subsystem\+::\+Get\+Stat\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a12a3fafc46b8c62e6d431f1ee77e7f8e}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!GetTickableGameObjectWorld@{GetTickableGameObjectWorld}}
+\index{GetTickableGameObjectWorld@{GetTickableGameObjectWorld}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{GetTickableGameObjectWorld()}{GetTickableGameObjectWorld()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a12a3fafc46b8c62e6d431f1ee77e7f8e} 
+virtual UWorld \texorpdfstring{$\ast$}{*} UIrradiance\+Subsystem\+::\+Get\+Tickable\+Game\+Object\+World (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a0e6420f63e09e41da61a9a03cd4f84f0}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!GetTickableTickType@{GetTickableTickType}}
+\index{GetTickableTickType@{GetTickableTickType}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{GetTickableTickType()}{GetTickableTickType()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a0e6420f63e09e41da61a9a03cd4f84f0} 
+virtual ETickable\+Tick\+Type UIrradiance\+Subsystem\+::\+Get\+Tickable\+Tick\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a4f7c8b64d5535835f83975cd7d10189f}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a4f7c8b64d5535835f83975cd7d10189f} 
+void UIrradiance\+Subsystem\+::\+Initialize (\begin{DoxyParamCaption}\item[{FSubsystem\+Collection\+Base \&}]{Collection}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_subsystem_aa126dad64d4c3cf35ccff9c8cf82655a}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!RestoreViewportPIE@{RestoreViewportPIE}}
+\index{RestoreViewportPIE@{RestoreViewportPIE}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{RestoreViewportPIE()}{RestoreViewportPIE()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_aa126dad64d4c3cf35ccff9c8cf82655a} 
+void UIrradiance\+Subsystem\+::\+Restore\+Viewport\+PIE (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restore previous PIE viewport and window size if it had been forced. 
+
+\Hypertarget{class_u_irradiance_subsystem_aa39325519944418c4584b788788af3af}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ShouldCreateSubsystem@{ShouldCreateSubsystem}}
+\index{ShouldCreateSubsystem@{ShouldCreateSubsystem}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ShouldCreateSubsystem()}{ShouldCreateSubsystem()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_aa39325519944418c4584b788788af3af} 
+bool UIrradiance\+Subsystem\+::\+Should\+Create\+Subsystem (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Outer}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a10314c056f1375fa327c1bdd2c0c79b6}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!StartFaceCapture@{StartFaceCapture}}
+\index{StartFaceCapture@{StartFaceCapture}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{StartFaceCapture()}{StartFaceCapture()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a10314c056f1375fa327c1bdd2c0c79b6} 
+void UIrradiance\+Subsystem\+::\+Start\+Face\+Capture (\begin{DoxyParamCaption}\item[{const FVector \&}]{Pos\+WS}{, }\item[{const FQuat \&}]{Rot\+WS}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Start capture of a single face at Pos\+WS / Rot\+WS. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a10314c056f1375fa327c1bdd2c0c79b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a10314c056f1375fa327c1bdd2c0c79b6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a1ea6ae410e0b596d1500aeacaf2b2110}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!StartSixFaceCapture@{StartSixFaceCapture}}
+\index{StartSixFaceCapture@{StartSixFaceCapture}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{StartSixFaceCapture()}{StartSixFaceCapture()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a1ea6ae410e0b596d1500aeacaf2b2110} 
+void UIrradiance\+Subsystem\+::\+Start\+Six\+Face\+Capture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{}\end{DoxyParamCaption})}
+
+
+
+Begin a new 6-\/face capture using the given request description. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a1ea6ae410e0b596d1500aeacaf2b2110_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_ad3336fe0d04f79cf1c1eb2ecdb226325}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!Tick@{Tick}}
+\index{Tick@{Tick}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_ad3336fe0d04f79cf1c1eb2ecdb226325} 
+void UIrradiance\+Subsystem\+::\+Tick (\begin{DoxyParamCaption}\item[{float}]{Delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_ad3336fe0d04f79cf1c1eb2ecdb226325_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_afec011af7207461bc6c02e2c03e06bc3}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!TickCapturing@{TickCapturing}}
+\index{TickCapturing@{TickCapturing}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{TickCapturing()}{TickCapturing()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_afec011af7207461bc6c02e2c03e06bc3} 
+void UIrradiance\+Subsystem\+::\+Tick\+Capturing (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handle per-\/frame logic while faces are being captured. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_afec011af7207461bc6c02e2c03e06bc3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_u_irradiance_subsystem_afec011af7207461bc6c02e2c03e06bc3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_subsystem_a2ef94233017fe8e81cf63e7bc5b514a3}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!TickReadback@{TickReadback}}
+\index{TickReadback@{TickReadback}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{TickReadback()}{TickReadback()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a2ef94233017fe8e81cf63e7bc5b514a3} 
+void UIrradiance\+Subsystem\+::\+Tick\+Readback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handle per-\/frame logic while waiting for GPU readback. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_subsystem_a2ef94233017fe8e81cf63e7bc5b514a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_u_irradiance_subsystem_a2ef94233017fe8e81cf63e7bc5b514a3_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_u_irradiance_subsystem_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_irradiance_subsystem_a52b3533e90998e4897ed6f52adce5ff4}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!bForcedRes@{bForcedRes}}
+\index{bForcedRes@{bForcedRes}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{bForcedRes}{bForcedRes}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a52b3533e90998e4897ed6f52adce5ff4} 
+bool UIrradiance\+Subsystem\+::b\+Forced\+Res = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_af4c43fc33b02171907d2a2abb9e0de10}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!bIrradianceValueReady@{bIrradianceValueReady}}
+\index{bIrradianceValueReady@{bIrradianceValueReady}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{bIrradianceValueReady}{bIrradianceValueReady}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_af4c43fc33b02171907d2a2abb9e0de10} 
+std\+::atomic$<$bool$>$ UIrradiance\+Subsystem\+::b\+Irradiance\+Value\+Ready \{ false \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Atomic flag indicating a new irradiance value is available. 
+
+\Hypertarget{class_u_irradiance_subsystem_a35c3422727eddb569d945aab06a4bad1}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!bIsHijacked@{bIsHijacked}}
+\index{bIsHijacked@{bIsHijacked}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{bIsHijacked}{bIsHijacked}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a35c3422727eddb569d945aab06a4bad1} 
+bool UIrradiance\+Subsystem\+::b\+Is\+Hijacked = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a2feb8a14a141983c15815292c6310138}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!Capture@{Capture}}
+\index{Capture@{Capture}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{Capture}{Capture}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a2feb8a14a141983c15815292c6310138} 
+\mbox{\hyperlink{struct_f_capture_context}{FCapture\+Context}} UIrradiance\+Subsystem\+::\+Capture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Per-\/capture context. 
+
+\Hypertarget{class_u_irradiance_subsystem_a93d5dbd784754cadeb8d216b45caabeb}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!CaptureCam@{CaptureCam}}
+\index{CaptureCam@{CaptureCam}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{CaptureCam}{CaptureCam}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a93d5dbd784754cadeb8d216b45caabeb} 
+TWeak\+Object\+Ptr$<$ACamera\+Actor$>$ UIrradiance\+Subsystem\+::\+Capture\+Cam = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_ac960b22a9534dd11f85df1a511861cc7}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ClearSky@{ClearSky}}
+\index{ClearSky@{ClearSky}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ClearSky}{ClearSky}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_ac960b22a9534dd11f85df1a511861cc7} 
+TObject\+Ptr$<$\mbox{\hyperlink{class_u_clear_sky_service}{UClear\+Sky\+Service}}$>$ UIrradiance\+Subsystem\+::\+Clear\+Sky = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a4721b22feb3b45178fed9473ba7b6e93}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!Exporter@{Exporter}}
+\index{Exporter@{Exporter}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{Exporter}{Exporter}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a4721b22feb3b45178fed9473ba7b6e93} 
+TObject\+Ptr$<$\mbox{\hyperlink{class_u_irradiance_exporter}{UIrradiance\+Exporter}}$>$ UIrradiance\+Subsystem\+::\+Exporter = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a16aa6a87908fc23af4218d7fd66dfd07}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ExportOptions@{ExportOptions}}
+\index{ExportOptions@{ExportOptions}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ExportOptions}{ExportOptions}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a16aa6a87908fc23af4218d7fd66dfd07} 
+\mbox{\hyperlink{struct_f_export_options}{FExport\+Options}} UIrradiance\+Subsystem\+::\+Export\+Options\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a8e7818f0f748e60ed21fe0699079a89f}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!LastIrradianceB@{LastIrradianceB}}
+\index{LastIrradianceB@{LastIrradianceB}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{LastIrradianceB}{LastIrradianceB}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a8e7818f0f748e60ed21fe0699079a89f} 
+std\+::atomic$<$float$>$ UIrradiance\+Subsystem\+::\+Last\+IrradianceB \{ 0.\+0f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a7a8bda9667b0836ab6a0e79afda3c1ec}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!LastIrradianceG@{LastIrradianceG}}
+\index{LastIrradianceG@{LastIrradianceG}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{LastIrradianceG}{LastIrradianceG}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a7a8bda9667b0836ab6a0e79afda3c1ec} 
+std\+::atomic$<$float$>$ UIrradiance\+Subsystem\+::\+Last\+IrradianceG \{ 0.\+0f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a7e58f8fcd1716b0b38001f0363975b91}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!LastIrradianceMean@{LastIrradianceMean}}
+\index{LastIrradianceMean@{LastIrradianceMean}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{LastIrradianceMean}{LastIrradianceMean}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a7e58f8fcd1716b0b38001f0363975b91} 
+std\+::atomic$<$float$>$ UIrradiance\+Subsystem\+::\+Last\+Irradiance\+Mean \{ 0.\+0f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Last irradiance value produced by the GPU path. 
+
+\Hypertarget{class_u_irradiance_subsystem_af133834f2c35250f19a3e9d73ea9bcd5}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!LastIrradianceR@{LastIrradianceR}}
+\index{LastIrradianceR@{LastIrradianceR}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{LastIrradianceR}{LastIrradianceR}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_af133834f2c35250f19a3e9d73ea9bcd5} 
+std\+::atomic$<$float$>$ UIrradiance\+Subsystem\+::\+Last\+IrradianceR \{ 0.\+0f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a6f73cd68e330b30cfb6887b55f2777ec}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!PrevPIEWindow@{PrevPIEWindow}}
+\index{PrevPIEWindow@{PrevPIEWindow}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{PrevPIEWindow}{PrevPIEWindow}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a6f73cd68e330b30cfb6887b55f2777ec} 
+TWeak\+Ptr$<$class SWindow$>$ UIrradiance\+Subsystem\+::\+Prev\+PIEWindow\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a1117688f07b56ad559e8cb8235ec2c56}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!PrevPIEWindowSize@{PrevPIEWindowSize}}
+\index{PrevPIEWindowSize@{PrevPIEWindowSize}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{PrevPIEWindowSize}{PrevPIEWindowSize}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a1117688f07b56ad559e8cb8235ec2c56} 
+FInt\+Point UIrradiance\+Subsystem\+::\+Prev\+PIEWindow\+Size = FInt\+Point\+::\+Zero\+Value\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_ab8868668e247e3ef52f8aacbb79963c4}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!PrevViewportSize@{PrevViewportSize}}
+\index{PrevViewportSize@{PrevViewportSize}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{PrevViewportSize}{PrevViewportSize}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_ab8868668e247e3ef52f8aacbb79963c4} 
+FInt\+Point UIrradiance\+Subsystem\+::\+Prev\+Viewport\+Size = FInt\+Point\+::\+Zero\+Value\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a831ca02563d00d47e90d386e607515c7}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!PrevViewTarget@{PrevViewTarget}}
+\index{PrevViewTarget@{PrevViewTarget}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{PrevViewTarget}{PrevViewTarget}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a831ca02563d00d47e90d386e607515c7} 
+TWeak\+Object\+Ptr$<$AActor$>$ UIrradiance\+Subsystem\+::\+Prev\+View\+Target = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_subsystem_a4ede1df50d8a4260c5454d4ac0a6ce48}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!State@{State}}
+\index{State@{State}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a4ede1df50d8a4260c5454d4ac0a6ce48} 
+\mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023}{ECapture\+State}} UIrradiance\+Subsystem\+::\+State = \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae599161956d626eda4cb0a5ffb85271c}{ECapture\+State\+::\+Idle}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current high-\/level capture state. 
+
+\Hypertarget{class_u_irradiance_subsystem_a378a10af536b26d52e9c2e7841ce011e}\index{UIrradianceSubsystem@{UIrradianceSubsystem}!ViewExt@{ViewExt}}
+\index{ViewExt@{ViewExt}!UIrradianceSubsystem@{UIrradianceSubsystem}}
+\doxysubsubsection{\texorpdfstring{ViewExt}{ViewExt}}
+{\footnotesize\ttfamily \label{class_u_irradiance_subsystem_a378a10af536b26d52e9c2e7841ce011e} 
+TShared\+Ptr$<$class \mbox{\hyperlink{class_f_irradiance_view_extension}{FIrradiance\+View\+Extension}}, ESPMode\+::\+Thread\+Safe$>$ UIrradiance\+Subsystem\+::\+View\+Ext\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+View extension used to intercept the scene render target and produce cubemap faces. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Public/\+Subsystems/\mbox{\hyperlink{_irradiance_subsystem_8h}{Irradiance\+Subsystem.\+h}}\item 
+Source/\+Pyrano/\+Private/\+Subsystems/\mbox{\hyperlink{_irradiance_subsystem_8cpp}{Irradiance\+Subsystem.\+cpp}}\end{DoxyCompactItemize}

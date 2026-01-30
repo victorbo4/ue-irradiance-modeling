@@ -1,0 +1,81 @@
+\doxysection{Pyranometer\+Component.\+h}
+\hypertarget{_pyranometer_component_8h_source}{}\label{_pyranometer_component_8h_source}\index{Source/Pyrano/Public/Components/PyranometerComponent.h@{Source/Pyrano/Public/Components/PyranometerComponent.h}}
+\mbox{\hyperlink{_pyranometer_component_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ PyranometerComponent.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ A\ pyranometer\ sensor\ component\ placed\ in\ the\ world.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Components/SceneComponent.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PyranometerComponent.generated.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ UCLASS(\ ClassGroup=(Sensors),\ meta=(BlueprintSpawnableComponent)\ )}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }PYRANO\_API\ UPyranometerComponent\ :\ \textcolor{keyword}{public}\ USceneComponent}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ public:\ }
+\DoxyCodeLine{00027\ \ \ \ \ UPyranometerComponent();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#if\ WITH\_EDITOR}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ PostEditChangeProperty(FPropertyChangedEvent\&\ PropertyChangedEvent)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ -\/-\/-\/\ Properties\ -\/-\/-\/}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ bool\ bEnabled\ =\ true;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00041\ \ \ \ \ FGuid\ SensorGuid;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00045\ \ \ \ \ FString\ SensorName\ =\ TEXT(\textcolor{stringliteral}{"{}Pyranometer"{}});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00052\ \ \ \ \ FVector\ CustomNormalWS\ =\ FVector::ZeroVector;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer|Sky"{}},\ meta\ =\ (ClampMin\ =\ \textcolor{stringliteral}{"{}0.0"{}},\ ClampMax\ =\ \textcolor{stringliteral}{"{}1.0"{}}))}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{float}\ SkyViewFactor\ =\ -\/1.0f;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ UPROPERTY(VisibleAnywhere,\ BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer|Sky"{}})}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ bSkyViewFactorValid\ =\ false;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ -\/-\/-\/\ Getters\ -\/-\/-\/}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category=\textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00066\ \ \ \ \ FString\ GetGuidString()\ const;}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category=\textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00069\ \ \ \ \ FVector\ GetNormalWS()\ const;}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ UFUNCTION(BlueprintPure,\ Category=\textcolor{stringliteral}{"{}Pyranometer"{}})}
+\DoxyCodeLine{00072\ \ \ \ \ FVector\ GetWorldPosition()\ const;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyranometer|Sky"{}})}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ InvalidateSkyViewFactor();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ GetSkyViewFactorCached()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ SkyViewFactor;\ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsSkyViewFactorValid()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ bSkyViewFactorValid;\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnRegister()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{private}:\ \ \ \ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ EnsureGuid(\textcolor{keywordtype}{bool}\ bForceNew\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#if\ WITH\_EDITOR}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ PostEditImport()\ \textcolor{keyword}{override};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ PostDuplicate(\textcolor{keywordtype}{bool}\ bDuplicateForPIE)\ \textcolor{keyword}{override};\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ WITH\_EDITOR}}
+\DoxyCodeLine{00093\ \};}
+
+\end{DoxyCode}

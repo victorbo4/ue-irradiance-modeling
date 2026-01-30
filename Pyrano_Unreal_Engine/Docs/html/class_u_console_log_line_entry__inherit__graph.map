@@ -1,0 +1,7 @@
+<map id="UConsoleLogLineEntry" name="UConsoleLogLineEntry">
+<area shape="rect" id="Node000001" title="Displays a single log line inside the editor log list entry widget." alt="" coords="9,123,225,240"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,95,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,85,92,122,87,123,72,91"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="118,5,251,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,86,147,124,143,121,160,90"/>
+</map>

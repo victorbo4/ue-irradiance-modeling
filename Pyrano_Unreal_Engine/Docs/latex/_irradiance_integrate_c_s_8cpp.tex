@@ -1,0 +1,73 @@
+\doxysection{Source/\+Pyrano/\+Private/\+Irradiance/\+Irradiance\+Integrate\+CS.cpp File Reference}
+\hypertarget{_irradiance_integrate_c_s_8cpp}{}\label{_irradiance_integrate_c_s_8cpp}\index{Source/Pyrano/Private/Irradiance/IrradianceIntegrateCS.cpp@{Source/Pyrano/Private/Irradiance/IrradianceIntegrateCS.cpp}}
+{\ttfamily \#include "{}Irradiance/\+Irradiance\+Integrate\+CS.\+h"{}}\newline
+{\ttfamily \#include "{}Render\+Graph\+Utils.\+h"{}}\newline
+{\ttfamily \#include "{}Shader\+Compiler\+Core.\+h"{}}\newline
+{\ttfamily \#include "{}Render\+Graph\+Builder.\+h"{}}\newline
+{\ttfamily \#include "{}Global\+Shader.\+h"{}}\newline
+{\ttfamily \#include "{}RHIStatic\+States.\+h"{}}\newline
+{\ttfamily \#include "{}Data\+Driven\+Shader\+Platform\+Info.\+h"{}}\newline
+{\ttfamily \#include "{}RHI.\+h"{}}\newline
+{\ttfamily \#include "{}Logging/\+Irradiance\+Log.\+h"{}}\newline
+{\ttfamily \#include "{}Irradiance/\+Irradiance\+Common.\+h"{}}\newline
+Include dependency graph for Irradiance\+Integrate\+CS.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_integrate_c_s_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_compute}{Irradiance\+Compute}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_irradiance_integrate_c_s_8cpp_a15f626a51758791840b464c11a79826e}{IMPLEMENT\+\_\+\+GLOBAL\+\_\+\+SHADER}} (\mbox{\hyperlink{class_f_irradiance_integrate_c_s}{FIrradiance\+Integrate\+CS}}, "{}/Plugin/Pyrano/Private/Irradiance\+Integrate.\+usf"{}, "{}CS"{}, SF\+\_\+\+Compute)
+\item 
+\mbox{\hyperlink{_irradiance_integrate_c_s_8cpp_a11b6f9b21199051af26da37f04cf44d1}{IMPLEMENT\+\_\+\+GLOBAL\+\_\+\+SHADER}} (\mbox{\hyperlink{class_f_irradiance_reduce_c_s}{FIrradiance\+Reduce\+CS}}, "{}/Plugin/Pyrano/Private/Irradiance\+Integrate.\+usf"{}, "{}Reduce\+CS"{}, SF\+\_\+\+Compute)
+\item 
+static FRDGTexture\+Ref \mbox{\hyperlink{_irradiance_integrate_c_s_8cpp_a6d8400984c092d383c90ad4cd22a8462}{Build\+Faces\+Array}} (FRDGBuilder \&Graph\+Builder, TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ In\+Faces\mbox{[}6\mbox{]}, int32 L)
+\begin{DoxyCompactList}\small\item\em Creates a 2D texture array from the six cubemap face render targets. \end{DoxyCompactList}\item 
+FRDGBuffer\+Ref \mbox{\hyperlink{namespace_irradiance_compute_ad8506a4c2588e653b7d1c2aaf4552b14}{Irradiance\+Compute\+::\+Compute\+Irradiance}} (FRDGBuilder \&Graph\+Builder, TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ Face\+RTs\mbox{[}6\mbox{]}, int32 Cubemap\+Size, const FVector3f \&Sensor\+Normal)
+\item 
+void \mbox{\hyperlink{namespace_irradiance_compute_a6fad304599a46b23bcca8438ca2b6f06}{Irradiance\+Compute\+::\+Compute\+And\+Extract\+Irradiance}} (FRDGBuilder \&Graph\+Builder, TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ Face\+RTs\mbox{[}6\mbox{]}, int32 Cubemap\+Size, const FVector3f \&Sensor\+Normal, TRef\+Count\+Ptr$<$ FRDGPooled\+Buffer $>$ \texorpdfstring{$\ast$}{*}Out\+Result\+Buffer)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_irradiance_integrate_c_s_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_irradiance_integrate_c_s_8cpp_a6d8400984c092d383c90ad4cd22a8462}\index{IrradianceIntegrateCS.cpp@{IrradianceIntegrateCS.cpp}!BuildFacesArray@{BuildFacesArray}}
+\index{BuildFacesArray@{BuildFacesArray}!IrradianceIntegrateCS.cpp@{IrradianceIntegrateCS.cpp}}
+\doxysubsubsection{\texorpdfstring{BuildFacesArray()}{BuildFacesArray()}}
+{\footnotesize\ttfamily \label{_irradiance_integrate_c_s_8cpp_a6d8400984c092d383c90ad4cd22a8462} 
+FRDGTexture\+Ref Build\+Faces\+Array (\begin{DoxyParamCaption}\item[{FRDGBuilder \&}]{Graph\+Builder}{, }\item[{TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$}]{In\+Faces}{\mbox{[}6\mbox{]}, }\item[{int32}]{L}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a 2D texture array from the six cubemap face render targets. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_integrate_c_s_8cpp_a6d8400984c092d383c90ad4cd22a8462_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_irradiance_integrate_c_s_8cpp_a15f626a51758791840b464c11a79826e}\index{IrradianceIntegrateCS.cpp@{IrradianceIntegrateCS.cpp}!IMPLEMENT\_GLOBAL\_SHADER@{IMPLEMENT\_GLOBAL\_SHADER}}
+\index{IMPLEMENT\_GLOBAL\_SHADER@{IMPLEMENT\_GLOBAL\_SHADER}!IrradianceIntegrateCS.cpp@{IrradianceIntegrateCS.cpp}}
+\doxysubsubsection{\texorpdfstring{IMPLEMENT\_GLOBAL\_SHADER()}{IMPLEMENT\_GLOBAL\_SHADER()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{_irradiance_integrate_c_s_8cpp_a15f626a51758791840b464c11a79826e} 
+IMPLEMENT\+\_\+\+GLOBAL\+\_\+\+SHADER (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_irradiance_integrate_c_s}{FIrradiance\+Integrate\+CS}}}]{}{, }\item[{"{}/Plugin/Pyrano/Private/Irradiance\+Integrate.\+usf"{}}]{}{, }\item[{"{}CS"{}}]{}{, }\item[{SF\+\_\+\+Compute}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{_irradiance_integrate_c_s_8cpp_a11b6f9b21199051af26da37f04cf44d1}\index{IrradianceIntegrateCS.cpp@{IrradianceIntegrateCS.cpp}!IMPLEMENT\_GLOBAL\_SHADER@{IMPLEMENT\_GLOBAL\_SHADER}}
+\index{IMPLEMENT\_GLOBAL\_SHADER@{IMPLEMENT\_GLOBAL\_SHADER}!IrradianceIntegrateCS.cpp@{IrradianceIntegrateCS.cpp}}
+\doxysubsubsection{\texorpdfstring{IMPLEMENT\_GLOBAL\_SHADER()}{IMPLEMENT\_GLOBAL\_SHADER()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{_irradiance_integrate_c_s_8cpp_a11b6f9b21199051af26da37f04cf44d1} 
+IMPLEMENT\+\_\+\+GLOBAL\+\_\+\+SHADER (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_irradiance_reduce_c_s}{FIrradiance\+Reduce\+CS}}}]{}{, }\item[{"{}/Plugin/Pyrano/Private/Irradiance\+Integrate.\+usf"{}}]{}{, }\item[{"{}Reduce\+CS"{}}]{}{, }\item[{SF\+\_\+\+Compute}]{}{}\end{DoxyParamCaption})}
+

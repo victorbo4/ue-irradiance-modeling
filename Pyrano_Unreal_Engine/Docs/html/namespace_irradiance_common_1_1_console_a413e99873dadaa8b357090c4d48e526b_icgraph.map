@@ -1,0 +1,9 @@
+<map id="IrradianceCommon::Console::GetConsoleVerbosityLimit" name="IrradianceCommon::Console::GetConsoleVerbosityLimit">
+<area shape="rect" id="Node000001" title="Set &#45; Get." alt="" coords="454,39,641,81"/>
+<area shape="rect" id="Node000002" href="$namespace_irradiance_common_1_1_console.html#a5b00949ee3f78394587a3b4cc23391a7" title="Returns true if a log entry for the given category / verbosity should be forwarded to the engine cons..." alt="" coords="219,5,406,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="436,45,406,43,406,37,441,44"/>
+<area shape="rect" id="Node000004" href="$class_u_console_log_widget.html#a0b0c6dc23bbf3e958c74616cd4fc6727" title=" " alt="" coords="238,72,387,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="441,75,388,85,387,80,436,76"/>
+<area shape="rect" id="Node000003" href="$class_f_pyrano_console_log_sink.html#abd36395a8849037a7cd5349346e2b912" title=" " alt="" coords="5,5,171,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="201,27,172,29,171,24,206,26"/>
+</map>

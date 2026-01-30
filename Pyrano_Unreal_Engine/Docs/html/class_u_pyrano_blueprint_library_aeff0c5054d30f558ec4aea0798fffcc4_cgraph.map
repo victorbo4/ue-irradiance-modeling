@@ -1,0 +1,5 @@
+<map id="UPyranoBlueprintLibrary::LoadPlanWithDialog" name="UPyranoBlueprintLibrary::LoadPlanWithDialog">
+<area shape="rect" id="Node000001" title="Opens &quot;Open File Dialog&quot; and loads plan in JSON." alt="" coords="5,5,168,48"/>
+<area shape="rect" id="Node000002" href="$class_f_plan_storage.html#aec8e45477afe4c1a58ab43fc1450079b" title=" " alt="" coords="216,13,378,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,24,203,26,197,27,168,29"/>
+</map>

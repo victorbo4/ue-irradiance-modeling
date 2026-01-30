@@ -1,0 +1,67 @@
+\doxysection{Sun\+Sky\+Controller.\+h}
+\hypertarget{_sun_sky_controller_8h_source}{}\label{_sun_sky_controller_8h_source}\index{Source/Pyrano/Public/Subsystems/SunSkyController.h@{Source/Pyrano/Public/Subsystems/SunSkyController.h}}
+\mbox{\hyperlink{_sun_sky_controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ SunSkyController.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Manages\ Unreal's\ SunSky\ Actor.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Subsystems/WorldSubsystem.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}UObject/UnrealType.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}SunSkyController.generated.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }AActor;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ UCLASS()}
+\DoxyCodeLine{00016\ class\ \mbox{\hyperlink{class_u_sun_sky_controller}{USunSkyController}}\ :\ public\ UWorldSubsystem}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ -\/-\/-\/\ Public\ API\ -\/-\/-\/}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}SunSky"{}})}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_sun_sky_controller_acdb2373863253da9f5d1cd1f79c24ffd}{ApplyStaticConfig}}(}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Latitude,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Longitude,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Timezone,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ NorthOffset,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \ bUseDST);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}SunSky"{}})}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_sun_sky_controller_a7b869177273a8632f9fe83cdce10145d}{SetUTC}}(\textcolor{keyword}{const}\ FDateTime\&\ UtcDateTime);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}SunSky"{}})}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_sun_sky_controller_a9180ae57b0690fa8db4a96d766b7275a}{GetSolarAngles}}(\textcolor{keywordtype}{float}\&\ OutAzimuthDeg,\ \textcolor{keywordtype}{float}\&\ OutAltitudeDeg)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ AActor*\ \mbox{\hyperlink{class_u_sun_sky_controller_ab00403c7bab9f7bae3d57baa941146b6}{FindSunSkyActor}}(UWorld*\ World);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_u_sun_sky_controller_ab22487b2899a4b71c5f238780e986b02}{TimezoneHours}}\ =\ 0.0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_u_sun_sky_controller_a75ffc6833dca8b531a49caa029f855fd}{NorthOffsetDeg}}\ =\ 0.0;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ TWeakObjectPtr<AActor>\ \mbox{\hyperlink{class_u_sun_sky_controller_a6703efe7b4bd28d860d1333b35ed31cc}{CachedSunSky}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \ \ \ AActor*\ \mbox{\hyperlink{class_u_sun_sky_controller_a0822748f97e63e40b3da612e27083596}{EnsureSunSky}}();\ \ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ -\/-\/-\/\ Helpers\ -\/-\/-\/}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_sun_sky_controller_abe72ea57cbb6fbfc2a6a3990631800fa}{SetDoubleProp}}(UObject*\ Obj,\ FName\ Name,\ \textcolor{keywordtype}{double}\ V);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_sun_sky_controller_a679b38217e46d510a2b1543bd1f89b3a}{SetIntProp}}(UObject*\ Obj,\ FName\ Name,\ int32\ V);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_sun_sky_controller_a6bccb6e3bf7f89848d7a74db33c2595c}{SetBoolProp}}(UObject*\ Obj,\ FName\ Name,\ \textcolor{keywordtype}{bool}\ bV);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{//\ -\/-\/-\/\ Pushers\ -\/-\/-\/}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_sun_sky_controller_a3407324f01e3d69835fbf3bd88228269}{PushDateTime}}(AActor*\ SunSky,\ \textcolor{keyword}{const}\ FDateTime\&\ UTC)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_sun_sky_controller_aec6250d1b06d7ef7680381ff48eee79a}{UpdateSun}}(AActor*\ SunSky);}
+\DoxyCodeLine{00075\ \};}
+
+\end{DoxyCode}

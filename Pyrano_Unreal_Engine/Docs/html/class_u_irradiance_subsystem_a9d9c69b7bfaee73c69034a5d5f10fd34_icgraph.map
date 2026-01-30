@@ -1,0 +1,5 @@
+<map id="UIrradianceSubsystem::ComputeSunVisibility" name="UIrradianceSubsystem::ComputeSunVisibility">
+<area shape="rect" id="Node000001" title="Estimate solar visibility by sampling multiple rays around the sun direction." alt="" coords="232,5,386,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a04b6e98a2662b94a1117321c3d6c70f9" title="Consume the latest available irradiance value." alt="" coords="5,5,184,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,27,184,29,184,24,218,26"/>
+</map>

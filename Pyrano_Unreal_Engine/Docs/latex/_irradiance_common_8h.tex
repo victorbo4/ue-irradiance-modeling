@@ -1,0 +1,88 @@
+\doxysection{Source/\+Pyrano/\+Public/\+Irradiance/\+Irradiance\+Common.h File Reference}
+\hypertarget{_irradiance_common_8h}{}\label{_irradiance_common_8h}\index{Source/Pyrano/Public/Irradiance/IrradianceCommon.h@{Source/Pyrano/Public/Irradiance/IrradianceCommon.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+Include dependency graph for Irradiance\+Common.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{_irradiance_common_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_common_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_common}{Irradiance\+Common}}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults}{Irradiance\+Common\+::\+Defaults}}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_common_1_1_settings}{Irradiance\+Common\+::\+Settings}}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_common_1_1_utils}{Irradiance\+Common\+::\+Utils}}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_common_1_1_console}{Irradiance\+Common\+::\+Console}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+TArray$<$ FQuat $>$ \mbox{\hyperlink{namespace_irradiance_common_1_1_utils_a186b825c0501eec06143b3b197ef5dbd}{Irradiance\+Common\+::\+Utils\+::\+Generate\+Cubemap\+Face\+Quats}} ()
+\begin{DoxyCompactList}\small\item\em Returns view rotations for the +X/-\/\+X/+\+Y/-\/\+Y/+\+Z/-\/Z cubemap faces. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_irradiance_common_1_1_utils_a5bda47012fa6c584dd60803256c3d0df}{Irradiance\+Common\+::\+Utils\+::\+Is\+PIEClient\+World}} (const UWorld \texorpdfstring{$\ast$}{*}W)
+\begin{DoxyCompactList}\small\item\em Returns true if the world belongs to a PIE client instance. \end{DoxyCompactList}\item 
+UWorld \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_irradiance_common_1_1_utils_acd21b099951e95f67c7a758546ac9875}{Irradiance\+Common\+::\+Utils\+::\+Get\+Game\+World\+Safe}} ()
+\begin{DoxyCompactList}\small\item\em Tries to return a game world suitable for rendering / scheduling. \end{DoxyCompactList}\item 
+PYRANO\+\_\+\+API ELog\+Verbosity\+::\+Type \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b}{Irradiance\+Common\+::\+Console\+::\+Get\+Console\+Verbosity\+Limit}} ()
+\begin{DoxyCompactList}\small\item\em Set -\/ Get. \end{DoxyCompactList}\item 
+PYRANO\+\_\+\+API void \mbox{\hyperlink{namespace_irradiance_common_1_1_console_aa42053d9f39d75e15f93229d3f047af7}{Irradiance\+Common\+::\+Console\+::\+Set\+Console\+Verbosity\+Limit}} (ELog\+Verbosity\+::\+Type New\+Limit)
+\item 
+bool \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7}{Irradiance\+Common\+::\+Console\+::\+Should\+Forward\+To\+Console}} (const FName \&Category, ELog\+Verbosity\+::\+Type Verbosity)
+\begin{DoxyCompactList}\small\item\em Returns true if a log entry for the given category / verbosity should be forwarded to the engine console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_a2525b11b755b66e484e9527ce2a9e4c3}{Irradiance\+Common\+::\+Num\+Faces}} = 6
+\item 
+constexpr bool \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_aecf36d1696cdd779fd147392c6121d84}{Irradiance\+Common\+::\+Defaults\+::b\+Using\+Cesium}} = true
+\begin{DoxyCompactList}\small\item\em Cesium Config. \end{DoxyCompactList}\item 
+constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a0e39a706dfc8b6b124d2ed16c8047901}{Irradiance\+Common\+::\+Defaults\+::\+Cesium\+Warmup\+Frames}} = 0
+\item 
+constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_aea4c266267694f2d865af6822c733881}{Irradiance\+Common\+::\+Defaults\+::\+Max\+Bounces}} = 2
+\begin{DoxyCompactList}\small\item\em Path Tracing. \end{DoxyCompactList}\item 
+constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a5647a8f1b6bd52c9d434b5c0d8414a38}{Irradiance\+Common\+::\+Defaults\+::\+Samples\+Per\+Pixel}} = 4096
+\item 
+constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_ac57b44b86920f7fabb0d4a0ad44177e6}{Irradiance\+Common\+::\+Defaults\+::\+Enable\+Reference\+Atmosphere}} = 0
+\item 
+constexpr float \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a60d6c76a8c5bb07906a0db4dc26d9112}{Irradiance\+Common\+::\+Defaults\+::\+Ms\+Per\+Frame\+Raster}} = 12.f
+\begin{DoxyCompactList}\small\item\em Simulation time estimation. \end{DoxyCompactList}\item 
+constexpr float \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a3b1b5a5f627114ef872f9314a5d7b7b3}{Irradiance\+Common\+::\+Defaults\+::\+Ms\+Per\+Frame\+Path}} = 35.f
+\item 
+constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_af9b5702ec06085a1f615671f47db4ec3}{Irradiance\+Common\+::\+Defaults\+::\+Sun\+Visibility\+Samples}} = 8
+\begin{DoxyCompactList}\small\item\em Sun visibility samples. \end{DoxyCompactList}\item 
+constexpr float \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_ab941fd1f3a30760db9bff684f9141558}{Irradiance\+Common\+::\+Defaults\+::\+Ambient\+Irradiance\+Scale}} = 1.\+0f
+\begin{DoxyCompactList}\small\item\em Ambient Irradiance Scale factor. \end{DoxyCompactList}\item 
+constexpr int32 \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a2cea4adac887668b663c49615cc86d6d}{Irradiance\+Common\+::\+Defaults\+::\+SVFSamples}} = 128
+\begin{DoxyCompactList}\small\item\em Sky Factor samples. \end{DoxyCompactList}\item 
+constexpr float \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a7060e2ba139518ae2a6ad80d0c4daa3d}{Irradiance\+Common\+::\+Defaults\+::\+Direct\+Linear\+Coeff}} = 2.\+401e-\/3f
+\begin{DoxyCompactList}\small\item\em Normalization coefficients. \end{DoxyCompactList}\item 
+constexpr float \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a77e5d2bf3aa9eead36aada429fb74e14}{Irradiance\+Common\+::\+Defaults\+::\+Direct\+Quadratic\+Coeff}} = 5.\+0299205e-\/8f
+\item 
+constexpr float \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_ab53d1f62492a5d45351efee288d4f9da}{Irradiance\+Common\+::\+Defaults\+::\+Ambient\+Linear\+Coeff}} = 1.\+3046e-\/2f
+\item 
+constexpr bool \mbox{\hyperlink{namespace_irradiance_common_1_1_settings_a1e27b57eadb83f3699f7dbbc8a2f3629}{Irradiance\+Common\+::\+Settings\+::b\+Apply\+Irradiance\+Configuration}} = true
+\item 
+constexpr bool \mbox{\hyperlink{namespace_irradiance_common_1_1_settings_af47186b807ed6e670995f0596cc99083}{Irradiance\+Common\+::\+Settings\+::b\+Enable\+Sun\+Visibility}} = true
+\item 
+constexpr bool \mbox{\hyperlink{namespace_irradiance_common_1_1_settings_a4ed343361f3af991c50fa77581c40863}{Irradiance\+Common\+::\+Settings\+::b\+Enable\+Sun\+Occlusion}} = true
+\item 
+PYRANO\+\_\+\+API ELog\+Verbosity\+::\+Type \mbox{\hyperlink{namespace_irradiance_common_1_1_console_aa43a8c456bc07e4b42cb35d2c847e037}{Irradiance\+Common\+::\+Console\+::\+GConsole\+Verbosity\+Limit}} = ELog\+Verbosity\+::\+Log
+\begin{DoxyCompactList}\small\item\em Global \doxylink{namespace_irradiance_common_1_1_console}{Console} Verbosity Limit. \end{DoxyCompactList}\item 
+static const FName \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a6e7930a09334e2e782e2d5df2024c8d9}{Irradiance\+Common\+::\+Console\+::\+Console\+Allowed\+Categories}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespace_irradiance_common_1_1_console}{Console} categories allowed in the widget\textquotesingle{}s console output. \end{DoxyCompactList}\end{DoxyCompactItemize}

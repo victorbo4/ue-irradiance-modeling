@@ -1,0 +1,117 @@
+{
+  "exp_id": "it_032_minimal_optimization_e332413bee",
+  "cfg": {
+    "iteration_id": "it_032_minimal_optimization",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Optimización del modelo minimal.\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "final": [
+        "sim_irradiance_wm2",
+        "cloud_opacity"
+      ]
+    },
+    "feature_set_name": "final",
+    "model_params": {
+      "n_estimators": 800,
+      "learning_rate": 0.03,
+      "max_depth": 5,
+      "min_child_weight": 50,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 2.0,
+      "gamma": 0.1,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "sim_irradiance_wm2",
+    "cloud_opacity"
+  ],
+  "metrics_global": {
+    "r2": 0.8284726127933439,
+    "mae": 67.9760531785971,
+    "rmse": 125.52116466187354,
+    "mbe": -1.3808292791935923
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.7655930246220707,
+      "mae": 65.53011169789416,
+      "rmse": 111.60112292617828,
+      "mbe": 17.187776317199642
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.676496718939327,
+      "mae": 120.82015839386455,
+      "rmse": 184.05490966595318,
+      "mbe": -22.096627489005485
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9895693258523929,
+      "mae": 17.577889444032593,
+      "rmse": 30.5886894732902,
+      "mbe": 0.7663633342250753
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 9.433101654052734,
+        "importance_pct": 89.77798341959523
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 1.0740419626235962,
+        "importance_pct": 10.222016580404773
+      }
+    ],
+    "weight": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 1378.0
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 940.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 5021.46826171875
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 3794.645751953125
+      }
+    ]
+  }
+}

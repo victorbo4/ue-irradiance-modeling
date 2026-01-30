@@ -1,0 +1,5 @@
+<map id="USunSkyController::PushDateTime" name="USunSkyController::PushDateTime">
+<area shape="rect" id="Node000001" title="Pushes date and solar&#45;time fields into the SunSky actor from UTC." alt="" coords="195,5,336,48"/>
+<area shape="rect" id="Node000002" href="$class_u_sun_sky_controller.html#a7b869177273a8632f9fe83cdce10145d" title="Sets the SunSky date and time from a UTC timestamp(applies configured timezone)." alt="" coords="5,5,147,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,27,147,29,147,24,182,26"/>
+</map>

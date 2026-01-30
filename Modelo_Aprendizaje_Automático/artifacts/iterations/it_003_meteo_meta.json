@@ -1,0 +1,162 @@
+{
+  "exp_id": "it_003_meteo_050c4b34ec",
+  "cfg": {
+    "iteration_id": "it_003_meteo",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Damos al modelo ventana temporal de cloud_opacity.\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "meteo": [
+        "sim_irradiance_wm2",
+        "cloud_opacity",
+        "cloud_diff",
+        "cloud_std_60m",
+        "cloud_mean_60m"
+      ]
+    },
+    "feature_set_name": "meteo",
+    "model_params": {
+      "n_estimators": 800,
+      "learning_rate": 0.03,
+      "max_depth": 5,
+      "min_child_weight": 20,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 2.0,
+      "gamma": 0.1,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "sim_irradiance_wm2",
+    "cloud_opacity",
+    "cloud_diff",
+    "cloud_std_60m",
+    "cloud_mean_60m"
+  ],
+  "metrics_global": {
+    "r2": 0.8136133661916993,
+    "mae": 70.2809518365063,
+    "rmse": 130.84514312277904,
+    "mbe": -9.824181916775602
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.771787510844449,
+      "mae": 61.68030168467531,
+      "rmse": 110.11665309615707,
+      "mbe": -1.4535918356737758
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.6384636368440866,
+      "mae": 131.3050851505597,
+      "rmse": 194.5736627485347,
+      "mbe": -30.555748592695544
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9846520259245372,
+      "mae": 17.857468674283943,
+      "rmse": 37.104809822739604,
+      "mbe": 2.5367946780425146
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 13.532577514648438,
+        "importance_pct": 55.859296195133425
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 6.896341323852539,
+        "importance_pct": 28.466474494960636
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 1.5953563451766968,
+        "importance_pct": 6.585255656252249
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 1.3027527332305908,
+        "importance_pct": 5.377456786467757
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 0.8991590142250061,
+        "importance_pct": 3.7115168671859355
+      }
+    ],
+    "weight": [
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 947.0
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 755.0
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 648.0
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 635.0
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 606.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "cloud_diff",
+        "importance": 3047.04638671875
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 3012.212890625
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 2928.016845703125
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 2080.748046875
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 1663.24755859375
+      }
+    ]
+  }
+}

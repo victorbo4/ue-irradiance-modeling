@@ -1,0 +1,7 @@
+<map id="FIrradianceViewExtension::Capture" name="FIrradianceViewExtension::Capture">
+<area shape="rect" id="Node000001" title="Copy SceneColor into CapturedSceneRT at the given resolution." alt="" coords="498,5,671,48"/>
+<area shape="rect" id="Node000002" href="$class_f_irradiance_view_extension.html#a407a7380500ed8388bbbf9290296d04b" title="Custom post&#45;process step: captures SceneColor for this frame." alt="" coords="277,5,450,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="480,27,451,29,451,24,485,27"/>
+<area shape="rect" id="Node000003" href="$class_f_irradiance_view_extension.html#a91ec3a850c4334eda4562024c4fd3f19" title="Register callback for executing work during a specific post&#45;processing pass." alt="" coords="5,5,229,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,27,229,29,229,24,264,27"/>
+</map>

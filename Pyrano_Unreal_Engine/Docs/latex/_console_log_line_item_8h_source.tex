@@ -1,0 +1,46 @@
+\doxysection{Console\+Log\+Line\+Item.\+h}
+\hypertarget{_console_log_line_item_8h_source}{}\label{_console_log_line_item_8h_source}\index{Source/PyranoEditor/Private/UI/ConsoleLogLineItem.h@{Source/PyranoEditor/Private/UI/ConsoleLogLineItem.h}}
+\mbox{\hyperlink{_console_log_line_item_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ ConsoleLogLineItem.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Represents\ a\ single\ formatted\ console\ log\ entry\ used\ by\ the\ editor\ log\ widget.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ConsoleLogLineItem.generated.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ UCLASS(BlueprintType)}
+\DoxyCodeLine{00012\ class\ PYRANOEDITOR\_API\ \mbox{\hyperlink{class_u_console_log_line_item}{UConsoleLogLineItem}}\ :\ public\ UObject}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ \mbox{\hyperlink{class_u_console_log_line_item_a72672550384be8574d1cdf86a4dc60d0}{Category}}\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00019\ \ \ \ \ FString\ \mbox{\hyperlink{class_u_console_log_line_item_a77fe5b433e4ab4d1b29f2e81bbcc380e}{Text}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ \mbox{\hyperlink{class_u_console_log_line_item_a72672550384be8574d1cdf86a4dc60d0}{Category}}\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00022\ \ \ \ \ uint8\ \mbox{\hyperlink{class_u_console_log_line_item_a69e810793e91a2c24eff35cfead6363e}{Verbosity}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ \mbox{\hyperlink{class_u_console_log_line_item_a72672550384be8574d1cdf86a4dc60d0}{Category}}\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00025\ \ \ \ \ FName\ \mbox{\hyperlink{class_u_console_log_line_item_a72672550384be8574d1cdf86a4dc60d0}{Category}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ \mbox{\hyperlink{class_u_console_log_line_item_a72672550384be8574d1cdf86a4dc60d0}{Category}}\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00028\ \ \ \ \ FDateTime\ \mbox{\hyperlink{class_u_console_log_line_item_a9f4ce28f188fa3d9c7b871d9957c4570}{Timestamp}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_line_item_abef60cc95985b33aa32b8b0271455e2f}{Init}}(const\ FString\&\ InText,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ ELogVerbosity::Type\ InVerbosity,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ const\ FName\&\ InCategory,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ const\ FDateTime\&\ InTimestamp)}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_console_log_line_item_a77fe5b433e4ab4d1b29f2e81bbcc380e}{Text}}\ =\ InText;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_console_log_line_item_a69e810793e91a2c24eff35cfead6363e}{Verbosity}}\ =\ \textcolor{keyword}{static\_cast<}uint8\textcolor{keyword}{>}(InVerbosity);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_console_log_line_item_a72672550384be8574d1cdf86a4dc60d0}{Category}}\ =\ InCategory;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_console_log_line_item_a9f4ce28f188fa3d9c7b871d9957c4570}{Timestamp}}\ =\ InTimestamp;}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \};}
+
+\end{DoxyCode}

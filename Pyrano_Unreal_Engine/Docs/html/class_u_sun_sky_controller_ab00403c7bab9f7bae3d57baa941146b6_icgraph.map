@@ -1,0 +1,14 @@
+<map id="USunSkyController::FindSunSkyActor" name="USunSkyController::FindSunSkyActor">
+<area shape="rect" id="Node000001" title="Locates a SunSky actor in the world (by tag or name)." alt="" coords="610,28,752,71"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a04b6e98a2662b94a1117321c3d6c70f9" title="Consume the latest available irradiance value." alt="" coords="5,28,184,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="593,32,518,22,427,12,329,8,232,15,163,30,161,25,231,9,329,3,427,7,519,16,598,31"/>
+<area shape="rect" id="Node000003" href="$class_u_sun_sky_controller.html#a0822748f97e63e40b3da612e27083596" title="Returns the cached SunSky actor or performs a search if missing." alt="" coords="421,57,562,100"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="593,63,563,70,562,65,598,62"/>
+<area shape="rect" id="Node000004" href="$class_u_sun_sky_controller.html#acdb2373863253da9f5d1cd1f79c24ffd" title="Applies static SunSky configuration (location, timezone, north offset, DST flag)." alt="" coords="232,24,373,67"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="403,64,373,61,373,55,409,63"/>
+<area shape="rect" id="Node000005" href="$class_u_sun_sky_controller.html#a9180ae57b0690fa8db4a96d766b7275a" title="Returns solar azimuth/altitude using solar&#45;standard convention: azimuth = clockwise from North (0°=N,..." alt="" coords="232,91,373,133"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="403,94,374,102,373,97,409,93"/>
+<area shape="rect" id="Node000006" href="$class_u_sun_sky_controller.html#a7b869177273a8632f9fe83cdce10145d" title="Sets the SunSky date and time from a UTC timestamp(applies configured timezone)." alt="" coords="232,157,373,200"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="443,108,374,148,351,159,350,154,372,143,438,109"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="215,87,168,74,168,69,220,86"/>
+</map>

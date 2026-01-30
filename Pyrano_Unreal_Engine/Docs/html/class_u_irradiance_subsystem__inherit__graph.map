@@ -1,0 +1,7 @@
+<map id="UIrradianceSubsystem" name="UIrradianceSubsystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="7,123,278,1291"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,125,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,87,77,123,72,123,71,92"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="150,5,290,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,87,213,123,208,123,214,92"/>
+</map>

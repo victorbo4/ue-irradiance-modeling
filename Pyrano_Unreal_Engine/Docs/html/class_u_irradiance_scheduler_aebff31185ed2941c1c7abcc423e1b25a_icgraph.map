@@ -1,0 +1,23 @@
+<map id="UIrradianceScheduler::SetSunSkyUTC" name="UIrradianceScheduler::SetSunSkyUTC">
+<area shape="rect" id="Node000001" title="Sets the SunSky UTC time." alt="" coords="903,97,1049,140"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#ab400b6f7f8c6768537088d0eca221f90" title="Advances to the next time slot, or finalizes the simulation if finished." alt="" coords="673,64,855,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="885,105,855,102,855,97,890,105"/>
+<area shape="rect" id="Node000008" href="$class_u_irradiance_scheduler.html#a7ba28b0ad34fafcb3f525bb028459e01" title="Prepares SunSky, export and viewport settings for a simulation." alt="" coords="449,131,595,173"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="890,125,596,149,596,144,885,125"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_scheduler.html#a2c93371fc51e45b8af73ce9b4d2c690a" title="Launches the next capture for the current time slot and sensor index." alt="" coords="419,64,625,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="655,94,626,97,626,92,660,94"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_scheduler.html#ac79a70849af28bdcf62ac8214ccaeee5" title="Handles a completed capture and advances the flow." alt="" coords="216,5,371,48"/>
+<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="664,60,625,55,491,39,372,32,371,26,492,34,626,49,670,60"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="641,74,676,76,670,77,641,79"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="419,60,371,49,372,44,425,59"/>
+<area shape="rect" id="Node000006" href="$class_u_irradiance_scheduler.html#a820fe9375420d4934dd45811ba7a419e" title="Starts a full time&#45;series simulation using the given configuration." alt="" coords="220,72,366,115"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="401,90,367,93,367,88,406,89"/>
+<area shape="rect" id="Node000005" href="$class_u_irradiance_scheduler.html#a46ab4ac00573e109d595d80669a8e156" title=" " alt="" coords="13,5,160,48"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="198,28,161,29,159,24,203,25"/>
+<area shape="rect" id="Node000007" href="$class_u_irradiance_scheduler.html#acad46ea7c860e2a972fb7debd56651e9" title=" " alt="" coords="5,105,168,148"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="203,108,169,116,168,111,208,107"/>
+<area shape="poly" id="edge12_Node000008_Node000006" title=" " alt="" coords="432,130,367,115,367,109,437,130"/>
+<area shape="rect" id="Node000009" href="$class_u_irradiance_scheduler.html#a4395030c4e2b089982300a7d5cb43417" title="Captures irradiance once at Sim.StartTime for all active sensors." alt="" coords="220,139,366,181"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="431,155,367,160,367,155,436,155"/>
+<area shape="poly" id="edge11_Node000009_Node000007" title=" " alt="" coords="203,146,168,142,168,137,208,146"/>
+</map>

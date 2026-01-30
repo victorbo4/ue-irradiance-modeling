@@ -1,0 +1,18 @@
+<map id="IrradianceCommon::Utils::GetGameWorldSafe" name="IrradianceCommon::Utils::GetGameWorldSafe">
+<area shape="rect" id="Node000001" title="Tries to return a game world suitable for rendering / scheduling." alt="" coords="837,101,1003,144"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#ac681ad537e5994e1cfb9470866b87dd4" title="Restore the previous player view target if the camera was hijacked." alt="" coords="623,5,778,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="859,94,788,62,761,51,761,46,790,58,865,94"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#a07d7292927f509ea227ab101994ab4b6" title="Ensure that the capture camera exists and is configured." alt="" coords="619,72,782,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="819,110,782,107,782,102,824,110"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_subsystem.html#a10314c056f1375fa327c1bdd2c0c79b6" title="Start capture of a single face at PosWS / RotWS." alt="" coords="410,101,564,144"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="818,126,789,129,612,129,565,128,564,123,612,124,789,124,823,126"/>
+<area shape="rect" id="Node000008" href="$class_u_irradiance_subsystem.html#a83c48c8eb81fa9030764fe107709a9b0" title="Force the PIE client viewport and window to be square (SidePx x SidePx)." alt="" coords="612,189,789,232"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="853,150,756,191,755,186,848,151"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="601,107,565,115,564,109,606,106"/>
+<area shape="rect" id="Node000005" href="$class_u_irradiance_subsystem.html#a1ea6ae410e0b596d1500aeacaf2b2110" title="Begin a new 6&#45;face capture using the given request description." alt="" coords="208,68,362,111"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="392,108,362,105,362,99,398,107"/>
+<area shape="rect" id="Node000006" href="$class_u_irradiance_subsystem.html#afec011af7207461bc6c02e2c03e06bc3" title="Handle per&#45;frame logic while faces are being captured." alt="" coords="208,135,362,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="392,138,363,146,361,141,398,137"/>
+<area shape="rect" id="Node000007" href="$class_u_irradiance_subsystem.html#ad3336fe0d04f79cf1c1eb2ecdb226325" title=" " alt="" coords="5,135,160,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="190,157,160,159,159,153,195,155"/>
+</map>

@@ -1,0 +1,32 @@
+\doxysection{Pyrano\+Blueprint\+Library.\+h}
+\hypertarget{_pyrano_blueprint_library_8h_source}{}\label{_pyrano_blueprint_library_8h_source}\index{Source/PyranoEditor/Private/UI/PyranoBlueprintLibrary.h@{Source/PyranoEditor/Private/UI/PyranoBlueprintLibrary.h}}
+\mbox{\hyperlink{_pyrano_blueprint_library_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ PyranoBlueprintLibrary.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Blueprint\ functions\ for\ plan\ file\ save/load\ operations.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Kismet/BlueprintFunctionLibrary.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}PyranoBlueprintLibrary.generated.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_sim_config}{FSimConfig}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ UCLASS()}
+\DoxyCodeLine{00015\ class\ PYRANOEDITOR\_API\ \mbox{\hyperlink{class_u_pyrano_blueprint_library}{UPyranoBlueprintLibrary}}\ :\ public\ UBlueprintFunctionLibrary}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Plan"{}})}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_blueprint_library_ae71d51f561a243cd80398613b5bbd57c}{SavePlanWithDialog}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Config);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Plan"{}})}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_blueprint_library_aeff0c5054d30f558ec4aea0798fffcc4}{LoadPlanWithDialog}}(\mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ OutConfig);}
+\DoxyCodeLine{00028\ \};}
+
+\end{DoxyCode}

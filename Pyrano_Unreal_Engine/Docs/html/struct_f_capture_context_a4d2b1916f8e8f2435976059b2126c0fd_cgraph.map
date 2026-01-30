@@ -1,0 +1,5 @@
+<map id="FCaptureContext::IsFinished" name="FCaptureContext::IsFinished">
+<area shape="rect" id="Node000001" title="True if all faces are done and no readback is pending." alt="" coords="5,13,195,40"/>
+<area shape="rect" id="Node000002" href="$struct_f_capture_context.html#a287eed9dee265b14249f958e3c8ebb97" title=" " alt="" coords="243,5,425,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,24,230,26,224,27,195,29"/>
+</map>

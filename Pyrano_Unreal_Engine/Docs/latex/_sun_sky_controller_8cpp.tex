@@ -1,0 +1,78 @@
+\doxysection{Source/\+Pyrano/\+Private/\+Subsystems/\+Sun\+Sky\+Controller.cpp File Reference}
+\hypertarget{_sun_sky_controller_8cpp}{}\label{_sun_sky_controller_8cpp}\index{Source/Pyrano/Private/Subsystems/SunSkyController.cpp@{Source/Pyrano/Private/Subsystems/SunSkyController.cpp}}
+{\ttfamily \#include "{}Subsystems/\+Sun\+Sky\+Controller.\+h"{}}\newline
+{\ttfamily \#include "{}Engine\+Utils.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Directional\+Light\+Component.\+h"{}}\newline
+{\ttfamily \#include "{}Logging/\+Irradiance\+Log.\+h"{}}\newline
+Include dependency graph for Sun\+Sky\+Controller.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sun_sky_controller_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{_sun_sky_controller_8cpp_a97afd445b18358e7c9b7ce04df2fa6dd}{Get\+Int\+Prop}} (UObject \texorpdfstring{$\ast$}{*}Obj, FName Name, int32 \&Out\+Value)
+\item 
+static bool \mbox{\hyperlink{_sun_sky_controller_8cpp_a8a231a9ed575591b6059e116b0e6973f}{Get\+Float\+Prop}} (UObject \texorpdfstring{$\ast$}{*}Obj, FName Name, float \&Out\+Value)
+\item 
+static bool \mbox{\hyperlink{_sun_sky_controller_8cpp_ac51b5d284dd400277a48f5b1a7b34019}{Get\+Bool\+Prop}} (UObject \texorpdfstring{$\ast$}{*}Obj, FName Name, bool \&Out\+Value)
+\item 
+static void \mbox{\hyperlink{_sun_sky_controller_8cpp_ac7b2fce7fc8414675ca11663c0aa5fb7}{Sun\+Angles\+From\+Direction}} (const FVector \&Dir, double North\+Offset\+Deg, float \&Out\+Azimuth\+Deg, float \&Out\+Altitude\+Deg)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_sun_sky_controller_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_sun_sky_controller_8cpp_ac51b5d284dd400277a48f5b1a7b34019}\index{SunSkyController.cpp@{SunSkyController.cpp}!GetBoolProp@{GetBoolProp}}
+\index{GetBoolProp@{GetBoolProp}!SunSkyController.cpp@{SunSkyController.cpp}}
+\doxysubsubsection{\texorpdfstring{GetBoolProp()}{GetBoolProp()}}
+{\footnotesize\ttfamily \label{_sun_sky_controller_8cpp_ac51b5d284dd400277a48f5b1a7b34019} 
+bool Get\+Bool\+Prop (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Obj}{, }\item[{FName}]{Name}{, }\item[{bool \&}]{Out\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{_sun_sky_controller_8cpp_ac51b5d284dd400277a48f5b1a7b34019_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_sun_sky_controller_8cpp_a8a231a9ed575591b6059e116b0e6973f}\index{SunSkyController.cpp@{SunSkyController.cpp}!GetFloatProp@{GetFloatProp}}
+\index{GetFloatProp@{GetFloatProp}!SunSkyController.cpp@{SunSkyController.cpp}}
+\doxysubsubsection{\texorpdfstring{GetFloatProp()}{GetFloatProp()}}
+{\footnotesize\ttfamily \label{_sun_sky_controller_8cpp_a8a231a9ed575591b6059e116b0e6973f} 
+bool Get\+Float\+Prop (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Obj}{, }\item[{FName}]{Name}{, }\item[{float \&}]{Out\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{_sun_sky_controller_8cpp_a8a231a9ed575591b6059e116b0e6973f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_sun_sky_controller_8cpp_a97afd445b18358e7c9b7ce04df2fa6dd}\index{SunSkyController.cpp@{SunSkyController.cpp}!GetIntProp@{GetIntProp}}
+\index{GetIntProp@{GetIntProp}!SunSkyController.cpp@{SunSkyController.cpp}}
+\doxysubsubsection{\texorpdfstring{GetIntProp()}{GetIntProp()}}
+{\footnotesize\ttfamily \label{_sun_sky_controller_8cpp_a97afd445b18358e7c9b7ce04df2fa6dd} 
+bool Get\+Int\+Prop (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Obj}{, }\item[{FName}]{Name}{, }\item[{int32 \&}]{Out\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{_sun_sky_controller_8cpp_ac7b2fce7fc8414675ca11663c0aa5fb7}\index{SunSkyController.cpp@{SunSkyController.cpp}!SunAnglesFromDirection@{SunAnglesFromDirection}}
+\index{SunAnglesFromDirection@{SunAnglesFromDirection}!SunSkyController.cpp@{SunSkyController.cpp}}
+\doxysubsubsection{\texorpdfstring{SunAnglesFromDirection()}{SunAnglesFromDirection()}}
+{\footnotesize\ttfamily \label{_sun_sky_controller_8cpp_ac7b2fce7fc8414675ca11663c0aa5fb7} 
+void Sun\+Angles\+From\+Direction (\begin{DoxyParamCaption}\item[{const FVector \&}]{Dir}{, }\item[{double}]{North\+Offset\+Deg}{, }\item[{float \&}]{Out\+Azimuth\+Deg}{, }\item[{float \&}]{Out\+Altitude\+Deg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sun_sky_controller_8cpp_ac7b2fce7fc8414675ca11663c0aa5fb7_icgraph}
+\end{center}
+\end{figure}

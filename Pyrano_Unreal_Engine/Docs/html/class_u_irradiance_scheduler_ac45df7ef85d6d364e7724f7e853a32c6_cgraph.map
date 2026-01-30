@@ -1,0 +1,7 @@
+<map id="UIrradianceScheduler::MakeRequest" name="UIrradianceScheduler::MakeRequest">
+<area shape="rect" id="Node000001" title="Builds a capture request for the given sensor and simulation settings." alt="" coords="5,5,152,48"/>
+<area shape="rect" id="Node000002" href="$struct_f_capture_request.html#ae17362dae77f57d0c2245cecef01b38b" title="Factory method." alt="" coords="200,13,364,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,24,187,26,182,27,152,29"/>
+<area shape="rect" id="Node000003" href="$struct_f_capture_request.html#ae828b8d1f7d31ecf6e4669f223f1ec5d" title=" " alt="" coords="412,5,598,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="364,24,399,27,393,27,364,29"/>
+</map>

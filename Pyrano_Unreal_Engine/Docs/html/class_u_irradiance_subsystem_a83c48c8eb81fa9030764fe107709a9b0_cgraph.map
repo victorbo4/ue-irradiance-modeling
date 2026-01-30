@@ -1,0 +1,7 @@
+<map id="UIrradianceSubsystem::ForceSquareViewportPIE" name="UIrradianceSubsystem::ForceSquareViewportPIE">
+<area shape="rect" id="Node000001" title="Force the PIE client viewport and window to be square (SidePx x SidePx)." alt="" coords="5,39,182,81"/>
+<area shape="rect" id="Node000002" href="$namespace_irradiance_common_1_1_utils.html#acd21b099951e95f67c7a758546ac9875" title="Tries to return a game world suitable for rendering / scheduling." alt="" coords="230,5,396,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,44,217,41,212,42,182,49"/>
+<area shape="rect" id="Node000003" href="$namespace_irradiance_common_1_1_utils.html#a5bda47012fa6c584dd60803256c3d0df" title="Returns true if the world belongs to a PIE client instance." alt="" coords="230,72,396,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,71,217,78,211,79,182,76"/>
+</map>

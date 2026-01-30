@@ -1,0 +1,11 @@
+<map id="Source/Pyrano/Public/Subsystems/SunSkyController.h" name="Source/Pyrano/Public/Subsystems/SunSkyController.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,5,448,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,96,111,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="269,51,118,94,116,89,267,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="135,96,344,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="317,48,268,88,266,84,312,49"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="368,96,518,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="368,46,418,87,413,86,366,51"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="543,96,738,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="418,46,581,91,576,92,418,51"/>
+</map>

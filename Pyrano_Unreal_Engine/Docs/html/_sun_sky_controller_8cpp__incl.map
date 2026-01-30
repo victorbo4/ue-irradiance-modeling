@@ -1,0 +1,20 @@
+<map id="Source/Pyrano/Private/Subsystems/SunSkyController.cpp" name="Source/Pyrano/Private/Subsystems/SunSkyController.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="463,5,692,48"/>
+<area shape="rect" id="Node000002" href="$_sun_sky_controller_8h.html" title=" " alt="" coords="208,104,419,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="518,48,367,101,365,96,513,49"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="444,104,543,131"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="560,47,517,95,514,90,556,50"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="567,96,756,139"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="598,46,634,85,629,84,596,51"/>
+<area shape="rect" id="Node000009" href="$_irradiance_log_8h.html" title=" " alt="" coords="780,104,940,131"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="644,46,808,99,803,99,643,51"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="721,187,826,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="386,129,708,186,703,188,386,134"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,187,214,213"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,131,156,183,154,178,279,131"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="238,187,389,213"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="315,129,316,173,311,170,312,133"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="413,187,608,213"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="345,129,469,180,464,181,344,134"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="849,130,799,179,797,174,844,132"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="USunSkyController::EnsureSunSky" name="USunSkyController::EnsureSunSky">
+<area shape="rect" id="Node000001" title="Returns the cached SunSky actor or performs a search if missing." alt="" coords="421,72,562,115"/>
+<area shape="rect" id="Node000002" href="$class_u_sun_sky_controller.html#acdb2373863253da9f5d1cd1f79c24ffd" title="Applies static SunSky configuration (location, timezone, north offset, DST flag)." alt="" coords="232,5,373,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="412,67,365,51,365,46,418,66"/>
+<area shape="rect" id="Node000003" href="$class_u_sun_sky_controller.html#a9180ae57b0690fa8db4a96d766b7275a" title="Returns solar azimuth/altitude using solar&#45;standard convention: azimuth = clockwise from North (0°=N,..." alt="" coords="232,72,373,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="403,94,373,96,373,91,408,93"/>
+<area shape="rect" id="Node000005" href="$class_u_sun_sky_controller.html#a7b869177273a8632f9fe83cdce10145d" title="Sets the SunSky date and time from a UTC timestamp(applies configured timezone)." alt="" coords="232,139,373,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="417,120,366,141,364,136,412,121"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_subsystem.html#a04b6e98a2662b94a1117321c3d6c70f9" title="Consume the latest available irradiance value." alt="" coords="5,72,184,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="214,94,185,96,184,91,219,93"/>
+</map>

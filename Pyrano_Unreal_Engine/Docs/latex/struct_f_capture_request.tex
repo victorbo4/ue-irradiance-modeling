@@ -1,0 +1,349 @@
+\doxysection{FCapture\+Request Struct Reference}
+\hypertarget{struct_f_capture_request}{}\label{struct_f_capture_request}\index{FCaptureRequest@{FCaptureRequest}}
+
+
+{\ttfamily \#include $<$Capture\+Request.\+h$>$}
+
+
+
+Collaboration diagram for FCapture\+Request\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{struct_f_capture_request__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_f_capture_request_ae828b8d1f7d31ecf6e4669f223f1ec5d}{FCapture\+Request}} ()
+\item 
+\mbox{\hyperlink{struct_f_capture_request_aa256477fbc1ab0043e414f13b56564ef}{FCapture\+Request}} (const FVector \&In\+Pos\+WS, const FVector \&In\+Normal\+WS, int32 In\+Side\+Px, uint32 In\+Warmup\+Frames, FGuid In\+Sensor\+Id, const FString \&In\+Sensor\+Name, FDate\+Time In\+Timestamp\+UTC=FDate\+Time(0), FGuid In\+Request\+Id=FGuid())
+\item 
+FORCEINLINE bool \mbox{\hyperlink{struct_f_capture_request_a710ed7865f56e9c032d52fd1a4cd2761}{Is\+Valid}} () const
+\item 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \mbox{\hyperlink{struct_f_capture_request_a84cbc993d0ae532f452119452f0f472f}{With\+Side\+Px}} (int32 In\+Side\+Px) const
+\item 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \mbox{\hyperlink{struct_f_capture_request_ac62d025deaf7f4f00a1b5575373c1c4d}{With\+Warmup}} (uint32 In\+Warmup) const
+\item 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \mbox{\hyperlink{struct_f_capture_request_a5283a5b56514b3ae55663480e05d7980}{With\+Timestamp}} (FDate\+Time In\+UTC) const
+\item 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \mbox{\hyperlink{struct_f_capture_request_a753b6add0706d10eb25fd531a1a3a1cd}{With\+Sensor\+Id}} (FGuid In\+Id) const
+\item 
+bool \mbox{\hyperlink{struct_f_capture_request_a52ea0d0da626c14f6ea987b6a21bce86}{operator==}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Other) const
+\item 
+bool \mbox{\hyperlink{struct_f_capture_request_a1fc3444f926b7d505f8d23390c2d20ec}{operator!=}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Other) const
+\item 
+FString \mbox{\hyperlink{struct_f_capture_request_ab63ce8c8eadcb5393d9993aeab920660}{To\+String}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \mbox{\hyperlink{struct_f_capture_request_ae17362dae77f57d0c2245cecef01b38b}{Make}} (const FVector \&In\+Pos\+WS, const FVector \&In\+Normal\+WS, int32 In\+Side\+Px, uint32 In\+Warmup\+Frames, FGuid In\+Sensor\+Id, FString In\+Sensor\+Name, FDate\+Time In\+Timestamp\+UTC=FDate\+Time(0), FGuid In\+Request\+Id=FGuid())
+\begin{DoxyCompactList}\small\item\em Factory method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+FVector \mbox{\hyperlink{struct_f_capture_request_a7af6d2f1e10d245edbf8aac66cfdcb81}{Pos\+WS}} = FVector\+::\+Zero\+Vector
+\begin{DoxyCompactList}\small\item\em Sensor position in world space. \end{DoxyCompactList}\item 
+FVector \mbox{\hyperlink{struct_f_capture_request_a3b8332a66273235e944c4cba5a4fc7ee}{Normal\+WS}} = FVector\+::\+Up\+Vector
+\begin{DoxyCompactList}\small\item\em Outward-\/facing, normalized sensor normal in world space. \end{DoxyCompactList}\item 
+int32 \mbox{\hyperlink{struct_f_capture_request_ae70a6eb5225d726e1ac9d4404f88de8d}{Side\+Px}} = 256
+\begin{DoxyCompactList}\small\item\em Cubemap side resolution. \end{DoxyCompactList}\item 
+uint32 \mbox{\hyperlink{struct_f_capture_request_adbab2165b3c87817ebc23b3ca99f54d4}{Warmup\+Frames}} = 0u
+\begin{DoxyCompactList}\small\item\em Number of warmup frames before the capture takes place. \end{DoxyCompactList}\item 
+FGuid \mbox{\hyperlink{struct_f_capture_request_a88ba247c066b50d689e7ab841bf4a3a8}{Request\+Id}}
+\begin{DoxyCompactList}\small\item\em Unique GUID for this specific capture request. \end{DoxyCompactList}\item 
+FGuid \mbox{\hyperlink{struct_f_capture_request_a3d1fccdc37b7234da76da4af85e7eb90}{Sensor\+Id}}
+\begin{DoxyCompactList}\small\item\em Unique GUID of the sensor that originated this request. \end{DoxyCompactList}\item 
+FString \mbox{\hyperlink{struct_f_capture_request_a3ffe63872f2082fc423a8cf296442184}{Sensor\+Name}}
+\begin{DoxyCompactList}\small\item\em Human-\/readable sensor name (for logs and CSV). \end{DoxyCompactList}\item 
+FDate\+Time \mbox{\hyperlink{struct_f_capture_request_a3e77509388c9bec7b375f5ec4cafe1f0}{Timestamp\+UTC}} = FDate\+Time(0)
+\begin{DoxyCompactList}\small\item\em Capture timestamp in UTC. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_f_capture_request_ae6680cec3cc7ef47c011fce729147954}{Sky\+View\+Factor}} = -\/1.\+0f
+\begin{DoxyCompactList}\small\item\em Sky View Factor of the sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{struct_f_capture_request_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_f_capture_request_ae828b8d1f7d31ecf6e4669f223f1ec5d}\index{FCaptureRequest@{FCaptureRequest}!FCaptureRequest@{FCaptureRequest}}
+\index{FCaptureRequest@{FCaptureRequest}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{FCaptureRequest()}{FCaptureRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_ae828b8d1f7d31ecf6e4669f223f1ec5d} 
+FCapture\+Request\+::\+FCapture\+Request (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_ae828b8d1f7d31ecf6e4669f223f1ec5d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_aa256477fbc1ab0043e414f13b56564ef}\index{FCaptureRequest@{FCaptureRequest}!FCaptureRequest@{FCaptureRequest}}
+\index{FCaptureRequest@{FCaptureRequest}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{FCaptureRequest()}{FCaptureRequest()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_aa256477fbc1ab0043e414f13b56564ef} 
+FCapture\+Request\+::\+FCapture\+Request (\begin{DoxyParamCaption}\item[{const FVector \&}]{In\+Pos\+WS}{, }\item[{const FVector \&}]{In\+Normal\+WS}{, }\item[{int32}]{In\+Side\+Px}{, }\item[{uint32}]{In\+Warmup\+Frames}{, }\item[{FGuid}]{In\+Sensor\+Id}{, }\item[{const FString \&}]{In\+Sensor\+Name}{, }\item[{FDate\+Time}]{In\+Timestamp\+UTC}{ = {\ttfamily FDateTime(0)}, }\item[{FGuid}]{In\+Request\+Id}{ = {\ttfamily FGuid()}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_aa256477fbc1ab0043e414f13b56564ef_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-func-members}
+\Hypertarget{struct_f_capture_request_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_f_capture_request_a710ed7865f56e9c032d52fd1a4cd2761}\index{FCaptureRequest@{FCaptureRequest}!IsValid@{IsValid}}
+\index{IsValid@{IsValid}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{IsValid()}{IsValid()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a710ed7865f56e9c032d52fd1a4cd2761} 
+FORCEINLINE bool FCapture\+Request\+::\+Is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a710ed7865f56e9c032d52fd1a4cd2761_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_ae17362dae77f57d0c2245cecef01b38b}\index{FCaptureRequest@{FCaptureRequest}!Make@{Make}}
+\index{Make@{Make}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{Make()}{Make()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_ae17362dae77f57d0c2245cecef01b38b} 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} FCapture\+Request\+::\+Make (\begin{DoxyParamCaption}\item[{const FVector \&}]{In\+Pos\+WS}{, }\item[{const FVector \&}]{In\+Normal\+WS}{, }\item[{int32}]{In\+Side\+Px}{, }\item[{uint32}]{In\+Warmup\+Frames}{, }\item[{FGuid}]{In\+Sensor\+Id}{, }\item[{FString}]{In\+Sensor\+Name}{, }\item[{FDate\+Time}]{In\+Timestamp\+UTC}{ = {\ttfamily FDateTime(0)}, }\item[{FGuid}]{In\+Request\+Id}{ = {\ttfamily FGuid()}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Factory method. 
+
+Request GUID is auto-\/generated by default. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_ae17362dae77f57d0c2245cecef01b38b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_ae17362dae77f57d0c2245cecef01b38b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_a1fc3444f926b7d505f8d23390c2d20ec}\index{FCaptureRequest@{FCaptureRequest}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a1fc3444f926b7d505f8d23390c2d20ec} 
+bool FCapture\+Request\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a1fc3444f926b7d505f8d23390c2d20ec_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_a52ea0d0da626c14f6ea987b6a21bce86}\index{FCaptureRequest@{FCaptureRequest}!operator==@{operator==}}
+\index{operator==@{operator==}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a52ea0d0da626c14f6ea987b6a21bce86} 
+bool FCapture\+Request\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a52ea0d0da626c14f6ea987b6a21bce86_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_ab63ce8c8eadcb5393d9993aeab920660}\index{FCaptureRequest@{FCaptureRequest}!ToString@{ToString}}
+\index{ToString@{ToString}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_ab63ce8c8eadcb5393d9993aeab920660} 
+FString FCapture\+Request\+::\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_ab63ce8c8eadcb5393d9993aeab920660_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_a753b6add0706d10eb25fd531a1a3a1cd}\index{FCaptureRequest@{FCaptureRequest}!WithSensorId@{WithSensorId}}
+\index{WithSensorId@{WithSensorId}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{WithSensorId()}{WithSensorId()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a753b6add0706d10eb25fd531a1a3a1cd} 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} FCapture\+Request\+::\+With\+Sensor\+Id (\begin{DoxyParamCaption}\item[{FGuid}]{In\+Id}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a753b6add0706d10eb25fd531a1a3a1cd_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_a84cbc993d0ae532f452119452f0f472f}\index{FCaptureRequest@{FCaptureRequest}!WithSidePx@{WithSidePx}}
+\index{WithSidePx@{WithSidePx}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{WithSidePx()}{WithSidePx()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a84cbc993d0ae532f452119452f0f472f} 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} FCapture\+Request\+::\+With\+Side\+Px (\begin{DoxyParamCaption}\item[{int32}]{In\+Side\+Px}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a84cbc993d0ae532f452119452f0f472f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_a5283a5b56514b3ae55663480e05d7980}\index{FCaptureRequest@{FCaptureRequest}!WithTimestamp@{WithTimestamp}}
+\index{WithTimestamp@{WithTimestamp}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{WithTimestamp()}{WithTimestamp()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a5283a5b56514b3ae55663480e05d7980} 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} FCapture\+Request\+::\+With\+Timestamp (\begin{DoxyParamCaption}\item[{FDate\+Time}]{In\+UTC}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a5283a5b56514b3ae55663480e05d7980_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_a5283a5b56514b3ae55663480e05d7980_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_capture_request_ac62d025deaf7f4f00a1b5575373c1c4d}\index{FCaptureRequest@{FCaptureRequest}!WithWarmup@{WithWarmup}}
+\index{WithWarmup@{WithWarmup}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{WithWarmup()}{WithWarmup()}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_ac62d025deaf7f4f00a1b5575373c1c4d} 
+FORCEINLINE \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} FCapture\+Request\+::\+With\+Warmup (\begin{DoxyParamCaption}\item[{uint32}]{In\+Warmup}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_capture_request_ac62d025deaf7f4f00a1b5575373c1c4d_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_f_capture_request_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_f_capture_request_a3b8332a66273235e944c4cba5a4fc7ee}\index{FCaptureRequest@{FCaptureRequest}!NormalWS@{NormalWS}}
+\index{NormalWS@{NormalWS}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{NormalWS}{NormalWS}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a3b8332a66273235e944c4cba5a4fc7ee} 
+FVector FCapture\+Request\+::\+Normal\+WS = FVector\+::\+Up\+Vector}
+
+
+
+Outward-\/facing, normalized sensor normal in world space. 
+
+\Hypertarget{struct_f_capture_request_a7af6d2f1e10d245edbf8aac66cfdcb81}\index{FCaptureRequest@{FCaptureRequest}!PosWS@{PosWS}}
+\index{PosWS@{PosWS}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{PosWS}{PosWS}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a7af6d2f1e10d245edbf8aac66cfdcb81} 
+FVector FCapture\+Request\+::\+Pos\+WS = FVector\+::\+Zero\+Vector}
+
+
+
+Sensor position in world space. 
+
+\Hypertarget{struct_f_capture_request_a88ba247c066b50d689e7ab841bf4a3a8}\index{FCaptureRequest@{FCaptureRequest}!RequestId@{RequestId}}
+\index{RequestId@{RequestId}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{RequestId}{RequestId}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a88ba247c066b50d689e7ab841bf4a3a8} 
+FGuid FCapture\+Request\+::\+Request\+Id}
+
+
+
+Unique GUID for this specific capture request. 
+
+\Hypertarget{struct_f_capture_request_a3d1fccdc37b7234da76da4af85e7eb90}\index{FCaptureRequest@{FCaptureRequest}!SensorId@{SensorId}}
+\index{SensorId@{SensorId}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{SensorId}{SensorId}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a3d1fccdc37b7234da76da4af85e7eb90} 
+FGuid FCapture\+Request\+::\+Sensor\+Id}
+
+
+
+Unique GUID of the sensor that originated this request. 
+
+\Hypertarget{struct_f_capture_request_a3ffe63872f2082fc423a8cf296442184}\index{FCaptureRequest@{FCaptureRequest}!SensorName@{SensorName}}
+\index{SensorName@{SensorName}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{SensorName}{SensorName}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a3ffe63872f2082fc423a8cf296442184} 
+FString FCapture\+Request\+::\+Sensor\+Name}
+
+
+
+Human-\/readable sensor name (for logs and CSV). 
+
+\Hypertarget{struct_f_capture_request_ae70a6eb5225d726e1ac9d4404f88de8d}\index{FCaptureRequest@{FCaptureRequest}!SidePx@{SidePx}}
+\index{SidePx@{SidePx}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{SidePx}{SidePx}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_ae70a6eb5225d726e1ac9d4404f88de8d} 
+int32 FCapture\+Request\+::\+Side\+Px = 256}
+
+
+
+Cubemap side resolution. 
+
+\Hypertarget{struct_f_capture_request_ae6680cec3cc7ef47c011fce729147954}\index{FCaptureRequest@{FCaptureRequest}!SkyViewFactor@{SkyViewFactor}}
+\index{SkyViewFactor@{SkyViewFactor}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{SkyViewFactor}{SkyViewFactor}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_ae6680cec3cc7ef47c011fce729147954} 
+float FCapture\+Request\+::\+Sky\+View\+Factor = -\/1.\+0f}
+
+
+
+Sky View Factor of the sensor. 
+
+\Hypertarget{struct_f_capture_request_a3e77509388c9bec7b375f5ec4cafe1f0}\index{FCaptureRequest@{FCaptureRequest}!TimestampUTC@{TimestampUTC}}
+\index{TimestampUTC@{TimestampUTC}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{TimestampUTC}{TimestampUTC}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_a3e77509388c9bec7b375f5ec4cafe1f0} 
+FDate\+Time FCapture\+Request\+::\+Timestamp\+UTC = FDate\+Time(0)}
+
+
+
+Capture timestamp in UTC. 
+
+Mainly used for export. \Hypertarget{struct_f_capture_request_adbab2165b3c87817ebc23b3ca99f54d4}\index{FCaptureRequest@{FCaptureRequest}!WarmupFrames@{WarmupFrames}}
+\index{WarmupFrames@{WarmupFrames}!FCaptureRequest@{FCaptureRequest}}
+\doxysubsubsection{\texorpdfstring{WarmupFrames}{WarmupFrames}}
+{\footnotesize\ttfamily \label{struct_f_capture_request_adbab2165b3c87817ebc23b3ca99f54d4} 
+uint32 FCapture\+Request\+::\+Warmup\+Frames = 0u}
+
+
+
+Number of warmup frames before the capture takes place. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Public/\+Simulation/\mbox{\hyperlink{_capture_request_8h}{Capture\+Request.\+h}}\end{DoxyCompactItemize}

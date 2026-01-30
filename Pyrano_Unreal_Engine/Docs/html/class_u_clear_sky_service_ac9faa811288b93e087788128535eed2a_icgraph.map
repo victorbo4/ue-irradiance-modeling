@@ -1,0 +1,5 @@
+<map id="UClearSkyService::ExtraterrestrialIrradiance_Wm2" name="UClearSkyService::ExtraterrestrialIrradiance_Wm2">
+<area shape="rect" id="Node000001" title=" " alt="" coords="244,5,466,48"/>
+<area shape="rect" id="Node000002" href="$class_u_clear_sky_service.html#a8a36ecf792b9a2982b3a12408a2b5a9a" title="Computes clear&#45;sky irradiance for a given sun zenith and timestamp (UTC)." alt="" coords="5,13,196,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,27,196,29,196,24,231,26"/>
+</map>

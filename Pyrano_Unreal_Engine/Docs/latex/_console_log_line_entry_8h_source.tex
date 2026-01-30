@@ -1,0 +1,34 @@
+\doxysection{Console\+Log\+Line\+Entry.\+h}
+\hypertarget{_console_log_line_entry_8h_source}{}\label{_console_log_line_entry_8h_source}\index{Source/PyranoEditor/Private/UI/ConsoleLogLineEntry.h@{Source/PyranoEditor/Private/UI/ConsoleLogLineEntry.h}}
+\mbox{\hyperlink{_console_log_line_entry_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ ConsoleLogLineEntry.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Blueprint/IUserObjectListEntry.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Components/MultiLineEditableText.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ConsoleLogLineEntry.generated.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_console_log_line_item}{UConsoleLogLineItem}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ UCLASS()}
+\DoxyCodeLine{00017\ class\ PYRANOEDITOR\_API\ \mbox{\hyperlink{class_u_console_log_line_entry}{UConsoleLogLineEntry}}\ :\ public\ UUserWidget,\ public\ IUserObjectListEntry}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00025\ \ \ \ \ UPROPERTY(meta\ =\ (BindWidget),\ BlueprintReadOnly)}
+\DoxyCodeLine{00026\ \ \ \ \ UMultiLineEditableText*\ \mbox{\hyperlink{class_u_console_log_line_entry_add74c09e6bdcc142f3021e247de63fc1}{TXT\_Line}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ protected:}
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_line_entry_a297571d6b0fa4bf2e25b515a6b90a46a}{NativeOnListItemObjectSet}}(UObject*\ ListItemObject)\ override;}
+\DoxyCodeLine{00032\ \};}
+
+\end{DoxyCode}

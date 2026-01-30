@@ -1,0 +1,9 @@
+<map id="UIrradianceScheduler" name="UIrradianceScheduler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="85,360,354,1496"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,112,125,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,193,110,360,105,360,75,198"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="150,112,290,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,193,222,360,217,360,220,199"/>
+<area shape="rect" id="Node000004" href="$struct_f_sim_config.html" title=" " alt="" coords="314,5,494,288"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="372,285,360,344,355,343,370,290"/>
+</map>

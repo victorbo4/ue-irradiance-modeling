@@ -1,0 +1,35 @@
+<map id="UPyranoEditorSubsystem::GetActiveWorld" name="UPyranoEditorSubsystem::GetActiveWorld">
+<area shape="rect" id="Node000001" title="Returns the PIE world if running, otherwise the editor world." alt="" coords="1123,168,1295,211"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#accb819699174d7a462e7e914047f5c28" title=" " alt="" coords="682,5,855,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1181,154,1135,106,1106,82,1074,62,1020,43,962,31,906,25,855,24,854,19,906,20,963,26,1021,38,1076,58,1109,77,1139,102,1186,156"/>
+<area shape="rect" id="Node000004" href="$class_u_pyrano_editor_subsystem.html#ac3e1f1b78bd830e95a7b52fc3bff7ed9" title="Ensures that the PIE world exists and is ready; retries if not." alt="" coords="903,72,1075,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1147,161,1074,129,1047,118,1048,113,1076,124,1152,161"/>
+<area shape="rect" id="Node000010" href="$class_u_pyrano_editor_subsystem.html#a1b69ad32d7aad1655e600c9802b7ef9d" title="Internal callback executed when PIE ends." alt="" coords="903,139,1075,181"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="1105,176,1075,174,1075,169,1110,176"/>
+<area shape="rect" id="Node000011" href="$class_u_pyrano_editor_subsystem.html#a1e18df0b1f82756989cd7cf5f6c15386" title="Returns all pyranometer sensors in the level (filtered by enabled state)." alt="" coords="462,197,634,240"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="1105,195,635,218,635,212,1110,193"/>
+<area shape="rect" id="Node000012" href="$class_u_pyrano_editor_subsystem.html#a22e33d28e9d2341cc24463f718f9943a" title="Enables or disables a pyranometer sensor by GUID." alt="" coords="682,256,855,299"/>
+<area shape="poly" id="edge17_Node000001_Node000012" title=" " alt="" coords="1144,216,1076,240,961,261,855,274,855,268,960,256,1074,235,1139,217"/>
+<area shape="rect" id="Node000013" href="$class_u_pyrano_editor_subsystem.html#aff2465394f6335550f1ee02a6725e648" title="Validates a full simulation configuration and returns a detailed result." alt="" coords="242,315,414,357"/>
+<area shape="poly" id="edge19_Node000001_Node000013" title=" " alt="" coords="1170,219,1125,249,1076,273,988,302,897,322,804,337,713,345,545,351,414,346,414,341,545,345,713,340,803,331,896,317,987,296,1074,268,1123,245,1164,221"/>
+<area shape="rect" id="Node000003" href="$class_u_pyrano_editor_subsystem.html#a66b820c9aae05fb59340fae1abe43379" title=" " alt="" coords="5,172,194,215"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="664,15,573,13,465,16,408,23,351,33,296,47,243,66,204,89,169,117,119,173,115,170,166,113,201,84,241,62,294,42,350,27,408,17,465,11,573,8,669,14"/>
+<area shape="rect" id="Node000005" href="$class_u_pyrano_editor_subsystem.html#ae6108e9fda1f9471c24a39988d5122d6" title="Internal callback executed once PIE has fully started." alt="" coords="682,72,855,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="884,103,855,105,855,99,890,102"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="870,82,905,84,899,85,870,87"/>
+<area shape="rect" id="Node000006" href="$class_u_pyrano_editor_subsystem.html#a5bd1813278b5277f9b9677faf4bc9d85" title="Verifies that the game viewport is initialized and visible." alt="" coords="462,64,634,107"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="664,99,635,100,634,95,669,98"/>
+<area shape="rect" id="Node000007" href="$class_u_pyrano_editor_subsystem.html#ab0ad1482f10e23d383332295e0ddac03" title="Packs config and registers delegates before launching PIE." alt="" coords="462,131,634,173"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="669,120,632,133,630,127,674,118"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="649,77,684,81,679,82,650,83"/>
+<area shape="rect" id="Node000008" href="$class_u_pyrano_editor_subsystem.html#acdc7acb4e1599227d50feefdf1867c66" title="Starts a single capture pass in PIE and ends automatically." alt="" coords="242,76,414,119"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="444,127,415,121,414,116,449,126"/>
+<area shape="rect" id="Node000009" href="$class_u_pyrano_editor_subsystem.html#a4b539f64f46c286822e4015811c08afc" title="Starts a full multi&#45;sensor, multi&#45;time simulation in PIE." alt="" coords="242,143,414,185"/>
+<area shape="poly" id="edge11_Node000007_Node000009" title=" " alt="" coords="444,158,415,162,414,157,449,157"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="253,126,243,133,150,174,147,169,241,128,258,123"/>
+<area shape="poly" id="edge12_Node000009_Node000003" title=" " alt="" coords="224,178,195,184,193,179,229,176"/>
+<area shape="poly" id="edge14_Node000010_Node000007" title=" " alt="" coords="885,159,635,156,635,151,890,158"/>
+<area shape="poly" id="edge16_Node000011_Node000003" title=" " alt="" coords="445,215,194,201,194,196,448,211"/>
+<area shape="poly" id="edge18_Node000012_Node000003" title=" " alt="" coords="664,271,462,255,321,235,194,213,194,208,321,229,462,249,670,271"/>
+<area shape="poly" id="edge20_Node000013_Node000003" title=" " alt="" coords="260,307,240,298,178,257,127,218,128,212,181,252,243,294,265,308"/>
+</map>

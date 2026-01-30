@@ -1,0 +1,5 @@
+<map id="UIrradianceScheduler::OnCaptureCompleted" name="UIrradianceScheduler::OnCaptureCompleted">
+<area shape="rect" id="Node000001" title="Handles a completed capture and advances the flow." alt="" coords="200,5,355,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a46ab4ac00573e109d595d80669a8e156" title=" " alt="" coords="5,5,152,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,27,152,29,152,24,187,26"/>
+</map>

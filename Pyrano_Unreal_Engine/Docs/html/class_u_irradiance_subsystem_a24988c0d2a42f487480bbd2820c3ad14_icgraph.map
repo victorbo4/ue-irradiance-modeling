@@ -1,0 +1,7 @@
+<map id="UIrradianceSubsystem::EnqueueReadbackCopy" name="UIrradianceSubsystem::EnqueueReadbackCopy">
+<area shape="rect" id="Node000001" title="Enqueue a GPU readback copy of the extracted irradiance buffer." alt="" coords="410,5,580,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a2ef94233017fe8e81cf63e7bc5b514a3" title="Handle per&#45;frame logic while waiting for GPU readback." alt="" coords="208,5,362,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="392,27,363,29,362,24,397,27"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#ad3336fe0d04f79cf1c1eb2ecdb226325" title=" " alt="" coords="5,5,160,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,27,160,29,160,24,195,26"/>
+</map>

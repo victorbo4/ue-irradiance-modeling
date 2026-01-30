@@ -1,0 +1,92 @@
+\doxysection{Irradiance\+Exporter.\+h}
+\hypertarget{_irradiance_exporter_8h_source}{}\label{_irradiance_exporter_8h_source}\index{Source/Pyrano/Private/Irradiance/IrradianceExporter.h@{Source/Pyrano/Private/Irradiance/IrradianceExporter.h}}
+\mbox{\hyperlink{_irradiance_exporter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ IrradianceExporter.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Handles\ exporting\ irradiance\ capture\ results\ for\ debugging\ and\ data\ analysis.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ Supports\ saving\ cubemap\ face\ images\ (EXR)\ and\ irradiance\ values\ to\ CSV\ files.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}IrradianceExporter.generated.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_capture_request}{FCaptureRequest}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }IPooledRenderTarget;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ USTRUCT(BlueprintType)}
+\DoxyCodeLine{00017\ struct\ \mbox{\hyperlink{struct_f_export_options}{FExportOptions}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00025\ \ \ \ \ bool\ \mbox{\hyperlink{struct_f_export_options_aff90e7927e65e1cb7cf5591c1769b8d2}{bExportCSV}}\ =\ false;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_f_export_options_a71584e21a6df57d5bf72db7a00978f6d}{bExportImages}}\ =\ false;\ \ \ \ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00033\ \ \ \ \ FDirectoryPath\ \mbox{\hyperlink{struct_f_export_options_a04d22162ebcc94e419eec568b282d152}{OutputDir}};\ \ \ \ \ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00037\ \ \ \ \ FString\ \mbox{\hyperlink{struct_f_export_options_a47e0ed163c5ad0314f77e30ddbd94fa1}{ImagesSubdir}}\ =\ TEXT(\textcolor{stringliteral}{"{}Images"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00040\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite)}
+\DoxyCodeLine{00041\ \ \ \ \ FString\ \mbox{\hyperlink{struct_f_export_options_a6df4d52797b197c4d6f25040eeed57f7}{CSVFilename}}\ =\ TEXT(\textcolor{stringliteral}{"{}irradiance.csv"{}});}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ UCLASS()}
+\DoxyCodeLine{00046\ class\ \mbox{\hyperlink{class_u_irradiance_exporter}{UIrradianceExporter}}\ :\ public\ UObject}
+\DoxyCodeLine{00047\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_exporter_ab5d1e2836692f211691c27e9ce61aa89}{Init}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_export_options}{FExportOptions}}\&\ InOpts);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_exporter_ad382e2dafafdc723f7a16059b1e562f2}{AppendIrradianceRow}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_capture_request}{FCaptureRequest}}\&\ Req,\ \textcolor{keywordtype}{float}\ TotalIrradiance,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ IrrMean,\ \textcolor{keywordtype}{float}\ IrrR,\ \textcolor{keywordtype}{float}\ IrrG,\ \textcolor{keywordtype}{float}\ IrrB,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ClearSkyGHI,\ \textcolor{keywordtype}{double}\ ClearSkyDNI,\ \textcolor{keywordtype}{double}\ ClearSkyDHI,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ IrrDir,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ Azimuth,\ \textcolor{keywordtype}{float}\ Altitude,\ \textcolor{keywordtype}{float}\ GeometricFactor,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ int32\ SunOccluded,\ \textcolor{keywordtype}{float}\ SunHitDistanceM,\ \textcolor{keywordtype}{float}\ SunVisibility);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_exporter_ae27d33156d8d003db48f8a8e95589dc2}{FlushCSVIfNeeded}}(\textcolor{keywordtype}{bool}\ bForce\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_exporter_a180b4eb6cc676c9f9bca75236914629b}{EnqueueFaceEXR}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_capture_request}{FCaptureRequest}}\&\ Req,\ int32\ FaceIdx,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ TRefCountPtr<IPooledRenderTarget>\ FaceRT,\ FIntPoint\ Size);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Absolute\ path\ to\ the\ CSV\ file}}
+\DoxyCodeLine{00071\ \ \ \ \ FString\ \mbox{\hyperlink{class_u_irradiance_exporter_ace71fc77b59e10afd3abbfa0efdf4fe7}{CSVPathAbs}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Absolute\ path\ to\ the\ images\ folder}}
+\DoxyCodeLine{00074\ \ \ \ \ FString\ \mbox{\hyperlink{class_u_irradiance_exporter_a5b417b84606f35545c84045d7042797b}{ImagesPathAbs}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Ensures\ header\ is\ written\ once}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_irradiance_exporter_a44717f264928bad91535092c3f4b4f85}{bCSVHeaderWritten}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Writes\ the\ CSV\ header\ }}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_exporter_a5dc928403c8b2f3b33ebaf459363eb04}{EnsureCSVHeader}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Ensures\ CSV\ file\ is\ still\ writable}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_irradiance_exporter_a041eb2a1073d7a52ae314cae60eea73e}{EnsureCSVWritable}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/\ Buffering\ -\/-\/-\/}}
+\DoxyCodeLine{00086\ \ \ \ \ FString\ \mbox{\hyperlink{class_u_irradiance_exporter_a063aa74699954d8a344a2b134c675ed5}{PendingCSV}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ accumulated\ CSV\ lines}}
+\DoxyCodeLine{00087\ \ \ \ \ int32\ \ \ \mbox{\hyperlink{class_u_irradiance_exporter_a863630b30977867d9bb13836f29ae052}{PendingLineCount}}\ =\ 0;\ \ \ \ \ \ \ \textcolor{comment}{//\ number\ of\ buffered\ rows}}
+\DoxyCodeLine{00088\ \ \ \ \ int32\ \ \ \mbox{\hyperlink{class_u_irradiance_exporter_a9c77c910939e4a1c45578e7ff7e536e3}{FlushThresholdLines}}\ =\ 64;\ \ \ \textcolor{comment}{//\ flush\ every\ N\ rows\ }}
+\DoxyCodeLine{00089\ \ \ \ \ uint64\ \ \mbox{\hyperlink{class_u_irradiance_exporter_a7d944596a5006f6eb348ee24b8d4a4ed}{TotalRowsAppended}}\ =\ 0;\ \ \ \ \ \ \textcolor{comment}{//\ diagnostics\ only}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{static}\ FString\ \mbox{\hyperlink{class_u_irradiance_exporter_af2645a4848f14ee445784cdbf0b2310a}{FaceToString}}(int32\ FaceIdx);\ \textcolor{comment}{//\ +X,-\/X,+Y,-\/Y,+Z,-\/Z}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{static}\ FString\ \mbox{\hyperlink{class_u_irradiance_exporter_a2495f1384be3c6e942a88efe5616e94a}{MakeTimestampForFile}}(\textcolor{keyword}{const}\ FDateTime\&\ UTC);}
+\DoxyCodeLine{00096\ \};}
+
+\end{DoxyCode}

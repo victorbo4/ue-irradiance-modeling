@@ -1,0 +1,124 @@
+@startuml pyranoeditorsubsystem_complete
+title
+Figura B.1.2 – Diagrama de la clase UPyranoEditorSubsystem
+end title
+' === CONFIGURACIÓN ===
+skinparam classAttributeIconSize 0 
+skinparam linetype ortho            
+skinparam shadowing false           
+skinparam monochrome true           
+skinparam packageStyle rectangle 
+
+left to right direction
+
+' === ESTRUCTURAS EXTERNAS (Referencia) ===
+
+struct FSimConfig <<struct>> {
+    ' == Ubicación ==
+    + Latitude : float
+    + Longitude : float
+    + Timezone : float
+    + NorthOffset : float
+    
+    ' == Tiempo ==
+    + StartTime : FDateTime
+    + EndTime : FDateTime
+    + SampleInterval : FTimespan
+    
+    ' == Captura ==
+    + WarmupFrames : int32
+    + ResolutionPx : int32
+    + bPathTracing : bool
+    
+    ' == Salida ==
+    + bExportCSV : bool
+    + bExportImages : bool
+    + OutputPath : FDirectoryPath
+    
+    ' == Modelo de Cielo ==
+    + MinSunAltitudeDeg : float
+    + AltitudeMeters : float
+    + LinkeTurbidity : float
+
+    ' == Métodos ==
+    + IsValid() : bool
+}
+
+class UEditorSubsystem {
+    (Unreal Engine Editor API)
+}
+
+' === ESTRUCTURAS DE DATOS PROPIAS (Detalladas) ===
+
+class FSensorInfo <<struct>> {
+    + SensorGuid : FGuid
+    + bEnabled : bool
+    + Name : FString
+    + PositionWS : FVector
+    + NormalWS : FVector
+}
+
+class FValidationResult <<struct>> {
+    + bOk : bool
+    + OutNormalized : FSimConfig
+    + Errors : TArray<FString>
+    + FieldErrors : TMap<FString, FString>
+    + EstimatedSamples : int32
+    + EstimatedSimDuration : FText
+    
+    + FValidationResult(bInOk : bool, InConfig : FSimConfig)
+    + AddError(InMessage : FString) : void
+    + AddFieldError(Field : FString, Message : FString) : void
+    + IsValid() : bool
+}
+
+' === CLASE PRINCIPAL ===
+
+class UPyranoEditorSubsystem {
+    ' == Estado Interno ==
+    - SavedCVarState : TArray<FIrradianceCVarState>
+    - bCVarConfigApplied : bool
+    - bPendingIsSimulation : bool
+    - bStartTriggered : bool
+    - PendingSimConfig : FSimConfig
+    - MonitorTimerHandle : FTimerHandle
+
+    ' == Delegados ==
+    + OnSimulationEnded : FOnPyranoSimulationEnded
+
+    ' == API Pública (Widget & Blueprint) ==
+    + {static} BrowseForOutputFolder(InOutPath : FDirectoryPath&) : bool
+    + QuerySensors(bOnlyEnabled : bool) : TArray<FSensorInfo>
+    + SetSensorEnabled(SensorGuid : FGuid, bEnabled : bool) : void
+    + TryParseDateTime(DateYMD : FString, TimeHM : FString, OutDT : FDateTime, OutErr : FString) : bool
+    + TryParseIntervalString(In : FString, OutInterval : FTimespan, OutErr : FString) : bool
+    + ValidateConfig(InConfig : FSimConfig) : FValidationResult
+    + EstimateSimDuration(C : FSimConfig, Samples : int32, Sensors : int32) : FTimespan
+    + CaptureOnce(InConfig : FSimConfig) : void
+    + StartSimulation(InConfig : FSimConfig) : void
+
+    ' == Métodos Privados (Gestión PIE) ==
+    - StartNewPIE(Width : int32, Height : int32, bUseCustomPos : bool, Pos : FIntPoint) : void
+    - OnPostPIEStarted(bIsSimulating : bool) : void
+    - OnEndPIE(bIsSimulating : bool) : void
+    - StartPIEWithConfig(InConfig : FSimConfig, bIsSimulation : bool) : void
+    - EnsurePIEWorld() : UWorld*
+    - ApplyCVarConfig() : void
+    - ScheduleStartAndMonitor(PlayWorld : UWorld) : void
+}
+
+' === RELACIONES ===
+
+' Herencia de Unreal
+UEditorSubsystem <|-- UPyranoEditorSubsystem
+
+' Dependencias de Uso (El subsistema produce estos datos)
+UPyranoEditorSubsystem ..> FSensorInfo : lista >
+UPyranoEditorSubsystem ..> FValidationResult : valida y devuelve >
+
+' Composición: El resultado de validación contiene una Config "saneada"
+FValidationResult *-- "1" FSimConfig : contiene copia normalizada >
+
+' El subsistema almacena temporalmente una config pendiente
+UPyranoEditorSubsystem o-- "1" FSimConfig : PendingSimConfig
+@enduml

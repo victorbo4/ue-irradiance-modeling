@@ -1,0 +1,7 @@
+<map id="UIrradianceSubsystem::TickReadback" name="UIrradianceSubsystem::TickReadback">
+<area shape="rect" id="Node000001" title="Handle per&#45;frame logic while waiting for GPU readback." alt="" coords="5,39,160,81"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a24988c0d2a42f487480bbd2820c3ad14" title="Enqueue a GPU readback copy of the extracted irradiance buffer." alt="" coords="212,5,382,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,45,199,41,194,43,161,51"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#afac39e6628fd78f1833b02ef96b881ba" title="Enqueue a polling command to read back the irradiance value when ready." alt="" coords="208,72,386,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,69,195,77,190,77,160,75"/>
+</map>

@@ -1,0 +1,38 @@
+\doxysection{Source/\+Pyrano\+Editor/\+Private/\+Subsystems/\+Pyrano\+Editor\+Subsystem.cpp File Reference}
+\hypertarget{_pyrano_editor_subsystem_8cpp}{}\label{_pyrano_editor_subsystem_8cpp}\index{Source/PyranoEditor/Private/Subsystems/PyranoEditorSubsystem.cpp@{Source/PyranoEditor/Private/Subsystems/PyranoEditorSubsystem.cpp}}
+{\ttfamily \#include "{}Subsystems/\+Pyrano\+Editor\+Subsystem.\+h"{}}\newline
+{\ttfamily \#include "{}Editor.\+h"{}}\newline
+{\ttfamily \#include "{}Editor/\+Editor\+Engine.\+h"{}}\newline
+{\ttfamily \#include "{}Unreal\+Ed\+Globals.\+h"{}}\newline
+{\ttfamily \#include "{}Settings/\+Level\+Editor\+Play\+Settings.\+h"{}}\newline
+{\ttfamily \#include "{}Components/\+Pyranometer\+Component.\+h"{}}\newline
+{\ttfamily \#include "{}Irradiance/\+Irradiance\+Common.\+h"{}}\newline
+{\ttfamily \#include "{}Simulation/\+Irradiance\+Scheduler.\+h"{}}\newline
+{\ttfamily \#include "{}Logging/\+Irradiance\+Log.\+h"{}}\newline
+{\ttfamily \#include "{}Desktop\+Platform\+Module.\+h"{}}\newline
+{\ttfamily \#include "{}IDesktop\+Platform.\+h"{}}\newline
+{\ttfamily \#include "{}Framework/\+Application/\+Slate\+Application.\+h"{}}\newline
+Include dependency graph for Pyrano\+Editor\+Subsystem.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_editor_subsystem_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_pyrano_editor_utils}{Pyrano\+Editor\+Utils}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static UWorld \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespace_pyrano_editor_utils_ad1d7ad11514ffa4c9c0506a310f89295}{Pyrano\+Editor\+Utils\+::\+Get\+PIEWorld}} ()
+\item 
+static void \mbox{\hyperlink{namespace_pyrano_editor_utils_a923935ab07773c60282d0c628dbd3b9d}{Pyrano\+Editor\+Utils\+::\+Get\+Pyranometer\+Components}} (UWorld \texorpdfstring{$\ast$}{*}World, bool b\+Only\+Enabled, TArray$<$ UPyranometer\+Component \texorpdfstring{$\ast$}{*} $>$ \&Out\+Components)
+\item 
+static int32 \mbox{\hyperlink{namespace_pyrano_editor_utils_a6a8fea8fd47c5ad779e7bd632dcfc1b7}{Pyrano\+Editor\+Utils\+::\+Count\+Enabled\+Sensors}} (UWorld \texorpdfstring{$\ast$}{*}World)
+\item 
+static FText \mbox{\hyperlink{namespace_pyrano_editor_utils_acef7c6aa5b495ff28a81db72f6059f2d}{Pyrano\+Editor\+Utils\+::\+Format\+Duration\+Text}} (const FTimespan \&T)
+\end{DoxyCompactItemize}

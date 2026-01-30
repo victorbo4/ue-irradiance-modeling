@@ -1,0 +1,147 @@
+{
+  "exp_id": "it_021_clearsky_b24ae3bc66",
+  "cfg": {
+    "iteration_id": "it_021_clearsky",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Clearsky combinado con la geometría de UE.\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "clearsky": [
+        "cloud_opacity",
+        "sim_cs_ghi",
+        "sim_geom_factor",
+        "sim_sky_view_factor"
+      ]
+    },
+    "feature_set_name": "clearsky",
+    "model_params": {
+      "n_estimators": 1500,
+      "learning_rate": 0.015,
+      "max_depth": 7,
+      "min_child_weight": 15,
+      "subsample": 0.8,
+      "colsample_bytree": 1.0,
+      "reg_alpha": 0.0,
+      "reg_lambda": 1.0,
+      "gamma": 0.1,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "cloud_opacity",
+    "sim_cs_ghi",
+    "sim_geom_factor",
+    "sim_sky_view_factor"
+  ],
+  "metrics_global": {
+    "r2": 0.7674001553735862,
+    "mae": 76.976979143544,
+    "rmse": 146.16888505068468,
+    "mbe": -11.106850799821384
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.7266009688558159,
+      "mae": 69.4025497701975,
+      "rmse": 120.52628891268937,
+      "mbe": 6.271458844923466
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.5353505284656719,
+      "mae": 147.37776503587668,
+      "rmse": 220.58236341801788,
+      "mbe": -39.49387939794503
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9898235458581837,
+      "mae": 14.150622624557776,
+      "rmse": 30.21363104191969,
+      "mbe": -0.09813184644260269
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 7.8127875328063965,
+        "importance_pct": 79.33092583639694
+      },
+      {
+        "feature": "sim_cs_ghi",
+        "importance": 0.9676553010940552,
+        "importance_pct": 9.82555721679973
+      },
+      {
+        "feature": "sim_geom_factor",
+        "importance": 0.664697527885437,
+        "importance_pct": 6.749328593270308
+      },
+      {
+        "feature": "sim_sky_view_factor",
+        "importance": 0.40321001410484314,
+        "importance_pct": 4.094188353533014
+      }
+    ],
+    "weight": [
+      {
+        "feature": "sim_cs_ghi",
+        "importance": 3813.0
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 3385.0
+      },
+      {
+        "feature": "sim_geom_factor",
+        "importance": 2520.0
+      },
+      {
+        "feature": "sim_sky_view_factor",
+        "importance": 469.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 2285.751220703125
+      },
+      {
+        "feature": "sim_geom_factor",
+        "importance": 1593.3563232421875
+      },
+      {
+        "feature": "sim_cs_ghi",
+        "importance": 1236.965087890625
+      },
+      {
+        "feature": "sim_sky_view_factor",
+        "importance": 1124.8826904296875
+      }
+    ]
+  }
+}

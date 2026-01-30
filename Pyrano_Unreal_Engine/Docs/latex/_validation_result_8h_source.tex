@@ -1,0 +1,70 @@
+\doxysection{Validation\+Result.\+h}
+\hypertarget{_validation_result_8h_source}{}\label{_validation_result_8h_source}\index{Source/PyranoEditor/Private/Data/ValidationResult.h@{Source/PyranoEditor/Private/Data/ValidationResult.h}}
+\mbox{\hyperlink{_validation_result_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ ValidationResult.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Stores\ validation\ status\ and\ detailed\ error\ messages.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ValidationResult.generated.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ USTRUCT(BlueprintType)}
+\DoxyCodeLine{00012\ struct\ \mbox{\hyperlink{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55}{FValidationResult}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ True\ if\ the\ configuration\ is\ valid\ }}
+\DoxyCodeLine{00019\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Validation"{}})}
+\DoxyCodeLine{00020\ \ \ \ \ bool\ \mbox{\hyperlink{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}{bOk}}\ =\ false;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Normalized\ version\ of\ the\ validated\ config\ }}
+\DoxyCodeLine{00023\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Validation"{}})}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\ \mbox{\hyperlink{struct_f_validation_result_a3e4cb5b99c3ad50501ceb1836cb1de15}{OutNormalized}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ List\ of\ global\ error\ messages\ }}
+\DoxyCodeLine{00027\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Validation"{}})}
+\DoxyCodeLine{00028\ \ \ \ \ TArray<FString>\ \mbox{\hyperlink{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75}{Errors}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ FieldName\ -\/>\ Error\ message\ }}
+\DoxyCodeLine{00031\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Validation"{}})}
+\DoxyCodeLine{00032\ \ \ \ \ TMap<FString,\ FString>\ \mbox{\hyperlink{struct_f_validation_result_a183a78935ee6c942ce39af27b5da15f3}{FieldErrors}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Estimated\ number\ of\ samples\ for\ UI\ display\ }}
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Validation"{}})}
+\DoxyCodeLine{00036\ \ \ \ \ int32\ \mbox{\hyperlink{struct_f_validation_result_a115c112272ea88a45c567927a7ac9e92}{EstimatedSamples}}\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Estimated\ simulation\ duration}}
+\DoxyCodeLine{00039\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Validation"{}})}
+\DoxyCodeLine{00040\ \ \ \ \ FText\ \mbox{\hyperlink{struct_f_validation_result_a66b81a3eb70916a836da9021959972d6}{EstimatedSimDuration}}\ =\ FText::FromString(FString::Printf(TEXT(\textcolor{stringliteral}{"{}0d\ 0m\ 0s"{}})));}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ public:}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55}{FValidationResult}}()\ \{\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_a7749a2c32fe16ccf62af5f3cd2438385}{FValidationResult}}(\textcolor{keywordtype}{bool}\ bInOk,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ InConfig)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}{bOk}}(bInOk),\ \mbox{\hyperlink{struct_f_validation_result_a3e4cb5b99c3ad50501ceb1836cb1de15}{OutNormalized}}(InConfig)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_f_validation_result_aa815459182ee083cac8d7e4f1a2be7ea}{AddError}}(\textcolor{keyword}{const}\ FString\&\ InMessage)}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}{bOk}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75}{Errors}}.Add(InMessage);}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_f_validation_result_af85ff546ed9707e4efb24b7e69d5465b}{AddFieldError}}(\textcolor{keyword}{const}\ FString\&\ Field,\ \textcolor{keyword}{const}\ FString\&\ Message)}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}{bOk}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_a183a78935ee6c942ce39af27b5da15f3}{FieldErrors}}.Add(Field,\ Message);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75}{Errors}}.Add(Message);}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_f_validation_result_a9d94fae5a402fdeb1d140009c80df87b}{IsValid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}{bOk}}\ \&\&\ \mbox{\hyperlink{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75}{Errors}}.Num()\ ==\ 0;\ \}}
+\DoxyCodeLine{00064\ \};}
+
+\end{DoxyCode}

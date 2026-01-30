@@ -1,0 +1,189 @@
+\doxysection{FSim\+Config Struct Reference}
+\hypertarget{struct_f_sim_config}{}\label{struct_f_sim_config}\index{FSimConfig@{FSimConfig}}
+
+
+{\ttfamily \#include $<$Simulation\+Config.\+h$>$}
+
+
+
+Collaboration diagram for FSim\+Config\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{struct_f_sim_config__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_f_sim_config_ab4beb107679be137421f4696b44b7cae}{Is\+Valid}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_a262f90d57dcb0e7c7016bbb6d59e0e79}{Latitude}} = 0.f
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_a8099d6edfacc87c4a825e8d2fabc2cd8}{Longitude}} = 0.f
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_a68aafd4e3f184a7f1c2a60a4130c5f6d}{Timezone}} = 0
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_a13a88666e79425d69bed5be0fc8d0b25}{North\+Offset}} = 0
+\item 
+FDate\+Time \mbox{\hyperlink{struct_f_sim_config_ac2f1f52b9be504d51db2856cf15c9b81}{Start\+Time}}
+\item 
+FDate\+Time \mbox{\hyperlink{struct_f_sim_config_a70ccbd56e69c5b6e5fdcebdefe3b1532}{End\+Time}}
+\item 
+FTimespan \mbox{\hyperlink{struct_f_sim_config_a43751794c042b7afa8a36948ec207109}{Sample\+Interval}} = FTimespan\+::\+From\+Minutes(5)
+\item 
+int32 \mbox{\hyperlink{struct_f_sim_config_a1f9d1870e66b187a01d7ae9545375a6f}{Warmup\+Frames}} = 8
+\item 
+int32 \mbox{\hyperlink{struct_f_sim_config_a389d12ab5036851e13781af2fb11f4c1}{Resolution\+Px}} = 256
+\item 
+bool \mbox{\hyperlink{struct_f_sim_config_a6bfcd5a4cec39e6f7478b528293082fd}{b\+Path\+Tracing}} = false
+\item 
+bool \mbox{\hyperlink{struct_f_sim_config_a67c058f286863d4f44b864ff9815970d}{b\+Export\+CSV}} = false
+\item 
+FDirectory\+Path \mbox{\hyperlink{struct_f_sim_config_a12457036904452051c574325225e5110}{Output\+Path}}
+\item 
+bool \mbox{\hyperlink{struct_f_sim_config_ac77c0cddd76099de001e20c975ad1926}{b\+Export\+Images}} = false
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_a8f92f56ce3690119d02dac5cd3603eae}{Min\+Sun\+Altitude\+Deg}} = 0.f
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_a6229504c545be240cd2297c383a33484}{Altitude\+Meters}} = 500.f
+\item 
+float \mbox{\hyperlink{struct_f_sim_config_acd1c5205f71cd7c754305c5cabd306f6}{Linke\+Turbidity}} = 2.f
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{struct_f_sim_config_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_f_sim_config_ab4beb107679be137421f4696b44b7cae}\index{FSimConfig@{FSimConfig}!IsValid@{IsValid}}
+\index{IsValid@{IsValid}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{IsValid()}{IsValid()}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_ab4beb107679be137421f4696b44b7cae} 
+bool FSim\+Config\+::\+Is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{struct_f_sim_config_ab4beb107679be137421f4696b44b7cae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{struct_f_sim_config_ab4beb107679be137421f4696b44b7cae_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_f_sim_config_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_f_sim_config_a6229504c545be240cd2297c383a33484}\index{FSimConfig@{FSimConfig}!AltitudeMeters@{AltitudeMeters}}
+\index{AltitudeMeters@{AltitudeMeters}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{AltitudeMeters}{AltitudeMeters}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a6229504c545be240cd2297c383a33484} 
+float FSim\+Config\+::\+Altitude\+Meters = 500.f}
+
+\Hypertarget{struct_f_sim_config_a67c058f286863d4f44b864ff9815970d}\index{FSimConfig@{FSimConfig}!bExportCSV@{bExportCSV}}
+\index{bExportCSV@{bExportCSV}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{bExportCSV}{bExportCSV}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a67c058f286863d4f44b864ff9815970d} 
+bool FSim\+Config\+::b\+Export\+CSV = false}
+
+\Hypertarget{struct_f_sim_config_ac77c0cddd76099de001e20c975ad1926}\index{FSimConfig@{FSimConfig}!bExportImages@{bExportImages}}
+\index{bExportImages@{bExportImages}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{bExportImages}{bExportImages}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_ac77c0cddd76099de001e20c975ad1926} 
+bool FSim\+Config\+::b\+Export\+Images = false}
+
+\Hypertarget{struct_f_sim_config_a6bfcd5a4cec39e6f7478b528293082fd}\index{FSimConfig@{FSimConfig}!bPathTracing@{bPathTracing}}
+\index{bPathTracing@{bPathTracing}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{bPathTracing}{bPathTracing}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a6bfcd5a4cec39e6f7478b528293082fd} 
+bool FSim\+Config\+::b\+Path\+Tracing = false}
+
+\Hypertarget{struct_f_sim_config_a70ccbd56e69c5b6e5fdcebdefe3b1532}\index{FSimConfig@{FSimConfig}!EndTime@{EndTime}}
+\index{EndTime@{EndTime}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{EndTime}{EndTime}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a70ccbd56e69c5b6e5fdcebdefe3b1532} 
+FDate\+Time FSim\+Config\+::\+End\+Time}
+
+\Hypertarget{struct_f_sim_config_a262f90d57dcb0e7c7016bbb6d59e0e79}\index{FSimConfig@{FSimConfig}!Latitude@{Latitude}}
+\index{Latitude@{Latitude}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{Latitude}{Latitude}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a262f90d57dcb0e7c7016bbb6d59e0e79} 
+float FSim\+Config\+::\+Latitude = 0.f}
+
+\Hypertarget{struct_f_sim_config_acd1c5205f71cd7c754305c5cabd306f6}\index{FSimConfig@{FSimConfig}!LinkeTurbidity@{LinkeTurbidity}}
+\index{LinkeTurbidity@{LinkeTurbidity}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{LinkeTurbidity}{LinkeTurbidity}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_acd1c5205f71cd7c754305c5cabd306f6} 
+float FSim\+Config\+::\+Linke\+Turbidity = 2.f}
+
+\Hypertarget{struct_f_sim_config_a8099d6edfacc87c4a825e8d2fabc2cd8}\index{FSimConfig@{FSimConfig}!Longitude@{Longitude}}
+\index{Longitude@{Longitude}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{Longitude}{Longitude}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a8099d6edfacc87c4a825e8d2fabc2cd8} 
+float FSim\+Config\+::\+Longitude = 0.f}
+
+\Hypertarget{struct_f_sim_config_a8f92f56ce3690119d02dac5cd3603eae}\index{FSimConfig@{FSimConfig}!MinSunAltitudeDeg@{MinSunAltitudeDeg}}
+\index{MinSunAltitudeDeg@{MinSunAltitudeDeg}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{MinSunAltitudeDeg}{MinSunAltitudeDeg}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a8f92f56ce3690119d02dac5cd3603eae} 
+float FSim\+Config\+::\+Min\+Sun\+Altitude\+Deg = 0.f}
+
+\Hypertarget{struct_f_sim_config_a13a88666e79425d69bed5be0fc8d0b25}\index{FSimConfig@{FSimConfig}!NorthOffset@{NorthOffset}}
+\index{NorthOffset@{NorthOffset}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{NorthOffset}{NorthOffset}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a13a88666e79425d69bed5be0fc8d0b25} 
+float FSim\+Config\+::\+North\+Offset = 0}
+
+\Hypertarget{struct_f_sim_config_a12457036904452051c574325225e5110}\index{FSimConfig@{FSimConfig}!OutputPath@{OutputPath}}
+\index{OutputPath@{OutputPath}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{OutputPath}{OutputPath}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a12457036904452051c574325225e5110} 
+FDirectory\+Path FSim\+Config\+::\+Output\+Path}
+
+\Hypertarget{struct_f_sim_config_a389d12ab5036851e13781af2fb11f4c1}\index{FSimConfig@{FSimConfig}!ResolutionPx@{ResolutionPx}}
+\index{ResolutionPx@{ResolutionPx}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{ResolutionPx}{ResolutionPx}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a389d12ab5036851e13781af2fb11f4c1} 
+int32 FSim\+Config\+::\+Resolution\+Px = 256}
+
+\Hypertarget{struct_f_sim_config_a43751794c042b7afa8a36948ec207109}\index{FSimConfig@{FSimConfig}!SampleInterval@{SampleInterval}}
+\index{SampleInterval@{SampleInterval}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{SampleInterval}{SampleInterval}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a43751794c042b7afa8a36948ec207109} 
+FTimespan FSim\+Config\+::\+Sample\+Interval = FTimespan\+::\+From\+Minutes(5)}
+
+\Hypertarget{struct_f_sim_config_ac2f1f52b9be504d51db2856cf15c9b81}\index{FSimConfig@{FSimConfig}!StartTime@{StartTime}}
+\index{StartTime@{StartTime}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{StartTime}{StartTime}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_ac2f1f52b9be504d51db2856cf15c9b81} 
+FDate\+Time FSim\+Config\+::\+Start\+Time}
+
+\Hypertarget{struct_f_sim_config_a68aafd4e3f184a7f1c2a60a4130c5f6d}\index{FSimConfig@{FSimConfig}!Timezone@{Timezone}}
+\index{Timezone@{Timezone}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{Timezone}{Timezone}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a68aafd4e3f184a7f1c2a60a4130c5f6d} 
+float FSim\+Config\+::\+Timezone = 0}
+
+\Hypertarget{struct_f_sim_config_a1f9d1870e66b187a01d7ae9545375a6f}\index{FSimConfig@{FSimConfig}!WarmupFrames@{WarmupFrames}}
+\index{WarmupFrames@{WarmupFrames}!FSimConfig@{FSimConfig}}
+\doxysubsubsection{\texorpdfstring{WarmupFrames}{WarmupFrames}}
+{\footnotesize\ttfamily \label{struct_f_sim_config_a1f9d1870e66b187a01d7ae9545375a6f} 
+int32 FSim\+Config\+::\+Warmup\+Frames = 8}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Public/\+Simulation/\mbox{\hyperlink{_simulation_config_8h}{Simulation\+Config.\+h}}\end{DoxyCompactItemize}

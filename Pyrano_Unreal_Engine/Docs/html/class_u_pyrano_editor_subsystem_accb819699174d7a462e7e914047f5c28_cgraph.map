@@ -1,0 +1,7 @@
+<map id="UPyranoEditorSubsystem::Deinitialize" name="UPyranoEditorSubsystem::Deinitialize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,178,77"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#a2adad0d3fd5864acbe4205b167cf4937" title="Returns the PIE world if running, otherwise the editor world." alt="" coords="243,5,415,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,43,230,39,225,40,179,48"/>
+<area shape="rect" id="Node000003" href="$_pyrano_console_log_sink_8cpp.html#a86136d5a6748aa19feba6c727ccc502f" title=" " alt="" coords="226,72,432,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,64,213,70,207,71,178,69"/>
+</map>

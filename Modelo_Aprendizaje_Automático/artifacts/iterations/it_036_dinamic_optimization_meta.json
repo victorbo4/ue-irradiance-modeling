@@ -1,0 +1,162 @@
+{
+  "exp_id": "it_036_dinamic_optimization_2f128c1e2a",
+  "cfg": {
+    "iteration_id": "it_036_dinamic_optimization",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Optimización del modelo minimal, aplicando medidas para aumentar reactividad.\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "final": [
+        "sim_irradiance_wm2",
+        "cloud_opacity",
+        "cloud_mean_10m",
+        "cloud_std_10m",
+        "cloud_delta_2m"
+      ]
+    },
+    "feature_set_name": "final",
+    "model_params": {
+      "n_estimators": 1200,
+      "learning_rate": 0.02,
+      "max_depth": 4,
+      "min_child_weight": 80,
+      "subsample": 0.75,
+      "colsample_bytree": 0.75,
+      "reg_alpha": 0.5,
+      "reg_lambda": 6.0,
+      "gamma": 0.2,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "sim_irradiance_wm2",
+    "cloud_opacity",
+    "cloud_mean_10m",
+    "cloud_std_10m",
+    "cloud_delta_2m"
+  ],
+  "metrics_global": {
+    "r2": 0.817038777338556,
+    "mae": 69.5540330454029,
+    "rmse": 129.63723247140564,
+    "mbe": -3.1189486137084423
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.760708260787503,
+      "mae": 65.52626819019541,
+      "rmse": 112.75794493465636,
+      "mbe": 16.24696916270759
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.6492343560721232,
+      "mae": 126.04385299626065,
+      "rmse": 191.65342575525364,
+      "mbe": -28.112115303938317
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9891637847379672,
+      "mae": 17.091977949752625,
+      "rmse": 31.177658329712504,
+      "mbe": 2.508300300105401
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "cloud_mean_10m",
+        "importance": 21.23927879333496,
+        "importance_pct": 50.48950571740612
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 14.81246566772461,
+        "importance_pct": 35.21183921999046
+      },
+      {
+        "feature": "cloud_std_10m",
+        "importance": 2.7334275245666504,
+        "importance_pct": 6.497838555282372
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 2.356821060180664,
+        "importance_pct": 5.602578672786017
+      },
+      {
+        "feature": "cloud_delta_2m",
+        "importance": 0.9247265458106995,
+        "importance_pct": 2.1982378345350346
+      }
+    ],
+    "weight": [
+      {
+        "feature": "cloud_delta_2m",
+        "importance": 768.0
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 746.0
+      },
+      {
+        "feature": "cloud_std_10m",
+        "importance": 516.0
+      },
+      {
+        "feature": "cloud_mean_10m",
+        "importance": 477.0
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 475.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 4630.45849609375
+      },
+      {
+        "feature": "cloud_delta_2m",
+        "importance": 4625.9765625
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 3957.33056640625
+      },
+      {
+        "feature": "cloud_mean_10m",
+        "importance": 3955.203369140625
+      },
+      {
+        "feature": "cloud_std_10m",
+        "importance": 3431.55419921875
+      }
+    ]
+  }
+}

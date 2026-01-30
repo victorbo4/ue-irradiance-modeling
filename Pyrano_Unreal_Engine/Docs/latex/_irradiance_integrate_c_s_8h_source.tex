@@ -1,0 +1,94 @@
+\doxysection{Irradiance\+Integrate\+CS.\+h}
+\hypertarget{_irradiance_integrate_c_s_8h_source}{}\label{_irradiance_integrate_c_s_8h_source}\index{Source/Pyrano/Private/Irradiance/IrradianceIntegrateCS.h@{Source/Pyrano/Private/Irradiance/IrradianceIntegrateCS.h}}
+\mbox{\hyperlink{_irradiance_integrate_c_s_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ IrradianceIntegrateCS.h:\ Compute\ shaders\ to\ integrate/reduce\ irradiance}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}GlobalShader.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}ShaderParameterStruct.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}RenderGraphResources.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/\ INTEGRATE\ C++\ SHADER\ IMPLEMENTATION\ -\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_f_irradiance_integrate_c_s}{FIrradianceIntegrateCS}}\ :\ \textcolor{keyword}{public}\ FGlobalShader}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_a30270000c3e8f90abc46f0af8c602c23}{DECLARE\_GLOBAL\_SHADER}}(\mbox{\hyperlink{class_f_irradiance_integrate_c_s}{FIrradianceIntegrateCS}});}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_a2f39eda3dae4db35a87cddb16f0e6689}{SHADER\_USE\_PARAMETER\_STRUCT}}(\mbox{\hyperlink{class_f_irradiance_integrate_c_s}{FIrradianceIntegrateCS}},\ FGlobalShader);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_a1b000a22e7d8927d61201c20496b3b42}{ThreadGroupSizeX}}\ =\ 8;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_aa24e96a71b150e4dc4a31132f5a95dd2}{ThreadGroupSizeY}}\ =\ 8;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }FUseWaveOps\ :\ SHADER\_PERMUTATION\_BOOL("{}USE\_WAVE\_OPS"{});}
+\DoxyCodeLine{00025\ \ \ \ \ using\ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_adb92bceb690fd7d8463f978c29c5ee46}{FPermutationDomain}}\ =\ TShaderPermutationDomain<FUseWaveOps>;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ BEGIN\_SHADER\_PARAMETER\_STRUCT(FParameters,\ )}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER(uint32,\ L)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER(uint32,\ GroupsX)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER(uint32,\ GroupsY)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER(FVector3f,\ SensorN)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER(float,\ k)}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER\_RDG\_TEXTURE\_SRV(Texture2DArray<float4>,\ Faces)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER\_RDG\_BUFFER\_UAV(RWStructuredBuffer<FVector4f>,\ PartialSums)}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ END\_SHADER\_PARAMETER\_STRUCT()}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ static\ void\ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_a879eeddabba160b7d6e08c541e399121}{ModifyCompilationEnvironment}}(const\ FGlobalShaderPermutationParameters\&\ Parameters,\ FShaderCompilerEnvironment\&\ OutEnvironment)}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ FGlobalShader::ModifyCompilationEnvironment(Parameters,\ OutEnvironment);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ OutEnvironment.SetDefine(TEXT(\textcolor{stringliteral}{"{}TGX"{}}),\ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_a1b000a22e7d8927d61201c20496b3b42}{ThreadGroupSizeX}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ OutEnvironment.SetDefine(TEXT(\textcolor{stringliteral}{"{}TGY"{}}),\ \mbox{\hyperlink{class_f_irradiance_integrate_c_s_aa24e96a71b150e4dc4a31132f5a95dd2}{ThreadGroupSizeY}});}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/\ REDUCE\ SHADER\ C++\ IMPLEMENTATION\ -\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00048\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_f_irradiance_reduce_c_s}{FIrradianceReduceCS}}\ :\ \textcolor{keyword}{public}\ FGlobalShader}
+\DoxyCodeLine{00049\ \{}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_f_irradiance_reduce_c_s_a04869ac941d625de3b05aeb3c50242e1}{DECLARE\_GLOBAL\_SHADER}}(\mbox{\hyperlink{class_f_irradiance_reduce_c_s}{FIrradianceReduceCS}});}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{class_f_irradiance_reduce_c_s_a3781ccdab05a0c3b24fe7f2636082463}{SHADER\_USE\_PARAMETER\_STRUCT}}(\mbox{\hyperlink{class_f_irradiance_reduce_c_s}{FIrradianceReduceCS}},\ FGlobalShader);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\ \mbox{\hyperlink{class_f_irradiance_reduce_c_s_a72842231317d10fc674b1f963d4d652f}{ThreadGroupSize}}\ =\ 256;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ BEGIN\_SHADER\_PARAMETER\_STRUCT(FParameters,\ )}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER(uint32,\ TotalPartials)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER\_RDG\_BUFFER\_SRV(StructuredBuffer<FVector4f>,\ InPartialSums)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ SHADER\_PARAMETER\_RDG\_BUFFER\_UAV(RWStructuredBuffer<FVector4f>,\ OutRGBMean)}
+\DoxyCodeLine{00062\ \ \ \ \ END\_SHADER\_PARAMETER\_STRUCT()}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ static\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_f_irradiance_reduce_c_s_a962dbc637094049ee84dd83a9cc9c094}{ModifyCompilationEnvironment}}(const\ FGlobalShaderPermutationParameters\&\ Parameters,\ FShaderCompilerEnvironment\&\ OutEnvironment)}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ FGlobalShader::ModifyCompilationEnvironment(Parameters,\ OutEnvironment);}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/\ HELPERS\ -\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_irradiance_compute}{IrradianceCompute}}}
+\DoxyCodeLine{00073\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Runs\ the\ shader\ and\ returns\ a\ buffer\ with\ the\ result}}
+\DoxyCodeLine{00075\ \ \ \ \ FRDGBufferRef\ \mbox{\hyperlink{namespace_irradiance_compute_ad8506a4c2588e653b7d1c2aaf4552b14}{ComputeIrradiance}}(}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ FRDGBuilder\&\ GraphBuilder,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ TRefCountPtr<IPooledRenderTarget>\ FaceRTs[6],}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ int32\ CubemapSize,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FVector3f\&\ SensorNormal);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Extracts\ the\ result\ to\ a\ persistent\ buffer\ for\ readback}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_irradiance_compute_a6fad304599a46b23bcca8438ca2b6f06}{ComputeAndExtractIrradiance}}(}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ FRDGBuilder\&\ GraphBuilder,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ TRefCountPtr<IPooledRenderTarget>\ FaceRTs[6],}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ int32\ CubemapSize,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ FVector3f\&\ SensorNormal,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ TRefCountPtr<FRDGPooledBuffer>*\ OutResultBuffer);}
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,7 @@
+<map id="UIrradianceExporter::EnqueueFaceEXR" name="UIrradianceExporter::EnqueueFaceEXR">
+<area shape="rect" id="Node000001" title="Image export." alt="" coords="5,39,143,81"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_exporter.html#af2645a4848f14ee445784cdbf0b2310a" title="Returns a short name for a cubemap face (PosX, NegX...)." alt="" coords="205,5,342,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,46,192,40,187,42,144,51"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_exporter.html#a2495f1384be3c6e942a88efe5616e94a" title="Formats UTC as a compact timestamp for export." alt="" coords="191,72,357,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,69,178,77,173,77,143,74"/>
+</map>

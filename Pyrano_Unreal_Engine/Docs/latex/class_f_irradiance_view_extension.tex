@@ -1,0 +1,244 @@
+\doxysection{FIrradiance\+View\+Extension Class Reference}
+\hypertarget{class_f_irradiance_view_extension}{}\label{class_f_irradiance_view_extension}\index{FIrradianceViewExtension@{FIrradianceViewExtension}}
+
+
+{\ttfamily \#include $<$Irradiance\+View\+Extension.\+h$>$}
+
+
+
+Inheritance diagram for FIrradiance\+View\+Extension\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_f_irradiance_view_extension__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for FIrradiance\+View\+Extension\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_f_irradiance_view_extension__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_irradiance_view_extension_a836c5e9f38cf48d5d793c710398e35ea}{FIrradiance\+View\+Extension}} (const FAuto\+Register \&Auto\+Reg)
+\item 
+virtual bool \mbox{\hyperlink{class_f_irradiance_view_extension_ab9724a9aed80d361086580d9dc9e4fd6}{Is\+Active\+This\+Frame\+\_\+\+Internal}} (const FScene\+View\+Extension\+Context \&Context) const override
+\item 
+virtual void \mbox{\hyperlink{class_f_irradiance_view_extension_a91ec3a850c4334eda4562024c4fd3f19}{Subscribe\+To\+Post\+Processing\+Pass}} (EPost\+Processing\+Pass Pass\+Id, const FScene\+View \&View, FAfter\+Pass\+Callback\+Delegate\+Array \&In\+Out\+Pass\+Callbacks, bool b\+Is\+Pass\+Enabled) override
+\begin{DoxyCompactList}\small\item\em Register callback for executing work during a specific post-\/processing pass. \end{DoxyCompactList}\item 
+FScreen\+Pass\+Texture \mbox{\hyperlink{class_f_irradiance_view_extension_a407a7380500ed8388bbbf9290296d04b}{Custom\+Post\+Processing}} (FRDGBuilder \&Graph\+Builder, const FScene\+View \&View, const FPost\+Process\+Material\+Inputs \&Inputs)
+\begin{DoxyCompactList}\small\item\em Custom post-\/process step\+: captures Scene\+Color for this frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_f_irradiance_view_extension_a42d07bdf5e7e7b1f7bbcdedd6d672d16}{Arm\+Single\+Shot}} (uint32 In\+Warmup\+Frames, uint32 Res)
+\begin{DoxyCompactList}\small\item\em Schedule a one-\/shot capture after a warmup period. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_f_irradiance_view_extension_a29879acf43ad60b79f1b1ac653705747}{Try\+Consume\+Captured\+Scene\+RT}} (TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ \&Out\+RT, FInt\+Point \&Out\+Size)
+\begin{DoxyCompactList}\small\item\em Retrieve the captured Scene\+Color RT if available (one-\/time consume). \end{DoxyCompactList}\item 
+const FInt\+Point \mbox{\hyperlink{class_f_irradiance_view_extension_a786aa7a7b698367b1be8c97ee272a034}{Get\+Captured\+Scene\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Size of the last captured Scene\+Color. \end{DoxyCompactList}\item 
+IPooled\+Render\+Target \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_f_irradiance_view_extension_ab7c8db139bb83eb03de5283bcfda253b}{Get\+Captured\+Scene\+RTPtr}} () const
+\begin{DoxyCompactList}\small\item\em Raw pointer to the last captured RT (may be null). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_f_irradiance_view_extension_a5aa2e23faffe47f50a6c64f6e0b11749}{Capture}} (FRDGBuilder \&Graph\+Builder, const FScene\+View \&View, const FPost\+Process\+Material\+Inputs \&Inputs, uint32 Res)
+\begin{DoxyCompactList}\small\item\em Copy Scene\+Color into Captured\+Scene\+RT at the given resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ uint32 $>$ \mbox{\hyperlink{class_f_irradiance_view_extension_aec9508db2be6e990f7ec282a23aaeff8}{Frames\+Until\+Capture}} \{ 0 \}
+\begin{DoxyCompactList}\small\item\em Frames left before capture triggers. \end{DoxyCompactList}\item 
+std\+::atomic$<$ uint32 $>$ \mbox{\hyperlink{class_f_irradiance_view_extension_a27316b4a7f673d6e99409f5ad392bba8}{Resolution\+Px}} \{ 1024 \}
+\begin{DoxyCompactList}\small\item\em Desired capture resolution. \end{DoxyCompactList}\item 
+TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ \mbox{\hyperlink{class_f_irradiance_view_extension_a36f44b2717b91835bb9ba68a432a20b2}{Captured\+Scene\+RT}}
+\begin{DoxyCompactList}\small\item\em Stored captured render target. \end{DoxyCompactList}\item 
+FInt\+Point \mbox{\hyperlink{class_f_irradiance_view_extension_af0bbef92da4b1f9268abcd70f416be34}{Captured\+Scene\+Size}} = FInt\+Point\+::\+Zero\+Value
+\begin{DoxyCompactList}\small\item\em Resolution of Captured\+Scene\+RT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_f_irradiance_view_extension_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_f_irradiance_view_extension_a836c5e9f38cf48d5d793c710398e35ea}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\index{FIrradianceViewExtension@{FIrradianceViewExtension}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{FIrradianceViewExtension()}{FIrradianceViewExtension()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a836c5e9f38cf48d5d793c710398e35ea} 
+FIrradiance\+View\+Extension\+::\+FIrradiance\+View\+Extension (\begin{DoxyParamCaption}\item[{const FAuto\+Register \&}]{Auto\+Reg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_f_irradiance_view_extension_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_f_irradiance_view_extension_a42d07bdf5e7e7b1f7bbcdedd6d672d16}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!ArmSingleShot@{ArmSingleShot}}
+\index{ArmSingleShot@{ArmSingleShot}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{ArmSingleShot()}{ArmSingleShot()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a42d07bdf5e7e7b1f7bbcdedd6d672d16} 
+void FIrradiance\+View\+Extension\+::\+Arm\+Single\+Shot (\begin{DoxyParamCaption}\item[{uint32}]{In\+Warmup\+Frames}{, }\item[{uint32}]{Res}{}\end{DoxyParamCaption})}
+
+
+
+Schedule a one-\/shot capture after a warmup period. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_f_irradiance_view_extension_a42d07bdf5e7e7b1f7bbcdedd6d672d16_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_f_irradiance_view_extension_a5aa2e23faffe47f50a6c64f6e0b11749}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!Capture@{Capture}}
+\index{Capture@{Capture}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{Capture()}{Capture()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a5aa2e23faffe47f50a6c64f6e0b11749} 
+void FIrradiance\+View\+Extension\+::\+Capture (\begin{DoxyParamCaption}\item[{FRDGBuilder \&}]{Graph\+Builder}{, }\item[{const FScene\+View \&}]{View}{, }\item[{const FPost\+Process\+Material\+Inputs \&}]{Inputs}{, }\item[{uint32}]{Res}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Copy Scene\+Color into Captured\+Scene\+RT at the given resolution. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_f_irradiance_view_extension_a5aa2e23faffe47f50a6c64f6e0b11749_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_f_irradiance_view_extension_a407a7380500ed8388bbbf9290296d04b}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!CustomPostProcessing@{CustomPostProcessing}}
+\index{CustomPostProcessing@{CustomPostProcessing}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{CustomPostProcessing()}{CustomPostProcessing()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a407a7380500ed8388bbbf9290296d04b} 
+FScreen\+Pass\+Texture FIrradiance\+View\+Extension\+::\+Custom\+Post\+Processing (\begin{DoxyParamCaption}\item[{FRDGBuilder \&}]{Graph\+Builder}{, }\item[{const FScene\+View \&}]{View}{, }\item[{const FPost\+Process\+Material\+Inputs \&}]{Inputs}{}\end{DoxyParamCaption})}
+
+
+
+Custom post-\/process step\+: captures Scene\+Color for this frame. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_f_irradiance_view_extension_a407a7380500ed8388bbbf9290296d04b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_f_irradiance_view_extension_a407a7380500ed8388bbbf9290296d04b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_f_irradiance_view_extension_ab7c8db139bb83eb03de5283bcfda253b}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!GetCapturedSceneRTPtr@{GetCapturedSceneRTPtr}}
+\index{GetCapturedSceneRTPtr@{GetCapturedSceneRTPtr}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{GetCapturedSceneRTPtr()}{GetCapturedSceneRTPtr()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_ab7c8db139bb83eb03de5283bcfda253b} 
+IPooled\+Render\+Target \texorpdfstring{$\ast$}{*} FIrradiance\+View\+Extension\+::\+Get\+Captured\+Scene\+RTPtr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Raw pointer to the last captured RT (may be null). 
+
+\Hypertarget{class_f_irradiance_view_extension_a786aa7a7b698367b1be8c97ee272a034}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!GetCapturedSceneSize@{GetCapturedSceneSize}}
+\index{GetCapturedSceneSize@{GetCapturedSceneSize}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{GetCapturedSceneSize()}{GetCapturedSceneSize()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a786aa7a7b698367b1be8c97ee272a034} 
+const FInt\+Point FIrradiance\+View\+Extension\+::\+Get\+Captured\+Scene\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Size of the last captured Scene\+Color. 
+
+\Hypertarget{class_f_irradiance_view_extension_ab9724a9aed80d361086580d9dc9e4fd6}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!IsActiveThisFrame\_Internal@{IsActiveThisFrame\_Internal}}
+\index{IsActiveThisFrame\_Internal@{IsActiveThisFrame\_Internal}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{IsActiveThisFrame\_Internal()}{IsActiveThisFrame\_Internal()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_ab9724a9aed80d361086580d9dc9e4fd6} 
+bool FIrradiance\+View\+Extension\+::\+Is\+Active\+This\+Frame\+\_\+\+Internal (\begin{DoxyParamCaption}\item[{const FScene\+View\+Extension\+Context \&}]{Context}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_f_irradiance_view_extension_a91ec3a850c4334eda4562024c4fd3f19}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!SubscribeToPostProcessingPass@{SubscribeToPostProcessingPass}}
+\index{SubscribeToPostProcessingPass@{SubscribeToPostProcessingPass}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{SubscribeToPostProcessingPass()}{SubscribeToPostProcessingPass()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a91ec3a850c4334eda4562024c4fd3f19} 
+void FIrradiance\+View\+Extension\+::\+Subscribe\+To\+Post\+Processing\+Pass (\begin{DoxyParamCaption}\item[{EPost\+Processing\+Pass}]{Pass\+Id}{, }\item[{const FScene\+View \&}]{View}{, }\item[{FAfter\+Pass\+Callback\+Delegate\+Array \&}]{In\+Out\+Pass\+Callbacks}{, }\item[{bool}]{b\+Is\+Pass\+Enabled}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Register callback for executing work during a specific post-\/processing pass. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_f_irradiance_view_extension_a91ec3a850c4334eda4562024c4fd3f19_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_f_irradiance_view_extension_a29879acf43ad60b79f1b1ac653705747}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!TryConsumeCapturedSceneRT@{TryConsumeCapturedSceneRT}}
+\index{TryConsumeCapturedSceneRT@{TryConsumeCapturedSceneRT}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{TryConsumeCapturedSceneRT()}{TryConsumeCapturedSceneRT()}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a29879acf43ad60b79f1b1ac653705747} 
+bool FIrradiance\+View\+Extension\+::\+Try\+Consume\+Captured\+Scene\+RT (\begin{DoxyParamCaption}\item[{TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ \&}]{Out\+RT}{, }\item[{FInt\+Point \&}]{Out\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Retrieve the captured Scene\+Color RT if available (one-\/time consume). 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_f_irradiance_view_extension_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_f_irradiance_view_extension_a36f44b2717b91835bb9ba68a432a20b2}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!CapturedSceneRT@{CapturedSceneRT}}
+\index{CapturedSceneRT@{CapturedSceneRT}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{CapturedSceneRT}{CapturedSceneRT}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a36f44b2717b91835bb9ba68a432a20b2} 
+TRef\+Count\+Ptr$<$IPooled\+Render\+Target$>$ FIrradiance\+View\+Extension\+::\+Captured\+Scene\+RT\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stored captured render target. 
+
+\Hypertarget{class_f_irradiance_view_extension_af0bbef92da4b1f9268abcd70f416be34}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!CapturedSceneSize@{CapturedSceneSize}}
+\index{CapturedSceneSize@{CapturedSceneSize}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{CapturedSceneSize}{CapturedSceneSize}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_af0bbef92da4b1f9268abcd70f416be34} 
+FInt\+Point FIrradiance\+View\+Extension\+::\+Captured\+Scene\+Size = FInt\+Point\+::\+Zero\+Value\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Resolution of Captured\+Scene\+RT. 
+
+\Hypertarget{class_f_irradiance_view_extension_aec9508db2be6e990f7ec282a23aaeff8}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!FramesUntilCapture@{FramesUntilCapture}}
+\index{FramesUntilCapture@{FramesUntilCapture}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{FramesUntilCapture}{FramesUntilCapture}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_aec9508db2be6e990f7ec282a23aaeff8} 
+std\+::atomic$<$uint32$>$ FIrradiance\+View\+Extension\+::\+Frames\+Until\+Capture \{ 0 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Frames left before capture triggers. 
+
+\Hypertarget{class_f_irradiance_view_extension_a27316b4a7f673d6e99409f5ad392bba8}\index{FIrradianceViewExtension@{FIrradianceViewExtension}!ResolutionPx@{ResolutionPx}}
+\index{ResolutionPx@{ResolutionPx}!FIrradianceViewExtension@{FIrradianceViewExtension}}
+\doxysubsubsection{\texorpdfstring{ResolutionPx}{ResolutionPx}}
+{\footnotesize\ttfamily \label{class_f_irradiance_view_extension_a27316b4a7f673d6e99409f5ad392bba8} 
+std\+::atomic$<$uint32$>$ FIrradiance\+View\+Extension\+::\+Resolution\+Px \{ 1024 \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Desired capture resolution. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Private/\+Irradiance/\mbox{\hyperlink{_irradiance_view_extension_8h}{Irradiance\+View\+Extension.\+h}}\item 
+Source/\+Pyrano/\+Private/\+Irradiance/\mbox{\hyperlink{_irradiance_view_extension_8cpp}{Irradiance\+View\+Extension.\+cpp}}\end{DoxyCompactItemize}

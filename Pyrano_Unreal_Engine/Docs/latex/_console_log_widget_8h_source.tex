@@ -1,0 +1,54 @@
+\doxysection{Console\+Log\+Widget.\+h}
+\hypertarget{_console_log_widget_8h_source}{}\label{_console_log_widget_8h_source}\index{Source/PyranoEditor/Private/UI/ConsoleLogWidget.h@{Source/PyranoEditor/Private/UI/ConsoleLogWidget.h}}
+\mbox{\hyperlink{_console_log_widget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ ConsoleLogWidget.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_console_log_line_item_8h}{UI/ConsoleLogLineItem.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_pyrano_console_log_sink_8h}{Logging/PyranoConsoleLogSink.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Blueprint/UserWidget.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Components/ListView.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}ConsoleLogWidget.generated.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ UCLASS()}
+\DoxyCodeLine{00015\ class\ PYRANOEDITOR\_API\ \mbox{\hyperlink{class_u_console_log_widget}{UConsoleLogWidget}}\ :\ public\ UUserWidget}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ IMPORTANT\ UMG:\ ListView:\ LV\_Console}}
+\DoxyCodeLine{00021\ \ \ \ \ UPROPERTY(meta\ =\ (BindWidget),\ BlueprintReadOnly)}
+\DoxyCodeLine{00022\ \ \ \ \ UListView*\ \mbox{\hyperlink{class_u_console_log_widget_aeb13e69a1f4361d7d12fad0437471ea6}{LV\_Console}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Auto-\/scroll\ enabled\ by\ default}}
+\DoxyCodeLine{00025\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_console_log_widget_af611286bec7c5a3d0a86c5ad27f7988d}{bAutoScroll}}\ =\ true;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00029\ \ \ \ \ int32\ \mbox{\hyperlink{class_u_console_log_widget_a97e30597cdf3e538985d08316b0eeca9}{MaxLines}}\ =\ 5000;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ UPROPERTY(BlueprintReadOnly,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_console_log_widget_a632f2ae583fbea3ed7766751dece435a}{bShowVerbose}}\ =\ false;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_widget_ab98a246d5677c4b5663ac01524882635}{ClearConsole}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_widget_aa1dc3bde0fd65af53d31f0367ed86847}{CopyAll}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_widget_a0b0c6dc23bbf3e958c74616cd4fc6727}{ToggleShowVerbose}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Console"{}})}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_widget_a030785da4f44e91b9a18a0e6633cf790}{ExportLogToFile}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ protected:}
+\DoxyCodeLine{00047\ \ \ \ \ virtual\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_console_log_widget_ab3a154c0c1bcf18e7a2010698ca14990}{NativeTick}}(const\ FGeometry\&\ MyGeometry,\ \textcolor{keywordtype}{float}\ InDeltaTime)\ override;}
+\DoxyCodeLine{00048\ \};}
+
+\end{DoxyCode}

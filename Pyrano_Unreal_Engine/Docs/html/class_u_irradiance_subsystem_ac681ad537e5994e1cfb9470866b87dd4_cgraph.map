@@ -1,0 +1,5 @@
+<map id="UIrradianceSubsystem::EndHijackView" name="UIrradianceSubsystem::EndHijackView">
+<area shape="rect" id="Node000001" title="Restore the previous player view target if the camera was hijacked." alt="" coords="5,5,160,48"/>
+<area shape="rect" id="Node000002" href="$namespace_irradiance_common_1_1_utils.html#acd21b099951e95f67c7a758546ac9875" title="Tries to return a game world suitable for rendering / scheduling." alt="" coords="208,5,374,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,24,195,26,189,27,160,29"/>
+</map>

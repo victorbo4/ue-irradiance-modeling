@@ -1,0 +1,117 @@
+\doxysection{Irradiance\+Scheduler.\+h}
+\hypertarget{_irradiance_scheduler_8h_source}{}\label{_irradiance_scheduler_8h_source}\index{Source/Pyrano/Public/Simulation/IrradianceScheduler.h@{Source/Pyrano/Public/Simulation/IrradianceScheduler.h}}
+\mbox{\hyperlink{_irradiance_scheduler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ IrradianceScheduler.h\ }}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Manages\ capture\ sequencing\ for\ sensors\ and\ time\ slots.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Tickable.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Subsystems/WorldSubsystem.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_config_8h}{Simulation/SimulationConfig.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_capture_request_8h}{Simulation/CaptureRequest.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}IrradianceScheduler.generated.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_irradiance_subsystem}{UIrradianceSubsystem}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }UPyranometerComponent;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{ESchedulerState}}\ :\ uint8\ \{\ \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79ae599161956d626eda4cb0a5ffb85271c}{Idle}},\ \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79a62411b76d12a4ad116da05c356ff9bf3}{Capturing}}\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ UCLASS()}
+\DoxyCodeLine{00021\ class\ PYRANO\_API\ \mbox{\hyperlink{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54}{UIrradianceScheduler}}\ :\ public\ UWorldSubsystem,\ public\ FTickableGameObject}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54}{UIrradianceScheduler}}()\ \ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_acad46ea7c860e2a972fb7debd56651e9}{\string~UIrradianceScheduler}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ -\/-\/-\/\ Public\ API\ -\/-\/-\/}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a4395030c4e2b089982300a7d5cb43417}{CaptureOnce}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a820fe9375420d4934dd45811ba7a419e}{StartSimulation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_irradiance_scheduler_ab0e6a156c26f9163303f503ddc2a31a7}{ClearQueue}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{ESchedulerState}}\ \mbox{\hyperlink{class_u_irradiance_scheduler_ae6df49456f56ac156a2a27b07a35f4c3}{GetState}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a28f0a1ca75ceca18128c30f411d150cd}{State}};\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ -\/-\/-\/\ FTickableGameObject\ Interface\ -\/-\/-\/}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Tick(\textcolor{keywordtype}{float}\ DeltaTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{virtual}\ TStatId\ \mbox{\hyperlink{class_u_irradiance_scheduler_ac0c7ae036f5a4730afcf4dbd12f79c3e}{GetStatId}}()\textcolor{keyword}{\ const\ override\ }\{\ RETURN\_QUICK\_DECLARE\_CYCLE\_STAT(\mbox{\hyperlink{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54}{UIrradianceScheduler}},\ STATGROUP\_Tickables);\ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ ETickableTickType\ \mbox{\hyperlink{class_u_irradiance_scheduler_a1bed979b420cf54f84af1402a8fcd652}{GetTickableTickType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ ETickableTickType::Always;\ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ UWorld*\ \mbox{\hyperlink{class_u_irradiance_scheduler_a727dd07f9bfdc049bdaf3a9063d115bf}{GetTickableGameObjectWorld}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ GetWorld();\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ -\/-\/-\/\ Subsystem\ /\ SunSky\ -\/-\/-\/}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ EnsureSubsystem();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ ConfigureSunSkyOnce(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSunSkyUTC(\textcolor{keyword}{const}\ FDateTime\&\ Utc);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ -\/-\/-\/\ Viewport\ -\/-\/-\/}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ ApplyViewport(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ RestoreViewport();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ -\/-\/-\/\ Helpers\ -\/-\/-\/}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ GetActiveSensors(TArray<UPyranometerComponent*>\&\ OutSensors)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{struct_f_capture_request}{FCaptureRequest}}\ MakeRequest(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim,\ UPyranometerComponent*\ Sensor)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ ConsumeIrradianceResult(\textcolor{keywordtype}{float}\&\ OutValue);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ -\/-\/-\/\ Simulation\ flow\ -\/-\/-\/}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildTimeSlots(\textcolor{keyword}{const}\ FDateTime\&\ StartUTC,\ \textcolor{keyword}{const}\ FDateTime\&\ EndUTC,\ \textcolor{keyword}{const}\ FTimespan\&\ Step);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ LaunchNextSimulationCapture(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ AdvanceTimeSlotOrFinish();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ -\/-\/-\/\ CaptureOnce\ flow\ -\/-\/-\/}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ LaunchNextOneShotCapture();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ -\/-\/-\/\ Shared\ flow\ -\/-\/-\/}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ PrepareSimulation(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Sim,\ \textcolor{keyword}{const}\ FDateTime\&\ InitialTimeUTC);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ LaunchCapture(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_capture_request}{FCaptureRequest}}\&\ Req);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ OnCaptureCompleted(\textcolor{keywordtype}{float}\ IrrValue);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_irradiance_scheduler_aa0a5a5137cd16afa6cfd83fd90026d8b}{IsSimulationMode}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a268c7a3937a1d290a3e333987f1d46d6}{Sensors}}.Num()\ >\ 0\ \&\&\ \mbox{\hyperlink{class_u_irradiance_scheduler_a3948d674a179ebf289425281a2d8f240}{TimeSlots}}.Num()\ >\ 0;\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ Internal\ }}
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{ESchedulerState}}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a28f0a1ca75ceca18128c30f411d150cd}{State}}\ =\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79ae599161956d626eda4cb0a5ffb85271c}{ESchedulerState::Idle}};}
+\DoxyCodeLine{00117\ \ \ \ \ TQueue<FCaptureRequest>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_a3d224443bcacdf4845405b2b34dd6fa2}{Queue}};}
+\DoxyCodeLine{00118\ \ \ \ \ TOptional<FCaptureRequest>\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_a336eb98000f1616ed62fb06bcb7dc10b}{Current}};}
+\DoxyCodeLine{00119\ \ \ \ \ TWeakObjectPtr<UIrradianceSubsystem>\ \mbox{\hyperlink{class_u_irradiance_scheduler_a4ee79f5fe1cc10bb1c39b0390afc8518}{Irr}};}
+\DoxyCodeLine{00120\ \ \ \ \ TArray<UPyranometerComponent*>\ \ \ \ \ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_a268c7a3937a1d290a3e333987f1d46d6}{Sensors}};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ Simulation}}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_a60bd98db18d0cef6bdda8bc8866493b1}{BaseSimConfig}};}
+\DoxyCodeLine{00124\ \ \ \ \ TArray<FDateTime>\ \ \ \mbox{\hyperlink{class_u_irradiance_scheduler_a3948d674a179ebf289425281a2d8f240}{TimeSlots}};}
+\DoxyCodeLine{00125\ \ \ \ \ int32\ \mbox{\hyperlink{class_u_irradiance_scheduler_a6f65ae1f6a6579265b6257bf688c40c3}{TimeIndex}}\ \ \ =\ 0;}
+\DoxyCodeLine{00126\ \ \ \ \ int32\ \mbox{\hyperlink{class_u_irradiance_scheduler_afc080618653247fc69bfe4616a54d956}{SensorIndex}}\ =\ 0;}
+\DoxyCodeLine{00127\ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a1cee66496f0d5077875d8b012ad4246a}{bViewportForced}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_irradiance_scheduler_a2c28f547d310878bf86d4cb47105491c}{bCaptureInFlight}}\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{00133\ \};}
+
+\end{DoxyCode}

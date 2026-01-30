@@ -1,0 +1,63 @@
+@startuml viewextensionuml
+title
+Figura B.1.1 – Diagrama de la clase FIrradianceViewExtension
+end title
+' === CONFIGURACIÓN ===
+skinparam classAttributeIconSize 0  
+
+skinparam linetype ortho            
+skinparam shadowing false           
+skinparam monochrome true           
+skinparam packageStyle rectangle 
+
+left to right direction        
+
+' === CLASES ===
+class FSceneViewExtensionBase {
+    (Clase base del Motor)
+}
+
+class IPooledRenderTarget {
+    (Recurso de Renderizado)
+}
+
+class FRDGBuilder {
+    (Render Graph Builder)
+}
+
+' === CLASE PRINCIPAL ===
+
+class FIrradianceViewExtension {
+    ' == Estado Interno ==
+    - FramesUntilCapture : std::atomic<uint32>
+    - ResolutionPx : std::atomic<uint32>
+    - CapturedSceneRT : TRefCountPtr<IPooledRenderTarget>
+    - CapturedSceneSize : FIntPoint
+
+    ' == Ciclo de Vida ==
+    + FIrradianceViewExtension(AutoReg : FAutoRegister)
+    + IsActiveThisFrame_Internal(Context : FSceneViewExtensionContext) : bool
+
+    ' == Post-Procesado (Hook) ==
+    + SubscribeToPostProcessingPass(PassId : EPostProcessingPass, View : FSceneView, OutCallbacks : DelegateArray, bEnabled : bool) : void
+    + CustomPostProcessing(GraphBuilder : FRDGBuilder, View : FSceneView, Inputs : FPostProcessMaterialInputs) : FScreenPassTexture
+
+    ' == API Pública (Control de Captura) ==
+    + ArmSingleShot(InWarmupFrames : uint32, Res : uint32) : void
+    + TryConsumeCapturedSceneRT(OutRT : TRefCountPtr<IPooledRenderTarget>&, OutSize : FIntPoint&) : bool
+    + GetCapturedSceneSize() : FIntPoint
+    + GetCapturedSceneRTPtr() : IPooledRenderTarget*
+
+    ' == Métodos Privados ==
+    - Capture(GraphBuilder : FRDGBuilder, View : FSceneView, Inputs : FPostProcessMaterialInputs, Res : uint32) : void
+}
+
+' === RELACIONES ===
+
+' Herencia: Es vital mostrar que extiende de Unreal
+FSceneViewExtensionBase <|-- FIrradianceViewExtension
+
+' Dependencia: Usa recursos de renderizado
+FIrradianceViewExtension ..> IPooledRenderTarget : gestiona >
+FIrradianceViewExtension ..> FRDGBuilder : usa >
+@enduml

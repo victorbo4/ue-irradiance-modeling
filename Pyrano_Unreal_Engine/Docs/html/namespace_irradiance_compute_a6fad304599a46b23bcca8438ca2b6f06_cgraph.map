@@ -1,0 +1,7 @@
+<map id="IrradianceCompute::ComputeAndExtractIrradiance" name="IrradianceCompute::ComputeAndExtractIrradiance">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,202,48"/>
+<area shape="rect" id="Node000002" href="$namespace_irradiance_compute.html#ad8506a4c2588e653b7d1c2aaf4552b14" title=" " alt="" coords="250,5,389,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,24,237,26,232,27,202,29"/>
+<area shape="rect" id="Node000003" href="$_irradiance_integrate_c_s_8cpp.html#a6d8400984c092d383c90ad4cd22a8462" title="Creates a 2D texture array from the six cubemap face render targets." alt="" coords="437,13,554,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,24,424,27,419,27,389,29"/>
+</map>

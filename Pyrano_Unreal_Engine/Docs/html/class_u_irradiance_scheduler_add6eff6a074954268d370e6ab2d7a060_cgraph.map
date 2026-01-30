@@ -1,0 +1,12 @@
+<map id="UIrradianceScheduler::LaunchNextOneShotCapture" name="UIrradianceScheduler::LaunchNextOneShotCapture">
+<area shape="rect" id="Node000001" title="Launches the next pending one&#45;shot capture request, or finalizes if none." alt="" coords="5,39,202,81"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a4f3d8698a24d9ab3b2f5df9fcd4364e4" title="Starts a six&#45;face capture for the given request." alt="" coords="250,72,396,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,72,237,80,232,80,202,78"/>
+<area shape="rect" id="Node000005" href="$class_u_irradiance_scheduler.html#ae8f8cd8bd9eccb9abdf17b9f023bea00" title="Restores the viewport if it was previously forced." alt="" coords="250,5,396,48"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="201,42,237,39,232,41,202,48"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_scheduler.html#a3a1998734dd679049d860179bf9b0222" title="Ensures the IrradianceSubsystem pointer is valid for the current world." alt="" coords="461,9,607,52"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="396,69,444,57,449,56,397,74"/>
+<area shape="rect" id="Node000004" href="$struct_f_capture_request.html#ab63ce8c8eadcb5393d9993aeab920660" title=" " alt="" coords="444,80,624,107"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="397,91,431,93,426,93,397,96"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="396,25,448,29,443,29,397,31"/>
+</map>

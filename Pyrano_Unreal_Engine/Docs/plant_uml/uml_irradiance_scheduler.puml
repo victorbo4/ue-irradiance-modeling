@@ -1,0 +1,101 @@
+@startuml irradiancesubsystem
+title
+Figura B.1.3 – Diagrama de la clase UIrradianceScheduler
+end title
+' === CONFIGURACIÓN ===
+skinparam classAttributeIconSize 0  
+
+skinparam linetype ortho            
+skinparam shadowing false           
+skinparam monochrome true           
+skinparam packageStyle rectangle 
+
+left to right direction        
+
+' === CLASES ===
+struct FSimConfig <<struct>> {
+    //(Ver definición detallada en//
+     //el Anexo B.1.2: Subsistema del Editor)//
+}
+
+struct FCaptureRequest <<struct>> {
+    ' == Datos Espaciales ==
+    + PosWS : FVector
+    + NormalWS : FVector
+    + SidePx : int32
+    + WarmupFrames : uint32
+    
+    ' == Identificadores ==
+    + RequestId : FGuid
+    + SensorId : FGuid
+    + SensorName : FString
+    + TimestampUTC : FDateTime
+    
+    ' == Resultados ==
+    + SkyViewFactor : float
+
+    ' == API (Factory & Builder) ==
+    + {static} Make(Pos : FVector, Normal : FVector, ...) : FCaptureRequest
+    + IsValid() : bool
+    + WithSidePx(InSidePx : int32) : FCaptureRequest
+    + WithWarmup(InWarmup : uint32) : FCaptureRequest
+    + WithTimestamp(InUTC : FDateTime) : FCaptureRequest
+    + WithSensorId(InId : FGuid) : FCaptureRequest
+    + ToString() : FString
+}
+
+enum ESchedulerState {
+    Idle
+    Capturing
+}
+
+' === CLASE PRINCIPAL ===
+
+class UIrradianceScheduler {
+    ' == Estado Interno ==
+    - State : ESchedulerState
+    - Queue : TQueue<FCaptureRequest>
+    - Current : TOptional<FCaptureRequest>
+    - Irr : TWeakObjectPtr<UIrradianceSubsystem>
+    - Sensors : TArray<UPyranometerComponent*>
+    
+    ' == Variables de Simulación ==
+    - BaseSimConfig : FSimConfig
+    - TimeSlots : TArray<FDateTime>
+    - TimeIndex : int32
+    - SensorIndex : int32
+    - bViewportForced : bool
+    - bCaptureInFlight : bool
+
+    ' == Métodos Públicos ==
+    + CaptureOnce(Sim : FSimConfig) : void
+    + StartSimulation(Sim : FSimConfig) : void
+    + ClearQueue() : void
+    + GetState() : ESchedulerState
+
+    ' == Métodos Privados ==
+    - EnsureSubsystem() : void
+    - ConfigureSunSkyOnce(Sim : FSimConfig) : void
+    - SetSunSkyUTC(Utc : FDateTime) : void
+    - ApplyViewport(Sim : FSimConfig) : void
+    - GetActiveSensors(OutSensors : TArray<UPyranometerComponent*>&) : void
+    - MakeRequest(Sim : FSimConfig, Sensor : UPyranometerComponent*) : FCaptureRequest
+    - ConsumeIrradianceResult(OutValue : float&) : bool
+    - BuildTimeSlots(StartUTC : FDateTime, EndUTC : FDateTime, Step : FTimespan) : void
+    - LaunchNextSimulationCapture(Sim : FSimConfig) : void
+    - AdvanceTimeSlotOrFinish() : void
+    - PrepareSimulation(Sim : FSimConfig, InitialTimeUTC : FDateTime) : void
+    - LaunchCapture(Req : FCaptureRequest&) : void
+    - OnCaptureCompleted(IrrValue : float) : void
+}
+
+' === RELACIONES ===
+
+' Dependencias de tipos
+UIrradianceScheduler ..> FSimConfig : usa >
+UIrradianceScheduler ..> FCaptureRequest : gestiona >
+
+' Agregación de punteros (Sensores y Subsystem)
+UIrradianceScheduler o-- "0..*" UPyranometerComponent : referencia >
+UIrradianceScheduler o-- "0..1" UIrradianceSubsystem : apunta (Irr) >
+@enduml

@@ -1,0 +1,68 @@
+\doxysection{Source/\+Pyrano/\+Public/\+Subsystems/\+Irradiance\+Subsystem.h File Reference}
+\hypertarget{_irradiance_subsystem_8h}{}\label{_irradiance_subsystem_8h}\index{Source/Pyrano/Public/Subsystems/IrradianceSubsystem.h@{Source/Pyrano/Public/Subsystems/IrradianceSubsystem.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+{\ttfamily \#include "{}Subsystems/\+World\+Subsystem.\+h"{}}\newline
+{\ttfamily \#include "{}Tickable.\+h"{}}\newline
+{\ttfamily \#include "{}RHIGPUReadback.\+h"{}}\newline
+{\ttfamily \#include "{}Render\+Graph\+Resources.\+h"{}}\newline
+{\ttfamily \#include "{}Irradiance/\+Irradiance\+View\+Extension.\+h"{}}\newline
+{\ttfamily \#include "{}Irradiance/\+Irradiance\+Exporter.\+h"{}}\newline
+{\ttfamily \#include "{}Ineichen\+Perez\+Clear\+Sky.\+h"{}}\newline
+{\ttfamily \#include "{}Simulation/\+Capture\+Request.\+h"{}}\newline
+{\ttfamily \#include "{}Irradiance\+Subsystem.\+generated.\+h"{}}\newline
+Include dependency graph for Irradiance\+Subsystem.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_subsystem_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_subsystem_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_f_capture_context}{FCapture\+Context}}
+\item 
+class \mbox{\hyperlink{class_u_irradiance_subsystem}{UIrradiance\+Subsystem}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023}{ECapture\+State}} \+: uint8 \{ \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae599161956d626eda4cb0a5ffb85271c}{Idle}}
+, \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023a62411b76d12a4ad116da05c356ff9bf3}{Capturing}}
+, \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae9d0d8f1ac8fb7f997cad98848f7844e}{Waiting\+Readback}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{_irradiance_subsystem_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023}\index{IrradianceSubsystem.h@{IrradianceSubsystem.h}!ECaptureState@{ECaptureState}}
+\index{ECaptureState@{ECaptureState}!IrradianceSubsystem.h@{IrradianceSubsystem.h}}
+\doxysubsubsection{\texorpdfstring{ECaptureState}{ECaptureState}}
+{\footnotesize\ttfamily \label{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023} 
+enum class \mbox{\hyperlink{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023}{ECapture\+State}} \+: uint8\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Idle@{Idle}!IrradianceSubsystem.h@{IrradianceSubsystem.h}}\index{IrradianceSubsystem.h@{IrradianceSubsystem.h}!Idle@{Idle}}}\Hypertarget{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae599161956d626eda4cb0a5ffb85271c}\label{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae599161956d626eda4cb0a5ffb85271c} 
+Idle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Capturing@{Capturing}!IrradianceSubsystem.h@{IrradianceSubsystem.h}}\index{IrradianceSubsystem.h@{IrradianceSubsystem.h}!Capturing@{Capturing}}}\Hypertarget{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023a62411b76d12a4ad116da05c356ff9bf3}\label{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023a62411b76d12a4ad116da05c356ff9bf3} 
+Capturing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WaitingReadback@{WaitingReadback}!IrradianceSubsystem.h@{IrradianceSubsystem.h}}\index{IrradianceSubsystem.h@{IrradianceSubsystem.h}!WaitingReadback@{WaitingReadback}}}\Hypertarget{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae9d0d8f1ac8fb7f997cad98848f7844e}\label{_irradiance_subsystem_8h_adaf091de3734820aa6007fc0837bc023ae9d0d8f1ac8fb7f997cad98848f7844e} 
+Waiting\+Readback&\\
+\hline
+
+\end{DoxyEnumFields}

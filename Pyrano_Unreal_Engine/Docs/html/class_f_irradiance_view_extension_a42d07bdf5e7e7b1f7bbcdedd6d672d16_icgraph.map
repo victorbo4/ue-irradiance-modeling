@@ -1,0 +1,5 @@
+<map id="FIrradianceViewExtension::ArmSingleShot" name="FIrradianceViewExtension::ArmSingleShot">
+<area shape="rect" id="Node000001" title="Schedule a one&#45;shot capture after a warmup period." alt="" coords="236,5,409,48"/>
+<area shape="rect" id="Node000002" href="$struct_f_capture_context.html#a98de327f29d3e176a517fb20099f0b80" title=" " alt="" coords="5,13,188,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,27,188,29,188,24,223,26"/>
+</map>

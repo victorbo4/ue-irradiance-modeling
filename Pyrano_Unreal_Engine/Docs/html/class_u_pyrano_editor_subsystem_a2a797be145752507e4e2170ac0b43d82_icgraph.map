@@ -1,0 +1,8 @@
+<map id="UPyranoEditorSubsystem::EstimateSimDuration" name="UPyranoEditorSubsystem::EstimateSimDuration">
+<area shape="rect" id="Node000001" title="Estimates the total simulation duration from samples, sensors and resolution." alt="" coords="462,35,634,77"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#aff2465394f6335550f1ee02a6725e648" title="Validates a full simulation configuration and returns a detailed result." alt="" coords="242,5,414,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="444,42,414,41,414,35,449,42"/>
+<area shape="rect" id="Node000003" href="$class_u_pyrano_editor_subsystem.html#a66b820c9aae05fb59340fae1abe43379" title=" " alt="" coords="5,35,194,77"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="444,59,414,63,242,63,194,62,194,56,242,57,414,57,449,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="224,40,195,47,194,41,229,39"/>
+</map>

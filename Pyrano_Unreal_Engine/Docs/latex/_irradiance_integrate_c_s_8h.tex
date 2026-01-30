@@ -1,0 +1,41 @@
+\doxysection{Source/\+Pyrano/\+Private/\+Irradiance/\+Irradiance\+Integrate\+CS.h File Reference}
+\hypertarget{_irradiance_integrate_c_s_8h}{}\label{_irradiance_integrate_c_s_8h}\index{Source/Pyrano/Private/Irradiance/IrradianceIntegrateCS.h@{Source/Pyrano/Private/Irradiance/IrradianceIntegrateCS.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+{\ttfamily \#include "{}Global\+Shader.\+h"{}}\newline
+{\ttfamily \#include "{}Shader\+Parameter\+Struct.\+h"{}}\newline
+{\ttfamily \#include "{}Render\+Graph\+Resources.\+h"{}}\newline
+Include dependency graph for Irradiance\+Integrate\+CS.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_integrate_c_s_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_irradiance_integrate_c_s_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_f_irradiance_integrate_c_s}{FIrradiance\+Integrate\+CS}}
+\item 
+class \mbox{\hyperlink{class_f_irradiance_reduce_c_s}{FIrradiance\+Reduce\+CS}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_irradiance_compute}{Irradiance\+Compute}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+FRDGBuffer\+Ref \mbox{\hyperlink{namespace_irradiance_compute_ad8506a4c2588e653b7d1c2aaf4552b14}{Irradiance\+Compute\+::\+Compute\+Irradiance}} (FRDGBuilder \&Graph\+Builder, TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ Face\+RTs\mbox{[}6\mbox{]}, int32 Cubemap\+Size, const FVector3f \&Sensor\+Normal)
+\item 
+void \mbox{\hyperlink{namespace_irradiance_compute_a6fad304599a46b23bcca8438ca2b6f06}{Irradiance\+Compute\+::\+Compute\+And\+Extract\+Irradiance}} (FRDGBuilder \&Graph\+Builder, TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ Face\+RTs\mbox{[}6\mbox{]}, int32 Cubemap\+Size, const FVector3f \&Sensor\+Normal, TRef\+Count\+Ptr$<$ FRDGPooled\+Buffer $>$ \texorpdfstring{$\ast$}{*}Out\+Result\+Buffer)
+\end{DoxyCompactItemize}

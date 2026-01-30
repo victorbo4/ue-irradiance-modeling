@@ -1,0 +1,31 @@
+\doxysection{Irradiance\+Configuration.\+h}
+\hypertarget{_irradiance_configuration_8h_source}{}\label{_irradiance_configuration_8h_source}\index{Source/PyranoEditor/Private/Data/IrradianceConfiguration.h@{Source/PyranoEditor/Private/Data/IrradianceConfiguration.h}}
+\mbox{\hyperlink{_irradiance_configuration_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ IrradianceConfiguration.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Applies\ all\ render\ settings\ and\ CVars\ needed\ for\ irradiance\ capture.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_config_8h}{Simulation/SimulationConfig.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Containers/Array.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Misc/Optional.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_f_irradiance_c_var_state}{FIrradianceCVarState}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ FString\ \mbox{\hyperlink{struct_f_irradiance_c_var_state_a5c4e2de50c45299967f3d68151ccd987}{Name}};}
+\DoxyCodeLine{00015\ \ \ \ \ TOptional<int32>\ \mbox{\hyperlink{struct_f_irradiance_c_var_state_ae38809dd6d2854b5bca0f1cbf2b05be2}{IntValue}};}
+\DoxyCodeLine{00016\ \ \ \ \ TOptional<float>\ \mbox{\hyperlink{struct_f_irradiance_c_var_state_aa78a7d2d93c11966567cd166597709c2}{FloatValue}};}
+\DoxyCodeLine{00017\ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_f_irradiance_render_config}{FIrradianceRenderConfig}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_f_irradiance_render_config_a2880f5d9df2d1f4e81ecb89ca2f4e0e6}{ApplyIrradianceConfig}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ Config,\ TArray<FIrradianceCVarState>\&\ OutPreviousValues);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_f_irradiance_render_config_ad773a5b70d7c97b6076f1188cb90ab33}{RestoreIrradianceConfig}}(\textcolor{keyword}{const}\ TArray<FIrradianceCVarState>\&\ PreviousValues);}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+
+\end{DoxyCode}

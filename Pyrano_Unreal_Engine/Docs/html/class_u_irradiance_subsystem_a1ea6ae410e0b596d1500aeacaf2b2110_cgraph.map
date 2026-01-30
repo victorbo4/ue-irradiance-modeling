@@ -1,0 +1,12 @@
+<map id="UIrradianceSubsystem::StartSixFaceCapture" name="UIrradianceSubsystem::StartSixFaceCapture">
+<area shape="rect" id="Node000001" title="Begin a new 6&#45;face capture using the given request description." alt="" coords="5,27,160,69"/>
+<area shape="rect" id="Node000002" href="$struct_f_capture_request.html#a710ed7865f56e9c032d52fd1a4cd2761" title=" " alt="" coords="208,5,379,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,35,195,32,190,33,161,40"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#a10314c056f1375fa327c1bdd2c0c79b6" title="Start capture of a single face at PosWS / RotWS." alt="" coords="216,56,370,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,56,203,64,198,65,160,61"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_subsystem.html#a07d7292927f509ea227ab101994ab4b6" title="Ensure that the capture camera exists and is configured." alt="" coords="427,27,589,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="370,64,409,62,414,61,371,69"/>
+<area shape="rect" id="Node000005" href="$namespace_irradiance_common_1_1_utils.html#acd21b099951e95f67c7a758546ac9875" title="Tries to return a game world suitable for rendering / scheduling." alt="" coords="637,56,804,99"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="371,77,427,79,589,79,624,81,619,81,589,84,427,84,371,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="590,57,625,64,619,64,590,62"/>
+</map>

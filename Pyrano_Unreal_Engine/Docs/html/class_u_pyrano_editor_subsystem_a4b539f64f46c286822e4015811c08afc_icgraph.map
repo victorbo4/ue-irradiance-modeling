@@ -1,0 +1,5 @@
+<map id="UPyranoEditorSubsystem::StartSimulation" name="UPyranoEditorSubsystem::StartSimulation">
+<area shape="rect" id="Node000001" title="Starts a full multi&#45;sensor, multi&#45;time simulation in PIE." alt="" coords="242,5,414,48"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#a66b820c9aae05fb59340fae1abe43379" title=" " alt="" coords="5,5,194,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="223,27,194,29,194,24,229,26"/>
+</map>

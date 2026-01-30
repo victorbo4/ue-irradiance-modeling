@@ -1,0 +1,118 @@
+\doxysection{Pyrano\+Editor\+Subsystem.\+h}
+\hypertarget{_pyrano_editor_subsystem_8h_source}{}\label{_pyrano_editor_subsystem_8h_source}\index{Source/PyranoEditor/Private/Subsystems/PyranoEditorSubsystem.h@{Source/PyranoEditor/Private/Subsystems/PyranoEditorSubsystem.h}}
+\mbox{\hyperlink{_pyrano_editor_subsystem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ PyranoEditorSubsystem.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Acts\ as\ the\ link\ between\ the\ widget\ and\ the\ runtime\ simulation\ workflow.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}EngineUtils.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Engine/EngineTypes.h"{}}\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}EditorSubsystem.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_pyrano_console_log_sink_8h}{Logging/PyranoConsoleLogSink.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_capture_request_8h}{Simulation/CaptureRequest.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_sensor_info_8h}{Data/SensorInfo.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_simulation_config_8h}{Simulation/SimulationConfig.h}}"{}}\ \ \ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_irradiance_configuration_8h}{Data/IrradianceConfiguration.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_validation_result_8h}{Data/ValidationResult.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}PyranoEditorSubsystem.generated.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \mbox{\hyperlink{_pyrano_editor_subsystem_8h_abca18953ae2b45571206ece9b68d8d51}{DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE}}(FOnPyranoSimulationEnded);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ UCLASS()}
+\DoxyCodeLine{00030\ class\ PYRANOEDITOR\_API\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a53a0c98c285488db2aa5703b1774b341}{UPyranoEditorSubsystem}}\ :\ public\ UEditorSubsystem}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a53a0c98c285488db2aa5703b1774b341}{UPyranoEditorSubsystem}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a66b820c9aae05fb59340fae1abe43379}{\string~UPyranoEditorSubsystem}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_af89217f95db642bb9a0e1bac5fed181f}{Initialize}}(FSubsystemCollectionBase\&\ Collection)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_accb819699174d7a462e7e914047f5c28}{Deinitialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ -\/-\/-\/\ Public\ API\ -\/-\/-\/}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00045\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Planner"{}})}
+\DoxyCodeLine{00046\ \ \ \ \ static\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ad97823fc1a0d5cd2c5e9841bf10ee337}{BrowseForOutputFolder}}(FDirectoryPath\&\ InOutPath);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00049\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Sensors"{}})}
+\DoxyCodeLine{00050\ \ \ \ \ TArray<\mbox{\hyperlink{struct_f_sensor_info}{FSensorInfo}}>\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a1e18df0b1f82756989cd7cf5f6c15386}{QuerySensors}}(\textcolor{keywordtype}{bool}\ bOnlyEnabled\ =\ false)\ const;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Sensors"{}})}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a22e33d28e9d2341cc24463f718f9943a}{SetSensorEnabled}}(const\ FGuid\&\ SensorGuid,\ \textcolor{keywordtype}{bool}\ bEnabled)\ const;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00057\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Parsing"{}})}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ad63c375e352954cb971b8037e828e363}{TryParseDateTime}}(const\ FString\&\ DateYMD,\ const\ FString\&\ TimeHM,\ FDateTime\&\ OutDT,\ FString\&\ OutError);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00061\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Parsing"{}})}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a7d27d18e08278aeada87121b4f07e631}{TryParseIntervalString}}(const\ FString\&\ In,\ FTimespan\&\ OutInterval,\ FString\&\ OutError);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Validation"{}})}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{struct_f_validation_result}{FValidationResult}}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_aff2465394f6335550f1ee02a6725e648}{ValidateConfig}}(const\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ InConfig);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00069\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Parsing"{}})}
+\DoxyCodeLine{00070\ \ \ \ \ FTimespan\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a2a797be145752507e4e2170ac0b43d82}{EstimateSimDuration}}(const\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ C,\ int32\ EstimatedSamples,\ int32\ EnabledSensors,\ \textcolor{keywordtype}{float}\ MsPerFrameRaster\ \textcolor{comment}{/*=12.f*/},\ \textcolor{keywordtype}{float}\ MsPerFramePath\ \ \textcolor{comment}{/*=35.f*/});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Simulation"{}})}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_acdc7acb4e1599227d50feefdf1867c66}{CaptureOnce}}(const\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ InConfig);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00077\ \ \ \ \ UFUNCTION(BlueprintCallable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Simulation"{}})}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a4b539f64f46c286822e4015811c08afc}{StartSimulation}}(const\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ InConfig);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00081\ \ \ \ \ UPROPERTY(BlueprintAssignable,\ Category\ =\ \textcolor{stringliteral}{"{}Pyrano|Simulation"{}})}
+\DoxyCodeLine{00082\ \ \ \ \ FOnPyranoSimulationEnded\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a3e2eeb6978f1f63e012b4e9284d54209}{OnSimulationEnded}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ private:}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ -\/-\/-\/\ PIE\ Control\ -\/-\/-\/}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a30bd4878e55cf4affd5d950f17e85062}{StartNewPIE}}(int32\ Width,\ int32\ Height,\ \textcolor{keywordtype}{bool}\ bUseCustomPos,\ FIntPoint\ CustomPos);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ae6108e9fda1f9471c24a39988d5122d6}{OnPostPIEStarted}}(\textcolor{keywordtype}{bool}\ bIsSimulating);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a1b69ad32d7aad1655e600c9802b7ef9d}{OnEndPIE}}(\textcolor{keywordtype}{bool}\ bIsSimulating);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ab0ad1482f10e23d383332295e0ddac03}{StartPIEWithConfig}}(const\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\&\ InConfig,\ \textcolor{keywordtype}{bool}\ bIsSimulation);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ -\/-\/-\/\ Worlds\ -\/-\/-\/}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00103\ \ \ \ \ static\ UWorld*\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a2adad0d3fd5864acbe4205b167cf4937}{GetActiveWorld}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \ \ UWorld*\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ac3e1f1b78bd830e95a7b52fc3bff7ed9}{EnsurePIEWorld}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ -\/-\/-\/\ Startup\ conditions\ -\/-\/-\/}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ab0de335beccfcc58219f322f7d03a67c}{EnsureLocalStandalonePIE}}(UWorld*\ PlayWorld)\ const;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a5bd1813278b5277f9b9677faf4bc9d85}{EnsureViewportReady}}(UWorld*\ PlayWorld);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_aac7636240544517fce7c46ac0df245a3}{ScheduleStartAndMonitor}}(UWorld*\ PlayWorld);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{comment}{//\ -\/-\/-\/\ CVar\ Handling\ -\/-\/-\/}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ab354ffee4ea9cc5e40566874111fd461}{ApplyCVarConfig}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ TArray<\mbox{\hyperlink{struct_f_irradiance_c_var_state}{FIrradianceCVarState}}>\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_adb4fcd22abe6f83680bd4145495fa1da}{SavedCVarState}};}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a4169c4a17681d941690fe463f501fc6d}{bCVarConfigApplied}}\ =\ false;}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ -\/-\/-\/\ Internal\ state\ -\/-\/-\/}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a6288aceb2266c15514dc262b2b11c2c4}{bPendingIsSimulation}}\ =\ false;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_abdb91e52fec5511c75e1ddb4b67929b3}{bStartTriggered}}\ =\ false;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_ad1fb2b0cdfe060a1a404520bd2142ebb}{PendingSimConfig}};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00139\ \ \ \ \ FTimerHandle\ \mbox{\hyperlink{class_u_pyrano_editor_subsystem_a429b88df8a06eabcd5d9d9dbf931c148}{MonitorTimerHandle}};}
+\DoxyCodeLine{00140\ \};}
+
+\end{DoxyCode}

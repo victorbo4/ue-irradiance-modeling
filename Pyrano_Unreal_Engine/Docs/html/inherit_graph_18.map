@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,149,32"/>
+<area shape="rect" id="Node000001" href="$class_u_console_log_line_entry.html" title="Displays a single log line inside the editor log list entry widget." alt="" coords="197,5,352,32"/>
+<area shape="poly" id="edge12_Node000000_Node000001" title=" " alt="" coords="164,16,199,18,194,19,165,21"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,56,127,83"/>
+<area shape="poly" id="edge13_Node000002_Node000001" title=" " alt="" coords="141,50,217,33,222,32,143,55"/>
+<area shape="rect" id="Node000003" href="$class_u_console_log_widget.html" title=" " alt="" coords="204,56,345,83"/>
+<area shape="poly" id="edge14_Node000002_Node000003" title=" " alt="" coords="142,67,206,69,201,70,143,72"/>
+</map>

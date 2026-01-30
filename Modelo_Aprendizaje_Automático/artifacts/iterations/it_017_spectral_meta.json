@@ -1,0 +1,162 @@
+{
+  "exp_id": "it_017_spectral_e0a1160bbf",
+  "cfg": {
+    "iteration_id": "it_017_spectral",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Valores raw de simulación.\n    ¿Modelará mejor si le damos el espectro?\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "sim": [
+        "sim_dhi_r_lux",
+        "sim_dhi_g_lux",
+        "sim_dhi_b_lux",
+        "sim_dni_lux",
+        "cloud_opacity"
+      ]
+    },
+    "feature_set_name": "sim",
+    "model_params": {
+      "n_estimators": 1200,
+      "learning_rate": 0.02,
+      "max_depth": 6,
+      "min_child_weight": 20,
+      "subsample": 0.8,
+      "colsample_bytree": 0.6,
+      "reg_alpha": 0.5,
+      "reg_lambda": 1.0,
+      "gamma": 0.1,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "sim_dhi_r_lux",
+    "sim_dhi_g_lux",
+    "sim_dhi_b_lux",
+    "sim_dni_lux",
+    "cloud_opacity"
+  ],
+  "metrics_global": {
+    "r2": 0.8048115328129091,
+    "mae": 72.0274006980205,
+    "rmse": 133.89898992494335,
+    "mbe": -7.5810774430868575
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.7542030182941739,
+      "mae": 68.61743642913723,
+      "rmse": 114.28035261602437,
+      "mbe": 15.138111702890512
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.6195141626550646,
+      "mae": 131.5029597000446,
+      "rmse": 199.60770887928996,
+      "mbe": -31.961418326960096
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9901499704878945,
+      "mae": 15.961805964879693,
+      "rmse": 29.725108421635852,
+      "mbe": -5.919925705190989
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 10.16866397857666,
+        "importance_pct": 71.68415691881377
+      },
+      {
+        "feature": "sim_dhi_g_lux",
+        "importance": 1.0618983507156372,
+        "importance_pct": 7.485869153007868
+      },
+      {
+        "feature": "sim_dni_lux",
+        "importance": 1.0400359630584717,
+        "importance_pct": 7.331749906788509
+      },
+      {
+        "feature": "sim_dhi_b_lux",
+        "importance": 0.966679573059082,
+        "importance_pct": 6.814622879797299
+      },
+      {
+        "feature": "sim_dhi_r_lux",
+        "importance": 0.9480936527252197,
+        "importance_pct": 6.683601141592548
+      }
+    ],
+    "weight": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 1839.0
+      },
+      {
+        "feature": "sim_dni_lux",
+        "importance": 1473.0
+      },
+      {
+        "feature": "sim_dhi_r_lux",
+        "importance": 1083.0
+      },
+      {
+        "feature": "sim_dhi_b_lux",
+        "importance": 1034.0
+      },
+      {
+        "feature": "sim_dhi_g_lux",
+        "importance": 797.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "cloud_opacity",
+        "importance": 3277.432373046875
+      },
+      {
+        "feature": "sim_dni_lux",
+        "importance": 2133.360595703125
+      },
+      {
+        "feature": "sim_dhi_b_lux",
+        "importance": 1796.54736328125
+      },
+      {
+        "feature": "sim_dhi_r_lux",
+        "importance": 1743.8162841796875
+      },
+      {
+        "feature": "sim_dhi_g_lux",
+        "importance": 1607.04638671875
+      }
+    ]
+  }
+}

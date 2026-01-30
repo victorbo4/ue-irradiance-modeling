@@ -1,0 +1,15 @@
+<map id="UPyranoEditorSubsystem::ValidateConfig" name="UPyranoEditorSubsystem::ValidateConfig">
+<area shape="rect" id="Node000001" title="Validates a full simulation configuration and returns a detailed result." alt="" coords="5,139,178,181"/>
+<area shape="rect" id="Node000002" href="$struct_f_validation_result.html#af85ff546ed9707e4efb24b7e69d5465b" title=" " alt="" coords="246,5,378,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,136,164,97,224,58,237,53,233,57,227,62,167,102,119,140"/>
+<area shape="rect" id="Node000003" href="$namespace_pyrano_editor_utils.html#a6a8fea8fd47c5ad779e7bd632dcfc1b7" title=" " alt="" coords="236,72,388,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,136,226,118,222,121,165,141"/>
+<area shape="rect" id="Node000005" href="$class_u_pyrano_editor_subsystem.html#a2a797be145752507e4e2170ac0b43d82" title="Estimates the total simulation duration from samples, sensors and resolution." alt="" coords="226,139,398,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="177,157,213,159,208,161,179,163"/>
+<area shape="rect" id="Node000006" href="$namespace_pyrano_editor_utils.html#acef7c6aa5b495ff28a81db72f6059f2d" title=" " alt="" coords="244,205,380,248"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="164,179,231,201,226,203,164,184"/>
+<area shape="rect" id="Node000007" href="$class_u_pyrano_editor_subsystem.html#a2adad0d3fd5864acbe4205b167cf4937" title="Returns the PIE world if running, otherwise the editor world." alt="" coords="226,272,398,315"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="118,179,167,218,227,258,238,265,233,265,224,262,164,223,117,184"/>
+<area shape="rect" id="Node000004" href="$namespace_pyrano_editor_utils.html#a923935ab07773c60282d0c628dbd3b9d" title=" " alt="" coords="446,72,636,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="387,91,433,93,428,94,389,96"/>
+</map>

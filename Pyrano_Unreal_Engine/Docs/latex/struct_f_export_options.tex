@@ -1,0 +1,97 @@
+\doxysection{FExport\+Options Struct Reference}
+\hypertarget{struct_f_export_options}{}\label{struct_f_export_options}\index{FExportOptions@{FExportOptions}}
+
+
+Export configuration for irradiance results.  
+
+
+
+
+{\ttfamily \#include $<$Irradiance\+Exporter.\+h$>$}
+
+
+
+Collaboration diagram for FExport\+Options\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{struct_f_export_options__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_f_export_options_aff90e7927e65e1cb7cf5591c1769b8d2}{b\+Export\+CSV}} = false
+\begin{DoxyCompactList}\small\item\em Enables exporting irradiance results to CSV. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_f_export_options_a71584e21a6df57d5bf72db7a00978f6d}{b\+Export\+Images}} = false
+\begin{DoxyCompactList}\small\item\em Enables saving cubemap faces as EXR images. \end{DoxyCompactList}\item 
+FDirectory\+Path \mbox{\hyperlink{struct_f_export_options_a04d22162ebcc94e419eec568b282d152}{Output\+Dir}}
+\begin{DoxyCompactList}\small\item\em Base directory for all exported data. \end{DoxyCompactList}\item 
+FString \mbox{\hyperlink{struct_f_export_options_a47e0ed163c5ad0314f77e30ddbd94fa1}{Images\+Subdir}} = TEXT("{}Images"{})
+\begin{DoxyCompactList}\small\item\em Subdirectory inside Output\+Dir used for image exports. \end{DoxyCompactList}\item 
+FString \mbox{\hyperlink{struct_f_export_options_a6df4d52797b197c4d6f25040eeed57f7}{CSVFilename}} = TEXT("{}irradiance.\+csv"{})
+\begin{DoxyCompactList}\small\item\em Base CSV file name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Export configuration for irradiance results. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_f_export_options_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_f_export_options_aff90e7927e65e1cb7cf5591c1769b8d2}\index{FExportOptions@{FExportOptions}!bExportCSV@{bExportCSV}}
+\index{bExportCSV@{bExportCSV}!FExportOptions@{FExportOptions}}
+\doxysubsubsection{\texorpdfstring{bExportCSV}{bExportCSV}}
+{\footnotesize\ttfamily \label{struct_f_export_options_aff90e7927e65e1cb7cf5591c1769b8d2} 
+bool FExport\+Options\+::b\+Export\+CSV = false}
+
+
+
+Enables exporting irradiance results to CSV. 
+
+\Hypertarget{struct_f_export_options_a71584e21a6df57d5bf72db7a00978f6d}\index{FExportOptions@{FExportOptions}!bExportImages@{bExportImages}}
+\index{bExportImages@{bExportImages}!FExportOptions@{FExportOptions}}
+\doxysubsubsection{\texorpdfstring{bExportImages}{bExportImages}}
+{\footnotesize\ttfamily \label{struct_f_export_options_a71584e21a6df57d5bf72db7a00978f6d} 
+bool FExport\+Options\+::b\+Export\+Images = false}
+
+
+
+Enables saving cubemap faces as EXR images. 
+
+\Hypertarget{struct_f_export_options_a6df4d52797b197c4d6f25040eeed57f7}\index{FExportOptions@{FExportOptions}!CSVFilename@{CSVFilename}}
+\index{CSVFilename@{CSVFilename}!FExportOptions@{FExportOptions}}
+\doxysubsubsection{\texorpdfstring{CSVFilename}{CSVFilename}}
+{\footnotesize\ttfamily \label{struct_f_export_options_a6df4d52797b197c4d6f25040eeed57f7} 
+FString FExport\+Options\+::\+CSVFilename = TEXT("{}irradiance.\+csv"{})}
+
+
+
+Base CSV file name. 
+
+\Hypertarget{struct_f_export_options_a47e0ed163c5ad0314f77e30ddbd94fa1}\index{FExportOptions@{FExportOptions}!ImagesSubdir@{ImagesSubdir}}
+\index{ImagesSubdir@{ImagesSubdir}!FExportOptions@{FExportOptions}}
+\doxysubsubsection{\texorpdfstring{ImagesSubdir}{ImagesSubdir}}
+{\footnotesize\ttfamily \label{struct_f_export_options_a47e0ed163c5ad0314f77e30ddbd94fa1} 
+FString FExport\+Options\+::\+Images\+Subdir = TEXT("{}Images"{})}
+
+
+
+Subdirectory inside Output\+Dir used for image exports. 
+
+\Hypertarget{struct_f_export_options_a04d22162ebcc94e419eec568b282d152}\index{FExportOptions@{FExportOptions}!OutputDir@{OutputDir}}
+\index{OutputDir@{OutputDir}!FExportOptions@{FExportOptions}}
+\doxysubsubsection{\texorpdfstring{OutputDir}{OutputDir}}
+{\footnotesize\ttfamily \label{struct_f_export_options_a04d22162ebcc94e419eec568b282d152} 
+FDirectory\+Path FExport\+Options\+::\+Output\+Dir}
+
+
+
+Base directory for all exported data. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Private/\+Irradiance/\mbox{\hyperlink{_irradiance_exporter_8h}{Irradiance\+Exporter.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="UClearSkyService" name="UClearSkyService">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,168,284,397"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="52,16,110,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,97,116,168,111,168,94,102"/>
+<area shape="rect" id="Node000003" href="$struct_f_pyrano_clear_sky_config.html" title=" " alt="" coords="134,5,286,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,93,184,153,179,151,196,98"/>
+</map>

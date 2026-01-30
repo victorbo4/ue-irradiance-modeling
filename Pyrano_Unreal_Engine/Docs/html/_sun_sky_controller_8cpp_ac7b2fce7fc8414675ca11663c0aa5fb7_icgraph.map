@@ -1,0 +1,7 @@
+<map id="SunAnglesFromDirection" name="SunAnglesFromDirection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="421,13,587,40"/>
+<area shape="rect" id="Node000002" href="$class_u_sun_sky_controller.html#a9180ae57b0690fa8db4a96d766b7275a" title="Returns solar azimuth/altitude using solar&#45;standard convention: azimuth = clockwise from North (0°=N,..." alt="" coords="232,5,373,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="403,27,374,29,374,24,408,27"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#a04b6e98a2662b94a1117321c3d6c70f9" title="Consume the latest available irradiance value." alt="" coords="5,5,184,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="214,27,184,29,184,24,219,26"/>
+</map>

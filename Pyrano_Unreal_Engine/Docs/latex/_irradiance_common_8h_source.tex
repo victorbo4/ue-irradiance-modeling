@@ -1,0 +1,87 @@
+\doxysection{Irradiance\+Common.\+h}
+\hypertarget{_irradiance_common_8h_source}{}\label{_irradiance_common_8h_source}\index{Source/Pyrano/Public/Irradiance/IrradianceCommon.h@{Source/Pyrano/Public/Irradiance/IrradianceCommon.h}}
+\mbox{\hyperlink{_irradiance_common_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ IrradianceCommon.h:\ Shared\ constants\ and\ functions\ for\ all\ Pyrano\ modules.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_irradiance_common}{IrradianceCommon}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_a2525b11b755b66e484e9527ce2a9e4c3}{NumFaces}}\ =\ 6;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_irradiance_common_1_1_defaults}{Defaults}}}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_aecf36d1696cdd779fd147392c6121d84}{bUsingCesium}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a0e39a706dfc8b6b124d2ed16c8047901}{CesiumWarmupFrames}}\ =\ 0;\ \textcolor{comment}{//\ 60frames\ \string~\ 1s}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_aea4c266267694f2d865af6822c733881}{MaxBounces}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 2;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ >2\ is\ not\ worth\ it\ (high\ cost\ -\/\ low\ reward)}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a5647a8f1b6bd52c9d434b5c0d8414a38}{SamplesPerPixel}}\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 4096;\ \ \ \ \ \textcolor{comment}{//\ if\ too\ low,\ this\ would\ cap\ the\ warmup\ frames\ }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_ac57b44b86920f7fabb0d4a0ad44177e6}{EnableReferenceAtmosphere}}\ \ \ =\ 0;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a60d6c76a8c5bb07906a0db4dc26d9112}{MsPerFrameRaster}}\ =\ 12.f;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a3b1b5a5f627114ef872f9314a5d7b7b3}{MsPerFramePath}}\ \ \ =\ 35.f;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_af9b5702ec06085a1f615671f47db4ec3}{SunVisibilitySamples}}\ =\ 8;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_ab941fd1f3a30760db9bff684f9141558}{AmbientIrradianceScale}}\ =\ 1.0f;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ int32\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a2cea4adac887668b663c49615cc86d6d}{SVFSamples}}\ =\ 128;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a7060e2ba139518ae2a6ad80d0c4daa3d}{DirectLinearCoeff}}\ =\ 2.401e-\/3f;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_a77e5d2bf3aa9eead36aada429fb74e14}{DirectQuadraticCoeff}}\ =\ 5.0299205e-\/8f;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_defaults_ab53d1f62492a5d45351efee288d4f9da}{AmbientLinearCoeff}}\ =\ 1.3046e-\/2f;}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_irradiance_common_1_1_settings}{Settings}}}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_settings_a1e27b57eadb83f3699f7dbbc8a2f3629}{bApplyIrradianceConfiguration}}\ =\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ true\ to\ apply\ normal\ config\ (PT,\ auto-\/exposure,\ etc.)}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_settings_af47186b807ed6e670995f0596cc99083}{bEnableSunVisibility}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_settings_a4ed343361f3af991c50fa77581c40863}{bEnableSunOcclusion}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_irradiance_common_1_1_utils}{Utils}}}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ TArray<FQuat>\ \mbox{\hyperlink{namespace_irradiance_common_1_1_utils_a186b825c0501eec06143b3b197ef5dbd}{GenerateCubemapFaceQuats}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_utils_a5bda47012fa6c584dd60803256c3d0df}{IsPIEClientWorld}}(\textcolor{keyword}{const}\ UWorld*\ W);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ UWorld*\ \mbox{\hyperlink{namespace_irradiance_common_1_1_utils_acd21b099951e95f67c7a758546ac9875}{GetGameWorldSafe}}();}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_irradiance_common_1_1_console}{Console}}}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ PYRANO\_API\ \textcolor{keyword}{extern}\ ELogVerbosity::Type\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_aa43a8c456bc07e4b42cb35d2c847e037}{GConsoleVerbosityLimit}};\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ PYRANO\_API\ ELogVerbosity::Type\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b}{GetConsoleVerbosityLimit}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ PYRANO\_API\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_aa42053d9f39d75e15f93229d3f047af7}{SetConsoleVerbosityLimit}}(ELogVerbosity::Type\ NewLimit);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ FName\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a6e7930a09334e2e782e2d5df2024c8d9}{ConsoleAllowedCategories}}[]\ =\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ TEXT(\textcolor{stringliteral}{"{}LogPyrano"{}})}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a5b00949ee3f78394587a3b4cc23391a7}{ShouldForwardToConsole}}(\textcolor{keyword}{const}\ FName\&\ Category,\ ELogVerbosity::Type\ Verbosity)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ must\ be\ inline\ to\ avoid\ LNK2019\ error\ in\ PyranoEditor\ module}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Verbosity\ >\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a413e99873dadaa8b357090c4d48e526b}{GetConsoleVerbosityLimit}}())\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ FName\&\ Allowed\ :\ \mbox{\hyperlink{namespace_irradiance_common_1_1_console_a6e7930a09334e2e782e2d5df2024c8d9}{ConsoleAllowedCategories}})}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Category\ ==\ Allowed)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \}}
+
+\end{DoxyCode}

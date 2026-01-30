@@ -1,0 +1,305 @@
+\doxysection{USun\+Sky\+Controller Class Reference}
+\hypertarget{class_u_sun_sky_controller}{}\label{class_u_sun_sky_controller}\index{USunSkyController@{USunSkyController}}
+
+
+{\ttfamily \#include $<$Sun\+Sky\+Controller.\+h$>$}
+
+
+
+Inheritance diagram for USun\+Sky\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_sun_sky_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for USun\+Sky\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_sun_sky_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_sun_sky_controller_acdb2373863253da9f5d1cd1f79c24ffd}{Apply\+Static\+Config}} (double Latitude, double Longitude, double Timezone, double North\+Offset, bool b\+Use\+DST)
+\begin{DoxyCompactList}\small\item\em Applies static Sun\+Sky configuration (location, timezone, north offset, DST flag). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_sun_sky_controller_a7b869177273a8632f9fe83cdce10145d}{Set\+UTC}} (const FDate\+Time \&Utc\+Date\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the Sun\+Sky date and time from a UTC timestamp(applies configured timezone). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_sun_sky_controller_a9180ae57b0690fa8db4a96d766b7275a}{Get\+Solar\+Angles}} (float \&Out\+Azimuth\+Deg, float \&Out\+Altitude\+Deg) const
+\begin{DoxyCompactList}\small\item\em Returns solar azimuth/altitude using solar-\/standard convention\+: azimuth = clockwise from North (0°=N, 90°=E, 180°=S, 270°=W), altitude = angle above horizon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static AActor \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_sun_sky_controller_ab00403c7bab9f7bae3d57baa941146b6}{Find\+Sun\+Sky\+Actor}} (UWorld \texorpdfstring{$\ast$}{*}World)
+\begin{DoxyCompactList}\small\item\em Locates a Sun\+Sky actor in the world (by tag or name). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+AActor \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_sun_sky_controller_a0822748f97e63e40b3da612e27083596}{Ensure\+Sun\+Sky}} ()
+\begin{DoxyCompactList}\small\item\em Returns the cached Sun\+Sky actor or performs a search if missing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_sun_sky_controller_a3407324f01e3d69835fbf3bd88228269}{Push\+Date\+Time}} (AActor \texorpdfstring{$\ast$}{*}Sun\+Sky, const FDate\+Time \&UTC) const
+\begin{DoxyCompactList}\small\item\em Pushes date and solar-\/time fields into the Sun\+Sky actor from UTC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_u_sun_sky_controller_abe72ea57cbb6fbfc2a6a3990631800fa}{Set\+Double\+Prop}} (UObject \texorpdfstring{$\ast$}{*}Obj, FName Name, double V)
+\item 
+static bool \mbox{\hyperlink{class_u_sun_sky_controller_a679b38217e46d510a2b1543bd1f89b3a}{Set\+Int\+Prop}} (UObject \texorpdfstring{$\ast$}{*}Obj, FName Name, int32 V)
+\item 
+static bool \mbox{\hyperlink{class_u_sun_sky_controller_a6bccb6e3bf7f89848d7a74db33c2595c}{Set\+Bool\+Prop}} (UObject \texorpdfstring{$\ast$}{*}Obj, FName Name, bool bV)
+\item 
+static void \mbox{\hyperlink{class_u_sun_sky_controller_aec6250d1b06d7ef7680381ff48eee79a}{Update\+Sun}} (AActor \texorpdfstring{$\ast$}{*}Sun\+Sky)
+\begin{DoxyCompactList}\small\item\em Forces Sun\+Sky to rebuild via Rerun\+Construction\+Scripts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_u_sun_sky_controller_ab22487b2899a4b71c5f238780e986b02}{Timezone\+Hours}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em Timezone offset in hours used to convert UTC to local solar time. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_u_sun_sky_controller_a75ffc6833dca8b531a49caa029f855fd}{North\+Offset\+Deg}} = 0.\+0
+\begin{DoxyCompactList}\small\item\em North offset in degrees applied to adjust world-\/space North. \end{DoxyCompactList}\item 
+TWeak\+Object\+Ptr$<$ AActor $>$ \mbox{\hyperlink{class_u_sun_sky_controller_a6703efe7b4bd28d860d1333b35ed31cc}{Cached\+Sun\+Sky}}
+\begin{DoxyCompactList}\small\item\em Cached reference to the Sun\+Sky actor in the current world. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_u_sun_sky_controller_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_sun_sky_controller_acdb2373863253da9f5d1cd1f79c24ffd}\index{USunSkyController@{USunSkyController}!ApplyStaticConfig@{ApplyStaticConfig}}
+\index{ApplyStaticConfig@{ApplyStaticConfig}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{ApplyStaticConfig()}{ApplyStaticConfig()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_acdb2373863253da9f5d1cd1f79c24ffd} 
+void USun\+Sky\+Controller\+::\+Apply\+Static\+Config (\begin{DoxyParamCaption}\item[{double}]{Latitude}{, }\item[{double}]{Longitude}{, }\item[{double}]{Timezone}{, }\item[{double}]{North\+Offset}{, }\item[{bool}]{b\+Use\+DST}{}\end{DoxyParamCaption})}
+
+
+
+Applies static Sun\+Sky configuration (location, timezone, north offset, DST flag). 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_acdb2373863253da9f5d1cd1f79c24ffd_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_a0822748f97e63e40b3da612e27083596}\index{USunSkyController@{USunSkyController}!EnsureSunSky@{EnsureSunSky}}
+\index{EnsureSunSky@{EnsureSunSky}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{EnsureSunSky()}{EnsureSunSky()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a0822748f97e63e40b3da612e27083596} 
+AActor \texorpdfstring{$\ast$}{*} USun\+Sky\+Controller\+::\+Ensure\+Sun\+Sky (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns the cached Sun\+Sky actor or performs a search if missing. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_u_sun_sky_controller_a0822748f97e63e40b3da612e27083596_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_a0822748f97e63e40b3da612e27083596_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_ab00403c7bab9f7bae3d57baa941146b6}\index{USunSkyController@{USunSkyController}!FindSunSkyActor@{FindSunSkyActor}}
+\index{FindSunSkyActor@{FindSunSkyActor}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{FindSunSkyActor()}{FindSunSkyActor()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_ab00403c7bab9f7bae3d57baa941146b6} 
+AActor \texorpdfstring{$\ast$}{*} USun\+Sky\+Controller\+::\+Find\+Sun\+Sky\+Actor (\begin{DoxyParamCaption}\item[{UWorld \texorpdfstring{$\ast$}{*}}]{World}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Locates a Sun\+Sky actor in the world (by tag or name). 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_ab00403c7bab9f7bae3d57baa941146b6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_a9180ae57b0690fa8db4a96d766b7275a}\index{USunSkyController@{USunSkyController}!GetSolarAngles@{GetSolarAngles}}
+\index{GetSolarAngles@{GetSolarAngles}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{GetSolarAngles()}{GetSolarAngles()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a9180ae57b0690fa8db4a96d766b7275a} 
+bool USun\+Sky\+Controller\+::\+Get\+Solar\+Angles (\begin{DoxyParamCaption}\item[{float \&}]{Out\+Azimuth\+Deg}{, }\item[{float \&}]{Out\+Altitude\+Deg}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns solar azimuth/altitude using solar-\/standard convention\+: azimuth = clockwise from North (0°=N, 90°=E, 180°=S, 270°=W), altitude = angle above horizon. 
+
+North direction includes North\+Offset. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_a9180ae57b0690fa8db4a96d766b7275a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_a9180ae57b0690fa8db4a96d766b7275a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_a3407324f01e3d69835fbf3bd88228269}\index{USunSkyController@{USunSkyController}!PushDateTime@{PushDateTime}}
+\index{PushDateTime@{PushDateTime}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{PushDateTime()}{PushDateTime()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a3407324f01e3d69835fbf3bd88228269} 
+void USun\+Sky\+Controller\+::\+Push\+Date\+Time (\begin{DoxyParamCaption}\item[{AActor \texorpdfstring{$\ast$}{*}}]{Sun\+Sky}{, }\item[{const FDate\+Time \&}]{UTC}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pushes date and solar-\/time fields into the Sun\+Sky actor from UTC. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_u_sun_sky_controller_a3407324f01e3d69835fbf3bd88228269_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_u_sun_sky_controller_a3407324f01e3d69835fbf3bd88228269_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_a6bccb6e3bf7f89848d7a74db33c2595c}\index{USunSkyController@{USunSkyController}!SetBoolProp@{SetBoolProp}}
+\index{SetBoolProp@{SetBoolProp}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{SetBoolProp()}{SetBoolProp()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a6bccb6e3bf7f89848d7a74db33c2595c} 
+bool USun\+Sky\+Controller\+::\+Set\+Bool\+Prop (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Obj}{, }\item[{FName}]{Name}{, }\item[{bool}]{bV}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_u_sun_sky_controller_a6bccb6e3bf7f89848d7a74db33c2595c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_abe72ea57cbb6fbfc2a6a3990631800fa}\index{USunSkyController@{USunSkyController}!SetDoubleProp@{SetDoubleProp}}
+\index{SetDoubleProp@{SetDoubleProp}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{SetDoubleProp()}{SetDoubleProp()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_abe72ea57cbb6fbfc2a6a3990631800fa} 
+bool USun\+Sky\+Controller\+::\+Set\+Double\+Prop (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Obj}{, }\item[{FName}]{Name}{, }\item[{double}]{V}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_abe72ea57cbb6fbfc2a6a3990631800fa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_a679b38217e46d510a2b1543bd1f89b3a}\index{USunSkyController@{USunSkyController}!SetIntProp@{SetIntProp}}
+\index{SetIntProp@{SetIntProp}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{SetIntProp()}{SetIntProp()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a679b38217e46d510a2b1543bd1f89b3a} 
+bool USun\+Sky\+Controller\+::\+Set\+Int\+Prop (\begin{DoxyParamCaption}\item[{UObject \texorpdfstring{$\ast$}{*}}]{Obj}{, }\item[{FName}]{Name}{, }\item[{int32}]{V}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_a679b38217e46d510a2b1543bd1f89b3a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_a7b869177273a8632f9fe83cdce10145d}\index{USunSkyController@{USunSkyController}!SetUTC@{SetUTC}}
+\index{SetUTC@{SetUTC}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{SetUTC()}{SetUTC()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a7b869177273a8632f9fe83cdce10145d} 
+void USun\+Sky\+Controller\+::\+Set\+UTC (\begin{DoxyParamCaption}\item[{const FDate\+Time \&}]{Utc\+Date\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Sets the Sun\+Sky date and time from a UTC timestamp(applies configured timezone). 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_sun_sky_controller_a7b869177273a8632f9fe83cdce10145d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_sun_sky_controller_aec6250d1b06d7ef7680381ff48eee79a}\index{USunSkyController@{USunSkyController}!UpdateSun@{UpdateSun}}
+\index{UpdateSun@{UpdateSun}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{UpdateSun()}{UpdateSun()}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_aec6250d1b06d7ef7680381ff48eee79a} 
+void USun\+Sky\+Controller\+::\+Update\+Sun (\begin{DoxyParamCaption}\item[{AActor \texorpdfstring{$\ast$}{*}}]{Sun\+Sky}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Forces Sun\+Sky to rebuild via Rerun\+Construction\+Scripts. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{class_u_sun_sky_controller_aec6250d1b06d7ef7680381ff48eee79a_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_u_sun_sky_controller_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_sun_sky_controller_a6703efe7b4bd28d860d1333b35ed31cc}\index{USunSkyController@{USunSkyController}!CachedSunSky@{CachedSunSky}}
+\index{CachedSunSky@{CachedSunSky}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{CachedSunSky}{CachedSunSky}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a6703efe7b4bd28d860d1333b35ed31cc} 
+TWeak\+Object\+Ptr$<$AActor$>$ USun\+Sky\+Controller\+::\+Cached\+Sun\+Sky\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cached reference to the Sun\+Sky actor in the current world. 
+
+\Hypertarget{class_u_sun_sky_controller_a75ffc6833dca8b531a49caa029f855fd}\index{USunSkyController@{USunSkyController}!NorthOffsetDeg@{NorthOffsetDeg}}
+\index{NorthOffsetDeg@{NorthOffsetDeg}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{NorthOffsetDeg}{NorthOffsetDeg}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_a75ffc6833dca8b531a49caa029f855fd} 
+double USun\+Sky\+Controller\+::\+North\+Offset\+Deg = 0.\+0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+North offset in degrees applied to adjust world-\/space North. 
+
+\Hypertarget{class_u_sun_sky_controller_ab22487b2899a4b71c5f238780e986b02}\index{USunSkyController@{USunSkyController}!TimezoneHours@{TimezoneHours}}
+\index{TimezoneHours@{TimezoneHours}!USunSkyController@{USunSkyController}}
+\doxysubsubsection{\texorpdfstring{TimezoneHours}{TimezoneHours}}
+{\footnotesize\ttfamily \label{class_u_sun_sky_controller_ab22487b2899a4b71c5f238780e986b02} 
+double USun\+Sky\+Controller\+::\+Timezone\+Hours = 0.\+0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timezone offset in hours used to convert UTC to local solar time. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Public/\+Subsystems/\mbox{\hyperlink{_sun_sky_controller_8h}{Sun\+Sky\+Controller.\+h}}\item 
+Source/\+Pyrano/\+Private/\+Subsystems/\mbox{\hyperlink{_sun_sky_controller_8cpp}{Sun\+Sky\+Controller.\+cpp}}\end{DoxyCompactItemize}

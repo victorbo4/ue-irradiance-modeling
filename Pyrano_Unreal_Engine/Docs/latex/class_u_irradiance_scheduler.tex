@@ -1,0 +1,720 @@
+\doxysection{UIrradiance\+Scheduler Class Reference}
+\hypertarget{class_u_irradiance_scheduler}{}\label{class_u_irradiance_scheduler}\index{UIrradianceScheduler@{UIrradianceScheduler}}
+
+
+{\ttfamily \#include $<$Irradiance\+Scheduler.\+h$>$}
+
+
+
+Inheritance diagram for UIrradiance\+Scheduler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_irradiance_scheduler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UIrradiance\+Scheduler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_irradiance_scheduler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54}{UIrradiance\+Scheduler}} ()=default
+\item 
+\mbox{\hyperlink{class_u_irradiance_scheduler_acad46ea7c860e2a972fb7debd56651e9}{\texorpdfstring{$\sim$}{\string~}\+UIrradiance\+Scheduler}} ()=default
+\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a4395030c4e2b089982300a7d5cb43417}{Capture\+Once}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim)
+\begin{DoxyCompactList}\small\item\em Captures irradiance once at Sim.\+Start\+Time for all active sensors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a820fe9375420d4934dd45811ba7a419e}{Start\+Simulation}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim)
+\begin{DoxyCompactList}\small\item\em Starts a full time-\/series simulation using the given configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_ab0e6a156c26f9163303f503ddc2a31a7}{Clear\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em Immediately stops any ongoing capture or simulation and restores state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{EScheduler\+State}} \mbox{\hyperlink{class_u_irradiance_scheduler_ae6df49456f56ac156a2a27b07a35f4c3}{Get\+State}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current scheduler state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_u_irradiance_scheduler_a46ab4ac00573e109d595d80669a8e156}{Tick}} (float Delta\+Time) override
+\item 
+virtual TStat\+Id \mbox{\hyperlink{class_u_irradiance_scheduler_ac0c7ae036f5a4730afcf4dbd12f79c3e}{Get\+Stat\+Id}} () const override
+\item 
+virtual ETickable\+Tick\+Type \mbox{\hyperlink{class_u_irradiance_scheduler_a1bed979b420cf54f84af1402a8fcd652}{Get\+Tickable\+Tick\+Type}} () const override
+\item 
+virtual UWorld \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_u_irradiance_scheduler_a727dd07f9bfdc049bdaf3a9063d115bf}{Get\+Tickable\+Game\+Object\+World}} () const override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a3a1998734dd679049d860179bf9b0222}{Ensure\+Subsystem}} ()
+\begin{DoxyCompactList}\small\item\em Ensures the Irradiance\+Subsystem pointer is valid for the current world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_aa40d1480cbc21302196ae1fc097457b7}{Configure\+Sun\+Sky\+Once}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim)
+\begin{DoxyCompactList}\small\item\em Applies static Sun\+Sky configuration (lat/lon/timezone/northoffset). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_aebff31185ed2941c1c7abcc423e1b25a}{Set\+Sun\+Sky\+UTC}} (const FDate\+Time \&Utc)
+\begin{DoxyCompactList}\small\item\em Sets the Sun\+Sky UTC time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_ac09bb9a1d345e452696d7fab17cd0fa0}{Apply\+Viewport}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim)
+\begin{DoxyCompactList}\small\item\em Forces a square viewport suitable for the simulation/capture. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_ae8f8cd8bd9eccb9abdf17b9f023bea00}{Restore\+Viewport}} ()
+\begin{DoxyCompactList}\small\item\em Restores the viewport if it was previously forced. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a61d5fea9a087dfc36e58fc42e93ddf45}{Get\+Active\+Sensors}} (TArray$<$ UPyranometer\+Component \texorpdfstring{$\ast$}{*} $>$ \&Out\+Sensors) const
+\begin{DoxyCompactList}\small\item\em Fills Out\+Sensors with all active pyranometer components in this world. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \mbox{\hyperlink{class_u_irradiance_scheduler_ac45df7ef85d6d364e7724f7e853a32c6}{Make\+Request}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim, UPyranometer\+Component \texorpdfstring{$\ast$}{*}Sensor) const
+\begin{DoxyCompactList}\small\item\em Builds a capture request for the given sensor and simulation settings. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_irradiance_scheduler_a3b69dd1a2381f3fc1b0035de006416b5}{Consume\+Irradiance\+Result}} (float \&Out\+Value)
+\begin{DoxyCompactList}\small\item\em Consumes the latest irradiance value from the subsystem, if available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_add9a4a7b65080ccec4fd8a9546fe215f}{Build\+Time\+Slots}} (const FDate\+Time \&Start\+UTC, const FDate\+Time \&End\+UTC, const FTimespan \&Step)
+\begin{DoxyCompactList}\small\item\em Builds the list of time slots between Start\+UTC and End\+UTC (inclusive). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a2c93371fc51e45b8af73ce9b4d2c690a}{Launch\+Next\+Simulation\+Capture}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim)
+\begin{DoxyCompactList}\small\item\em Launches the next capture for the current time slot and sensor index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_ab400b6f7f8c6768537088d0eca221f90}{Advance\+Time\+Slot\+Or\+Finish}} ()
+\begin{DoxyCompactList}\small\item\em Advances to the next time slot, or finalizes the simulation if finished. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_add6eff6a074954268d370e6ab2d7a060}{Launch\+Next\+One\+Shot\+Capture}} ()
+\begin{DoxyCompactList}\small\item\em Launches the next pending one-\/shot capture request, or finalizes if none. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a7ba28b0ad34fafcb3f525bb028459e01}{Prepare\+Simulation}} (const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&Sim, const FDate\+Time \&Initial\+Time\+UTC)
+\begin{DoxyCompactList}\small\item\em Prepares Sun\+Sky, export and viewport settings for a simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_a4f3d8698a24d9ab3b2f5df9fcd4364e4}{Launch\+Capture}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req)
+\begin{DoxyCompactList}\small\item\em Starts a six-\/face capture for the given request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_scheduler_ac79a70849af28bdcf62ac8214ccaeee5}{On\+Capture\+Completed}} (float Irr\+Value)
+\begin{DoxyCompactList}\small\item\em Handles a completed capture and advances the flow. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_irradiance_scheduler_aa0a5a5137cd16afa6cfd83fd90026d8b}{Is\+Simulation\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if running a multi-\/slot simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{EScheduler\+State}} \mbox{\hyperlink{class_u_irradiance_scheduler_a28f0a1ca75ceca18128c30f411d150cd}{State}} = \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79ae599161956d626eda4cb0a5ffb85271c}{EScheduler\+State\+::\+Idle}}
+\item 
+TQueue$<$ \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} $>$ \mbox{\hyperlink{class_u_irradiance_scheduler_a3d224443bcacdf4845405b2b34dd6fa2}{Queue}}
+\item 
+TOptional$<$ \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} $>$ \mbox{\hyperlink{class_u_irradiance_scheduler_a336eb98000f1616ed62fb06bcb7dc10b}{Current}}
+\item 
+TWeak\+Object\+Ptr$<$ \mbox{\hyperlink{class_u_irradiance_subsystem}{UIrradiance\+Subsystem}} $>$ \mbox{\hyperlink{class_u_irradiance_scheduler_a4ee79f5fe1cc10bb1c39b0390afc8518}{Irr}}
+\item 
+TArray$<$ UPyranometer\+Component \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_u_irradiance_scheduler_a268c7a3937a1d290a3e333987f1d46d6}{Sensors}}
+\item 
+\mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \mbox{\hyperlink{class_u_irradiance_scheduler_a60bd98db18d0cef6bdda8bc8866493b1}{Base\+Sim\+Config}}
+\item 
+TArray$<$ FDate\+Time $>$ \mbox{\hyperlink{class_u_irradiance_scheduler_a3948d674a179ebf289425281a2d8f240}{Time\+Slots}}
+\item 
+int32 \mbox{\hyperlink{class_u_irradiance_scheduler_a6f65ae1f6a6579265b6257bf688c40c3}{Time\+Index}} = 0
+\item 
+int32 \mbox{\hyperlink{class_u_irradiance_scheduler_afc080618653247fc69bfe4616a54d956}{Sensor\+Index}} = 0
+\item 
+bool \mbox{\hyperlink{class_u_irradiance_scheduler_a1cee66496f0d5077875d8b012ad4246a}{b\+Viewport\+Forced}} = false
+\begin{DoxyCompactList}\small\item\em Whether we forced the viewport and should restore it afterwards. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_u_irradiance_scheduler_a2c28f547d310878bf86d4cb47105491c}{b\+Capture\+In\+Flight}} = false
+\begin{DoxyCompactList}\small\item\em Whether there is a capture currently in flight. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_u_irradiance_scheduler_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54}\index{UIrradianceScheduler@{UIrradianceScheduler}!UIrradianceScheduler@{UIrradianceScheduler}}
+\index{UIrradianceScheduler@{UIrradianceScheduler}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{UIrradianceScheduler()}{UIrradianceScheduler()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54} 
+UIrradiance\+Scheduler\+::\+UIrradiance\+Scheduler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_u_irradiance_scheduler_ac1c89a9cc819040ff4e12ab8a1096c54_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_acad46ea7c860e2a972fb7debd56651e9}\index{UIrradianceScheduler@{UIrradianceScheduler}!````~UIrradianceScheduler@{\texorpdfstring{$\sim$}{\string~}UIrradianceScheduler}}
+\index{````~UIrradianceScheduler@{\texorpdfstring{$\sim$}{\string~}UIrradianceScheduler}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}UIrradianceScheduler()}{\string~UIrradianceScheduler()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_acad46ea7c860e2a972fb7debd56651e9} 
+UIrradiance\+Scheduler\+::\texorpdfstring{$\sim$}{\string~}\+UIrradiance\+Scheduler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_acad46ea7c860e2a972fb7debd56651e9_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-func-members}
+\Hypertarget{class_u_irradiance_scheduler_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_irradiance_scheduler_ab400b6f7f8c6768537088d0eca221f90}\index{UIrradianceScheduler@{UIrradianceScheduler}!AdvanceTimeSlotOrFinish@{AdvanceTimeSlotOrFinish}}
+\index{AdvanceTimeSlotOrFinish@{AdvanceTimeSlotOrFinish}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{AdvanceTimeSlotOrFinish()}{AdvanceTimeSlotOrFinish()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ab400b6f7f8c6768537088d0eca221f90} 
+void UIrradiance\+Scheduler\+::\+Advance\+Time\+Slot\+Or\+Finish (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Advances to the next time slot, or finalizes the simulation if finished. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ab400b6f7f8c6768537088d0eca221f90_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ab400b6f7f8c6768537088d0eca221f90_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_ac09bb9a1d345e452696d7fab17cd0fa0}\index{UIrradianceScheduler@{UIrradianceScheduler}!ApplyViewport@{ApplyViewport}}
+\index{ApplyViewport@{ApplyViewport}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{ApplyViewport()}{ApplyViewport()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ac09bb9a1d345e452696d7fab17cd0fa0} 
+void UIrradiance\+Scheduler\+::\+Apply\+Viewport (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Forces a square viewport suitable for the simulation/capture. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_u_irradiance_scheduler_ac09bb9a1d345e452696d7fab17cd0fa0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ac09bb9a1d345e452696d7fab17cd0fa0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_add9a4a7b65080ccec4fd8a9546fe215f}\index{UIrradianceScheduler@{UIrradianceScheduler}!BuildTimeSlots@{BuildTimeSlots}}
+\index{BuildTimeSlots@{BuildTimeSlots}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{BuildTimeSlots()}{BuildTimeSlots()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_add9a4a7b65080ccec4fd8a9546fe215f} 
+void UIrradiance\+Scheduler\+::\+Build\+Time\+Slots (\begin{DoxyParamCaption}\item[{const FDate\+Time \&}]{Start\+UTC}{, }\item[{const FDate\+Time \&}]{End\+UTC}{, }\item[{const FTimespan \&}]{Step}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Builds the list of time slots between Start\+UTC and End\+UTC (inclusive). 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_add9a4a7b65080ccec4fd8a9546fe215f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a4395030c4e2b089982300a7d5cb43417}\index{UIrradianceScheduler@{UIrradianceScheduler}!CaptureOnce@{CaptureOnce}}
+\index{CaptureOnce@{CaptureOnce}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{CaptureOnce()}{CaptureOnce()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a4395030c4e2b089982300a7d5cb43417} 
+void UIrradiance\+Scheduler\+::\+Capture\+Once (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{}\end{DoxyParamCaption})}
+
+
+
+Captures irradiance once at Sim.\+Start\+Time for all active sensors. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a4395030c4e2b089982300a7d5cb43417_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_u_irradiance_scheduler_a4395030c4e2b089982300a7d5cb43417_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_ab0e6a156c26f9163303f503ddc2a31a7}\index{UIrradianceScheduler@{UIrradianceScheduler}!ClearQueue@{ClearQueue}}
+\index{ClearQueue@{ClearQueue}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{ClearQueue()}{ClearQueue()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ab0e6a156c26f9163303f503ddc2a31a7} 
+void UIrradiance\+Scheduler\+::\+Clear\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Immediately stops any ongoing capture or simulation and restores state. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ab0e6a156c26f9163303f503ddc2a31a7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_aa40d1480cbc21302196ae1fc097457b7}\index{UIrradianceScheduler@{UIrradianceScheduler}!ConfigureSunSkyOnce@{ConfigureSunSkyOnce}}
+\index{ConfigureSunSkyOnce@{ConfigureSunSkyOnce}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{ConfigureSunSkyOnce()}{ConfigureSunSkyOnce()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_aa40d1480cbc21302196ae1fc097457b7} 
+void UIrradiance\+Scheduler\+::\+Configure\+Sun\+Sky\+Once (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Applies static Sun\+Sky configuration (lat/lon/timezone/northoffset). 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_aa40d1480cbc21302196ae1fc097457b7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a3b69dd1a2381f3fc1b0035de006416b5}\index{UIrradianceScheduler@{UIrradianceScheduler}!ConsumeIrradianceResult@{ConsumeIrradianceResult}}
+\index{ConsumeIrradianceResult@{ConsumeIrradianceResult}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{ConsumeIrradianceResult()}{ConsumeIrradianceResult()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a3b69dd1a2381f3fc1b0035de006416b5} 
+bool UIrradiance\+Scheduler\+::\+Consume\+Irradiance\+Result (\begin{DoxyParamCaption}\item[{float \&}]{Out\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Consumes the latest irradiance value from the subsystem, if available. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a3b69dd1a2381f3fc1b0035de006416b5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a3b69dd1a2381f3fc1b0035de006416b5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a3a1998734dd679049d860179bf9b0222}\index{UIrradianceScheduler@{UIrradianceScheduler}!EnsureSubsystem@{EnsureSubsystem}}
+\index{EnsureSubsystem@{EnsureSubsystem}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{EnsureSubsystem()}{EnsureSubsystem()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a3a1998734dd679049d860179bf9b0222} 
+void UIrradiance\+Scheduler\+::\+Ensure\+Subsystem (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ensures the Irradiance\+Subsystem pointer is valid for the current world. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a3a1998734dd679049d860179bf9b0222_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a61d5fea9a087dfc36e58fc42e93ddf45}\index{UIrradianceScheduler@{UIrradianceScheduler}!GetActiveSensors@{GetActiveSensors}}
+\index{GetActiveSensors@{GetActiveSensors}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{GetActiveSensors()}{GetActiveSensors()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a61d5fea9a087dfc36e58fc42e93ddf45} 
+void UIrradiance\+Scheduler\+::\+Get\+Active\+Sensors (\begin{DoxyParamCaption}\item[{TArray$<$ UPyranometer\+Component \texorpdfstring{$\ast$}{*} $>$ \&}]{Out\+Sensors}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fills Out\+Sensors with all active pyranometer components in this world. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a61d5fea9a087dfc36e58fc42e93ddf45_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_ae6df49456f56ac156a2a27b07a35f4c3}\index{UIrradianceScheduler@{UIrradianceScheduler}!GetState@{GetState}}
+\index{GetState@{GetState}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{GetState()}{GetState()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ae6df49456f56ac156a2a27b07a35f4c3} 
+\mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{EScheduler\+State}} UIrradiance\+Scheduler\+::\+Get\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the current scheduler state. 
+
+\Hypertarget{class_u_irradiance_scheduler_ac0c7ae036f5a4730afcf4dbd12f79c3e}\index{UIrradianceScheduler@{UIrradianceScheduler}!GetStatId@{GetStatId}}
+\index{GetStatId@{GetStatId}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{GetStatId()}{GetStatId()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ac0c7ae036f5a4730afcf4dbd12f79c3e} 
+virtual TStat\+Id UIrradiance\+Scheduler\+::\+Get\+Stat\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_u_irradiance_scheduler_ac0c7ae036f5a4730afcf4dbd12f79c3e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a727dd07f9bfdc049bdaf3a9063d115bf}\index{UIrradianceScheduler@{UIrradianceScheduler}!GetTickableGameObjectWorld@{GetTickableGameObjectWorld}}
+\index{GetTickableGameObjectWorld@{GetTickableGameObjectWorld}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{GetTickableGameObjectWorld()}{GetTickableGameObjectWorld()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a727dd07f9bfdc049bdaf3a9063d115bf} 
+virtual UWorld \texorpdfstring{$\ast$}{*} UIrradiance\+Scheduler\+::\+Get\+Tickable\+Game\+Object\+World (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a1bed979b420cf54f84af1402a8fcd652}\index{UIrradianceScheduler@{UIrradianceScheduler}!GetTickableTickType@{GetTickableTickType}}
+\index{GetTickableTickType@{GetTickableTickType}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{GetTickableTickType()}{GetTickableTickType()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a1bed979b420cf54f84af1402a8fcd652} 
+virtual ETickable\+Tick\+Type UIrradiance\+Scheduler\+::\+Get\+Tickable\+Tick\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+\Hypertarget{class_u_irradiance_scheduler_aa0a5a5137cd16afa6cfd83fd90026d8b}\index{UIrradianceScheduler@{UIrradianceScheduler}!IsSimulationMode@{IsSimulationMode}}
+\index{IsSimulationMode@{IsSimulationMode}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{IsSimulationMode()}{IsSimulationMode()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_aa0a5a5137cd16afa6cfd83fd90026d8b} 
+bool UIrradiance\+Scheduler\+::\+Is\+Simulation\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Returns true if running a multi-\/slot simulation. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_aa0a5a5137cd16afa6cfd83fd90026d8b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a4f3d8698a24d9ab3b2f5df9fcd4364e4}\index{UIrradianceScheduler@{UIrradianceScheduler}!LaunchCapture@{LaunchCapture}}
+\index{LaunchCapture@{LaunchCapture}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{LaunchCapture()}{LaunchCapture()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a4f3d8698a24d9ab3b2f5df9fcd4364e4} 
+void UIrradiance\+Scheduler\+::\+Launch\+Capture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Starts a six-\/face capture for the given request. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a4f3d8698a24d9ab3b2f5df9fcd4364e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a4f3d8698a24d9ab3b2f5df9fcd4364e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_add6eff6a074954268d370e6ab2d7a060}\index{UIrradianceScheduler@{UIrradianceScheduler}!LaunchNextOneShotCapture@{LaunchNextOneShotCapture}}
+\index{LaunchNextOneShotCapture@{LaunchNextOneShotCapture}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{LaunchNextOneShotCapture()}{LaunchNextOneShotCapture()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_add6eff6a074954268d370e6ab2d7a060} 
+void UIrradiance\+Scheduler\+::\+Launch\+Next\+One\+Shot\+Capture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Launches the next pending one-\/shot capture request, or finalizes if none. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_add6eff6a074954268d370e6ab2d7a060_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_add6eff6a074954268d370e6ab2d7a060_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a2c93371fc51e45b8af73ce9b4d2c690a}\index{UIrradianceScheduler@{UIrradianceScheduler}!LaunchNextSimulationCapture@{LaunchNextSimulationCapture}}
+\index{LaunchNextSimulationCapture@{LaunchNextSimulationCapture}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{LaunchNextSimulationCapture()}{LaunchNextSimulationCapture()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a2c93371fc51e45b8af73ce9b4d2c690a} 
+void UIrradiance\+Scheduler\+::\+Launch\+Next\+Simulation\+Capture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Launches the next capture for the current time slot and sensor index. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a2c93371fc51e45b8af73ce9b4d2c690a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a2c93371fc51e45b8af73ce9b4d2c690a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_ac45df7ef85d6d364e7724f7e853a32c6}\index{UIrradianceScheduler@{UIrradianceScheduler}!MakeRequest@{MakeRequest}}
+\index{MakeRequest@{MakeRequest}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{MakeRequest()}{MakeRequest()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ac45df7ef85d6d364e7724f7e853a32c6} 
+\mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} UIrradiance\+Scheduler\+::\+Make\+Request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{, }\item[{UPyranometer\+Component \texorpdfstring{$\ast$}{*}}]{Sensor}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Builds a capture request for the given sensor and simulation settings. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ac45df7ef85d6d364e7724f7e853a32c6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ac45df7ef85d6d364e7724f7e853a32c6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_ac79a70849af28bdcf62ac8214ccaeee5}\index{UIrradianceScheduler@{UIrradianceScheduler}!OnCaptureCompleted@{OnCaptureCompleted}}
+\index{OnCaptureCompleted@{OnCaptureCompleted}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{OnCaptureCompleted()}{OnCaptureCompleted()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ac79a70849af28bdcf62ac8214ccaeee5} 
+void UIrradiance\+Scheduler\+::\+On\+Capture\+Completed (\begin{DoxyParamCaption}\item[{float}]{Irr\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles a completed capture and advances the flow. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ac79a70849af28bdcf62ac8214ccaeee5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{class_u_irradiance_scheduler_ac79a70849af28bdcf62ac8214ccaeee5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a7ba28b0ad34fafcb3f525bb028459e01}\index{UIrradianceScheduler@{UIrradianceScheduler}!PrepareSimulation@{PrepareSimulation}}
+\index{PrepareSimulation@{PrepareSimulation}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{PrepareSimulation()}{PrepareSimulation()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a7ba28b0ad34fafcb3f525bb028459e01} 
+void UIrradiance\+Scheduler\+::\+Prepare\+Simulation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{, }\item[{const FDate\+Time \&}]{Initial\+Time\+UTC}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Prepares Sun\+Sky, export and viewport settings for a simulation. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a7ba28b0ad34fafcb3f525bb028459e01_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a7ba28b0ad34fafcb3f525bb028459e01_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_ae8f8cd8bd9eccb9abdf17b9f023bea00}\index{UIrradianceScheduler@{UIrradianceScheduler}!RestoreViewport@{RestoreViewport}}
+\index{RestoreViewport@{RestoreViewport}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{RestoreViewport()}{RestoreViewport()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_ae8f8cd8bd9eccb9abdf17b9f023bea00} 
+void UIrradiance\+Scheduler\+::\+Restore\+Viewport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Restores the viewport if it was previously forced. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{class_u_irradiance_scheduler_ae8f8cd8bd9eccb9abdf17b9f023bea00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_ae8f8cd8bd9eccb9abdf17b9f023bea00_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_aebff31185ed2941c1c7abcc423e1b25a}\index{UIrradianceScheduler@{UIrradianceScheduler}!SetSunSkyUTC@{SetSunSkyUTC}}
+\index{SetSunSkyUTC@{SetSunSkyUTC}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{SetSunSkyUTC()}{SetSunSkyUTC()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_aebff31185ed2941c1c7abcc423e1b25a} 
+void UIrradiance\+Scheduler\+::\+Set\+Sun\+Sky\+UTC (\begin{DoxyParamCaption}\item[{const FDate\+Time \&}]{Utc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets the Sun\+Sky UTC time. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_aebff31185ed2941c1c7abcc423e1b25a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a820fe9375420d4934dd45811ba7a419e}\index{UIrradianceScheduler@{UIrradianceScheduler}!StartSimulation@{StartSimulation}}
+\index{StartSimulation@{StartSimulation}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{StartSimulation()}{StartSimulation()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a820fe9375420d4934dd45811ba7a419e} 
+void UIrradiance\+Scheduler\+::\+Start\+Simulation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{Sim}{}\end{DoxyParamCaption})}
+
+
+
+Starts a full time-\/series simulation using the given configuration. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a820fe9375420d4934dd45811ba7a419e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_u_irradiance_scheduler_a820fe9375420d4934dd45811ba7a419e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_scheduler_a46ab4ac00573e109d595d80669a8e156}\index{UIrradianceScheduler@{UIrradianceScheduler}!Tick@{Tick}}
+\index{Tick@{Tick}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a46ab4ac00573e109d595d80669a8e156} 
+void UIrradiance\+Scheduler\+::\+Tick (\begin{DoxyParamCaption}\item[{float}]{Delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_scheduler_a46ab4ac00573e109d595d80669a8e156_cgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_u_irradiance_scheduler_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_irradiance_scheduler_a60bd98db18d0cef6bdda8bc8866493b1}\index{UIrradianceScheduler@{UIrradianceScheduler}!BaseSimConfig@{BaseSimConfig}}
+\index{BaseSimConfig@{BaseSimConfig}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{BaseSimConfig}{BaseSimConfig}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a60bd98db18d0cef6bdda8bc8866493b1} 
+\mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} UIrradiance\+Scheduler\+::\+Base\+Sim\+Config\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a2c28f547d310878bf86d4cb47105491c}\index{UIrradianceScheduler@{UIrradianceScheduler}!bCaptureInFlight@{bCaptureInFlight}}
+\index{bCaptureInFlight@{bCaptureInFlight}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{bCaptureInFlight}{bCaptureInFlight}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a2c28f547d310878bf86d4cb47105491c} 
+bool UIrradiance\+Scheduler\+::b\+Capture\+In\+Flight = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether there is a capture currently in flight. 
+
+\Hypertarget{class_u_irradiance_scheduler_a1cee66496f0d5077875d8b012ad4246a}\index{UIrradianceScheduler@{UIrradianceScheduler}!bViewportForced@{bViewportForced}}
+\index{bViewportForced@{bViewportForced}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{bViewportForced}{bViewportForced}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a1cee66496f0d5077875d8b012ad4246a} 
+bool UIrradiance\+Scheduler\+::b\+Viewport\+Forced = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether we forced the viewport and should restore it afterwards. 
+
+\Hypertarget{class_u_irradiance_scheduler_a336eb98000f1616ed62fb06bcb7dc10b}\index{UIrradianceScheduler@{UIrradianceScheduler}!Current@{Current}}
+\index{Current@{Current}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{Current}{Current}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a336eb98000f1616ed62fb06bcb7dc10b} 
+TOptional$<$\mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}}$>$ UIrradiance\+Scheduler\+::\+Current\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a4ee79f5fe1cc10bb1c39b0390afc8518}\index{UIrradianceScheduler@{UIrradianceScheduler}!Irr@{Irr}}
+\index{Irr@{Irr}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{Irr}{Irr}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a4ee79f5fe1cc10bb1c39b0390afc8518} 
+TWeak\+Object\+Ptr$<$\mbox{\hyperlink{class_u_irradiance_subsystem}{UIrradiance\+Subsystem}}$>$ UIrradiance\+Scheduler\+::\+Irr\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a3d224443bcacdf4845405b2b34dd6fa2}\index{UIrradianceScheduler@{UIrradianceScheduler}!Queue@{Queue}}
+\index{Queue@{Queue}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{Queue}{Queue}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a3d224443bcacdf4845405b2b34dd6fa2} 
+TQueue$<$\mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}}$>$ UIrradiance\+Scheduler\+::\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_afc080618653247fc69bfe4616a54d956}\index{UIrradianceScheduler@{UIrradianceScheduler}!SensorIndex@{SensorIndex}}
+\index{SensorIndex@{SensorIndex}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{SensorIndex}{SensorIndex}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_afc080618653247fc69bfe4616a54d956} 
+int32 UIrradiance\+Scheduler\+::\+Sensor\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a268c7a3937a1d290a3e333987f1d46d6}\index{UIrradianceScheduler@{UIrradianceScheduler}!Sensors@{Sensors}}
+\index{Sensors@{Sensors}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{Sensors}{Sensors}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a268c7a3937a1d290a3e333987f1d46d6} 
+TArray$<$UPyranometer\+Component\texorpdfstring{$\ast$}{*}$>$ UIrradiance\+Scheduler\+::\+Sensors\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a28f0a1ca75ceca18128c30f411d150cd}\index{UIrradianceScheduler@{UIrradianceScheduler}!State@{State}}
+\index{State@{State}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a28f0a1ca75ceca18128c30f411d150cd} 
+\mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79}{EScheduler\+State}} UIrradiance\+Scheduler\+::\+State = \mbox{\hyperlink{_irradiance_scheduler_8h_ae439df2451d7080397ef69fe94dccc79ae599161956d626eda4cb0a5ffb85271c}{EScheduler\+State\+::\+Idle}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a6f65ae1f6a6579265b6257bf688c40c3}\index{UIrradianceScheduler@{UIrradianceScheduler}!TimeIndex@{TimeIndex}}
+\index{TimeIndex@{TimeIndex}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{TimeIndex}{TimeIndex}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a6f65ae1f6a6579265b6257bf688c40c3} 
+int32 UIrradiance\+Scheduler\+::\+Time\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_scheduler_a3948d674a179ebf289425281a2d8f240}\index{UIrradianceScheduler@{UIrradianceScheduler}!TimeSlots@{TimeSlots}}
+\index{TimeSlots@{TimeSlots}!UIrradianceScheduler@{UIrradianceScheduler}}
+\doxysubsubsection{\texorpdfstring{TimeSlots}{TimeSlots}}
+{\footnotesize\ttfamily \label{class_u_irradiance_scheduler_a3948d674a179ebf289425281a2d8f240} 
+TArray$<$FDate\+Time$>$ UIrradiance\+Scheduler\+::\+Time\+Slots\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Public/\+Simulation/\mbox{\hyperlink{_irradiance_scheduler_8h}{Irradiance\+Scheduler.\+h}}\item 
+Source/\+Pyrano/\+Private/\+Simulation/\mbox{\hyperlink{_irradiance_scheduler_8cpp}{Irradiance\+Scheduler.\+cpp}}\end{DoxyCompactItemize}

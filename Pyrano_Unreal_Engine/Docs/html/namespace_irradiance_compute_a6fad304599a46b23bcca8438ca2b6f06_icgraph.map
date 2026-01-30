@@ -1,0 +1,9 @@
+<map id="IrradianceCompute::ComputeAndExtractIrradiance" name="IrradianceCompute::ComputeAndExtractIrradiance">
+<area shape="rect" id="Node000001" title=" " alt="" coords="625,5,822,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a140204594c38cf4c1696276e7e9a4450" title="Dispatch the irradiance compute shader using the captured faces." alt="" coords="410,5,577,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="607,27,578,29,578,24,613,27"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#afec011af7207461bc6c02e2c03e06bc3" title="Handle per&#45;frame logic while faces are being captured." alt="" coords="208,5,362,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="392,27,362,29,362,24,397,27"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_subsystem.html#ad3336fe0d04f79cf1c1eb2ecdb226325" title=" " alt="" coords="5,5,160,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,27,160,29,160,24,195,26"/>
+</map>

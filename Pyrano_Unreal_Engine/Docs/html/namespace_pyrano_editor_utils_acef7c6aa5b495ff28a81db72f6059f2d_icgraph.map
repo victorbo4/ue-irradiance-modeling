@@ -1,0 +1,7 @@
+<map id="PyranoEditorUtils::FormatDurationText" name="PyranoEditorUtils::FormatDurationText">
+<area shape="rect" id="Node000001" title=" " alt="" coords="462,5,598,48"/>
+<area shape="rect" id="Node000002" href="$class_u_pyrano_editor_subsystem.html#aff2465394f6335550f1ee02a6725e648" title="Validates a full simulation configuration and returns a detailed result." alt="" coords="242,5,414,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="444,27,415,29,414,24,449,27"/>
+<area shape="rect" id="Node000003" href="$class_u_pyrano_editor_subsystem.html#a66b820c9aae05fb59340fae1abe43379" title=" " alt="" coords="5,5,194,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="223,27,194,29,194,24,229,26"/>
+</map>

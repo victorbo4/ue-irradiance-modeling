@@ -1,0 +1,82 @@
+\doxysection{Simulation\+Config.\+h}
+\hypertarget{_simulation_config_8h_source}{}\label{_simulation_config_8h_source}\index{Source/Pyrano/Public/Simulation/SimulationConfig.h@{Source/Pyrano/Public/Simulation/SimulationConfig.h}}
+\mbox{\hyperlink{_simulation_config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*=============================================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ SimulationConfig.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ Configuration\ parameters\ defining\ location,\ timing,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ and\ capture\ settings\ used\ for\ irradiance\ simulation.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{/============================================================================*/}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}CoreMinimal.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}SimulationConfig.generated.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ USTRUCT(BlueprintType)}
+\DoxyCodeLine{00013\ struct\ \mbox{\hyperlink{struct_f_sim_config}{FSimConfig}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ GENERATED\_BODY()}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Location"{}})}
+\DoxyCodeLine{00018\ \ \ \ \ float\ \mbox{\hyperlink{struct_f_sim_config_a262f90d57dcb0e7c7016bbb6d59e0e79}{Latitude}}\ =\ 0.f;\ \ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Location"{}})}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_f_sim_config_a8099d6edfacc87c4a825e8d2fabc2cd8}{Longitude}}\ =\ 0.f;\ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Location"{}})}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_f_sim_config_a68aafd4e3f184a7f1c2a60a4130c5f6d}{Timezone}}\ =\ 0;\ \ \ \ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Location"{}})}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_f_sim_config_a13a88666e79425d69bed5be0fc8d0b25}{NorthOffset}}\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Time"{}})}
+\DoxyCodeLine{00030\ \ \ \ \ FDateTime\ \mbox{\hyperlink{struct_f_sim_config_ac2f1f52b9be504d51db2856cf15c9b81}{StartTime}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Time"{}})}
+\DoxyCodeLine{00033\ \ \ \ \ FDateTime\ \mbox{\hyperlink{struct_f_sim_config_a70ccbd56e69c5b6e5fdcebdefe3b1532}{EndTime}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Time"{}})}
+\DoxyCodeLine{00036\ \ \ \ \ FTimespan\ \mbox{\hyperlink{struct_f_sim_config_a43751794c042b7afa8a36948ec207109}{SampleInterval}}\ =\ FTimespan::FromMinutes(5);}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Capture"{}})}
+\DoxyCodeLine{00039\ \ \ \ \ int32\ \mbox{\hyperlink{struct_f_sim_config_a1f9d1870e66b187a01d7ae9545375a6f}{WarmupFrames}}\ =\ 8;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Capture"{}})}
+\DoxyCodeLine{00042\ \ \ \ \ int32\ \mbox{\hyperlink{struct_f_sim_config_a389d12ab5036851e13781af2fb11f4c1}{ResolutionPx}}\ =\ 256;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Capture"{}})}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_f_sim_config_a6bfcd5a4cec39e6f7478b528293082fd}{bPathTracing}}\ =\ false;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Capture"{}})}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_f_sim_config_a67c058f286863d4f44b864ff9815970d}{bExportCSV}}\ =\ false;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Output"{}})}
+\DoxyCodeLine{00051\ \ \ \ \ FDirectoryPath\ \mbox{\hyperlink{struct_f_sim_config_a12457036904452051c574325225e5110}{OutputPath}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Capture"{}})}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_f_sim_config_ac77c0cddd76099de001e20c975ad1926}{bExportImages}}\ =\ false;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}Sun"{}})}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_f_sim_config_a8f92f56ce3690119d02dac5cd3603eae}{MinSunAltitudeDeg}}\ =\ 0.f;\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}ClearSky"{}})}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_f_sim_config_a6229504c545be240cd2297c383a33484}{AltitudeMeters}}\ =\ 500.f;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ UPROPERTY(EditAnywhere,\ BlueprintReadWrite,\ Category\ =\ \textcolor{stringliteral}{"{}ClearSky"{}})}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_f_sim_config_acd1c5205f71cd7c754305c5cabd306f6}{LinkeTurbidity}}\ =\ 2.f;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_f_sim_config_ab4beb107679be137421f4696b44b7cae}{IsValid}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00067\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_f_sim_config_a262f90d57dcb0e7c7016bbb6d59e0e79}{Latitude}}\ >=\ -\/90.f\ \&\&\ \mbox{\hyperlink{struct_f_sim_config_a262f90d57dcb0e7c7016bbb6d59e0e79}{Latitude}}\ <=\ 90.f}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{struct_f_sim_config_a8099d6edfacc87c4a825e8d2fabc2cd8}{Longitude}}\ >=\ -\/180.f\ \&\&\ \mbox{\hyperlink{struct_f_sim_config_a8099d6edfacc87c4a825e8d2fabc2cd8}{Longitude}}\ <=\ 180.f}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{struct_f_sim_config_a389d12ab5036851e13781af2fb11f4c1}{ResolutionPx}}\ >\ 0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{struct_f_sim_config_a1f9d1870e66b187a01d7ae9545375a6f}{WarmupFrames}}\ >\ 0}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{struct_f_sim_config_ac2f1f52b9be504d51db2856cf15c9b81}{StartTime}}\ <\ \mbox{\hyperlink{struct_f_sim_config_a70ccbd56e69c5b6e5fdcebdefe3b1532}{EndTime}}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{struct_f_sim_config_a43751794c042b7afa8a36948ec207109}{SampleInterval}}.GetTotalSeconds()\ >\ 0;}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+
+\end{DoxyCode}

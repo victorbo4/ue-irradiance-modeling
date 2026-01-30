@@ -1,0 +1,9 @@
+<map id="UIrradianceSubsystem::StartFaceCapture" name="UIrradianceSubsystem::StartFaceCapture">
+<area shape="rect" id="Node000001" title="Start capture of a single face at PosWS / RotWS." alt="" coords="410,39,564,81"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a1ea6ae410e0b596d1500aeacaf2b2110" title="Begin a new 6&#45;face capture using the given request description." alt="" coords="208,5,362,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="392,45,362,42,362,37,398,45"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#afec011af7207461bc6c02e2c03e06bc3" title="Handle per&#45;frame logic while faces are being captured." alt="" coords="208,72,362,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="398,75,362,83,362,78,392,76"/>
+<area shape="rect" id="Node000004" href="$class_u_irradiance_subsystem.html#ad3336fe0d04f79cf1c1eb2ecdb226325" title=" " alt="" coords="5,72,160,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,94,160,96,160,91,195,93"/>
+</map>

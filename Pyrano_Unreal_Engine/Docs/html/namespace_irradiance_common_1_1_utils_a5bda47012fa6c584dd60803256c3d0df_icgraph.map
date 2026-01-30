@@ -1,0 +1,5 @@
+<map id="IrradianceCommon::Utils::IsPIEClientWorld" name="IrradianceCommon::Utils::IsPIEClientWorld">
+<area shape="rect" id="Node000001" title="Returns true if the world belongs to a PIE client instance." alt="" coords="230,5,396,48"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#a83c48c8eb81fa9030764fe107709a9b0" title="Force the PIE client viewport and window to be square (SidePx x SidePx)." alt="" coords="5,5,182,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,27,182,29,182,24,217,26"/>
+</map>

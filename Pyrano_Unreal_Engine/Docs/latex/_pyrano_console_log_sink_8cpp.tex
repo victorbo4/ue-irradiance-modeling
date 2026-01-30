@@ -1,0 +1,81 @@
+\doxysection{Source/\+Pyrano\+Editor/\+Private/\+Logging/\+Pyrano\+Console\+Log\+Sink.cpp File Reference}
+\hypertarget{_pyrano_console_log_sink_8cpp}{}\label{_pyrano_console_log_sink_8cpp}\index{Source/PyranoEditor/Private/Logging/PyranoConsoleLogSink.cpp@{Source/PyranoEditor/Private/Logging/PyranoConsoleLogSink.cpp}}
+{\ttfamily \#include "{}Logging/\+Pyrano\+Console\+Log\+Sink.\+h"{}}\newline
+{\ttfamily \#include "{}Logging/\+Irradiance\+Log.\+h"{}}\newline
+{\ttfamily \#include "{}Irradiance/\+Irradiance\+Common.\+h"{}}\newline
+Include dependency graph for Pyrano\+Console\+Log\+Sink.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_console_log_sink_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_pyrano_console_log_sink_8cpp_a087e7c4e6d620e9331bbc109e283a882}{Install\+Pyrano\+Console\+Log\+Sink}} ()
+\item 
+void \mbox{\hyperlink{_pyrano_console_log_sink_8cpp_a86136d5a6748aa19feba6c727ccc502f}{Remove\+Pyrano\+Console\+Log\+Sink}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+TQueue$<$ \mbox{\hyperlink{struct_f_pyrano_console_raw_line}{FPyrano\+Console\+Raw\+Line}}, EQueue\+Mode\+::\+Mpsc $>$ \mbox{\hyperlink{_pyrano_console_log_sink_8cpp_ad4b002aa2f269fd39c6facd030bb79df}{GPyrano\+Console\+Pending\+Lines}}
+\begin{DoxyCompactList}\small\item\em Global Queue(Multiple Producer / Consumer). \end{DoxyCompactList}\item 
+static TUnique\+Ptr$<$ \mbox{\hyperlink{class_f_pyrano_console_log_sink}{FPyrano\+Console\+Log\+Sink}} $>$ \mbox{\hyperlink{_pyrano_console_log_sink_8cpp_af1b520490f77c85667b96558f980aed7}{GPyrano\+Console\+Sink}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_pyrano_console_log_sink_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_pyrano_console_log_sink_8cpp_a087e7c4e6d620e9331bbc109e283a882}\index{PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}!InstallPyranoConsoleLogSink@{InstallPyranoConsoleLogSink}}
+\index{InstallPyranoConsoleLogSink@{InstallPyranoConsoleLogSink}!PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}}
+\doxysubsubsection{\texorpdfstring{InstallPyranoConsoleLogSink()}{InstallPyranoConsoleLogSink()}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8cpp_a087e7c4e6d620e9331bbc109e283a882} 
+void Install\+Pyrano\+Console\+Log\+Sink (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_console_log_sink_8cpp_a087e7c4e6d620e9331bbc109e283a882_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_pyrano_console_log_sink_8cpp_a86136d5a6748aa19feba6c727ccc502f}\index{PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}!RemovePyranoConsoleLogSink@{RemovePyranoConsoleLogSink}}
+\index{RemovePyranoConsoleLogSink@{RemovePyranoConsoleLogSink}!PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}}
+\doxysubsubsection{\texorpdfstring{RemovePyranoConsoleLogSink()}{RemovePyranoConsoleLogSink()}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8cpp_a86136d5a6748aa19feba6c727ccc502f} 
+void Remove\+Pyrano\+Console\+Log\+Sink (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_console_log_sink_8cpp_a86136d5a6748aa19feba6c727ccc502f_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{_pyrano_console_log_sink_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_pyrano_console_log_sink_8cpp_ad4b002aa2f269fd39c6facd030bb79df}\index{PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}!GPyranoConsolePendingLines@{GPyranoConsolePendingLines}}
+\index{GPyranoConsolePendingLines@{GPyranoConsolePendingLines}!PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}}
+\doxysubsubsection{\texorpdfstring{GPyranoConsolePendingLines}{GPyranoConsolePendingLines}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8cpp_ad4b002aa2f269fd39c6facd030bb79df} 
+TQueue$<$\mbox{\hyperlink{struct_f_pyrano_console_raw_line}{FPyrano\+Console\+Raw\+Line}}, EQueue\+Mode\+::\+Mpsc$>$ GPyrano\+Console\+Pending\+Lines}
+
+
+
+Global Queue(Multiple Producer / Consumer). 
+
+\Hypertarget{_pyrano_console_log_sink_8cpp_af1b520490f77c85667b96558f980aed7}\index{PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}!GPyranoConsoleSink@{GPyranoConsoleSink}}
+\index{GPyranoConsoleSink@{GPyranoConsoleSink}!PyranoConsoleLogSink.cpp@{PyranoConsoleLogSink.cpp}}
+\doxysubsubsection{\texorpdfstring{GPyranoConsoleSink}{GPyranoConsoleSink}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8cpp_af1b520490f77c85667b96558f980aed7} 
+TUnique\+Ptr$<$\mbox{\hyperlink{class_f_pyrano_console_log_sink}{FPyrano\+Console\+Log\+Sink}}$>$ GPyrano\+Console\+Sink\hspace{0.3cm}{\ttfamily [static]}}
+

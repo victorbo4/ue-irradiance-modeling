@@ -1,0 +1,87 @@
+\doxysection{Source/\+Pyrano\+Editor/\+Private/\+Logging/\+Pyrano\+Console\+Log\+Sink.h File Reference}
+\hypertarget{_pyrano_console_log_sink_8h}{}\label{_pyrano_console_log_sink_8h}\index{Source/PyranoEditor/Private/Logging/PyranoConsoleLogSink.h@{Source/PyranoEditor/Private/Logging/PyranoConsoleLogSink.h}}
+{\ttfamily \#include "{}Core\+Minimal.\+h"{}}\newline
+{\ttfamily \#include "{}Misc/\+Output\+Device.\+h"{}}\newline
+Include dependency graph for Pyrano\+Console\+Log\+Sink.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{_pyrano_console_log_sink_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_console_log_sink_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_f_pyrano_console_raw_line}{FPyrano\+Console\+Raw\+Line}}
+\item 
+class \mbox{\hyperlink{class_f_pyrano_console_log_sink}{FPyrano\+Console\+Log\+Sink}}
+\begin{DoxyCompactList}\small\item\em Output device linked with GLog. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_pyrano_console_log_sink_8h_a087e7c4e6d620e9331bbc109e283a882}{Install\+Pyrano\+Console\+Log\+Sink}} ()
+\item 
+void \mbox{\hyperlink{_pyrano_console_log_sink_8h_a86136d5a6748aa19feba6c727ccc502f}{Remove\+Pyrano\+Console\+Log\+Sink}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+TQueue$<$ \mbox{\hyperlink{struct_f_pyrano_console_raw_line}{FPyrano\+Console\+Raw\+Line}}, EQueue\+Mode\+::\+Mpsc $>$ \mbox{\hyperlink{_pyrano_console_log_sink_8h_ad4b002aa2f269fd39c6facd030bb79df}{GPyrano\+Console\+Pending\+Lines}}
+\begin{DoxyCompactList}\small\item\em Global Queue(Multiple Producer / Consumer). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{_pyrano_console_log_sink_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_pyrano_console_log_sink_8h_a087e7c4e6d620e9331bbc109e283a882}\index{PyranoConsoleLogSink.h@{PyranoConsoleLogSink.h}!InstallPyranoConsoleLogSink@{InstallPyranoConsoleLogSink}}
+\index{InstallPyranoConsoleLogSink@{InstallPyranoConsoleLogSink}!PyranoConsoleLogSink.h@{PyranoConsoleLogSink.h}}
+\doxysubsubsection{\texorpdfstring{InstallPyranoConsoleLogSink()}{InstallPyranoConsoleLogSink()}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8h_a087e7c4e6d620e9331bbc109e283a882} 
+void Install\+Pyrano\+Console\+Log\+Sink (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_console_log_sink_8h_a087e7c4e6d620e9331bbc109e283a882_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_pyrano_console_log_sink_8h_a86136d5a6748aa19feba6c727ccc502f}\index{PyranoConsoleLogSink.h@{PyranoConsoleLogSink.h}!RemovePyranoConsoleLogSink@{RemovePyranoConsoleLogSink}}
+\index{RemovePyranoConsoleLogSink@{RemovePyranoConsoleLogSink}!PyranoConsoleLogSink.h@{PyranoConsoleLogSink.h}}
+\doxysubsubsection{\texorpdfstring{RemovePyranoConsoleLogSink()}{RemovePyranoConsoleLogSink()}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8h_a86136d5a6748aa19feba6c727ccc502f} 
+void Remove\+Pyrano\+Console\+Log\+Sink (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_pyrano_console_log_sink_8h_a86136d5a6748aa19feba6c727ccc502f_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{_pyrano_console_log_sink_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_pyrano_console_log_sink_8h_ad4b002aa2f269fd39c6facd030bb79df}\index{PyranoConsoleLogSink.h@{PyranoConsoleLogSink.h}!GPyranoConsolePendingLines@{GPyranoConsolePendingLines}}
+\index{GPyranoConsolePendingLines@{GPyranoConsolePendingLines}!PyranoConsoleLogSink.h@{PyranoConsoleLogSink.h}}
+\doxysubsubsection{\texorpdfstring{GPyranoConsolePendingLines}{GPyranoConsolePendingLines}}
+{\footnotesize\ttfamily \label{_pyrano_console_log_sink_8h_ad4b002aa2f269fd39c6facd030bb79df} 
+TQueue$<$\mbox{\hyperlink{struct_f_pyrano_console_raw_line}{FPyrano\+Console\+Raw\+Line}}, EQueue\+Mode\+::\+Mpsc$>$ GPyrano\+Console\+Pending\+Lines\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global Queue(Multiple Producer / Consumer). 
+

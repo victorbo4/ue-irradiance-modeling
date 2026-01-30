@@ -1,0 +1,119 @@
+\doxysection{UClear\+Sky\+Service Class Reference}
+\hypertarget{class_u_clear_sky_service}{}\label{class_u_clear_sky_service}\index{UClearSkyService@{UClearSkyService}}
+
+
+{\ttfamily \#include $<$Ineichen\+Perez\+Clear\+Sky.\+h$>$}
+
+
+
+Inheritance diagram for UClear\+Sky\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{class_u_clear_sky_service__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UClear\+Sky\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{class_u_clear_sky_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_clear_sky_service_a6efb3e2974c94e79a43f15d4c3331be3}{Configure}} (const \mbox{\hyperlink{struct_f_pyrano_clear_sky_config}{FPyrano\+Clear\+Sky\+Config}} \&In\+Config)
+\item 
+\mbox{\hyperlink{struct_f_pyrano_clear_sky_irradiance}{FPyrano\+Clear\+Sky\+Irradiance}} \mbox{\hyperlink{class_u_clear_sky_service_a8a36ecf792b9a2982b3a12408a2b5a9a}{Compute}} (const FDate\+Time \&When\+UTC, double Solar\+Zenith\+Rad) const
+\begin{DoxyCompactList}\small\item\em Computes clear-\/sky irradiance for a given sun zenith and timestamp (UTC). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{class_u_clear_sky_service_ac9faa811288b93e087788128535eed2a}{Extraterrestrial\+Irradiance\+\_\+\+Wm2}} (int32 Day\+Of\+Year)
+\item 
+static double \mbox{\hyperlink{class_u_clear_sky_service_a4bd936e7dcca173feace16b32d4719c3}{Air\+Mass\+Kasten\+Young}} (double Solar\+Zenith\+Rad)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_f_pyrano_clear_sky_config}{FPyrano\+Clear\+Sky\+Config}} \mbox{\hyperlink{class_u_clear_sky_service_a2661537a4acf9a1279ee5968f46ed141}{Config}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_u_clear_sky_service_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_clear_sky_service_a4bd936e7dcca173feace16b32d4719c3}\index{UClearSkyService@{UClearSkyService}!AirMassKastenYoung@{AirMassKastenYoung}}
+\index{AirMassKastenYoung@{AirMassKastenYoung}!UClearSkyService@{UClearSkyService}}
+\doxysubsubsection{\texorpdfstring{AirMassKastenYoung()}{AirMassKastenYoung()}}
+{\footnotesize\ttfamily \label{class_u_clear_sky_service_a4bd936e7dcca173feace16b32d4719c3} 
+double UClear\+Sky\+Service\+::\+Air\+Mass\+Kasten\+Young (\begin{DoxyParamCaption}\item[{double}]{Solar\+Zenith\+Rad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_clear_sky_service_a4bd936e7dcca173feace16b32d4719c3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_clear_sky_service_a8a36ecf792b9a2982b3a12408a2b5a9a}\index{UClearSkyService@{UClearSkyService}!Compute@{Compute}}
+\index{Compute@{Compute}!UClearSkyService@{UClearSkyService}}
+\doxysubsubsection{\texorpdfstring{Compute()}{Compute()}}
+{\footnotesize\ttfamily \label{class_u_clear_sky_service_a8a36ecf792b9a2982b3a12408a2b5a9a} 
+\mbox{\hyperlink{struct_f_pyrano_clear_sky_irradiance}{FPyrano\+Clear\+Sky\+Irradiance}} UClear\+Sky\+Service\+::\+Compute (\begin{DoxyParamCaption}\item[{const FDate\+Time \&}]{When\+UTC}{, }\item[{double}]{Solar\+Zenith\+Rad}{}\end{DoxyParamCaption}) const}
+
+
+
+Computes clear-\/sky irradiance for a given sun zenith and timestamp (UTC). 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_clear_sky_service_a8a36ecf792b9a2982b3a12408a2b5a9a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_clear_sky_service_a6efb3e2974c94e79a43f15d4c3331be3}\index{UClearSkyService@{UClearSkyService}!Configure@{Configure}}
+\index{Configure@{Configure}!UClearSkyService@{UClearSkyService}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily \label{class_u_clear_sky_service_a6efb3e2974c94e79a43f15d4c3331be3} 
+void UClear\+Sky\+Service\+::\+Configure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_pyrano_clear_sky_config}{FPyrano\+Clear\+Sky\+Config}} \&}]{In\+Config}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_clear_sky_service_ac9faa811288b93e087788128535eed2a}\index{UClearSkyService@{UClearSkyService}!ExtraterrestrialIrradiance\_Wm2@{ExtraterrestrialIrradiance\_Wm2}}
+\index{ExtraterrestrialIrradiance\_Wm2@{ExtraterrestrialIrradiance\_Wm2}!UClearSkyService@{UClearSkyService}}
+\doxysubsubsection{\texorpdfstring{ExtraterrestrialIrradiance\_Wm2()}{ExtraterrestrialIrradiance\_Wm2()}}
+{\footnotesize\ttfamily \label{class_u_clear_sky_service_ac9faa811288b93e087788128535eed2a} 
+double UClear\+Sky\+Service\+::\+Extraterrestrial\+Irradiance\+\_\+\+Wm2 (\begin{DoxyParamCaption}\item[{int32}]{Day\+Of\+Year}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_clear_sky_service_ac9faa811288b93e087788128535eed2a_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_u_clear_sky_service_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_clear_sky_service_a2661537a4acf9a1279ee5968f46ed141}\index{UClearSkyService@{UClearSkyService}!Config@{Config}}
+\index{Config@{Config}!UClearSkyService@{UClearSkyService}}
+\doxysubsubsection{\texorpdfstring{Config}{Config}}
+{\footnotesize\ttfamily \label{class_u_clear_sky_service_a2661537a4acf9a1279ee5968f46ed141} 
+\mbox{\hyperlink{struct_f_pyrano_clear_sky_config}{FPyrano\+Clear\+Sky\+Config}} UClear\+Sky\+Service\+::\+Config\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Public/\mbox{\hyperlink{_ineichen_perez_clear_sky_8h}{Ineichen\+Perez\+Clear\+Sky.\+h}}\item 
+Source/\+Pyrano/\+Private/\mbox{\hyperlink{_ineichen_perez_clear_sky_8cpp}{Ineichen\+Perez\+Clear\+Sky.\+cpp}}\end{DoxyCompactItemize}

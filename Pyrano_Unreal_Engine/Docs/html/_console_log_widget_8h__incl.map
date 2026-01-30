@@ -1,0 +1,21 @@
+<map id="Source/PyranoEditor/Private/UI/ConsoleLogWidget.h" name="Source/PyranoEditor/Private/UI/ConsoleLogWidget.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="414,5,623,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="242,187,347,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="411,44,364,66,341,80,322,98,310,114,303,133,296,173,292,169,298,132,305,112,317,94,338,76,361,61,416,42"/>
+<area shape="rect" id="Node000003" href="$_console_log_line_item_8h.html" title=" " alt="" coords="87,104,256,131"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="435,50,236,102,235,97,439,47"/>
+<area shape="rect" id="Node000005" href="$_pyrano_console_log_sink_8h.html" title=" " alt="" coords="332,96,512,139"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="498,47,457,88,454,83,494,50"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="536,104,692,131"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="541,46,592,94,587,93,540,51"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="716,104,875,131"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="584,46,744,99,739,99,583,51"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="899,104,1102,131"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="624,45,919,100,914,101,623,50"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="191,129,265,178,260,179,190,134"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,187,218,213"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="165,130,131,177,128,173,160,132"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="392,139,328,181,326,176,387,140"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="371,187,516,213"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="429,137,439,173,434,170,426,141"/>
+</map>

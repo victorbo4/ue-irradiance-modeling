@@ -1,0 +1,254 @@
+\doxysection{UIrradiance\+Exporter Class Reference}
+\hypertarget{class_u_irradiance_exporter}{}\label{class_u_irradiance_exporter}\index{UIrradianceExporter@{UIrradianceExporter}}
+
+
+{\ttfamily \#include $<$Irradiance\+Exporter.\+h$>$}
+
+
+
+Inheritance diagram for UIrradiance\+Exporter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_irradiance_exporter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for UIrradiance\+Exporter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_u_irradiance_exporter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_irradiance_exporter_ab5d1e2836692f211691c27e9ce61aa89}{Init}} (const \mbox{\hyperlink{struct_f_export_options}{FExport\+Options}} \&In\+Opts)
+\item 
+void \mbox{\hyperlink{class_u_irradiance_exporter_ad382e2dafafdc723f7a16059b1e562f2}{Append\+Irradiance\+Row}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req, float Total\+Irradiance, float Irr\+Mean, float IrrR, float IrrG, float IrrB, double Clear\+Sky\+GHI, double Clear\+Sky\+DNI, double Clear\+Sky\+DHI, float Irr\+Dir, float Azimuth, float Altitude, float Geometric\+Factor, int32 Sun\+Occluded, float Sun\+Hit\+DistanceM, float Sun\+Visibility)
+\begin{DoxyCompactList}\small\item\em CSV export utils. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_u_irradiance_exporter_ae27d33156d8d003db48f8a8e95589dc2}{Flush\+CSVIf\+Needed}} (bool b\+Force=false)
+\item 
+void \mbox{\hyperlink{class_u_irradiance_exporter_a180b4eb6cc676c9f9bca75236914629b}{Enqueue\+Face\+EXR}} (const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&Req, int32 Face\+Idx, TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$ Face\+RT, FInt\+Point Size)
+\begin{DoxyCompactList}\small\item\em Image export. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_u_irradiance_exporter_a5dc928403c8b2f3b33ebaf459363eb04}{Ensure\+CSVHeader}} ()
+\item 
+bool \mbox{\hyperlink{class_u_irradiance_exporter_a041eb2a1073d7a52ae314cae60eea73e}{Ensure\+CSVWritable}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static FString \mbox{\hyperlink{class_u_irradiance_exporter_af2645a4848f14ee445784cdbf0b2310a}{Face\+To\+String}} (int32 Face\+Idx)
+\begin{DoxyCompactList}\small\item\em Returns a short name for a cubemap face (PosX, NegX...). \end{DoxyCompactList}\item 
+static FString \mbox{\hyperlink{class_u_irradiance_exporter_a2495f1384be3c6e942a88efe5616e94a}{Make\+Timestamp\+For\+File}} (const FDate\+Time \&UTC)
+\begin{DoxyCompactList}\small\item\em Formats UTC as a compact timestamp for export. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+FString \mbox{\hyperlink{class_u_irradiance_exporter_ace71fc77b59e10afd3abbfa0efdf4fe7}{CSVPath\+Abs}}
+\item 
+FString \mbox{\hyperlink{class_u_irradiance_exporter_a5b417b84606f35545c84045d7042797b}{Images\+Path\+Abs}}
+\item 
+bool \mbox{\hyperlink{class_u_irradiance_exporter_a44717f264928bad91535092c3f4b4f85}{b\+CSVHeader\+Written}} = false
+\item 
+FString \mbox{\hyperlink{class_u_irradiance_exporter_a063aa74699954d8a344a2b134c675ed5}{Pending\+CSV}}
+\item 
+int32 \mbox{\hyperlink{class_u_irradiance_exporter_a863630b30977867d9bb13836f29ae052}{Pending\+Line\+Count}} = 0
+\item 
+int32 \mbox{\hyperlink{class_u_irradiance_exporter_a9c77c910939e4a1c45578e7ff7e536e3}{Flush\+Threshold\+Lines}} = 64
+\item 
+uint64 \mbox{\hyperlink{class_u_irradiance_exporter_a7d944596a5006f6eb348ee24b8d4a4ed}{Total\+Rows\+Appended}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_u_irradiance_exporter_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_irradiance_exporter_ad382e2dafafdc723f7a16059b1e562f2}\index{UIrradianceExporter@{UIrradianceExporter}!AppendIrradianceRow@{AppendIrradianceRow}}
+\index{AppendIrradianceRow@{AppendIrradianceRow}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{AppendIrradianceRow()}{AppendIrradianceRow()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_ad382e2dafafdc723f7a16059b1e562f2} 
+void UIrradiance\+Exporter\+::\+Append\+Irradiance\+Row (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{, }\item[{float}]{Total\+Irradiance}{, }\item[{float}]{Irr\+Mean}{, }\item[{float}]{IrrR}{, }\item[{float}]{IrrG}{, }\item[{float}]{IrrB}{, }\item[{double}]{Clear\+Sky\+GHI}{, }\item[{double}]{Clear\+Sky\+DNI}{, }\item[{double}]{Clear\+Sky\+DHI}{, }\item[{float}]{Irr\+Dir}{, }\item[{float}]{Azimuth}{, }\item[{float}]{Altitude}{, }\item[{float}]{Geometric\+Factor}{, }\item[{int32}]{Sun\+Occluded}{, }\item[{float}]{Sun\+Hit\+DistanceM}{, }\item[{float}]{Sun\+Visibility}{}\end{DoxyParamCaption})}
+
+
+
+CSV export utils. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_exporter_ad382e2dafafdc723f7a16059b1e562f2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_exporter_a180b4eb6cc676c9f9bca75236914629b}\index{UIrradianceExporter@{UIrradianceExporter}!EnqueueFaceEXR@{EnqueueFaceEXR}}
+\index{EnqueueFaceEXR@{EnqueueFaceEXR}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{EnqueueFaceEXR()}{EnqueueFaceEXR()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a180b4eb6cc676c9f9bca75236914629b} 
+void UIrradiance\+Exporter\+::\+Enqueue\+Face\+EXR (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_capture_request}{FCapture\+Request}} \&}]{Req}{, }\item[{int32}]{Face\+Idx}{, }\item[{TRef\+Count\+Ptr$<$ IPooled\+Render\+Target $>$}]{Face\+RT}{, }\item[{FInt\+Point}]{Size}{}\end{DoxyParamCaption})}
+
+
+
+Image export. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_u_irradiance_exporter_a180b4eb6cc676c9f9bca75236914629b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_exporter_a5dc928403c8b2f3b33ebaf459363eb04}\index{UIrradianceExporter@{UIrradianceExporter}!EnsureCSVHeader@{EnsureCSVHeader}}
+\index{EnsureCSVHeader@{EnsureCSVHeader}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{EnsureCSVHeader()}{EnsureCSVHeader()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a5dc928403c8b2f3b33ebaf459363eb04} 
+void UIrradiance\+Exporter\+::\+Ensure\+CSVHeader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_u_irradiance_exporter_a5dc928403c8b2f3b33ebaf459363eb04_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_exporter_a041eb2a1073d7a52ae314cae60eea73e}\index{UIrradianceExporter@{UIrradianceExporter}!EnsureCSVWritable@{EnsureCSVWritable}}
+\index{EnsureCSVWritable@{EnsureCSVWritable}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{EnsureCSVWritable()}{EnsureCSVWritable()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a041eb2a1073d7a52ae314cae60eea73e} 
+bool UIrradiance\+Exporter\+::\+Ensure\+CSVWritable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_u_irradiance_exporter_a041eb2a1073d7a52ae314cae60eea73e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_exporter_af2645a4848f14ee445784cdbf0b2310a}\index{UIrradianceExporter@{UIrradianceExporter}!FaceToString@{FaceToString}}
+\index{FaceToString@{FaceToString}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{FaceToString()}{FaceToString()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_af2645a4848f14ee445784cdbf0b2310a} 
+FString UIrradiance\+Exporter\+::\+Face\+To\+String (\begin{DoxyParamCaption}\item[{int32}]{Face\+Idx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Returns a short name for a cubemap face (PosX, NegX...). 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{class_u_irradiance_exporter_af2645a4848f14ee445784cdbf0b2310a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_exporter_ae27d33156d8d003db48f8a8e95589dc2}\index{UIrradianceExporter@{UIrradianceExporter}!FlushCSVIfNeeded@{FlushCSVIfNeeded}}
+\index{FlushCSVIfNeeded@{FlushCSVIfNeeded}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{FlushCSVIfNeeded()}{FlushCSVIfNeeded()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_ae27d33156d8d003db48f8a8e95589dc2} 
+void UIrradiance\+Exporter\+::\+Flush\+CSVIf\+Needed (\begin{DoxyParamCaption}\item[{bool}]{b\+Force}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_u_irradiance_exporter_ae27d33156d8d003db48f8a8e95589dc2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{class_u_irradiance_exporter_ae27d33156d8d003db48f8a8e95589dc2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_u_irradiance_exporter_ab5d1e2836692f211691c27e9ce61aa89}\index{UIrradianceExporter@{UIrradianceExporter}!Init@{Init}}
+\index{Init@{Init}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_ab5d1e2836692f211691c27e9ce61aa89} 
+void UIrradiance\+Exporter\+::\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_f_export_options}{FExport\+Options}} \&}]{In\+Opts}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_u_irradiance_exporter_a2495f1384be3c6e942a88efe5616e94a}\index{UIrradianceExporter@{UIrradianceExporter}!MakeTimestampForFile@{MakeTimestampForFile}}
+\index{MakeTimestampForFile@{MakeTimestampForFile}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{MakeTimestampForFile()}{MakeTimestampForFile()}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a2495f1384be3c6e942a88efe5616e94a} 
+FString UIrradiance\+Exporter\+::\+Make\+Timestamp\+For\+File (\begin{DoxyParamCaption}\item[{const FDate\+Time \&}]{UTC}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Formats UTC as a compact timestamp for export. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_u_irradiance_exporter_a2495f1384be3c6e942a88efe5616e94a_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_u_irradiance_exporter_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_u_irradiance_exporter_a44717f264928bad91535092c3f4b4f85}\index{UIrradianceExporter@{UIrradianceExporter}!bCSVHeaderWritten@{bCSVHeaderWritten}}
+\index{bCSVHeaderWritten@{bCSVHeaderWritten}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{bCSVHeaderWritten}{bCSVHeaderWritten}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a44717f264928bad91535092c3f4b4f85} 
+bool UIrradiance\+Exporter\+::b\+CSVHeader\+Written = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_exporter_ace71fc77b59e10afd3abbfa0efdf4fe7}\index{UIrradianceExporter@{UIrradianceExporter}!CSVPathAbs@{CSVPathAbs}}
+\index{CSVPathAbs@{CSVPathAbs}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{CSVPathAbs}{CSVPathAbs}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_ace71fc77b59e10afd3abbfa0efdf4fe7} 
+FString UIrradiance\+Exporter\+::\+CSVPath\+Abs\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_exporter_a9c77c910939e4a1c45578e7ff7e536e3}\index{UIrradianceExporter@{UIrradianceExporter}!FlushThresholdLines@{FlushThresholdLines}}
+\index{FlushThresholdLines@{FlushThresholdLines}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{FlushThresholdLines}{FlushThresholdLines}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a9c77c910939e4a1c45578e7ff7e536e3} 
+int32 UIrradiance\+Exporter\+::\+Flush\+Threshold\+Lines = 64\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_exporter_a5b417b84606f35545c84045d7042797b}\index{UIrradianceExporter@{UIrradianceExporter}!ImagesPathAbs@{ImagesPathAbs}}
+\index{ImagesPathAbs@{ImagesPathAbs}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{ImagesPathAbs}{ImagesPathAbs}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a5b417b84606f35545c84045d7042797b} 
+FString UIrradiance\+Exporter\+::\+Images\+Path\+Abs\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_exporter_a063aa74699954d8a344a2b134c675ed5}\index{UIrradianceExporter@{UIrradianceExporter}!PendingCSV@{PendingCSV}}
+\index{PendingCSV@{PendingCSV}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{PendingCSV}{PendingCSV}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a063aa74699954d8a344a2b134c675ed5} 
+FString UIrradiance\+Exporter\+::\+Pending\+CSV\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_exporter_a863630b30977867d9bb13836f29ae052}\index{UIrradianceExporter@{UIrradianceExporter}!PendingLineCount@{PendingLineCount}}
+\index{PendingLineCount@{PendingLineCount}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{PendingLineCount}{PendingLineCount}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a863630b30977867d9bb13836f29ae052} 
+int32 UIrradiance\+Exporter\+::\+Pending\+Line\+Count = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_u_irradiance_exporter_a7d944596a5006f6eb348ee24b8d4a4ed}\index{UIrradianceExporter@{UIrradianceExporter}!TotalRowsAppended@{TotalRowsAppended}}
+\index{TotalRowsAppended@{TotalRowsAppended}!UIrradianceExporter@{UIrradianceExporter}}
+\doxysubsubsection{\texorpdfstring{TotalRowsAppended}{TotalRowsAppended}}
+{\footnotesize\ttfamily \label{class_u_irradiance_exporter_a7d944596a5006f6eb348ee24b8d4a4ed} 
+uint64 UIrradiance\+Exporter\+::\+Total\+Rows\+Appended = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano/\+Private/\+Irradiance/\mbox{\hyperlink{_irradiance_exporter_8h}{Irradiance\+Exporter.\+h}}\item 
+Source/\+Pyrano/\+Private/\+Irradiance/\mbox{\hyperlink{_irradiance_exporter_8cpp}{Irradiance\+Exporter.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,9 @@
+<map id="Source/Pyrano/Public/Components/PyranometerComponent.h" name="Source/Pyrano/Public/Components/PyranometerComponent.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="114,5,370,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,96,111,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="197,50,102,92,100,87,192,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="135,96,349,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,47,244,82,240,79,240,51"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="373,96,607,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="306,46,439,90,434,91,305,51"/>
+</map>

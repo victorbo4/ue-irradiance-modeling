@@ -1,0 +1,12 @@
+<map id="PyranoEditorUtils::GetPyranometerComponents" name="PyranoEditorUtils::GetPyranometerComponents">
+<area shape="rect" id="Node000001" title=" " alt="" coords="661,39,852,81"/>
+<area shape="rect" id="Node000002" href="$namespace_pyrano_editor_utils.html#a6a8fea8fd47c5ad779e7bd632dcfc1b7" title=" " alt="" coords="462,8,613,51"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="643,45,613,43,613,37,649,45"/>
+<area shape="rect" id="Node000005" href="$class_u_pyrano_editor_subsystem.html#a1e18df0b1f82756989cd7cf5f6c15386" title="Returns all pyranometer sensors in the level (filtered by enabled state)." alt="" coords="242,72,414,115"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="649,68,415,89,414,84,643,69"/>
+<area shape="rect" id="Node000003" href="$class_u_pyrano_editor_subsystem.html#aff2465394f6335550f1ee02a6725e648" title="Validates a full simulation configuration and returns a detailed result." alt="" coords="242,5,414,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="444,28,415,30,414,25,449,28"/>
+<area shape="rect" id="Node000004" href="$class_u_pyrano_editor_subsystem.html#a66b820c9aae05fb59340fae1abe43379" title=" " alt="" coords="5,39,194,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="224,42,195,49,194,44,229,41"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="224,79,194,76,194,71,229,78"/>
+</map>

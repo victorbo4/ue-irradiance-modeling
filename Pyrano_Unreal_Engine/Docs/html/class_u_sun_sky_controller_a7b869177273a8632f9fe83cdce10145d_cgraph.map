@@ -1,0 +1,15 @@
+<map id="USunSkyController::SetUTC" name="USunSkyController::SetUTC">
+<area shape="rect" id="Node000001" title="Sets the SunSky date and time from a UTC timestamp(applies configured timezone)." alt="" coords="5,72,147,115"/>
+<area shape="rect" id="Node000002" href="$class_u_sun_sky_controller.html#a0822748f97e63e40b3da612e27083596" title="Returns the cached SunSky actor or performs a search if missing." alt="" coords="195,5,336,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,69,191,52,186,55,140,74"/>
+<area shape="rect" id="Node000004" href="$class_u_sun_sky_controller.html#a3407324f01e3d69835fbf3bd88228269" title="Pushes date and solar&#45;time fields into the SunSky actor from UTC." alt="" coords="195,72,336,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="146,91,182,92,177,94,147,96"/>
+<area shape="rect" id="Node000007" href="$class_u_sun_sky_controller.html#aec6250d1b06d7ef7680381ff48eee79a" title="Forces SunSky to rebuild via RerunConstructionScripts." alt="" coords="195,139,336,181"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="139,113,191,132,186,134,138,118"/>
+<area shape="rect" id="Node000003" href="$class_u_sun_sky_controller.html#ab00403c7bab9f7bae3d57baa941146b6" title="Locates a SunSky actor in the world (by tag or name)." alt="" coords="384,5,525,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,24,371,26,366,27,337,29"/>
+<area shape="rect" id="Node000005" href="$class_u_sun_sky_controller.html#abe72ea57cbb6fbfc2a6a3990631800fa" title=" " alt="" coords="384,72,525,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="336,91,371,93,366,94,336,96"/>
+<area shape="rect" id="Node000006" href="$class_u_sun_sky_controller.html#a679b38217e46d510a2b1543bd1f89b3a" title=" " alt="" coords="384,139,525,181"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="328,113,380,133,375,133,327,118"/>
+</map>

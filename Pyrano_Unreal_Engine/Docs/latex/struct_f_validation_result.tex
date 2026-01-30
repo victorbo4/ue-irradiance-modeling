@@ -1,0 +1,154 @@
+\doxysection{FValidation\+Result Struct Reference}
+\hypertarget{struct_f_validation_result}{}\label{struct_f_validation_result}\index{FValidationResult@{FValidationResult}}
+
+
+{\ttfamily \#include $<$Validation\+Result.\+h$>$}
+
+
+
+Collaboration diagram for FValidation\+Result\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{struct_f_validation_result__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55}{FValidation\+Result}} ()
+\item 
+\mbox{\hyperlink{struct_f_validation_result_a7749a2c32fe16ccf62af5f3cd2438385}{FValidation\+Result}} (bool b\+In\+Ok, const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&In\+Config)
+\item 
+void \mbox{\hyperlink{struct_f_validation_result_aa815459182ee083cac8d7e4f1a2be7ea}{Add\+Error}} (const FString \&In\+Message)
+\item 
+void \mbox{\hyperlink{struct_f_validation_result_af85ff546ed9707e4efb24b7e69d5465b}{Add\+Field\+Error}} (const FString \&Field, const FString \&Message)
+\item 
+bool \mbox{\hyperlink{struct_f_validation_result_a9d94fae5a402fdeb1d140009c80df87b}{Is\+Valid}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}{b\+Ok}} = false
+\item 
+\mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \mbox{\hyperlink{struct_f_validation_result_a3e4cb5b99c3ad50501ceb1836cb1de15}{Out\+Normalized}}
+\item 
+TArray$<$ FString $>$ \mbox{\hyperlink{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75}{Errors}}
+\item 
+TMap$<$ FString, FString $>$ \mbox{\hyperlink{struct_f_validation_result_a183a78935ee6c942ce39af27b5da15f3}{Field\+Errors}}
+\item 
+int32 \mbox{\hyperlink{struct_f_validation_result_a115c112272ea88a45c567927a7ac9e92}{Estimated\+Samples}} = 0
+\item 
+FText \mbox{\hyperlink{struct_f_validation_result_a66b81a3eb70916a836da9021959972d6}{Estimated\+Sim\+Duration}} = FText\+::\+From\+String(FString\+::\+Printf(TEXT("{}0d 0m 0s"{})))
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{struct_f_validation_result_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55}\index{FValidationResult@{FValidationResult}!FValidationResult@{FValidationResult}}
+\index{FValidationResult@{FValidationResult}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{FValidationResult()}{FValidationResult()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55} 
+FValidation\+Result\+::\+FValidation\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{struct_f_validation_result_a5f1365bb4f85503353203ca3a6701f55_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_validation_result_a7749a2c32fe16ccf62af5f3cd2438385}\index{FValidationResult@{FValidationResult}!FValidationResult@{FValidationResult}}
+\index{FValidationResult@{FValidationResult}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{FValidationResult()}{FValidationResult()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a7749a2c32fe16ccf62af5f3cd2438385} 
+FValidation\+Result\+::\+FValidation\+Result (\begin{DoxyParamCaption}\item[{bool}]{b\+In\+Ok}{, }\item[{const \mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} \&}]{In\+Config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{struct_f_validation_result_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_f_validation_result_aa815459182ee083cac8d7e4f1a2be7ea}\index{FValidationResult@{FValidationResult}!AddError@{AddError}}
+\index{AddError@{AddError}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{AddError()}{AddError()}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_aa815459182ee083cac8d7e4f1a2be7ea} 
+void FValidation\+Result\+::\+Add\+Error (\begin{DoxyParamCaption}\item[{const FString \&}]{In\+Message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{struct_f_validation_result_af85ff546ed9707e4efb24b7e69d5465b}\index{FValidationResult@{FValidationResult}!AddFieldError@{AddFieldError}}
+\index{AddFieldError@{AddFieldError}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{AddFieldError()}{AddFieldError()}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_af85ff546ed9707e4efb24b7e69d5465b} 
+void FValidation\+Result\+::\+Add\+Field\+Error (\begin{DoxyParamCaption}\item[{const FString \&}]{Field}{, }\item[{const FString \&}]{Message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_f_validation_result_af85ff546ed9707e4efb24b7e69d5465b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_f_validation_result_a9d94fae5a402fdeb1d140009c80df87b}\index{FValidationResult@{FValidationResult}!IsValid@{IsValid}}
+\index{IsValid@{IsValid}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{IsValid()}{IsValid()}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a9d94fae5a402fdeb1d140009c80df87b} 
+bool FValidation\+Result\+::\+Is\+Valid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_f_validation_result_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b}\index{FValidationResult@{FValidationResult}!bOk@{bOk}}
+\index{bOk@{bOk}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{bOk}{bOk}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_ae7fbc146354fd681b11a985513e4060b} 
+bool FValidation\+Result\+::b\+Ok = false}
+
+\Hypertarget{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75}\index{FValidationResult@{FValidationResult}!Errors@{Errors}}
+\index{Errors@{Errors}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{Errors}{Errors}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a609a0d1862c1ad989911cb15e749cc75} 
+TArray$<$FString$>$ FValidation\+Result\+::\+Errors}
+
+\Hypertarget{struct_f_validation_result_a115c112272ea88a45c567927a7ac9e92}\index{FValidationResult@{FValidationResult}!EstimatedSamples@{EstimatedSamples}}
+\index{EstimatedSamples@{EstimatedSamples}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{EstimatedSamples}{EstimatedSamples}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a115c112272ea88a45c567927a7ac9e92} 
+int32 FValidation\+Result\+::\+Estimated\+Samples = 0}
+
+\Hypertarget{struct_f_validation_result_a66b81a3eb70916a836da9021959972d6}\index{FValidationResult@{FValidationResult}!EstimatedSimDuration@{EstimatedSimDuration}}
+\index{EstimatedSimDuration@{EstimatedSimDuration}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{EstimatedSimDuration}{EstimatedSimDuration}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a66b81a3eb70916a836da9021959972d6} 
+FText FValidation\+Result\+::\+Estimated\+Sim\+Duration = FText\+::\+From\+String(FString\+::\+Printf(TEXT("{}0d 0m 0s"{})))}
+
+\Hypertarget{struct_f_validation_result_a183a78935ee6c942ce39af27b5da15f3}\index{FValidationResult@{FValidationResult}!FieldErrors@{FieldErrors}}
+\index{FieldErrors@{FieldErrors}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{FieldErrors}{FieldErrors}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a183a78935ee6c942ce39af27b5da15f3} 
+TMap$<$FString, FString$>$ FValidation\+Result\+::\+Field\+Errors}
+
+\Hypertarget{struct_f_validation_result_a3e4cb5b99c3ad50501ceb1836cb1de15}\index{FValidationResult@{FValidationResult}!OutNormalized@{OutNormalized}}
+\index{OutNormalized@{OutNormalized}!FValidationResult@{FValidationResult}}
+\doxysubsubsection{\texorpdfstring{OutNormalized}{OutNormalized}}
+{\footnotesize\ttfamily \label{struct_f_validation_result_a3e4cb5b99c3ad50501ceb1836cb1de15} 
+\mbox{\hyperlink{struct_f_sim_config}{FSim\+Config}} FValidation\+Result\+::\+Out\+Normalized}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Source/\+Pyrano\+Editor/\+Private/\+Data/\mbox{\hyperlink{_validation_result_8h}{Validation\+Result.\+h}}\end{DoxyCompactItemize}

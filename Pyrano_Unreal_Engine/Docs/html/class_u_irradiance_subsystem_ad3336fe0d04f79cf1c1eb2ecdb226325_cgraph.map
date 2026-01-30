@@ -1,0 +1,26 @@
+<map id="UIrradianceSubsystem::Tick" name="UIrradianceSubsystem::Tick">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,105,160,148"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_subsystem.html#afec011af7207461bc6c02e2c03e06bc3" title="Handle per&#45;frame logic while faces are being captured." alt="" coords="208,72,362,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,111,195,107,190,110,161,116"/>
+<area shape="rect" id="Node000010" href="$class_u_irradiance_subsystem.html#a2ef94233017fe8e81cf63e7bc5b514a3" title="Handle per&#45;frame logic while waiting for GPU readback." alt="" coords="208,139,362,181"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="160,137,195,144,190,146,160,142"/>
+<area shape="rect" id="Node000003" href="$class_u_irradiance_subsystem.html#a140204594c38cf4c1696276e7e9a4450" title="Dispatch the irradiance compute shader using the captured faces." alt="" coords="416,5,583,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="355,69,416,52,411,54,356,74"/>
+<area shape="rect" id="Node000007" href="$class_u_irradiance_subsystem.html#a10314c056f1375fa327c1bdd2c0c79b6" title="Start capture of a single face at PosWS / RotWS." alt="" coords="422,72,576,115"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="362,91,409,93,404,94,363,96"/>
+<area shape="rect" id="Node000004" href="$namespace_irradiance_compute.html#a6fad304599a46b23bcca8438ca2b6f06" title=" " alt="" coords="636,5,833,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="583,24,623,26,618,27,584,29"/>
+<area shape="rect" id="Node000005" href="$namespace_irradiance_compute.html#ad8506a4c2588e653b7d1c2aaf4552b14" title=" " alt="" coords="894,5,1034,48"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="833,24,881,26,876,27,834,29"/>
+<area shape="rect" id="Node000006" href="$_irradiance_integrate_c_s_8cpp.html#a6d8400984c092d383c90ad4cd22a8462" title="Creates a 2D texture array from the six cubemap face render targets." alt="" coords="1095,13,1212,40"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1034,24,1082,26,1077,27,1034,29"/>
+<area shape="rect" id="Node000008" href="$class_u_irradiance_subsystem.html#a07d7292927f509ea227ab101994ab4b6" title="Ensure that the capture camera exists and is configured." alt="" coords="653,72,816,115"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="576,91,640,93,635,94,577,96"/>
+<area shape="rect" id="Node000009" href="$namespace_irradiance_common_1_1_utils.html#acd21b099951e95f67c7a758546ac9875" title="Tries to return a game world suitable for rendering / scheduling." alt="" coords="881,101,1047,144"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="576,113,637,124,755,131,868,130,862,131,755,136,636,129,576,118"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="816,101,868,110,863,110,816,106"/>
+<area shape="rect" id="Node000011" href="$class_u_irradiance_subsystem.html#a24988c0d2a42f487480bbd2820c3ad14" title="Enqueue a GPU readback copy of the extracted irradiance buffer." alt="" coords="414,139,584,181"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="362,157,401,160,396,160,363,163"/>
+<area shape="rect" id="Node000012" href="$class_u_irradiance_subsystem.html#afac39e6628fd78f1833b02ef96b881ba" title="Enqueue a polling command to read back the irradiance value when ready." alt="" coords="410,205,588,248"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="356,179,416,200,411,200,355,184"/>
+</map>

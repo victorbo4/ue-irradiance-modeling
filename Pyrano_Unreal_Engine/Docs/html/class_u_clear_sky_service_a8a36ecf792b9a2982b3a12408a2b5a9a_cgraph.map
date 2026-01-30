@@ -1,0 +1,7 @@
+<map id="UClearSkyService::Compute" name="UClearSkyService::Compute">
+<area shape="rect" id="Node000001" title="Computes clear&#45;sky irradiance for a given sun zenith and timestamp (UTC)." alt="" coords="5,47,196,73"/>
+<area shape="rect" id="Node000002" href="$class_u_clear_sky_service.html#a4bd936e7dcca173feace16b32d4719c3" title=" " alt="" coords="262,5,448,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,45,249,40,244,42,197,50"/>
+<area shape="rect" id="Node000003" href="$class_u_clear_sky_service.html#ac9faa811288b93e087788128535eed2a" title=" " alt="" coords="244,72,466,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,70,231,77,225,77,196,75"/>
+</map>

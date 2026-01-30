@@ -1,0 +1,9 @@
+<map id="UIrradianceSubsystem::ComputeFinalIrradiance" name="UIrradianceSubsystem::ComputeFinalIrradiance">
+<area shape="rect" id="Node000001" title="Dispatch the irradiance compute shader using the captured faces." alt="" coords="5,5,173,48"/>
+<area shape="rect" id="Node000002" href="$namespace_irradiance_compute.html#a6fad304599a46b23bcca8438ca2b6f06" title=" " alt="" coords="221,5,417,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,24,208,26,202,27,173,29"/>
+<area shape="rect" id="Node000003" href="$namespace_irradiance_compute.html#ad8506a4c2588e653b7d1c2aaf4552b14" title=" " alt="" coords="465,5,604,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="417,24,452,27,447,27,417,29"/>
+<area shape="rect" id="Node000004" href="$_irradiance_integrate_c_s_8cpp.html#a6d8400984c092d383c90ad4cd22a8462" title="Creates a 2D texture array from the six cubemap face render targets." alt="" coords="652,13,770,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="605,24,639,27,634,27,605,29"/>
+</map>

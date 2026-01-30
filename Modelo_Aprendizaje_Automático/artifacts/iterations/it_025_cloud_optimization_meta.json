@@ -1,0 +1,192 @@
+{
+  "exp_id": "it_025_cloud_optimization_0cc18bd38f",
+  "cfg": {
+    "iteration_id": "it_025_cloud_optimization",
+    "data_path": "../data/dataset_master_tfg.csv",
+    "description": "\n    Optimización de modelos cloud.\n        ",
+    "target": "k_eff",
+    "k_clip": [
+      0.0,
+      1.5
+    ],
+    "sim_clip_lower": 1.0,
+    "eps": 10.0,
+    "test_dates": [
+      "2025-04-11",
+      "2025-04-20",
+      "2025-10-07"
+    ],
+    "train_filter": {
+      "min_altitude_deg": 5.0
+    },
+    "feature_sets": {
+      "cloud": [
+        "sim_irradiance_wm2",
+        "cloud_opacity",
+        "cloud_diff",
+        "cloud_std_60m",
+        "cloud_mean_60m",
+        "day_volatility",
+        "day_cloudiness"
+      ]
+    },
+    "feature_set_name": "cloud",
+    "model_params": {
+      "n_estimators": 1500,
+      "learning_rate": 0.01,
+      "max_depth": 6,
+      "min_child_weight": 40,
+      "subsample": 0.8,
+      "colsample_bytree": 0.7,
+      "reg_alpha": 5.0,
+      "reg_lambda": 5.0,
+      "gamma": 0.1,
+      "objective": "reg:squarederror",
+      "eval_metric": "rmse",
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "out_dir": "../artifacts",
+    "out_iterations": "../artifacts/iterations",
+    "out_predictions": "../artifacts/predictions"
+  },
+  "n_train": 12028,
+  "n_test": 5400,
+  "features": [
+    "sim_irradiance_wm2",
+    "cloud_opacity",
+    "cloud_diff",
+    "cloud_std_60m",
+    "cloud_mean_60m",
+    "day_volatility",
+    "day_cloudiness"
+  ],
+  "metrics_global": {
+    "r2": 0.8308634579572036,
+    "mae": 69.01575139587908,
+    "rmse": 124.64330261002706,
+    "mbe": -5.945377283337887
+  },
+  "metrics_by_day": [
+    {
+      "date": "2025-04-11",
+      "r2": 0.768550637079978,
+      "mae": 71.33183343844688,
+      "rmse": 110.89482854421854,
+      "mbe": 9.009137428779447
+    },
+    {
+      "date": "2025-04-20",
+      "r2": 0.6846164429602533,
+      "mae": 116.32451814998753,
+      "rmse": 181.7304012070833,
+      "mbe": -20.042762374540573
+    },
+    {
+      "date": "2025-10-07",
+      "r2": 0.9856833121232395,
+      "mae": 19.390902599202825,
+      "rmse": 35.836530745389474,
+      "mbe": -6.802506904252539
+    }
+  ],
+  "feature_importance": {
+    "gain": [
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 14.474736213684082,
+        "importance_pct": 36.04406404028855
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 10.725659370422363,
+        "importance_pct": 26.708352229337716
+      },
+      {
+        "feature": "day_cloudiness",
+        "importance": 9.290628433227539,
+        "importance_pct": 23.134929803086763
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 1.7936419248580933,
+        "importance_pct": 4.466412613710554
+      },
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 1.6057356595993042,
+        "importance_pct": 3.9985004280531546
+      },
+      {
+        "feature": "day_volatility",
+        "importance": 1.3518706560134888,
+        "importance_pct": 3.366342003073727
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 0.9161743521690369,
+        "importance_pct": 2.2813988824495324
+      }
+    ],
+    "weight": [
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 2261.0
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 1507.0
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 1149.0
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 1119.0
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 1067.0
+      },
+      {
+        "feature": "day_volatility",
+        "importance": 751.0
+      },
+      {
+        "feature": "day_cloudiness",
+        "importance": 485.0
+      }
+    ],
+    "cover": [
+      {
+        "feature": "sim_irradiance_wm2",
+        "importance": 3667.842529296875
+      },
+      {
+        "feature": "cloud_opacity",
+        "importance": 3496.01123046875
+      },
+      {
+        "feature": "day_cloudiness",
+        "importance": 2719.024658203125
+      },
+      {
+        "feature": "cloud_mean_60m",
+        "importance": 2668.829345703125
+      },
+      {
+        "feature": "day_volatility",
+        "importance": 2460.70166015625
+      },
+      {
+        "feature": "cloud_diff",
+        "importance": 2169.40966796875
+      },
+      {
+        "feature": "cloud_std_60m",
+        "importance": 1801.5892333984375
+      }
+    ]
+  }
+}

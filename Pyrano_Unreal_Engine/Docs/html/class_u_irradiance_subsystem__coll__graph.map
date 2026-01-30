@@ -1,0 +1,13 @@
+<map id="UIrradianceSubsystem" name="UIrradianceSubsystem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="146,1627,417,2795"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,1200,125,1269"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,1281,155,1627,149,1627,76,1286"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="150,1200,290,1269"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,1281,247,1627,242,1627,223,1287"/>
+<area shape="rect" id="Node000004" href="$struct_f_capture_context.html" title=" " alt="" coords="314,915,529,1555"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="376,1552,370,1611,365,1610,375,1557"/>
+<area shape="rect" id="Node000005" href="$struct_f_capture_request.html" title=" " alt="" coords="269,5,574,843"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="421,840,424,898,419,897,421,845"/>
+<area shape="rect" id="Node000006" href="$struct_f_export_options.html" title="Export configuration for irradiance results." alt="" coords="552,1157,724,1312"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="618,1309,586,1428,544,1556,425,1869,420,1867,539,1554,580,1426,616,1314"/>
+</map>

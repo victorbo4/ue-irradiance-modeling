@@ -1,0 +1,7 @@
+<map id="UIrradianceScheduler::LaunchCapture" name="UIrradianceScheduler::LaunchCapture">
+<area shape="rect" id="Node000001" title="Starts a six&#45;face capture for the given request." alt="" coords="5,35,152,77"/>
+<area shape="rect" id="Node000002" href="$class_u_irradiance_scheduler.html#a3a1998734dd679049d860179bf9b0222" title="Ensures the IrradianceSubsystem pointer is valid for the current world." alt="" coords="217,5,363,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,43,204,38,199,40,153,48"/>
+<area shape="rect" id="Node000003" href="$struct_f_capture_request.html#ab63ce8c8eadcb5393d9993aeab920660" title=" " alt="" coords="200,72,380,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,64,187,70,181,71,152,69"/>
+</map>
