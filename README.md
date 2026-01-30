@@ -1,6 +1,8 @@
 # Guía del Anexo de software y datos
 
-Este repositorio contiene los recursos técnicos utilizados en el desarrollo del TFG, organizados según el flujo de trabajo lógico del proyecto. El contenido se estructura en dos bloques fundamentales: el ecosistema de simulación en Unreal Engine y el pipeline de procesamiento y aprendizaje automático en Jupyter Notebooks.
+Este repositorio contiene los recursos técnicos utilizados en el desarrollo del Trabajo Fin de Grado (TFG), organizados según el flujo de trabajo lógico del proyecto. El contenido se estructura en dos bloques fundamentales: el ecosistema de simulación en Unreal Engine y el pipeline de procesamiento y aprendizaje automático en Jupyter Notebooks.
+
+El mismo contenido se proporciona también en formato comprimido en la sección **Releases** del repositorio, con el fin de facilitar su descarga y consulta.
 
 > **Nota sobre el complemento de software:**  
 > El complemento de Unreal Engine desarrollado en este trabajo se incluye en este repositorio como parte del proyecto de simulación completo.  
@@ -25,3 +27,4 @@ Esta sección contiene la inteligencia de datos del proyecto. Para una navegaci�
 * **`notebooks/`**: Cuadernos de Jupyter utilizados para el entrenamiento, optimización de hiperparámetros y validación final del modelo.
 
 * **`data/`**: Conjuntos de datos final en formato CSV (*dataset master*), utilizado para el entrenamiento y evaluación del modelo.
+
