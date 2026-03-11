@@ -1,4 +1,4 @@
-# Guía del Anexo de software y datos
+# Modelización de la irradiancia solar mediante el uso de Unreal Engine y ML
 
 Este repositorio contiene los recursos técnicos utilizados en el desarrollo del Trabajo Fin de Grado (TFG), organizados según el flujo de trabajo lógico del proyecto. El contenido se estructura en dos bloques fundamentales: el ecosistema de simulación en Unreal Engine y el flujo de procesamiento y aprendizaje automático en Jupyter Notebooks.
 
@@ -27,5 +27,6 @@ Esta sección contiene la inteligencia de datos del proyecto. Para una navegaci�
 * **`notebooks/`**: Cuadernos de Jupyter utilizados para el entrenamiento, optimización de hiperparámetros y validación final del modelo.
 
 * **`data/`**: Conjuntos de datos final en formato CSV (*dataset master*), utilizado para el entrenamiento y evaluación del modelo.
+
 
 
