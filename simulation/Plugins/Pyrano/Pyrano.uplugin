@@ -1,0 +1,31 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Pyrano",
+	"Description": "Virtual Pyranometer & Irradiance Analysis Framework for Unreal Engine.",
+	"Category": "Other",
+	"CreatedBy": "Victor Blázquez",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Pyrano",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		},
+		{
+      "Name": "PyranoEditor",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+		
+		
+	]
+}

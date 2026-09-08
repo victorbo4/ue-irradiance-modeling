@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite the thesis below."
+title: "Solar irradiance modeling with Unreal Engine and machine learning"
+abstract: >-
+  Reproducibility package: an Unreal Engine 5.6 project that renders a
+  georeferenced 3D model of a photovoltaic rooftop, captures the hemispherical
+  radiance at virtual pyranometers and integrates it into an irradiance value,
+  together with a machine-learning pipeline that uses that physical simulation as
+  a feature for predicting measured irradiance under partial shading.
+type: software
+authors:
+  - family-names: "Blázquez Otero"
+    given-names: "Víctor"
+    email: "victorblaz98@gmail.com"
+    affiliation: "Universidad Politécnica de Madrid, ETSIDI"
+license: MIT
+repository-code: "https://github.com/victorbo4/ue-irradiance-modeling"
+keywords:
+  - solar irradiance
+  - photovoltaics
+  - Unreal Engine
+  - game engines
+  - machine learning
+  - ray tracing
+  - Cesium
+preferred-citation:
+  type: thesis
+  title: "Modelización de la irradiancia solar en sistemas fotovoltaicos con motores de videojuegos"
+  authors:
+    - family-names: "Blázquez Otero"
+      given-names: "Víctor"
+  year: 2026
+  month: 1
+  institution:
+    name: "Universidad Politécnica de Madrid"
+  thesis-type: "Bachelor's thesis"

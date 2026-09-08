@@ -1,32 +1,45 @@
-# Modelización de la irradiancia solar mediante el uso de Unreal Engine y ML
+# Solar irradiance modeling with Unreal Engine and machine learning
 
-Este repositorio contiene los recursos técnicos utilizados en el desarrollo del Trabajo Fin de Grado (TFG), organizados según el flujo de trabajo lógico del proyecto. El contenido se estructura en dos bloques fundamentales: el ecosistema de simulación en Unreal Engine y el flujo de procesamiento y aprendizaje automático en Jupyter Notebooks.
+Code and data from the bachelor's thesis of Víctor Blázquez Otero, *Modelización
+de la irradiancia solar en sistemas fotovoltaicos con motores de videojuegos*
+(Universidad Politécnica de Madrid, 2026).
 
-El mismo contenido se proporciona también en formato comprimido en la sección **Releases** del repositorio, con el fin de facilitar su descarga y consulta.
+The idea: render a georeferenced 3D model of a real rooftop in Unreal Engine,
+capture the hemispherical radiance at each virtual pyranometer, integrate it into
+an irradiance value, and use that physical simulation as a feature for a
+machine-learning model that predicts the measured irradiance — including the
+partial shading from surrounding buildings that analytic clear-sky models miss.
 
-> **Nota sobre el complemento de software:**  
-> El complemento de Unreal Engine desarrollado en este trabajo se incluye en este repositorio como parte del proyecto de simulación completo.  
-> Adicionalmente, el código del complemento se encuentra disponible de forma independiente en un repositorio específico, concebido como componente reutilizable y desacoplado del experimento concreto:
->  
-> https://github.com/victorbo4/Pyrano
-## 1. Complemento de software en Unreal Engine
+## Pipeline
 
-Se adjunta el proyecto de prueba `PyranoDemo`, el cual incluye la escena virtual de la azotea de la ETSIDI. El núcleo del desarrollo se encuentra en la carpeta `Plugins`, organizada de la siguiente forma:
+```
+ UE 5.6 + Pyrano plugin            analysis/ (Python)
+ ┌───────────────────────┐         ┌──────────────────────────┐
+ │ Azotea ETSIDI scene   │  CSV    │ dataset assembly         │
+ │ + Cesium 3D Tiles     ├────────►│ (sim + Solcast + sensors)│
+ │ → cubemap capture     │         │ → XGBoost model          │
+ │ → irradiance integral │         │ → validation vs measured │
+ └───────────────────────┘         └──────────────────────────┘
+```
 
-* **`Shaders/`**: Contiene el shader de cómputo `IrradianceIntegrate.usf` y las funciones auxiliares en `IrradianceCommon.ush`.
-* **`Source/`**: Código fuente C++ desglosado en sus módulos `Pyrano` (módulo *Runtime*) y `PyranoEditor` (módulo Editor).
-* **`Docs/`**: Documentación técnica generada con **Doxygen**. Para consultarla, abrir el archivo `index.html` en la carpeta `Docs/html/`.
+## Layout
 
-> **Nota de ejecución:** En caso de querer ejecutar el proyecto para poner a prueba el complemento de software desarrollado, siga las indicaciones del archivo `INSTRUCCIONES_DE_USO.pdf` situado en la raíz de la carpeta del proyecto.
+| Path | What |
+|---|---|
+| `simulation/` | The Unreal Engine 5.6 project (`PyranoDemo.uproject`), the ETSIDI rooftop scene, and the **Pyrano** plugin (git subtree of [victorbo4/Pyrano](https://github.com/victorbo4/Pyrano)) under `Plugins/Pyrano/` |
+| `analysis/` | The Python / Jupyter pipeline: dataset assembly, baselines, the final model, and its validation. See `analysis/README.md` |
+| `config/plans/` | Simulation plans (`FSimConfig` JSON) for the Pyrano Capture Planner |
+| `paper/` | Manuscript sources — kept in a separate repository, not tracked here |
 
-## 2. Modelo de aprendizaje automático y normalización
+## Reproducing
 
-Esta sección contiene la inteligencia de datos del proyecto. Para una navegación detallada entre scripts, consulte el **README** específico dentro de este directorio. Se estructura en:
+See **[REPRODUCE.md](REPRODUCE.md)** for the full recipe: engine setup, building
+the C++ modules, the Cesium ion token, running a simulation, and re-running the
+analysis notebooks.
 
-* **`normalization/`**: Script encargado del ajuste de coeficientes para la normalización radiométrica.
-* **`notebooks/`**: Cuadernos de Jupyter utilizados para el entrenamiento, optimización de hiperparámetros y validación final del modelo.
+## The Pyrano plugin
 
-* **`data/`**: Conjuntos de datos final en formato CSV (*dataset master*), utilizado para el entrenamiento y evaluación del modelo.
-
-
-
+`Pyrano` is a standalone, reusable Unreal Engine plugin — a virtual pyranometer
+and irradiance-analysis framework — developed independently at
+<https://github.com/victorbo4/Pyrano> and vendored here at a pinned revision.
+API docs regenerate with `doxygen Doxyfile` from `simulation/Plugins/Pyrano/`.
