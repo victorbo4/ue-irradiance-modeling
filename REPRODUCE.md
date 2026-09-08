@@ -176,7 +176,7 @@ is the shadow-validation day.
 
 ## 5. Reproducing the analysis
 
-See `analysis/README_ML.md`. Short version:
+See `analysis/README.md`. Short version:
 
 ```bash
 cd analysis

@@ -27,7 +27,7 @@ partial shading from surrounding buildings that analytic clear-sky models miss.
 | Path | What |
 |---|---|
 | `simulation/` | The Unreal Engine 5.6 project (`PyranoDemo.uproject`), the ETSIDI rooftop scene, and the **Pyrano** plugin (git subtree of [victorbo4/Pyrano](https://github.com/victorbo4/Pyrano)) under `Plugins/Pyrano/` |
-| `analysis/` | The Python / Jupyter pipeline: dataset assembly, baselines, the final model, and its validation. See `analysis/README_ML.md` |
+| `analysis/` | The Python / Jupyter pipeline: dataset assembly, baselines, the final model, and its validation. See `analysis/README.md` |
 | `config/plans/` | Simulation plans (`FSimConfig` JSON) for the Pyrano Capture Planner |
 | `paper/` | Manuscript sources — kept in a separate repository, not tracked here |
 
