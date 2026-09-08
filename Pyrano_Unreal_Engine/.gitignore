@@ -1,0 +1,40 @@
+# Unreal Engine generated / build artifacts
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+
+# Plugin build artifacts
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+
+# Third-party plugin (downloaded dependency, not vendored).
+# Reproducibility: CesiumForUnreal v2.29.1 for UE 5.6 — see README.
+Plugins/CesiumForUnreal/
+
+# IDE / project files
+.vs/
+.vscode/
+.idea/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+CMakeLists.txt
+Makefile
+compile_commands.json
+.clangd/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Crash / logs
+*.log
+*.pdb
+crashinfo/

@@ -1,4 +1,12 @@
 # --------------------
+# Paper (lives in a separate Codeberg repo; kept here only as a working copy)
+# --------------------
+/paper/
+
+# Thesis PDF — kept locally, not re-tracked (already in git history; superseded by the paper)
+/TFG_*.pdf
+
+# --------------------
 # Unreal Engine
 # --------------------
 Binaries/
@@ -38,6 +46,16 @@ Build/
 # Crash reports
 *.log
 *.dmp
+
+# Generated docs (regenerate: doxygen Doxyfile from Plugins/Pyrano/)
+Pyrano_Unreal_Engine/Docs/html/
+Pyrano_Unreal_Engine/Docs/latex/
+
+# Editor / tooling generated
+.ignore
+*.code-workspace
+compile_commands.json
+*.sqlite
 
 # Ignore Python cache
 __pycache__/
