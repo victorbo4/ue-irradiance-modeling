@@ -1,0 +1,18 @@
+{
+	"latitude": 40.414,
+	"longitude": -3.681,
+	"timezone": 2,
+	"northOffset": -90,
+	"startTime": "2025.10.07-00.00.00",
+	"endTime": "2025.10.07-23.59.00",
+	"sampleInterval": "+00000000.00:02:00.000000000",
+	"warmupFrames": 8,
+	"resolutionPx": 512,
+	"bPathTracing": false,
+	"bExportCSV": true,
+	"outputPath": { "path": "" },
+	"bExportImages": false,
+	"minSunAltitudeDeg": 0,
+	"altitudeMeters": 734,
+	"linkeTurbidity": 4.0
+}
