@@ -1,0 +1,31 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Python (the analysis/ pipeline)
+[*.py]
+indent_style = space
+indent_size = 4
+
+[*.{ipynb,json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+[*.sh]
+indent_style = space
+indent_size = 2
+
+# Unreal Engine descriptors use tab indentation
+[*.{uplugin,uproject}]
+indent_style = tab
+
+# Unreal C++ / C# build scripts — leave as authored (tabs), do not reformat
+[*.{cpp,h,inl,cs,usf,ush}]
+trim_trailing_whitespace = false

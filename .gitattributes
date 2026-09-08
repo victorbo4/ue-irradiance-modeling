@@ -1,0 +1,31 @@
+# Normalize line endings: text files are LF in the repo, checked out native.
+* text=auto eol=lf
+
+# Scripts must stay LF regardless of platform.
+*.sh    text eol=lf
+
+# Notebooks and configs are JSON/text.
+*.ipynb text
+*.uplugin  text eol=lf
+*.uproject text eol=lf
+
+# Unreal Engine assets — binary, never diff or merge.
+*.uasset binary
+*.umap   binary
+*.upk    binary
+*.udk    binary
+*.locres binary
+
+# Other binaries.
+*.pkl  binary
+*.exr  binary
+*.png  binary
+*.jpg  binary
+*.pdf  binary
+*.ttf  binary
+*.otf  binary
+*.sqlite binary
+
+# Don't let GitHub language stats count vendored / generated trees.
+simulation/Plugins/Pyrano/** linguist-vendored
+simulation/Content/**        linguist-generated
