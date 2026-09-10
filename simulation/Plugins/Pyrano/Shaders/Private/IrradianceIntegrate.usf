@@ -55,11 +55,17 @@ groupshared float4 gTile[TGX * TGY];
 void CS(uint3 Gid : SV_GroupID, uint3 Tid : SV_GroupThreadID, uint3 Did : SV_DispatchThreadID)
 {
     const uint face = Gid.z; // dispatch with z=0..5
-    const uint2 base = uint2(Gid.xy) * uint2(TGX, TGY);
+
+    // Each group covers a 2*TGX x 2*TGY tile (see the 2x2 thread striding below),
+    // and the dispatch is sized for that: GroupsX = ceil(L / (TGX*2)). So the
+    // per-group origin must advance by 2*TGX / 2*TGY, not TGX / TGY - otherwise
+    // groups overlap, only ~1/4 of each face is visited and part of it is summed
+    // twice. See simulation/validation/integrator/.
+    const uint2 base = uint2(Gid.xy) * uint2(TGX * 2, TGY * 2);
 
     float4 acc = float4(0, 0, 0, 0);
 
-    // Light striding, 2x2 per thread to cover up to 2*TGX x 2*TGY
+    // Light striding, 2x2 per thread to cover 2*TGX x 2*TGY
     // Adjust to 1x1 for 1:1 coverage
     [unroll]
     for (uint oy = 0; oy < 2; ++oy)
@@ -81,7 +87,7 @@ void CS(uint3 Gid : SV_GroupID, uint3 Tid : SV_GroupThreadID, uint3 Did : SV_Dis
             if (dotNa > 0.0)
             {
                 const float t = 1.0 + uv.x * uv.x + uv.y * uv.y;
-                const float w = k * dotNa * rcp(t * t); // 4/L^2 * (N·a)/(1+u^2+v^2)^2
+                const float w = k * dotNa * rcp(t * t); // k * (N.a)/(1+u^2+v^2)^2  ->  k*cos/(1+u^2+v^2)^1.5  (a is unnormalised)
                 
 				 #if IRR_DEBUG_PI
                     const float Y = 1.0; // ct radiance -> E (sanity test)
