@@ -83,12 +83,13 @@ namespace IrradianceCompute
         const uint32 GroupsY = FMath::DivideAndRoundUp(L, FIrradianceIntegrateCS::ThreadGroupSizeY * 2);
         const uint32 TotalPartials = GroupsX * GroupsY * IrradianceCommon::NumFaces;
 
-        // Solid angle weight for each texel in a cubemap.
-        // A cubemap face spans exactly 4 steradians. With L x L texels per face,
-        // each texel represents:
-        //     dOmega = 4.0 / (L * L)
-        // This converts the discrete sum of (radiance * cosTheta) into a proper
-        // approximation of the hemispherical irradiance integral.
+        // Per-texel solid angle for a cubemap, with face coords u,v in [-1,1]:
+        //     dOmega(u,v) = 4 / (L*L * (1 + u^2 + v^2)^(3/2))
+        // (one face subtends 4*pi/6 = 2*pi/3 sr; the whole cube, 4*pi.)
+        // k is the (1 + u^2 + v^2)-independent factor; the shader applies the
+        // rest as k * (N . a) / (1 + u^2 + v^2)^2, where `a` is the *unnormalised*
+        // face direction (|a| = sqrt(1 + u^2 + v^2)), which supplies the missing
+        // 1/sqrt(...) so the weight is k * cosTheta / (1 + u^2 + v^2)^(3/2).
         const float k = 4.0f / (L * L);
 
         PYRANO_VERBOSE(TEXT("[Compute] L=%d, GroupsX=%d, GroupsY=%d, TotalPartials=%d, k=%f"),
