@@ -29,22 +29,32 @@ float2 TexelUV(uint i, uint j, uint L)
 
 
 // Face order: 0:+X, 1:-X, 2:+Y, 3:-Y, 4:+Z (Top, Up=-Y), 5:-Z (Bottom, Up=+Y)
+//
+// Reconstructs, for texel (u,v) of a face, the world direction the capture
+// camera (IrradianceCommon.cpp::GenerateCubemapFaceQuats + MakeFromXZ, 90 deg
+// HFOV pinhole) actually rendered into that texel. The previous mapping used a
+// different in-face rotation per face (correct only for -Y) - invisible to a
+// uniform test (IRR_DEBUG_PI still = pi for any per-face rotation) but wrong
+// for any directional/structured radiance. Derived in
+// simulation/validation/integrator/test_orientation.py::corrected_afromfaceuv
+// and confirmed in-engine (bug-tracker.md S2): a 12-marker rig read back at
+// 128/256/512/1024 px matched this mapping to <=0.3 deg on every face.
 float3 AFromFaceUV(float2 uv, uint face)
 {
     float u = uv.x, v = uv.y;
 
     if (face == 0)
-        return float3(1, v, -u); // +X,  Up=+Z
+        return float3(1, u, -v); // +X,  Up=+Z
     if (face == 1)
-        return float3(-1, v, u); // -X,  Up=+Z
+        return float3(-1, -u, -v); // -X,  Up=+Z
     if (face == 2)
-        return float3(u, 1, v); // +Y,  Up=+Z   
+        return float3(-u, 1, -v); // +Y,  Up=+Z
     if (face == 3)
-        return float3(u, -1, -v); // -Y,  Up=+Z  
+        return float3(u, -1, -v); // -Y,  Up=+Z   (unchanged - already correct)
     if (face == 4)
-        return float3(u, -v, 1); // +Z,  Up=-Y   
+        return float3(-u, v, 1); // +Z,  Up=-Y
     /*face==5*/
-    return float3(u, v, -1); // -Z,  Up=+Y
+    return float3(-u, -v, -1); // -Z,  Up=+Y
 }
 
 
@@ -57,7 +67,7 @@ float RGBtoY(float3 rgb)
 
 float RGBtoSpectralSum(float3 rgb)
 {
-    // Suma simple: Acumula la energía de todas las bandas de frecuencia
+    // Suma simple: Acumula la energï¿½a de todas las bandas de frecuencia
     // Equivalente a dot(rgb, float3(1.0, 1.0, 1.0));
     return rgb.r + rgb.g + rgb.b;
 }
@@ -65,7 +75,7 @@ float RGBtoSpectralSum(float3 rgb)
 
 float RGBtoMeanSpectralRadiance(float3 rgb)
 {
-    // Suma simple: Acumula la energía de todas las bandas de frecuencia
+    // Suma simple: Acumula la energï¿½a de todas las bandas de frecuencia
     // Equivalente a dot(rgb, float3(1.0, 1.0, 1.0));
     return (rgb.r + rgb.g + rgb.b) * (1.0 / 3.0);
 }
