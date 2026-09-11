@@ -37,19 +37,24 @@ def texel_uv(i, j, L):
 
 
 def a_from_face_uv(u, v, face):
-    """AFromFaceUV(uv, face) -> direction, NOT normalised (|a| = sqrt(1+u^2+v^2))."""
+    """AFromFaceUV(uv, face) -> direction, NOT normalised (|a| = sqrt(1+u^2+v^2)).
+
+    Fixed 2026-09-11 (bug-tracker.md S2): matches
+    test_orientation.py::corrected_afromfaceuv, confirmed in-engine with a
+    12-marker rig at 4 resolutions (<=0.3 deg error on every face). Face 3 (-Y)
+    is unchanged - it was already correct."""
     if face == 0:   # +X
-        return np.array([1.0, v, -u])
+        return np.array([1.0, u, -v])
     if face == 1:   # -X
-        return np.array([-1.0, v, u])
+        return np.array([-1.0, -u, -v])
     if face == 2:   # +Y
-        return np.array([u, 1.0, v])
+        return np.array([-u, 1.0, -v])
     if face == 3:   # -Y
         return np.array([u, -1.0, -v])
     if face == 4:   # +Z   (Up = -Y)
-        return np.array([u, -v, 1.0])
+        return np.array([-u, v, 1.0])
     if face == 5:   # -Z   (Up = +Y)
-        return np.array([u, v, -1.0])
+        return np.array([-u, -v, -1.0])
     raise ValueError(face)
 
 
