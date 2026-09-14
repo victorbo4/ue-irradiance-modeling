@@ -79,7 +79,13 @@ namespace
 
     constexpr FFloatCVarOverride GPathTracingFloatCVars[] =
     {
-        { TEXT("r.PathTracing.MaxPathIntensity"), 0.0f },
+        // S11: <= 0 does NOT disable the clamp in UE 5.6 (PathTracing.cpp:873-879) -
+        // it falls back to the Post Process Volume's PathTracingMaxPathIntensity,
+        // whose engine default is 24.0 (Scene.cpp:631). A positive cvar value is used
+        // directly instead, bypassing the PPV fallback entirely, so pin it to the
+        // largest representable value (65504 = max finite FP16, the same precision
+        // SceneColor is already capped to) instead of relying on "0 means no clamp".
+        { TEXT("r.PathTracing.MaxPathIntensity"), 65504.0f },
     };
 
 
