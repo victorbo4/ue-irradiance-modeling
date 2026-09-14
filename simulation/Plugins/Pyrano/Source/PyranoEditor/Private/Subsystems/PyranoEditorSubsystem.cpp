@@ -630,9 +630,9 @@ FValidationResult UPyranoEditorSubsystem::ValidateConfig(const FSimConfig& InCon
     FSimConfig& out = Result.OutNormalized;
 
     // Setup basic config
-    if (!out.bPathTracing)
+    if (out.WarmupFrames <= 0)
     {
-        out.WarmupFrames = 8;
+        Result.AddFieldError(TEXT("WarmupFrames"), TEXT("Warmup frames must be greater than 0."));
     }
 
     if (!out.bExportCSV)

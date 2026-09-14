@@ -8,6 +8,8 @@
 #include "ToolMenus.h"
 #include "Modules/ModuleManager.h"
 
+#include "Console/PyranoConsoleCommands.h"
+
 IMPLEMENT_MODULE(FPyranoEditorModule, PyranoEditor);
 
 void FPyranoEditorModule::StartupModule()
@@ -16,6 +18,8 @@ void FPyranoEditorModule::StartupModule()
 #if WITH_EDITOR
 	UToolMenus::RegisterStartupCallback(
 		FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FPyranoEditorModule::RegisterMenus));
+
+	PyranoConsoleCommands::Register();
 #endif // WITH_EDITOR
 
 	UE_LOG(LogTemp, Display, TEXT("[PyranoEditor] Module loaded"));
@@ -24,6 +28,10 @@ void FPyranoEditorModule::StartupModule()
 
 void FPyranoEditorModule::ShutdownModule()
 {
+#if WITH_EDITOR
+	PyranoConsoleCommands::Unregister();
+#endif // WITH_EDITOR
+
 	UE_LOG(LogTemp, Display, TEXT("[PyranoEditor] Module unloaded"));
 }
 

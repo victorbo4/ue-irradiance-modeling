@@ -35,8 +35,13 @@ struct FSimConfig
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Time")
     FTimespan SampleInterval = FTimespan::FromMinutes(5);
     
+    // S6: Lumen's temporal accumulation needs up to
+    // r.Lumen.ScreenProbeGather.Temporal.MaxFramesAccumulated (engine default 10) /
+    // r.Lumen.Reflections.Temporal.MaxFramesAccumulated (engine default 12) frames
+    // to converge. 8 was below both. 16 gives margin without an empirically-measured
+    // convergence number yet - see the Lumen-convergence check still pending for S6.
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Capture")
-    int32 WarmupFrames = 8;
+    int32 WarmupFrames = 16;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Capture")
     int32 ResolutionPx = 256;
