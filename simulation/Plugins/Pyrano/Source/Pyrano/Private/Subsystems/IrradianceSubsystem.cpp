@@ -295,6 +295,61 @@ void UIrradianceSubsystem::EnsureCaptureCamera()
 		Cam->bConstrainAspectRatio = true;
 		Cam->AspectRatio = 1.0f;
 		Cam->FieldOfView = 90.f;
+
+		// S6: most Lumen/GI quality knobs (LumenSceneLightingQuality,
+		// LumenFinalGatherQuality, etc.) are FPostProcessSettings properties blended
+		// per-view from the level's Post Process Volumes, NOT console variables - a
+		// cvar override list (see IrradianceConfiguration.cpp) cannot pin them, any
+		// PPV in the level would still win. Camera post-process settings sit at the
+		// top of UE's blend priority, above every level PPV, so pinning them here
+		// (on the plugin's own capture camera) is what actually guarantees
+		// determinism regardless of the level. Values match the engine's own
+		// FPostProcessSettings defaults (Scene.cpp) - this removes the ambiguity of
+		// "whatever the level/editor happens to have," it does not introduce a new
+		// quality tier.
+		FPostProcessSettings& PP = Cam->PostProcessSettings;
+
+		PP.bOverride_DynamicGlobalIlluminationMethod = 1;
+		PP.DynamicGlobalIlluminationMethod = EDynamicGlobalIlluminationMethod::Lumen;
+
+		PP.bOverride_ReflectionMethod = 1;
+		PP.ReflectionMethod = EReflectionMethod::Lumen;
+
+		PP.bOverride_LumenSceneLightingQuality = 1;
+		PP.LumenSceneLightingQuality = 1.0f;
+
+		PP.bOverride_LumenSceneDetail = 1;
+		PP.LumenSceneDetail = 1.0f;
+
+		PP.bOverride_LumenSceneViewDistance = 1;
+		PP.LumenSceneViewDistance = 20000.0f;
+
+		PP.bOverride_LumenSceneLightingUpdateSpeed = 1;
+		PP.LumenSceneLightingUpdateSpeed = 1.0f;
+
+		PP.bOverride_LumenFinalGatherQuality = 1;
+		PP.LumenFinalGatherQuality = 1.0f;
+
+		PP.bOverride_LumenFinalGatherLightingUpdateSpeed = 1;
+		PP.LumenFinalGatherLightingUpdateSpeed = 1.0f;
+
+		// Judgment call, NOT an engine default (default is on): screen traces bypass
+		// Lumen Scene and sample this view's own SceneColor/SceneDepth instead, which
+		// is explicitly view-dependent (Scene.h's own comment on the property).  A
+		// cubemap capture renders the same world point from 6 different camera
+		// orientations; letting each face's GI depend on what that face itself can
+		// see would make the 6 faces inconsistent with each other for reasons
+		// unrelated to the scene. Disabling it makes every face read from the same
+		// Lumen Scene representation instead. Flagged for the open-field
+		// raster-vs-PT-vs-Ineichen sanity check already planned for S6.
+		PP.bOverride_LumenFinalGatherScreenTraces = 1;
+		PP.LumenFinalGatherScreenTraces = 0;
+
+		PP.bOverride_LumenMaxTraceDistance = 1;
+		PP.LumenMaxTraceDistance = 20000.0f;
+
+		PP.bOverride_LumenReflectionQuality = 1;
+		PP.LumenReflectionQuality = 1.0f;
 	}
 }
 
