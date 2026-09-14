@@ -40,6 +40,11 @@ namespace
         { TEXT("r.DefaultFeature.AmbientOcclusion"),   0 },
         { TEXT("r.DefaultFeature.AutoExposure"),       0 },
         { TEXT("r.DefaultFeature.AutoExposure.Method"),0 },
+
+        // S5: with auto-exposure off, PreExposure is a stable constant, but it is not
+        // 1 unless disabled outright - it would otherwise get silently absorbed into
+        // AmbientLinearCoeff instead of being a controlled, documented factor.
+        { TEXT("r.UsePreExposure"),                    0 },
     };
 
     constexpr FFloatCVarOverride GExposureFloatCVars[] =
