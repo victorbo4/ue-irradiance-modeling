@@ -54,7 +54,15 @@ struct FSimConfig
     bool bExportImages = false;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sun")
-    float MinSunAltitudeDeg = 0.f; 
+    float MinSunAltitudeDeg = 0.f;
+
+    // If true (default), the direct-beam term is the clear-sky model's DNI scaled by
+    // cos(theta) and ray-traced sun visibility (physical, no fitted coefficients). If
+    // false, the legacy fitted path is used instead (DirectionalLight lux converted via
+    // DirectLinearCoeff/DirectQuadraticCoeff) - kept for comparison. See S3 in
+    // ai/reports/bug-tracker.md.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Capture")
+    bool bUseAnalyticDirectTerm = true;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ClearSky")
     float AltitudeMeters = 500.f;

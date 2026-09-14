@@ -578,7 +578,7 @@ void UIrradianceSubsystem::EnqueueReadbackPolling()
 //--- (5) Publish irradiance result ---------------------------------------------
 
 
-bool UIrradianceSubsystem::ConsumeLatestIrradiance(float& OutValue, float MinSunAltitude)
+bool UIrradianceSubsystem::ConsumeLatestIrradiance(float& OutValue, float MinSunAltitude, bool bUseAnalyticDirectTerm)
 {
 	if (!bIrradianceValueReady.exchange(false, std::memory_order_acq_rel))
 		return false;
@@ -666,7 +666,6 @@ bool UIrradianceSubsystem::ConsumeLatestIrradiance(float& OutValue, float MinSun
 
 						if (SunLightComp)
 						{
-							float SunLux = SunLightComp->Intensity;
 							FVector SunDir = -SunLightComp->GetForwardVector();
 
 							FVector SensorNormal = Capture.GetNormalWS();
@@ -674,8 +673,23 @@ bool UIrradianceSubsystem::ConsumeLatestIrradiance(float& OutValue, float MinSun
 
 							if (Dot > 0.0f)
 							{
-								DirectIrradiance = SunLux * Dot * SunVisibility;
 								GeometricFactor = Dot * SunVisibility;
+
+								if (bUseAnalyticDirectTerm)
+								{
+									// Physical direct beam: clear-sky DNI (W/m^2) times the geometric
+									// factor. ClearSkyRef defaults to 0 when the sun is below the
+									// horizon, which is already the physically correct DNI.
+									DirectIrradiance = static_cast<float>(ClearSkyRef.DNI_Wm2) * GeometricFactor;
+								}
+								else
+								{
+									// Legacy fitted path: DirectionalLight intensity (lux) stands in for
+									// DNI, converted to W/m^2 via DirectLinearCoeff/DirectQuadraticCoeff
+									// below. Kept only for comparison against the analytic path.
+									const float SunLux = SunLightComp->Intensity;
+									DirectIrradiance = SunLux * GeometricFactor;
+								}
 							}
 						}
 						else
@@ -690,13 +704,23 @@ bool UIrradianceSubsystem::ConsumeLatestIrradiance(float& OutValue, float MinSun
 					AmbientIrradiance = 0.0f;
 				}
 
-				float DirectLinearCoeff = IrradianceCommon::Defaults::DirectLinearCoeff;
-				float DirectQuadraticCoeff = IrradianceCommon::Defaults::DirectQuadraticCoeff;
-				float AmbientLinearCoeff = IrradianceCommon::Defaults::AmbientLinearCoeff;
+				const float AmbientLinearCoeff = IrradianceCommon::Defaults::AmbientLinearCoeff;
 
-				TotalIrradiance = (DirectLinearCoeff * DirectIrradiance)
-					+ (DirectQuadraticCoeff * FMath::Square(DirectIrradiance))
-					+ (AmbientLinearCoeff * AmbientIrradiance);
+				if (bUseAnalyticDirectTerm)
+				{
+					// DirectIrradiance is already a physical W/m^2 quantity (clear-sky DNI x
+					// geometric factor); no fitted coefficients apply to it.
+					TotalIrradiance = DirectIrradiance + (AmbientLinearCoeff * AmbientIrradiance);
+				}
+				else
+				{
+					const float DirectLinearCoeff = IrradianceCommon::Defaults::DirectLinearCoeff;
+					const float DirectQuadraticCoeff = IrradianceCommon::Defaults::DirectQuadraticCoeff;
+
+					TotalIrradiance = (DirectLinearCoeff * DirectIrradiance)
+						+ (DirectQuadraticCoeff * FMath::Square(DirectIrradiance))
+						+ (AmbientLinearCoeff * AmbientIrradiance);
+				}
 			}
 			else
 			{
