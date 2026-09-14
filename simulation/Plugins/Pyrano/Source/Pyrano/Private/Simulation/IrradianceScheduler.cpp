@@ -256,7 +256,7 @@ bool UIrradianceScheduler::ConsumeIrradianceResult(float& OutValue)
     if (!Irr.IsValid()) 
         return false;
 
-    const bool bOK = Irr->ConsumeLatestIrradiance(OutValue, BaseSimConfig.MinSunAltitudeDeg);
+    const bool bOK = Irr->ConsumeLatestIrradiance(OutValue, BaseSimConfig.MinSunAltitudeDeg, BaseSimConfig.bUseAnalyticDirectTerm);
     if (!bOK)
         return false;
 

@@ -140,11 +140,16 @@ public:
 	/**
 	 * Consume the latest available irradiance value.
 	 *
-	 * @param OutValue       Output irradiance value (possibly clamped by sun altitude).
-	 * @param MinSunAltitude Minimum sun altitude (deg); below this, the value is clamped to 0.
-	 * @return               True if a new value was available and consumed.
+	 * @param OutValue                Output irradiance value (possibly clamped by sun altitude).
+	 * @param MinSunAltitude          Minimum sun altitude (deg); below this, the value is clamped to 0.
+	 * @param bUseAnalyticDirectTerm  If true, the direct-beam term is the clear-sky model's DNI
+	 *                                scaled by cos(theta) and ray-traced sun visibility (physical,
+	 *                                no fitted coefficients). If false, the legacy fitted path is
+	 *                                used instead (DirectionalLight intensity in lux, converted to
+	 *                                W/m^2 via DirectLinearCoeff/DirectQuadraticCoeff).
+	 * @return                        True if a new value was available and consumed.
 	 */
-	bool ConsumeLatestIrradiance(float& OutValue, float MinSunAltitude = 0.f);
+	bool ConsumeLatestIrradiance(float& OutValue, float MinSunAltitude = 0.f, bool bUseAnalyticDirectTerm = true);
 
 	void FlushExporter();
 

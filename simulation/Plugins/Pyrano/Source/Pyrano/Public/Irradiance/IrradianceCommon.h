@@ -34,10 +34,19 @@ namespace IrradianceCommon
 		/** Sky Factor samples */
 		constexpr int32 SVFSamples = 128;
 
-		/** Normalization coefficients */
+		/** Ambient normalization coefficient (cubemap-integrated diffuse term -> W/m^2) */
+		constexpr float AmbientLinearCoeff = 1.3046e-2f;
+
+		/**
+		 * Legacy direct-beam normalization coefficients. Used only when
+		 * ConsumeLatestIrradiance is called with bUseAnalyticDirectTerm=false: they convert
+		 * DirectionalLight intensity (lux) to W/m^2 via a 2-parameter fit against the
+		 * engine's own clear-sky model output. Kept for comparison against the analytic
+		 * direct term (ClearSkyRef.DNI_Wm2 * cos(theta) * SunVisibility), which is the
+		 * default path and has no fitted coefficients. See S3 in ai/reports/bug-tracker.md.
+		 */
 		constexpr float DirectLinearCoeff = 2.401e-3f;
 		constexpr float DirectQuadraticCoeff = 5.0299205e-8f;
-		constexpr float AmbientLinearCoeff = 1.3046e-2f;
 	}
 
 	namespace Settings
