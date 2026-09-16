@@ -584,9 +584,9 @@ void UIrradianceSubsystem::EnqueueReadbackCopy()
 				return;
 			}
 
-			// Async buffer copy (1 float)
+			// Async buffer copy (FVector4f)
 			Capture.IrradianceReadback->EnqueueCopy(RHICmdList, RHIBuf);
-			PYRANO_VERBOSE(TEXT("[Subsystem] Readback enqueued (1 float)"));
+			PYRANO_VERBOSE(TEXT("[Subsystem] Readback enqueued (FVector4f)"));
 		});
 }
 
