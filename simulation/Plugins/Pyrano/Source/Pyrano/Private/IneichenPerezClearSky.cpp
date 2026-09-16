@@ -15,6 +15,21 @@ double UClearSkyService::ExtraterrestrialIrradiance_Wm2(int32 DayOfYear)
 	return 1367.0 * (1.0 + 0.033 * FMath::Cos(Gamma));
 }
 
+double UClearSkyService::ApparentAltitudeDeg(double TrueAltitudeDeg)
+{
+	// Not meaningful at/below the horizon; also outside the formula's valid range.
+	if (TrueAltitudeDeg <= -1.0)
+	{
+		return TrueAltitudeDeg;
+	}
+
+	// Saemundsson (1986), refraction in arcminutes from true altitude.
+	const double RefractionArcMin =
+		1.02 / FMath::Tan(FMath::DegreesToRadians(TrueAltitudeDeg + 10.3 / (TrueAltitudeDeg + 5.11)));
+
+	return TrueAltitudeDeg + RefractionArcMin / 60.0;
+}
+
 double UClearSkyService::AirMassKastenYoung(double SolarZenithRad)
 {
 	const double Zdeg = FMath::RadiansToDegrees(SolarZenithRad);

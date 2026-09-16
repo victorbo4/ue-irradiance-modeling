@@ -683,7 +683,10 @@ bool UIrradianceSubsystem::ConsumeLatestIrradiance(float& OutValue, float MinSun
 
 				if (AltDegPhys > 0.0f && ClearSky)
 				{
-					const double SolarZenithDeg = 90.0 - static_cast<double>(AltDegPhys);
+					// S10: Kasten-Young airmass (used inside Compute()) is defined
+					// against apparent, not geometric, zenith.
+					const double AppAltDeg = UClearSkyService::ApparentAltitudeDeg(static_cast<double>(AltDegPhys));
+					const double SolarZenithDeg = 90.0 - AppAltDeg;
 					const double SolarZenithRad = FMath::DegreesToRadians(SolarZenithDeg);
 					ClearSkyRef = ClearSky->Compute(WhenUTC, SolarZenithRad);
 				}
