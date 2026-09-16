@@ -47,6 +47,12 @@ public:
 	/** Computes clear-sky irradiance for a given sun zenith and timestamp (UTC). */
 	FPyranoClearSkyIrradiance Compute(const FDateTime& WhenUTC, double SolarZenithRad) const;
 
+	/** Converts true (geometric) solar altitude to apparent (refraction-corrected)
+	 *  altitude, per Saemundsson (1986). Kasten-Young airmass -- and so Compute()'s
+	 *  zenith input -- is defined against apparent zenith, not geometric; near the
+	 *  horizon the two differ by up to ~0.5 deg. */
+	static double ApparentAltitudeDeg(double TrueAltitudeDeg);
+
 private:
 	FPyranoClearSkyConfig Config;
 
