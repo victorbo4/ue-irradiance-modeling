@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Editor.h"
 #include "HAL/IConsoleManager.h"
+#include "Misc/Paths.h"
 
 #include "Subsystems/PyranoEditorSubsystem.h"
 #include "UI/PlanStorage.h"
@@ -40,7 +41,14 @@ namespace
             return;
         }
 
-        const FString& PlanPath = Args[0];
+        // A bare filename (no path component) resolves against the default
+        // plans folder, so `Pyrano.RunPlan wu16.json` works without typing
+        // the full path. Anything with a slash is used as given.
+        FString PlanPath = Args[0];
+        if (FPaths::GetPath(PlanPath).IsEmpty())
+        {
+            PlanPath = FPaths::ProjectSavedDir() / TEXT("Irradiance/Pyrano_Plans") / PlanPath;
+        }
 
         FSimConfig Config;
         if (!FPlanStorage::LoadPlan(PlanPath, Config))
@@ -69,7 +77,7 @@ void Register()
 {
     RunPlanCommand = IConsoleManager::Get().RegisterConsoleCommand(
         TEXT("Pyrano.RunPlan"),
-        TEXT("Loads a Pyrano plan JSON and starts the simulation in PIE. Usage: Pyrano.RunPlan <path-to-plan.json>"),
+        TEXT("Loads a Pyrano plan JSON and starts the simulation in PIE. Usage: Pyrano.RunPlan <path-to-plan.json | bare-filename-in-Saved/Irradiance/Pyrano_Plans>"),
         FConsoleCommandWithArgsDelegate::CreateStatic(&HandleRunPlan),
         ECVF_Default
     );
