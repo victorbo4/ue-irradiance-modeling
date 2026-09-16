@@ -1034,7 +1034,7 @@ float UIrradianceSubsystem::ComputeSunVisibility(
 	int32 ClearCount = 0;
 
 	// Cone semi-angle (0.265 degrees ≈ solar angular radius)
-	const float ConeAngleRad = FMath::DegreesToRadians(0.5f);
+	const float ConeAngleRad = FMath::DegreesToRadians(0.265f);
 
 	// Determinist seed
 	const int32 Seed =
