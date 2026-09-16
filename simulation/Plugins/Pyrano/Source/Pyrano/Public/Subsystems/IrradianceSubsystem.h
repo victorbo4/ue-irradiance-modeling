@@ -48,7 +48,7 @@ struct FCaptureContext
 	/** Per-face render targets collected from the view extension. */
 	TStaticArray<TRefCountPtr<IPooledRenderTarget>, NumFaces> FaceRTs;
 
-	/** GPU buffer containing the extracted irradiance scalar (1 float). */
+	/** GPU buffer containing the extracted irradiance value (FVector4f). */
 	TRefCountPtr<FRDGPooledBuffer> ExtractedIrradianceBuffer;
 
 	/** Helper object used to asynchronously read back the irradiance buffer. */
