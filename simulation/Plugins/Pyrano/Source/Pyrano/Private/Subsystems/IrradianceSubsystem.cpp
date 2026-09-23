@@ -194,7 +194,7 @@ bool UIrradianceSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 //  Viewport Control
 // -----------------------------------------------------------------------------
 
-bool UIrradianceSubsystem::ForceSquareViewportPIE(int32 SidePx)
+bool UIrradianceSubsystem::ForceSquareViewportPIE(int32 SidePx, bool bPathTracing)
 {
 	UWorld* W = GetWorld();
 	if (!IrradianceCommon::Utils::IsPIEClientWorld(W))
@@ -235,6 +235,10 @@ bool UIrradianceSubsystem::ForceSquareViewportPIE(int32 SidePx)
 	{
 		PC->ConsoleCommand(TEXT("r.ScreenPercentage 100"), true);
 		PC->ConsoleCommand(TEXT("r.TemporalAA.Upsampling 0"), true);
+
+		// r.PathTracing.Enable only permits path tracing engine-wide; this specific
+		// PIE viewport still renders Lit/Lumen unless its own view mode is switched.
+		PC->ConsoleCommand(bPathTracing ? TEXT("viewmode pathtracing") : TEXT("viewmode lit"), true);
 	}
 
 	bForcedRes = true;
@@ -246,8 +250,15 @@ bool UIrradianceSubsystem::ForceSquareViewportPIE(int32 SidePx)
 
 void UIrradianceSubsystem::RestoreViewportPIE()
 {
-	if (!bForcedRes) 
+	if (!bForcedRes)
 		return;
+
+	// Always leave the viewport back on Lit, regardless of whether this capture
+	// used Path Tracing -- don't leave it stuck in a non-default view mode.
+	if (APlayerController* PC = UGameplayStatics::GetPlayerController(IrradianceCommon::Utils::GetGameWorldSafe(), 0))
+	{
+		PC->ConsoleCommand(TEXT("viewmode lit"), true);
+	}
 
 	if (GEngine && GEngine->GameViewport)
 	{

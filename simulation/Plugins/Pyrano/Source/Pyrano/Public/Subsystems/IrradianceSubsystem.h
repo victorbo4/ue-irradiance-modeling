@@ -155,8 +155,11 @@ public:
 
 // --- Viewport management ---
 
-	/** Force the PIE client viewport and window to be square (SidePx x SidePx). */
-	bool ForceSquareViewportPIE(int32 SidePx);
+	/** Force the PIE client viewport and window to be square (SidePx x SidePx).
+	 *  Also switches the viewport to the Path Tracing view mode when bPathTracing
+	 *  is true -- r.PathTracing.Enable alone permits path tracing engine-wide but
+	 *  does not make this specific view use it; the view mode command does. */
+	bool ForceSquareViewportPIE(int32 SidePx, bool bPathTracing);
 
 	/** Restore previous PIE viewport and window size if it had been forced. */
 	void RestoreViewportPIE();

@@ -177,7 +177,7 @@ void UIrradianceScheduler::ApplyViewport(const FSimConfig& Sim)
     }
 
     const int32 Side = FMath::Max(32, Sim.ResolutionPx);
-    if (Irr->ForceSquareViewportPIE(Side))
+    if (Irr->ForceSquareViewportPIE(Side, Sim.bPathTracing))
     {
         bViewportForced = true;
         PYRANO_INFO(TEXT("[Viewport] Viewport forced successfully"));
