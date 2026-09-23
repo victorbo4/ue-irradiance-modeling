@@ -72,6 +72,14 @@ venv/
 Saved/
 DerivedDataCache/
 
+# Raw university-provided sensor/meteo data -- not cleared for publication.
+# dataset_master_tfg.csv (the already-built dataset) stays tracked; only the
+# raw inputs behind it are excluded. See REPRODUCE.md.
+/analysis/data/pyranometers/
+/analysis/data/solcast/
+/analysis/data/meteo/
+/analysis/data/meteo_utc_*.csv
+
 # Optional: Ignore build tool files
 *.xcodeproj
 *.xcworkspace
