@@ -35,7 +35,10 @@ namespace IrradianceCommon
 		constexpr int32 SVFSamples = 128;
 
 		/** Ambient normalization coefficient (cubemap-integrated diffuse term -> W/m^2) */
-		constexpr float AmbientLinearCoeff = 1.3046e-2f;
+		// Re-fit 2026-09-23 against SimBlank (open-field, sky_view_factor=1.0), target =
+		// Ineichen-Perez DHI, out-of-sample R2=0.99854 (analysis/normalization/01_normalization.ipynb).
+		// Supersedes the pre-S1/S2/S6 TFG-era value (1.3046e-2f).
+		constexpr float AmbientLinearCoeff = 1.330203e-2f;
 
 		/**
 		 * Legacy direct-beam normalization coefficients. Used only when
