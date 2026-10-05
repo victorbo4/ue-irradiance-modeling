@@ -16,7 +16,13 @@ and hyperparameters are the TFG's. What changes is how the models are compared.
 - **Common evaluation mask**, applied once and identically to every model:
   `sun_altitude_deg > 5` and `qc_ok` and the sensor is in the list above.
   Training rows use the same mask. The mask is never applied per model.
-- Sensitivity mask: `sun_altitude_deg > 10` (same evaluation, second table).
+- **Robustness check:** the whole evaluation is run a second time with a stricter altitude
+  cut, `sun_altitude_deg > 10` instead of `> 5`, and its results go in a second set of tables
+  next to the main ones. Nothing else changes (same split, same models). Between 5° and 10°
+  the simulator is least reliable (`KNOWN_ISSUES.md` S2), and the 5° cut is a choice, not a
+  fact. If the conclusions are the same at 10°, they do not depend on where the cut was put;
+  if they differ, that is reported. The 5° result is always the main one, and the 10° result
+  is never used to choose anything.
 
 ## 2. Models
 
@@ -129,7 +135,10 @@ E2–E4. Secondary results are reported in full but are not used to make the hea
 
 ## 5. Sensitivity analyses (reported, never used to choose anything)
 
-1. Altitude mask 10° instead of 5°.
+1. **Stricter altitude cut.** Repeat everything with `sun_altitude_deg > 10` instead of
+   `> 5`, for the training rows, the test rows and every model. Only the cut changes. It
+   answers: do the conclusions hold when the low-sun hours, where the simulator is least
+   reliable, are left out?
 2. XGBoost hyperparameters (H, D, C) re-tuned inside the training days, fully specified:
    - **Search:** 30 configurations per model: the model's own TFG parameters (configuration 0)
      plus 29 random draws (numpy `RandomState(42)`, same draw order for H, D and C) from
