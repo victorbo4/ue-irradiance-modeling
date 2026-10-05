@@ -1,5 +1,5 @@
 {
-  "git_commit": "fb827b1c35ee1c623f48596c60bde1adc7e471ed",
+  "git_commit": "97cc0fee0f80b74c040f760a15ed9bb18c154592",
   "rows": 234540,
   "days": 60,
   "sensors": [
@@ -23,6 +23,7 @@
     "dup_conflict_wm2": 5.0,
     "neg_large_wm2": -5.0,
     "night_nonzero_wm2": 10.0,
+    "zero_daylight_sim_wm2": 50.0,
     "dead_day_max_wm2": 20.0,
     "dead_day_sky_wm2": 300.0,
     "flatline_min_bins": 15,
@@ -38,7 +39,8 @@
     "qc_neg_large": 0,
     "qc_night_nonzero": 0,
     "qc_over_clearsky": 25,
-    "qc_ok": 213380
+    "qc_zero_daylight": 15048,
+    "qc_ok": 211963
   },
   "inputs": {
     "simulation": {

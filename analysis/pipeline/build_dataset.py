@@ -71,6 +71,7 @@ NEG_LARGE_WM2 = -5.0                      # below this is not offset noise
 NIGHT_NONZERO_WM2 = 10.0                  # real signal while the sun is below horizon
 DEAD_DAY_MAX_WM2 = 20.0                   # sensor-day whose max never exceeds this
 DEAD_DAY_SKY_WM2 = 300.0                  #   ... while the clear-sky GHI exceeded this
+ZERO_DAYLIGHT_SIM_WM2 = 50.0              # exact zero while the simulation says > this
 FLATLINE_MIN_BINS = 15                    # identical value for >= 30 min
 FLATLINE_MIN_WM2 = 5.0
 OVER_CLEARSKY_FACTOR = 1.6                # real > factor * ceiling + offset, where the
@@ -81,7 +82,7 @@ OVER_CLEARSKY_OFFSET = 50.0
 
 QC_BAD = [
     "qc_real_sparse", "qc_dup_conflict", "qc_sensor_dead", "qc_flatline",
-    "qc_neg_large", "qc_night_nonzero", "qc_over_clearsky",
+    "qc_neg_large", "qc_night_nonzero", "qc_over_clearsky", "qc_zero_daylight",
 ]
 
 
@@ -189,6 +190,12 @@ def add_qc(df: pd.DataFrame) -> pd.DataFrame:
     df["qc_dup_conflict"] = df.pop("real_dup_conflict").astype("boolean").fillna(False).astype(bool)
     df["qc_neg_large"] = real < NEG_LARGE_WM2
     df["qc_night_nonzero"] = (df["sun_altitude_deg"] < 0) & (real > NIGHT_NONZERO_WM2)
+    # Logger zero-fill (or a total blackout): every 5 s sample exactly 0 although
+    # the simulated sun is up. A real dark cloud still reads a little above 0.
+    df["qc_zero_daylight"] = (
+        (real == 0) & (df["real_std"] == 0) & (df["sun_altitude_deg"] > 0)
+        & (df["sim_irradiance_wm2"] > ZERO_DAYLIGHT_SIM_WM2) & ~df["qc_real_sparse"]
+    )
     ceiling = np.maximum(df["clearsky_ghi_wm2"], df["sim_irradiance_wm2"])
     df["qc_over_clearsky"] = real > OVER_CLEARSKY_FACTOR * ceiling + OVER_CLEARSKY_OFFSET
 
@@ -258,7 +265,7 @@ def manifest(df: pd.DataFrame, sim_dir: Path, real_dir: Path, meteo_path: Path) 
         "utc_range": [df["utc"].min().isoformat(), df["utc"].max().isoformat()],
         "thresholds": {
             "min_bin_samples": MIN_BIN_SAMPLES, "dup_conflict_wm2": DUP_CONFLICT_WM2,
-            "neg_large_wm2": NEG_LARGE_WM2, "night_nonzero_wm2": NIGHT_NONZERO_WM2,
+            "neg_large_wm2": NEG_LARGE_WM2, "night_nonzero_wm2": NIGHT_NONZERO_WM2, "zero_daylight_sim_wm2": ZERO_DAYLIGHT_SIM_WM2,
             "dead_day_max_wm2": DEAD_DAY_MAX_WM2, "dead_day_sky_wm2": DEAD_DAY_SKY_WM2,
             "flatline_min_bins": FLATLINE_MIN_BINS, "flatline_min_wm2": FLATLINE_MIN_WM2,
             "over_clearsky_factor": OVER_CLEARSKY_FACTOR, "over_clearsky_offset": OVER_CLEARSKY_OFFSET,

@@ -151,6 +151,16 @@ def test_dead_sensor_day_is_flagged_but_a_cloudy_day_is_not():
     assert not dark["qc_sensor_dead"].any()
 
 
+def test_exact_zero_in_daylight_is_flagged_but_a_dark_cloud_is_not():
+    r = np.linspace(500, 600, 40); r[4] = 0.0; r[5] = 3.0          # 3 W/m2: dark storm cloud, legitimate
+    std = np.full(40, 1.0); std[4] = 0.0; std[5] = 0.5
+    out = bd.add_qc(_frame(real_wm2=r, real_std=std))
+    assert list(out.index[out["qc_zero_daylight"]]) == [4]
+    night = bd.add_qc(_frame(real_wm2=np.zeros(40), real_std=0.0, sun_altitude_deg=-10.0,
+                             clearsky_ghi_wm2=0.0, sim_irradiance_wm2=0.0))
+    assert not night["qc_zero_daylight"].any()                       # nights are supposed to be zero
+
+
 def test_sparse_and_missing_bins_are_flagged():
     n = np.full(40, 24.0); n[0] = 11; n[1] = 12; n[2] = np.nan
     r = np.linspace(500, 600, 40); r[2] = np.nan
