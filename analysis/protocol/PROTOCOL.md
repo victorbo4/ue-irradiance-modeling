@@ -98,19 +98,39 @@ it is reported as "not applicable" there. That is the point of E2.
 - Reported in every table: overall; **per sensor**; per sky class (sunny, mixed, cloudy,
   rainy); shaded against unshaded rows (`sun_visibility < 0.5` against `== 1`); and a
   **horizontals-only** row beside the pooled one (Pinc excluded).
-- The 15 test days are drawn by sky class and are not climatological. The headline also
-  gets an **annual-equivalent** figure: per-class metrics recombined with each class's
-  frequency over the whole pyranometer year, classified by the same rule.
+- The 15 test days are drawn by sky class and are not climatological, so no single
+  average describes "typical" performance; results are always shown per sky class.
 - Uncertainty: 95 % intervals by block bootstrap over days (2000 resamples). Rows within
   a day are not independent, and the effective sample is the number of days.
 - Differences between models are reported as paired differences with the same bootstrap.
 
+### Primary result (declared before any model is run)
+
+- **Contrast:** H against D in E1.
+- **Metric:** the difference in RMSE, `RMSE(D) − RMSE(H)` in W/m², paired, over the common mask.
+- **Population:** the nine sensors pooled; every row of the mask has equal weight.
+- **Uncertainty:** 95 % interval by block bootstrap over the 15 test days (2000 resamples,
+  seed 42).
+
+Everything else is secondary: the same contrast on the horizontals only, per sensor, per sky
+class, shaded against unshaded rows, the contrasts P-sim − P-cs, H − C and H − P-sim, and
+E2–E4. Secondary results are reported in full but are not used to make the headline claim.
+
 ## 5. Sensitivity analyses (reported, never used to choose anything)
 
 1. Altitude mask 10° instead of 5°.
-2. XGBoost hyperparameters (H, D, C) re-tuned by day-blocked cross-validation inside the
-   training days (a small random search of at most 30 configurations around the TFG's, the
-   same budget for the three), to show whether the inherited parameters matter.
+2. XGBoost hyperparameters (H, D, C) re-tuned inside the training days, fully specified:
+   - **Search:** 30 configurations per model: the model's own TFG parameters (configuration 0)
+     plus 29 random draws (numpy `RandomState(42)`, same draw order for H, D and C) from
+     `n_estimators` {400, 800, 1200}, `learning_rate` {0.01, 0.02, 0.05}, `max_depth`
+     {3, 4, 5, 6}, `min_child_weight` {30, 50, 70, 100}, `subsample` {0.5, 0.8},
+     `colsample_bytree` {0.5, 0.8}, `reg_lambda` {1, 4}, `gamma` {0, 0.1}; `reg_alpha` stays 0.1.
+   - **Folds:** the nine leave-one-month-out folds of E4 over the training days.
+   - **Selection metric:** mean over the folds of the pooled RMSE (W/m²) on the common mask.
+   - **Ties:** if two configurations differ by less than 0.01 W/m², keep the TFG's, otherwise
+     the one drawn earlier.
+   - The selected configuration is retrained on all 43 training days and scored once on the
+     test days, for this sensitivity table only.
 3. Cloudy and rainy classes pooled (their boundary is arbitrary).
 4. `ε` in {1, 10, 50} and the upper clip bound in {1.2, 1.5, 2.0}, for H and D: does the
    H-against-D conclusion move?

@@ -13,7 +13,7 @@ reported, because they bound what the method can claim.
 
 | # | Issue | Evidence | Treatment |
 |---|---|---|---|
-| M1 | **P2 is dead from 2025-07-06** and unreliable before | Max < 20 W/m² on 38 of 60 days. Even on "valid" days P2 reads 0.50 of its peers on 04-11, 0.66 on 05-02, 0.89 on 06-22; only 22 usable sensor-days, all Apr–1 Jul; 6 of them fall in the test set | **Excluded from all analysis** (train and test). Kept in the dataset, flagged `qc_sensor_dead` |
+| M1 | **P2 is dead from 2025-07-06** and unreliable before | Max < 20 W/m² on 38 of 60 days. Even on "valid" days P2 reads 0.50 of its peers on 04-11, 0.66 on 05-02, 0.89 on 06-22; only 20 usable sensor-days (22 had some valid data; 2 of those are the truncated days), all Apr–1 Jul; 6 of them fall in the test set | **Excluded from all analysis** (train and test). Kept in the dataset, flagged `qc_sensor_dead` |
 | M2 | **P1 dead on 4 days** (07-06, 07-12, 07-16, 07-21) | Same signature as M1; P1 is fine on its other 54 days | Those days masked; P1 stays (it is the seasonal-shadow sensor) |
 | M3 | **Truncated real data** | 2025-04-04 (from 11:58 local), 2025-06-13 (from 16:28, 29 % coverage); 2025-04-03 starts 10:08 (85 %) | 04-04 and 06-13 unusable for every sensor; 04-03 kept, training only |
 | M4 | **Logger blackout on 2025-07-21** | All working sensors read exactly 0.0 with 24/24 samples for ~4 h in full sun (1211 rows) | `qc_zero_daylight` (needs every working sensor at zero at the same instant) |
@@ -53,14 +53,14 @@ sensor it would just identify that sensor.
 | # | Issue | Evidence | Treatment |
 |---|---|---|---|
 | W1 | **5-minute source, 2-minute grid** | Linear interpolation of `cloud_opacity` | Each row is anchored to `period_end − 2.5 min` (the period is assumed to be the mean over the preceding five minutes). Timing is consistent with the measurements: on 06-30 Solcast cloud rises from 20 % to 73 % between 14:15 and 14:30 UTC and P0 falls from 936 W/m² at 14:08 to 43 at 14:48 |
-| W2 | **Solcast's own GHI is a different estimate** | During the 06-30 storm real ≈ 23 W/m², Solcast ≈ 46 W/m² | Kept (`solcast_ghi_wm2`) as a baseline, not as an input |
+| W2 | **Solcast's own GHI is a different estimate** | During the 06-30 storm real ≈ 23 W/m², Solcast ≈ 46 W/m² | Kept (`solcast_ghi_wm2`) for diagnosis only: not a model input and not one of the seven protocol models |
 | W3 | Winter under-represented | Solcast covers 2025-01-01 to 12-23; the pyranometers start in April, so the working set is April–December | Stated as a scope limit |
 
 ## 5. Evaluation design
 
 | # | Issue | Treatment |
 |---|---|---|
-| E1 | **The test set does not represent the annual climate.** 15 days, chosen by sky class (sunny 3, mixed 4, cloudy 4, rainy 4) and P1-shadow regime; 8 of 15 have P1 shaded against 35 % in training. Cloudy and rainy days are over-represented | Report per sky class; recombine with each class's real annual frequency to estimate an annual-equivalent figure. A more sunny climate favours the simulator in relative terms but not in W/m² (absolute errors grow with irradiance), so "worse than the annual scenario" is not claimed without that calculation |
+| E1 | **The test set does not represent the climate.** 15 days, chosen by sky class (sunny 3, mixed 4, cloudy 4, rainy 4) and P1-shadow regime; 8 of 15 have P1 shaded against 35 % in training. Cloudy and rainy days are over-represented | Results are reported per sky class, and no single average is read as typical performance |
 | E2 | **Class boundaries are arbitrary.** Test days 05-05 (k = 0.40), 11-24 (0.38) and 12-12 (0.39) sit within 0.02 of the cloudy/rainy boundary | Report cloudy + rainy combined as a check |
 | E3 | **Few cloudy training days.** Cloudy has only 6 | Stated; wide intervals expected for that class |
 | E4 | **One roof, one year, 58 days.** Sensors share weather; days are autocorrelated | No geographic or climatic generalisation is claimed. Leave-one-sensor-out measures spatial generalisation within one roof. Intervals by block bootstrap over days |

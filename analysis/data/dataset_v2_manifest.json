@@ -1,5 +1,7 @@
 {
-  "git_commit": "5dea75784884d18a3f54ab650e7fcba3b886f8c5",
+  "git_commit": "9fd1f43088e2d0a472713e65ca6fe5fe91dcccb8",
+  "pipeline_uncommitted_changes": false,
+  "pipeline_sha256": "fb1abdd435c2c8443b6a462bacc9fd153e20bd2aff1ca1b2279e0598acb5998a",
   "rows": 234540,
   "days": 60,
   "sensors": [
@@ -40,10 +42,10 @@
     "qc_flatline": 0,
     "qc_neg_large": 0,
     "qc_night_nonzero": 0,
-    "qc_over_clearsky": 25,
     "qc_zero_daylight": 1211,
     "qc_channel_dropout": 58,
-    "qc_ok": 212111
+    "qc_over_clearsky": 25,
+    "qc_ok": 212136
   },
   "inputs": {
     "simulation": {
