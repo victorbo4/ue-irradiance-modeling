@@ -151,14 +151,42 @@ def test_dead_sensor_day_is_flagged_but_a_cloudy_day_is_not():
     assert not dark["qc_sensor_dead"].any()
 
 
-def test_exact_zero_in_daylight_is_flagged_but_a_dark_cloud_is_not():
-    r = np.linspace(500, 600, 40); r[4] = 0.0; r[5] = 3.0          # 3 W/m2: dark storm cloud, legitimate
-    std = np.full(40, 1.0); std[4] = 0.0; std[5] = 0.5
-    out = bd.add_qc(_frame(real_wm2=r, real_std=std))
-    assert list(out.index[out["qc_zero_daylight"]]) == [4]
-    night = bd.add_qc(_frame(real_wm2=np.zeros(40), real_std=0.0, sun_altitude_deg=-10.0,
-                             clearsky_ghi_wm2=0.0, sim_irradiance_wm2=0.0))
-    assert not night["qc_zero_daylight"].any()                       # nights are supposed to be zero
+def _multi(zeros_at, n_sensors=5, n=20):
+    """`n_sensors` sensors over `n` bins; `zeros_at[sensor]` = bin indices reading exactly 0."""
+    frames = []
+    for i in range(n_sensors):
+        r = np.linspace(500, 600, n); std = np.full(n, 1.0)
+        for k in zeros_at.get(i, []):
+            r[k], std[k] = 0.0, 0.0
+        frames.append(_frame(real_wm2=r, real_std=std).assign(sensor=f"P{i}"))
+    return pd.concat(frames, ignore_index=True)
+
+
+def test_unanimous_zero_in_daylight_is_a_blackout():
+    out = bd.add_qc(_multi({i: [4, 5] for i in range(5)}))
+    assert out.groupby("utc")["qc_zero_daylight"].all().sum() == 2    # bins 4 and 5, every sensor
+    assert out["qc_zero_daylight"].sum() == 2 * 5
+
+
+def test_zeros_on_only_some_sensors_are_a_storm_not_a_blackout():
+    out = bd.add_qc(_multi({0: [4], 1: [4], 2: [4]}))                 # 3 of 5 read 0, the rest read ~500
+    assert not out["qc_zero_daylight"].any()
+
+
+def test_a_dead_sensor_does_not_veto_a_blackout():
+    # P0 is dead all day (always 0); the four working sensors black out at bin 7.
+    frames = [_frame(real_wm2=np.zeros(20) + np.arange(20) * 0.01).assign(sensor="P0")]
+    for i in range(1, 5):
+        r = np.linspace(500, 600, 20); std = np.full(20, 1.0); r[7], std[7] = 0.0, 0.0
+        frames.append(_frame(real_wm2=r, real_std=std).assign(sensor=f"P{i}"))
+    out = bd.add_qc(pd.concat(frames, ignore_index=True))
+    assert out.loc[out["sensor"] != "P0", "qc_zero_daylight"].sum() == 4
+
+
+def test_zeros_at_night_are_not_a_blackout():
+    out = bd.add_qc(_frame(real_wm2=np.zeros(40), real_std=0.0, sun_altitude_deg=-10.0,
+                           clearsky_ghi_wm2=0.0, sim_irradiance_wm2=0.0))
+    assert not out["qc_zero_daylight"].any()
 
 
 def test_sparse_and_missing_bins_are_flagged():
