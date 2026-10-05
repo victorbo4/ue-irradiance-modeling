@@ -41,7 +41,9 @@ How the pairs read:
   formula, so the 3D gain does not depend on the learner.
 - **H against P-sim** says whether XGBoost adds anything over a 2-parameter formula.
 - **H against S** says whether the method beats Solcast's own GHI estimate, an external
-  operational product (horizontal, 5-minute, interpolated to the 2-minute grid).
+  operational product (horizontal, 5-minute, interpolated to the 2-minute grid). Because S
+  is a horizontal estimate, **this contrast is computed on the eight horizontal sensors
+  only**; S is not scored on Pinc.
 - **H against C** says whether the 3D adds anything over a model that can memorise each
   sensor's shadow. C carries per-sensor dummies and sun angles, so it can in principle learn
   where shade falls; it is a rival, not an ablation. C cannot be scored on an unseen sensor,
@@ -75,21 +77,21 @@ tests a different claim:
 
 - **E1** is the main result: does it work on days it has not seen?
 - **E2** asks whether it works at a place on the roof it has never seen.
-- **E3** asks whether a model that has never seen a shadow still predicts one.
-- **E4** asks whether the relation with cloudiness holds across the year.
+- **E3** asks whether a model trained with no simulated occlusion still predicts rows where the simulator shows one.
+- **E4** asks whether the relation with cloudiness holds across the observed months (April–December).
 
 The models do not change between experiments; only the split does. In every experiment
 the scored rows come from days the model was not trained on (E4 scores training days of
 the held-out month; the 15 test days are not touched there). Every model is trained and
-scored in each experiment, always on the common mask. The count is 16 runs per model
-(E1 once, E2 five times, E3 once, E4 nine times).
+scored in each experiment, always on the common mask. The count is 20 runs per model
+(E1 once, E2 nine times, E3 once, E4 nine times).
 
 | ID | Train | Score on | What it shows |
 |---|---|---|---|
 | **E1** | the 43 training days, all sensors | the 15 test days, all sensors | overall performance |
-| **E2** (sensor-out) | the 43 training days without one sensor, for each of **P1, P3, P5, P7, Pinc** | the 15 test days, that sensor only | generalisation to an unseen position. Pinc is an orientation extrapolation (the only tilted sensor), reported as such |
-| **E3** (no shade seen) | training rows with `sun_visibility == 1` only | test rows with `sun_visibility < 0.5` | a model that never saw an occlusion still predicts shade |
-| **E4** (month-out) | training days outside one month, for each of the 9 months | training days of that month | stability of the cloud response across the year. The test days are not used |
+| **E2** (sensor-out) | the 43 training days without one sensor, for **each of the nine sensors** | the 15 test days, that sensor only | generalisation to an unseen position. Summarised by group, fixed in advance: shaded (P1, P3, P5, P7), open sky (P0, P4, P6, P8) and Pinc. Pinc is an orientation extrapolation (the only tilted sensor), reported as such |
+| **E3** (no simulated occlusion seen) | training rows with `sun_visibility == 1` only | test rows with `sun_visibility < 0.5` | a model trained without any simulated occlusion still predicts rows that have one. `sun_visibility == 1` means the simulator sees no occlusion, not that no real shadow exists (`KNOWN_ISSUES.md` S1), so this is not a claim about "never having seen a shadow" |
+| **E4** (month-out) | training days outside one month, for each of the 9 months | training days of that month | stability of the cloud response across the observed months, April–December (not a full year). The test days are not used |
 
 C cannot be scored on an unseen sensor in E2 (its dummy for that sensor is undefined);
 it is reported as "not applicable" there. That is the point of E2.
@@ -103,8 +105,9 @@ it is reported as "not applicable" there. That is the point of E2.
   **horizontals-only** row beside the pooled one (Pinc excluded).
 - The 15 test days are drawn by sky class and are not climatological, so no single
   average describes "typical" performance; results are always shown per sky class.
-- Uncertainty: 95 % intervals by block bootstrap over days (2000 resamples). Rows within
-  a day are not independent, and the effective sample is the number of days.
+- Uncertainty: 95 % percentile intervals (2.5th–97.5th) by block bootstrap over days (2000
+  resamples, seed 42). Rows within a day are not independent, and the effective sample is
+  the number of days.
 - Differences between models are reported as paired differences with the same bootstrap.
 
 ### Primary result (declared before any model is run)
@@ -112,8 +115,13 @@ it is reported as "not applicable" there. That is the point of E2.
 - **Contrast:** H against D in E1.
 - **Metric:** the difference in RMSE, `RMSE(D) − RMSE(H)` in W/m², paired, over the common mask.
 - **Population:** the nine sensors pooled; every row of the mask has equal weight.
-- **Uncertainty:** 95 % interval by block bootstrap over the 15 test days (2000 resamples,
-  seed 42).
+- **Uncertainty:** 95 % percentile interval (2.5th–97.5th) by block bootstrap over the 15
+  test days (2000 resamples, seed 42).
+
+The nine-sensor headline includes Pinc, and D (like every clear-sky-based model) estimates
+horizontal irradiance, so the gain on Pinc reflects the geometry's handling of orientation as
+well as of shadows. The horizontals-only contrast separates the two and is reported right
+next to the headline.
 
 Everything else is secondary: the same contrast on the horizontals only, per sensor, per sky
 class, shaded against unshaded rows, the contrasts P-sim − P-cs, H − C, H − P-sim and H − S, and
@@ -130,8 +138,9 @@ E2–E4. Secondary results are reported in full but are not used to make the hea
      `colsample_bytree` {0.5, 0.8}, `reg_lambda` {1, 4}, `gamma` {0, 0.1}; `reg_alpha` stays 0.1.
    - **Folds:** the nine leave-one-month-out folds of E4 over the training days.
    - **Selection metric:** mean over the folds of the pooled RMSE (W/m²) on the common mask.
-   - **Ties:** if two configurations differ by less than 0.01 W/m², keep the TFG's, otherwise
-     the one drawn earlier.
+   - **Selection and ties:** take the minimum mean RMSE; among the configurations within
+     0.01 W/m² of that minimum, take the TFG's if it is among them, otherwise the one drawn
+     first.
    - The selected configuration is retrained on all 43 training days and scored once on the
      test days, for this sensitivity table only.
 3. Cloudy and rainy classes pooled (their boundary is arbitrary).
@@ -153,3 +162,13 @@ Fixed:
 - A dataset rebuilt from the corrected simulator, in UTC, with explicit QC flags.
 - Per-sensor reporting, block-bootstrap intervals and paired differences.
 - Generalisation tests (E2–E4) designed in advance.
+
+## 7. Freezing
+
+Tagging `protocol-v1` fixes this document and the data it refers to. The tag message
+records the sha256 of `analysis/data/dataset_v2.csv`, `analysis/data/split_v2.csv` and
+`analysis/data/dataset_v2_manifest.json`, and the commit of `analysis/pipeline`, so that
+regenerated data cannot change a result unnoticed.
+
+The evaluation code is written after the tag. It must implement this document as written; a
+deviation, or any analysis added after seeing a result, is reported as exploratory.
