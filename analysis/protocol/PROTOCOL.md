@@ -19,12 +19,12 @@ and does the geometry still matter once clouds are accounted for?
 
 - **Data:** 60 simulated days, nine pyranometers, 2-minute steps; 43 days to train and 15 to
   test, the test days fixed beforehand by sky type and shadow situation.
-- **Models:** nine, from plain references to the full two-layer method **H**. The headline
-  compares H with **D**, the same correction layer without the simulation (section 2).
+- **Models:** nine, from plain references to the full two-layer method **H**. The highlighted
+  comparison is H with **D**, the same correction layer without the simulation (section 2).
 - **Experiments:** four splits: unseen days (E1), an unseen sensor (E2), shade the model was
   not trained on (E3) and an unseen month (E4) (section 3).
-- **Primary result:** the RMSE difference between D and H in E1, with an interval that treats
-  each day as one observation (section 4).
+- **Main comparison:** the RMSE difference between D and H in E1, with an interval that
+  treats each day as one observation (section 4). All results are exploratory.
 - **Rules:** one evaluation mask for every model, hyperparameters chosen inside every run
   using only that run's own training data, test days never used for any choice.
 
@@ -58,7 +58,7 @@ model's output; the details are in Appendix A.
 
 How the comparisons read:
 
-- **H against D** is the headline. D is the same correction layer without the simulation: they
+- **H against D** is the highlighted comparison. D is the same correction layer without the simulation: they
   share the learner, the hyperparameters (Appendix B), the target form and the rows, and
   differ only in the geometry signal. The contrast therefore measures what the simulation
   adds to a model driven by cloud cover. **P-sim against P-cs** is the same comparison with a
@@ -108,7 +108,7 @@ point of E2), and S is not scored on Pinc.
 occlusion rows, a held-out month or a test day never influence the weights or the
 hyperparameters of the model that is scored on them.
 
-## 4. Metrics, reporting and the primary result
+## 4. Metrics, reporting and the main comparison
 
 - R², MAE, RMSE and MBE as in the TFG (MBE = mean(prediction − observation), so a negative
   value is under-prediction), plus the error tail (P90, P95, P99 of `|error|`, and the maximum).
@@ -130,22 +130,24 @@ hyperparameters of the model that is scored on them.
   own training rows, in cross-validation and on the scored rows; the gap between the three
   is the evidence for or against overfitting.
 
-### Primary result (declared before any model is run)
+### Main comparison
 
-- **Contrast:** H against D in E1.
+The main experiment is E1, and the comparison highlighted in it is H against D:
+
 - **Metric:** `RMSE(D) − RMSE(H)` in W/m², paired, over the common mask.
 - **Population:** the nine sensors pooled; every row of the mask has equal weight.
 - **Uncertainty:** 95 % percentile interval by block bootstrap over the 15 test days (2000
   resamples, seed 42).
 
-The nine-sensor headline includes Pinc, and D (like every clear-sky-based model) estimates
+The nine-sensor figure includes Pinc, and D (like every clear-sky-based model) estimates
 horizontal irradiance, so the gain on Pinc reflects the geometry's handling of orientation as
 well as of shadows. The horizontals-only contrast separates the two and is reported right next
-to the headline.
+to it.
 
-Everything else is secondary: the same contrast on the horizontals only, per sensor, per sky
-class, shaded against unshaded rows, the contrasts A − B, A − R, R − B, H − A, P-sim − P-cs, H − C, H − P-sim and H − S,
-and E2–E4. Secondary results are reported in full and are not used to make the headline claim.
+The other comparisons (A − B, A − R, R − B, H − A, P-sim − P-cs, H − C, H − P-sim, H − S; per
+sensor, per sky class, shaded against unshaded rows; E2–E4) answer questions of equal interest
+and are reported in full with the same intervals. The study is exploratory: no comparison is a
+formal hypothesis test, and the intervals are not adjusted for the number of comparisons.
 
 ## 5. Sensitivity analyses (reported, never used to choose anything)
 
@@ -154,17 +156,11 @@ and E2–E4. Secondary results are reported in full and are not used to make the
    10° and scored; results go in a second set of tables. Between 5° and 10° the simulator is
    least reliable (`KNOWN_ISSUES.md` S2), and the 5° cut is a choice, not a fact: if the
    conclusions hold at 10°, they do not depend on where the cut was put.
-2. **The TFG's own configuration** for H, D and C: `ε = 10` with target and prediction using
-   `base + ε`, `k` clipped to [0, 1.5], and the TFG's parameters (H and D: depth 4, 800 trees,
-   `min_child_weight` 70, `colsample_bytree` 0.5; C: depth 5, 800 trees, `min_child_weight` 60,
-   `colsample_bytree` 0.8). Do the conclusions depend on the choices made here?
-3. **Cloudy and rainy classes pooled**, since their boundary is arbitrary.
-4. **Training variants for H and D.** (a) Upper clip of `k` at 3.0 and with no upper clip,
-   against 2.0 in the main runs: it does not bind equally in H and D (Appendix A). (b)
-   Weighted training, with sample weight `base²` rescaled to mean 1 so that
-   `min_child_weight` keeps its scale: for targets the clip does not touch, it makes the
-   training loss equal to the squared error in W/m² that RMSE measures, whereas unweighted
-   training gives every hour the same weight.
+2. **Upper clip of `k`.** Repeat H and D with the clip at 3.0 and with no upper clip, against
+   2.0 in the main runs. It does not bind equally in the two (Appendix A), so this checks that
+   H does not beat D merely because D loses more rows to the clip.
+3. **Cloudy and rainy classes pooled**, since their boundary is arbitrary. This only regroups
+   the predictions already computed.
 
 ## 6. Differences from the TFG
 
@@ -209,7 +205,7 @@ deviation, or any analysis added after seeing a result, is reported as explorato
 - **Clip of `k` to [0, 2].** It only guards against absurd values. On the training rows it
   acts on 35 rows of H (0.026 %) but on 771 rows of D (0.58 %, 299 of them Pinc), because
   `k` relative to the clear-sky GHI is larger for a tilted plane and at low sun. The clip
-  therefore does not bind equally in H and D, which sensitivity 4 examines.
+  therefore does not bind equally in H and D, which sensitivity 2 examines.
 - **P models.** `c = cloud_opacity/100`. `a` in [0, 1] and `b` in [0.1, 5] are fitted on the
   training rows by least squares on the residual `real − prediction` in W/m², with
   `scipy.optimize.least_squares` (method `trf`, those bounds, default tolerances), started
@@ -258,4 +254,3 @@ held-out occlusion rows or a held-out month.
 - **C is selected on its own**, with the same procedure on its own 36-configuration grid.
 - The configuration selected in each run is saved and reported. How often it changes across
   runs is itself a stability result; if it rarely changes, the choice is robust.
-- The TFG's own configuration (section 5) is run as a reference variant, shared by H and D.
