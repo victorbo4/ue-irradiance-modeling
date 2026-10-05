@@ -20,12 +20,13 @@ and hyperparameters are the TFG's. What changes is how the models are compared.
 
 ## 2. Models
 
-Seven models, in three groups. Only the learned ones are trained; the references are just scored.
+Eight models, in three groups. Only the learned ones are trained; the references are just scored.
 
 | ID | Name | Learned? | Inputs | Prediction | Question it answers |
 |---|---|---|---|---|---|
 | A | Physical simulation | no | `sim_irradiance_wm2` | `max(sim, 0)` | What does the 3D engine give on its own? |
 | B | Clear-sky | no | `clearsky_ghi_wm2` | `max(cs, 0)` | What does the clear-sky physics give, with no clouds and no geometry? |
+| S | Solcast GHI | no | `solcast_ghi_wm2` | `max(solcast_ghi_wm2, 0)` | Does the method beat an operational weather product? |
 | P-cs | Parametric, clear-sky | 2 parameters | `clearsky_ghi_wm2`, `cloud_opacity` | `max(cs·(1 − a·c^b), 0)` | Clouds on top of clear-sky, no 3D, no trees |
 | P-sim | Parametric, simulator | 2 parameters | `sim_irradiance_wm2`, `cloud_opacity` | `max(sim·(1 − a·c^b), 0)` | The same with 3D. Does the 3D gain survive a simple formula? |
 | D | XGBoost, clear-sky | XGBoost | `clearsky_ghi_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 1.5)·(cs+ε), 0)`, `k = clip(real/(cs+ε), 0, 1.5)` | **Clean ablation of H** (no 3D) |
@@ -39,6 +40,8 @@ How the pairs read:
   rows are the same. **P-sim against P-cs** is the same comparison with a 2-parameter
   formula, so the 3D gain does not depend on the learner.
 - **H against P-sim** says whether XGBoost adds anything over a 2-parameter formula.
+- **H against S** says whether the method beats Solcast's own GHI estimate, an external
+  operational product (horizontal, 5-minute, interpolated to the 2-minute grid).
 - **H against C** says whether the 3D adds anything over a model that can memorise each
   sensor's shadow. C carries per-sensor dummies and sun angles, so it can in principle learn
   where shade falls; it is a rival, not an ablation. C cannot be scored on an unseen sensor,
@@ -113,7 +116,7 @@ it is reported as "not applicable" there. That is the point of E2.
   seed 42).
 
 Everything else is secondary: the same contrast on the horizontals only, per sensor, per sky
-class, shaded against unshaded rows, the contrasts P-sim − P-cs, H − C and H − P-sim, and
+class, shaded against unshaded rows, the contrasts P-sim − P-cs, H − C, H − P-sim and H − S, and
 E2–E4. Secondary results are reported in full but are not used to make the headline claim.
 
 ## 5. Sensitivity analyses (reported, never used to choose anything)

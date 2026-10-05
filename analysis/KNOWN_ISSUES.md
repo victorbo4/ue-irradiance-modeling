@@ -53,7 +53,7 @@ sensor it would just identify that sensor.
 | # | Issue | Evidence | Treatment |
 |---|---|---|---|
 | W1 | **5-minute source, 2-minute grid** | Linear interpolation of `cloud_opacity` | Each row is anchored to `period_end − 2.5 min` (the period is assumed to be the mean over the preceding five minutes). Timing is consistent with the measurements: on 06-30 Solcast cloud rises from 20 % to 73 % between 14:15 and 14:30 UTC and P0 falls from 936 W/m² at 14:08 to 43 at 14:48 |
-| W2 | **Solcast's own GHI is a different estimate** | During the 06-30 storm real ≈ 23 W/m², Solcast ≈ 46 W/m² | Kept (`solcast_ghi_wm2`) for diagnosis only: not a model input and not one of the seven protocol models |
+| W2 | **Solcast's own GHI is a different estimate** | During the 06-30 storm real ≈ 23 W/m², Solcast ≈ 46 W/m² | Used as the external reference model S in the protocol (never as an input to any other model). Like B, P-cs and D it is a horizontal estimate, so it is structurally handicapped on Pinc |
 | W3 | Winter under-represented | Solcast covers 2025-01-01 to 12-23; the pyranometers start in April, so the working set is April–December | Stated as a scope limit |
 
 ## 5. Evaluation design
