@@ -1,7 +1,8 @@
 # Evaluation protocol
 
-**Status: DRAFT.** It becomes binding when tagged `protocol-v1`. After the tag nothing below
-may change in response to a result; anything changed afterwards is reported as exploratory.
+**Status: frozen.** Binding since the tag `protocol-v1`. Nothing below may change in response
+to a result; any analysis added afterwards, or any deviation from what is written here, is
+reported as exploratory.
 
 ## Summary
 
