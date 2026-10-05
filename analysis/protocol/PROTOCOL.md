@@ -5,17 +5,24 @@ may change in response to a result; anything changed afterwards is reported as e
 
 ## Summary
 
-The question is whether a 3D model of the rooftop improves irradiance estimates made from
-cloud cover. The method is the TFG's: a model that predicts how much of the simulator's
-irradiance reaches each pyranometer, given the cloud cover. What changes is the evaluation.
+This protocol evaluates a rooftop irradiance estimator built in two layers. The first is a
+simulation in Unreal Engine: a 3D model of the ETSIDI rooftop and its surroundings that gives,
+for every sensor and every 2 minutes, the irradiance it would receive under a clear sky,
+including the shadows of nearby buildings and the sensor's orientation. It is calibrated
+against a clear-sky model, not an independent physical estimate. The second layer is a small
+learned correction that uses cloud cover to bring the simulated value closer to what the
+pyranometers measure.
 
-- **Data:** 60 simulated days, nine pyranometers, 2-minute steps. 43 days are used to train
-  and 15 to test; the test days were fixed beforehand by sky type and shadow situation.
-- **Models:** eight, from plain references to the proposed method. The central comparison is
-  the proposed model **H** against **D**, which is H with the 3D signal replaced by the clear-sky
-  value (section 2).
-- **Experiments:** four ways of splitting the data. E1 tests unseen days, E2 an unseen
-  sensor, E3 shade the model has not seen simulated, and E4 an unseen month (section 3).
+The evaluation asks two things. Is the simulation informative on its own: does it capture
+shadows and orientation better than a clear-sky formula? And does the correction improve it,
+and does the geometry still matter once clouds are accounted for?
+
+- **Data:** 60 simulated days, nine pyranometers, 2-minute steps; 43 days to train and 15 to
+  test, the test days fixed beforehand by sky type and shadow situation.
+- **Models:** eight, from plain references to the full two-layer method **H**. The headline
+  compares H with **D**, the same correction layer without the simulation (section 2).
+- **Experiments:** four splits: unseen days (E1), an unseen sensor (E2), shade the model was
+  not trained on (E3) and an unseen month (E4) (section 3).
 - **Primary result:** the RMSE difference between D and H in E1, with an interval that treats
   each day as one observation (section 4).
 - **Rules:** one evaluation mask for every model, hyperparameters chosen only on training
@@ -50,10 +57,15 @@ model's output; the details are in Appendix A.
 
 How the comparisons read:
 
-- **H against D** is the headline. They share the learner, the hyperparameters (Appendix B),
-  the target form and the rows; the only difference is the geometry signal. **P-sim against
-  P-cs** is the same comparison with a 2-parameter formula, so the 3D gain does not depend on
-  the learner.
+- **H against D** is the headline. D is the same correction layer without the simulation: they
+  share the learner, the hyperparameters (Appendix B), the target form and the rows, and
+  differ only in the geometry signal. The contrast therefore measures what the simulation
+  adds to a model driven by cloud cover. **P-sim against P-cs** is the same comparison with a
+  2-parameter formula, so the gain does not depend on the learner.
+- **A against B** is the simulation on its own against the clear-sky formula. Neither knows
+  about clouds, so the difference comes from the geometry and calibration alone. It is read
+  overall and especially on shaded rows and sunny days.
+- **H against A** is what the correction layer adds to the simulation.
 - **H against P-sim** says whether XGBoost adds anything over a 2-parameter formula.
 - **H against S** says whether the method beats Solcast's own GHI estimate, an external
   product (horizontal, 5-minute, interpolated to the 2-minute grid). S is a horizontal
@@ -120,7 +132,7 @@ well as of shadows. The horizontals-only contrast separates the two and is repor
 to the headline.
 
 Everything else is secondary: the same contrast on the horizontals only, per sensor, per sky
-class, shaded against unshaded rows, the contrasts P-sim − P-cs, H − C, H − P-sim and H − S,
+class, shaded against unshaded rows, the contrasts A − B, H − A, P-sim − P-cs, H − C, H − P-sim and H − S,
 and E2–E4. Secondary results are reported in full and are not used to make the headline claim.
 
 ## 5. Sensitivity analyses (reported, never used to choose anything)
