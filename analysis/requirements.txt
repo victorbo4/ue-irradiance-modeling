@@ -9,3 +9,4 @@ joblib==1.5.3
 python-dateutil==2.9.0.post0
 pytz==2025.2
 plotly==6.5.1
+pytest==9.1.1
