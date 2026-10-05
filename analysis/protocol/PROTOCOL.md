@@ -38,7 +38,7 @@ Eight models, in three groups. Only the learned ones are trained; the references
 | P-sim | Parametric, simulator | 2 parameters | `sim_irradiance_wm2`, `cloud_opacity` | `max(sim·(1 − a·c^b), 0)` | The same with 3D. Does the 3D gain survive a simple formula? |
 | D | XGBoost, clear-sky | XGBoost | `clearsky_ghi_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 2)·cs, 0)`, `k = clip(real/cs, 0, 2)` | **Clean ablation of H** (no 3D) |
 | **H** | **XGBoost, hybrid (TFG final model)** | XGBoost | `sim_irradiance_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 2)·sim, 0)`, `k = clip(real/sim, 0, 2)` | **The proposed method** |
-| C | XGBoost meteo (TFG baseline C) | XGBoost | `cloud_opacity`, `zenith`, `azimuth`, `precipitable_water`, sensor dummies | `real` directly | Can the data alone learn each sensor's shadow, with no 3D? |
+| C | XGBoost meteo (TFG baseline C) | XGBoost | `cloud_opacity`, `zenith`, `azimuth`, `precipitable_water`, sensor dummies | target `real`; prediction `max(ŷ, 0)` | Can the data alone learn each sensor's shadow, with no 3D? |
 
 How the pairs read:
 
@@ -61,16 +61,18 @@ Details:
 - **No ε.** The learned models predict a factor `k = real / base` (`base` = simulator or
   clear-sky) and reconstruct `base · k̂`. The TFG added a constant ε = 10 W/m² to the
   denominator (`real / (base + ε)`) so that a near-zero `base` at dawn or dusk could not make
-  `k` explode. Inside the common mask `sim` never drops below 32.9 W/m², so that protection
-  is not needed, and a transformation without a free constant is exactly interpretable.
+  `k` explode. Inside the common mask `sim` never drops below 32.9 W/m², and the clear-sky GHI (the
+  base of D) never below 21.8 W/m² on the training rows, so that protection is not needed, and a transformation without a free constant is exactly interpretable.
   Stability at low irradiance is checked with the 10° robustness run. ε = 10 is kept as part
   of the TFG reference variant (section 5).
 - **Clip of `k` to [0, 2].** It only guards against absurd values. On the training rows it
   acts on 35 rows of H (0.026 %) but on 771 rows of D (0.58 %, 299 of them Pinc), because
   `k` relative to the clear-sky GHI is larger for a tilted plane and at low sun. The clip
   therefore does not bind equally in H and D, which the sensitivity in section 5 examines.
-- P models: `c = cloud_opacity/100`. `a` in [0, 1] and `b` in [0.1, 5] are fitted by least
-  squares (RMSE) on the training rows, started at `a = 0.8, b = 1`. There is nothing to tune.
+- P models: `c = cloud_opacity/100`. `a` in [0, 1] and `b` in [0.1, 5] are fitted on the training rows by
+  least squares on the residual `real − prediction` in W/m², with
+  `scipy.optimize.least_squares` (method `trf`, those bounds, default tolerances), started at
+  `a = 0.8, b = 1`. There is nothing to tune.
 - **Hyperparameters (H, D, C) are chosen once, inside the training days, and then frozen**
   for every experiment. Nothing is tuned on a test day.
   - **Grid, complete (no random draws).** For H and D (two inputs): `max_depth` {2, 3, 4, 5}
@@ -87,19 +89,24 @@ Details:
     `sim·[f(sim) + g(cloud)]` keeps a multiplicative cloud effect, but `g` cannot change with
     `sim`. That can act as a regulariser or as a limitation; cross-validation inside the
     training days decides, not an assumption.
-  - **Selection:** leave-one-month-out folds over the 43 training days (blocked
-    cross-validation, because the days of a month share weather); score = mean over the folds
-    of the pooled RMSE on the common mask. **One-standard-error rule:** among the
-    configurations whose mean RMSE is within one standard error (across folds) of the best,
-    choose the simplest, defined as an order: fewest trees, then smallest depth, then largest
-    `min_child_weight`, then `colsample_bytree` 0.5 before 1.0.
-  - Same grid and same procedure for H, D and C, so the comparison is fair.
-  - The TFG's own configuration (section 5) is run as a reference variant.
+  - **Selection (H and D jointly).** H and D must differ only in the geometry signal, so they
+    share **one** configuration. Leave-one-month-out folds over the 43 training days (blocked
+    cross-validation, because the days of a month share weather). For each configuration both H
+    and D are validated on every fold; the configuration's score on a fold is the mean of the
+    two RMSEs on the common mask, and its score overall is the mean over the folds.
+    **One-standard-error rule** on that joint score: among the configurations whose mean is
+    within one standard error (across folds) of the best, choose the simplest, defined as an
+    order: fewest trees, then smallest depth, then largest `min_child_weight`, then
+    `colsample_bytree` 0.5 before 1.0. The chosen configuration is used for both models.
+  - **C is selected on its own**, with the same procedure on its own 36-configuration grid.
+  - The TFG's own configuration (section 5) is run as a reference variant, shared by H and D.
   - **Overfitting diagnostic:** every table for a learned model also reports its RMSE on its
     own training rows, in cross-validation and on the scored rows. The gap between the three
     is the evidence for or against overfitting.
-  - E4 holds one month out, but that month was already seen when the hyperparameters were
-    chosen, so E4 is slightly optimistic about the hyperparameters. This is stated with E4.
+  - **Declared limitation of E2, E3 and E4.** The hyperparameters were chosen using all the
+    sensors, rows and months of the training days. The weights of a model never see the held-out
+    sensor, occlusion rows or month, but the hyperparameters did, so these experiments are
+    slightly optimistic about them. The selection is not repeated inside each experiment.
 - `zenith` and `azimuth` for C come from the simulator's sun position (`90 - sun_altitude_deg`,
   `sun_azimuth_deg`). `precipitable_water` comes from Solcast.
 
@@ -119,7 +126,8 @@ The models do not change between experiments; only the split does. In every expe
 the scored rows come from days the model was not trained on (E4 scores training days of
 the held-out month; the 15 test days are not touched there). Every model is trained and
 scored in each experiment, always on the common mask. The count is 20 runs per model
-(E1 once, E2 nine times, E3 once, E4 nine times).
+(E1 once, E2 nine times, E3 once, E4 nine times), with two exceptions: C is not scored in E2,
+and S is not scored on Pinc.
 
 | ID | Train | Score on | What it shows |
 |---|---|---|---|
@@ -133,7 +141,8 @@ it is reported as "not applicable" there. That is the point of E2.
 
 ## 4. Metrics and reporting
 
-- R², MAE, RMSE and MBE as in the TFG, plus the error tail (P90, P95, P99 of
+- R², MAE, RMSE and MBE as in the TFG (MBE = mean(prediction − observation), so a negative
+  value is under-prediction), plus the error tail (P90, P95, P99 of
   `|error|`, and the maximum).
 - Reported in every table: overall; **per sensor**; per sky class (sunny, mixed, cloudy,
   rainy); shaded against unshaded rows (`sun_visibility < 0.5` against `== 1`); and a
@@ -165,7 +174,8 @@ E2–E4. Secondary results are reported in full but are not used to make the hea
 ## 5. Sensitivity analyses (reported, never used to choose anything)
 
 1. **Stricter altitude cut.** Repeat everything with `sun_altitude_deg > 10` instead of
-   `> 5`, for the training rows, the test rows and every model. Only the cut changes. It
+   `> 5`, for the training rows, the test rows and every model. Only the cut changes: the hyperparameters chosen at 5° are
+   reused, the models are retrained on the rows above 10°, and scored. It
    answers: do the conclusions hold when the low-sun hours, where the simulator is least
    reliable, are left out?
 2. **The TFG's own configuration** for H, D and C: `ε = 10` with target and prediction
@@ -177,8 +187,8 @@ E2–E4. Secondary results are reported in full but are not used to make the hea
 4. **Upper clip of `k`:** 2.0 (main) against 3.0 and no upper clip, for H and D. It does not
    bind equally in the two, so the H-against-D conclusion is checked for it.
 5. **Weighted training** for H and D: sample weight `base²`, rescaled to mean 1 so that
-   `min_child_weight` keeps its scale. It makes the training loss equal to the squared error
-   in W/m² that RMSE measures; unweighted training gives every hour the same weight.
+   `min_child_weight` keeps its scale. For targets the clip does not touch, it makes the training loss equal to the squared
+   error in W/m² that RMSE measures; unweighted training gives every hour the same weight.
 6. Horizontals only (already in every table).
 
 ## 6. What was fixed relative to the TFG
@@ -191,7 +201,9 @@ Fixed:
   simplicity rule, before any test day is scored.
 - A consistent target/prediction pair for H and D. The TFG trained on `real/(sim+ε)` but
   predicted `k̂·sim`, so even a perfect `k̂` under-predicted by 7.2 W/m² on average (RMSE 8.1),
-  and the references A and B did not carry that error. Removing ε removes the mismatch.
+  and the references A and B did not carry that error. The mismatch is removed by using the
+  same denominator in the target and in the reconstruction; dropping ε additionally removes an
+  unneeded constant.
 - No ε, a clip at 2 instead of 1.5, and no `sim ≥ 1` training rule (redundant with the mask).
 - One evaluation mask for all models (the TFG scored baselines and hybrid on different
   row sets, and kept night rows in the test set).
