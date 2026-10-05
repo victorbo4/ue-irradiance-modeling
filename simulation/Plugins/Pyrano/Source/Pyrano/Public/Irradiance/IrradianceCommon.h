@@ -26,7 +26,7 @@ namespace IrradianceCommon
 		constexpr float MsPerFramePath	 = 35.f;
 
 		/** Sun visibility samples */
-		constexpr int32 SunVisibilitySamples = 8;
+		constexpr int32 SunVisibilitySamples = 32;
 
 		/** Ambient Irradiance Scale factor */
 		constexpr float AmbientIrradianceScale = 1.0f;
