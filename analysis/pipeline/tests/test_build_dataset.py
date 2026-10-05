@@ -67,7 +67,7 @@ def test_file_straddling_midnight_is_matched_by_timestamp_not_name(tmp_path):
 def _meteo(period_end, cloud):
     return pd.DataFrame({
         "period_end": pd.to_datetime(period_end, utc=True),
-        "cloud_opacity": cloud, "ghi": 0.0, "clearsky_ghi": 0.0, "weather_type": "SUNNY",
+        "cloud_opacity": cloud, "ghi": 0.0, "clearsky_ghi": 0.0, "precipitable_water": 20.0, "weather_type": "SUNNY",
     })
 
 
@@ -255,3 +255,4 @@ def test_build_end_to_end_keeps_every_simulated_row(tmp_path):
     assert (df.loc[covered, "real_n"] == 24).all()
     assert df.loc[~covered, "qc_real_sparse"].all() and not df.loc[covered, "qc_real_sparse"].any()
     assert df["cloud_opacity"].eq(30.0).all()
+    assert df["precipitable_water"].eq(20.0).all()

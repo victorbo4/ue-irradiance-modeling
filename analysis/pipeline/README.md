@@ -34,7 +34,7 @@ analysis/.venv/bin/python -m pytest analysis/pipeline/tests    # tests
 | Simulator | `sim_irradiance_wm2`, `sim_comp_amb_lux`, `sim_comp_direct_lux`, `raw_{r,g,b}_lux` |
 | Clear-sky | `clearsky_{ghi,dni,dhi}_wm2` (Ineichen, from the simulator) |
 | Target | `real_wm2` (bin mean), `real_n`, `real_std` |
-| Meteo | `cloud_opacity` (%), `solcast_ghi_wm2`, `solcast_clearsky_ghi_wm2`, `weather_type`, `meteo_gap_s` |
+| Meteo | `cloud_opacity` (%), `precipitable_water`, `solcast_ghi_wm2`, `solcast_clearsky_ghi_wm2`, `weather_type`, `meteo_gap_s` |
 
 The `_lux` suffix on the simulator columns is a historical misnomer (bug-tracker
 S9/A6): they are not photometric lux. They keep their names for traceability.

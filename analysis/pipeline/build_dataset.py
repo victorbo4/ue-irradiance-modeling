@@ -60,8 +60,9 @@ SIM_COLS = {
 }
 
 # Solcast columns carried into the dataset (cloud_opacity is the model input;
-# ghi is Solcast's own estimate, kept as a baseline to compare against).
-METEO_COLS = ["cloud_opacity", "ghi", "clearsky_ghi"]
+# ghi is Solcast's own estimate, kept as a baseline to compare against;
+# precipitable_water is an input of the TFG's meteo baseline C).
+METEO_COLS = ["cloud_opacity", "ghi", "clearsky_ghi", "precipitable_water"]
 METEO_RENAME = {"ghi": "solcast_ghi_wm2", "clearsky_ghi": "solcast_clearsky_ghi_wm2"}
 
 # --- QC thresholds (documented in the README) ---------------------------------
