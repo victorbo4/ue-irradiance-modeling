@@ -26,7 +26,8 @@ and does the geometry still matter once clouds are accounted for?
 - **Main comparison:** the RMSE difference between D and H in E1, with an interval that
   treats each day as one observation (section 4). All results are exploratory.
 - **Rules:** one evaluation mask for every model, hyperparameters chosen inside every run
-  using only that run's own training data, test days never used for any choice.
+  using only that run's own training data. Once the v2 split is fixed, no test day is used
+  to fit weights or hyperparameters.
 
 ## 1. Data and mask
 
@@ -106,7 +107,7 @@ point of E2), and S is not scored on Pinc.
 **Nothing held out informs a choice.** The hyperparameters are selected inside every run
 (Appendix B), using only the data that run is trained on, so a held-out sensor, held-out
 occlusion rows, a held-out month or a test day never influence the weights or the
-hyperparameters of the model that is scored on them.
+hyperparameters of the model that is scored on them, in any run of this protocol.
 
 ## 4. Metrics, reporting and the main comparison
 
@@ -172,8 +173,9 @@ Changed:
   row sets and kept night rows in the test set.
 - **Test days fixed before any model is run**, by sky class and shadow regime.
 - **A consistent target and prediction.** The TFG trained on `real/(sim+ε)` with ε = 10 W/m²
-  but predicted `k̂·sim`, so even a perfect `k̂` under-predicted by 7.2 W/m² on average (RMSE
-  8.1), and the references A and B did not carry that error. The mismatch is removed by using
+  but predicted `k̂·sim`, so even a perfect `k̂` systematically under-predicted (the target
+  and the reconstruction were not inverses of each other), and the references A and B did
+  not carry that error. The mismatch is removed by using
   the same denominator in the target and in the reconstruction. Dropping ε as well removes an
   unneeded constant (Appendix A).
 - **A clip of `k` at 2 instead of 1.5**, and no `sim ≥ 1` training rule (redundant with the mask).
