@@ -72,6 +72,8 @@ NIGHT_NONZERO_WM2 = 10.0                  # real signal while the sun is below h
 DEAD_DAY_MAX_WM2 = 20.0                   # sensor-day whose max never exceeds this
 DEAD_DAY_SKY_WM2 = 300.0                  #   ... while the clear-sky GHI exceeded this
 ZERO_DAYLIGHT_SIM_WM2 = 50.0              # exact zero while the simulation says > this
+DROPOUT_PEER_WM2 = 100.0                  # a lone exact zero is a dropout if the other
+                                          # working sensors read at least this much
 ZERO_MIN_SENSORS = 4                      #   ... on every one of at least this many sensors
 FLATLINE_MIN_BINS = 15                    # identical value for >= 30 min
 FLATLINE_MIN_WM2 = 5.0
@@ -84,6 +86,7 @@ OVER_CLEARSKY_OFFSET = 50.0
 QC_BAD = [
     "qc_real_sparse", "qc_dup_conflict", "qc_sensor_dead", "qc_flatline",
     "qc_neg_large", "qc_night_nonzero", "qc_over_clearsky", "qc_zero_daylight",
+    "qc_channel_dropout",
 ]
 
 
@@ -221,6 +224,12 @@ def add_qc(df: pd.DataFrame) -> pd.DataFrame:
     n_zero = (zero & working).groupby(df["utc"]).transform("sum")
     df["qc_zero_daylight"] = (n_working >= ZERO_MIN_SENSORS) & (n_zero == n_working) & working
 
+    # Channel dropout: one sensor reads exactly 0 while the others, at the same
+    # instant, read clearly above 0. Quantised storm zeros have peers at a few
+    # W/m2 and are not touched; the 0.0 here is a lost channel, not a cloud.
+    peer_med = df["real_wm2"].where(working & ~zero).groupby(df["utc"]).transform("median")
+    df["qc_channel_dropout"] = zero & working & (peer_med >= DROPOUT_PEER_WM2)
+
     df["qc_ok"] = ~df[QC_BAD].any(axis=1)
     return df
 
@@ -272,7 +281,7 @@ def manifest(df: pd.DataFrame, sim_dir: Path, real_dir: Path, meteo_path: Path) 
         "utc_range": [df["utc"].min().isoformat(), df["utc"].max().isoformat()],
         "thresholds": {
             "min_bin_samples": MIN_BIN_SAMPLES, "dup_conflict_wm2": DUP_CONFLICT_WM2,
-            "neg_large_wm2": NEG_LARGE_WM2, "night_nonzero_wm2": NIGHT_NONZERO_WM2, "zero_daylight_sim_wm2": ZERO_DAYLIGHT_SIM_WM2, "zero_min_sensors": ZERO_MIN_SENSORS,
+            "neg_large_wm2": NEG_LARGE_WM2, "night_nonzero_wm2": NIGHT_NONZERO_WM2, "zero_daylight_sim_wm2": ZERO_DAYLIGHT_SIM_WM2, "zero_min_sensors": ZERO_MIN_SENSORS, "dropout_peer_wm2": DROPOUT_PEER_WM2,
             "dead_day_max_wm2": DEAD_DAY_MAX_WM2, "dead_day_sky_wm2": DEAD_DAY_SKY_WM2,
             "flatline_min_bins": FLATLINE_MIN_BINS, "flatline_min_wm2": FLATLINE_MIN_WM2,
             "over_clearsky_factor": OVER_CLEARSKY_FACTOR, "over_clearsky_offset": OVER_CLEARSKY_OFFSET,

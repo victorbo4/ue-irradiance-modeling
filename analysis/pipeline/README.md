@@ -53,6 +53,7 @@ estimate (see the simulator-is-calibrated note).
 | `qc_night_nonzero` | above 10 W/m² while the sun is below the horizon |
 | `qc_over_clearsky` | above 1.6 × max(clear-sky GHI, the sensor's own simulated irradiance) + 50 |
 | `qc_zero_daylight` | at one instant every working sensor (4+) reads exactly 0 although the simulated sun is up: logger zero-fill or blackout. Zeros on only some sensors (a dark storm quantised to 0) are not flagged |
+| `qc_channel_dropout` | one sensor reads exactly 0 while the other working sensors read at least 100 W/m² at the same instant: a lost channel, not a cloud |
 | `qc_ok` | none of the above |
 
 Cloud-edge enhancement can legitimately exceed clear-sky GHI, hence the generous

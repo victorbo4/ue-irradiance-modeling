@@ -183,6 +183,25 @@ def test_a_dead_sensor_does_not_veto_a_blackout():
     assert out.loc[out["sensor"] != "P0", "qc_zero_daylight"].sum() == 4
 
 
+def test_lone_zero_with_strong_peers_is_a_channel_dropout():
+    out = bd.add_qc(_multi({2: [4, 5]}))                              # P2 reads 0 on bins 4-5, peers ~500
+    assert out.loc[out["sensor"] == "P2", "qc_channel_dropout"].sum() == 2
+    assert out.loc[out["sensor"] != "P2", "qc_channel_dropout"].sum() == 0
+    assert not out["qc_zero_daylight"].any()                           # not a blackout: peers are fine
+
+
+def test_storm_zeros_with_weak_peers_are_not_a_dropout():
+    r = np.full(20, 4.0)                                               # everyone reads a few W/m2
+    frames = []
+    for i in range(5):
+        x = r.copy(); std = np.full(20, 0.5)
+        if i < 3:
+            x[6], std[6] = 0.0, 0.0
+        frames.append(_frame(real_wm2=x, real_std=std, clearsky_ghi_wm2=300.0, sim_irradiance_wm2=300.0).assign(sensor=f"P{i}"))
+    out = bd.add_qc(pd.concat(frames, ignore_index=True))
+    assert not out["qc_channel_dropout"].any() and not out["qc_zero_daylight"].any()
+
+
 def test_zeros_at_night_are_not_a_blackout():
     out = bd.add_qc(_frame(real_wm2=np.zeros(40), real_std=0.0, sun_altitude_deg=-10.0,
                            clearsky_ghi_wm2=0.0, sim_irradiance_wm2=0.0))
