@@ -61,9 +61,12 @@ SIM_COLS = {
 
 # Solcast columns carried into the dataset (cloud_opacity is the model input;
 # ghi is Solcast's own estimate, kept as a baseline to compare against;
-# precipitable_water is an input of the TFG's meteo baseline C).
-METEO_COLS = ["cloud_opacity", "ghi", "clearsky_ghi", "precipitable_water"]
-METEO_RENAME = {"ghi": "solcast_ghi_wm2", "clearsky_ghi": "solcast_clearsky_ghi_wm2"}
+# precipitable_water is an input of the TFG's meteo baseline C; dni, dhi and
+# precipitation_rate are diagnostic only: Solcast's direct/diffuse split and the
+# rain rate, no model uses them).
+METEO_COLS = ["cloud_opacity", "ghi", "clearsky_ghi", "precipitable_water", "dni", "dhi", "precipitation_rate"]
+METEO_RENAME = {"ghi": "solcast_ghi_wm2", "clearsky_ghi": "solcast_clearsky_ghi_wm2",
+                "dni": "solcast_dni_wm2", "dhi": "solcast_dhi_wm2"}
 
 # --- QC thresholds (documented in the README) ---------------------------------
 MIN_BIN_SAMPLES = SAMPLES_PER_BIN // 2   # fewer 5 s samples than this -> sparse
