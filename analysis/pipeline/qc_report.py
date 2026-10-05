@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from build_dataset import QC_BAD, REPO
+from build_dataset import QC_BAD, QC_DIAGNOSTIC, REPO
 
 DAYLIGHT_DEG = 5.0
 USABLE_DAY_FRACTION = 0.8   # a (sensor, day) is usable if >= 80 % of its daylight rows are qc_ok
@@ -57,7 +57,7 @@ def report(df: pd.DataFrame) -> str:
            "QC **marks** rows, it never removes them; the evaluation applies one common mask.", ""]
 
     out += ["## Rows flagged, by sensor (daylight rows, sun > 5 deg)", ""]
-    t = day_rows.groupby("sensor")[QC_BAD].sum()
+    t = day_rows.groupby("sensor")[[*QC_BAD, *QC_DIAGNOSTIC]].sum()
     t["n_daylight"] = day_rows.groupby("sensor").size()
     t["qc_ok_%"] = (100 * day_rows.groupby("sensor")["qc_ok"].mean()).round(1)
     out += [md(t), ""]

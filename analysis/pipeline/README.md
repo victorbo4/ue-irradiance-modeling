@@ -54,13 +54,15 @@ estimate (see the simulator-is-calibrated note).
 | `qc_flatline` | the same value above 5 W/m² for 15+ consecutive bins (30 min) |
 | `qc_neg_large` | below −5 W/m² (small negatives are offset noise and not flagged) |
 | `qc_night_nonzero` | above 10 W/m² while the sun is below the horizon |
-| `qc_over_clearsky` | above 1.6 × max(clear-sky GHI, the sensor's own simulated irradiance) + 50 |
+| `qc_over_clearsky` | **diagnostic only, not part of `qc_ok`**: above 1.6 × max(clear-sky GHI, the sensor's own simulated irradiance) + 50 |
 | `qc_zero_daylight` | at one instant every working sensor (4+) reads exactly 0 although the simulated sun is up: logger zero-fill or blackout. Zeros on only some sensors (a dark storm quantised to 0) are not flagged |
 | `qc_channel_dropout` | one sensor reads exactly 0 while the other working sensors read at least 100 W/m² at the same instant: a lost channel, not a cloud |
-| `qc_ok` | none of the above |
+| `qc_ok` | none of the hard faults above (every flag except `qc_over_clearsky`) |
 
-Cloud-edge enhancement can legitimately exceed clear-sky GHI, hence the generous
-factor in `qc_over_clearsky`; this flag marks candidates, not certain errors.
+Cloud-edge enhancement can legitimately exceed clear-sky GHI, and a tilted plane at low
+sun can exceed the horizontal estimate, so `qc_over_clearsky` is a diagnostic: its 25 rows
+were inspected (24/24 samples, several sensors at the same instants, smooth sequences) and
+look like real measurements. Excluding them would trim the upper tail of the error.
 
 Thresholds live at the top of `build_dataset.py` and are recorded in
 `dataset_v2_manifest.json` together with input hashes and the git commit.

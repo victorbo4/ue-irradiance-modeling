@@ -222,6 +222,9 @@ def test_over_clearsky_uses_the_sensors_own_ceiling():
     assert list(horizontal.index[horizontal["qc_over_clearsky"]]) == [5]
     tilted = bd.add_qc(_frame(real_wm2=r, sim_irradiance_wm2=1006.0))   # ceiling 1006 -> limit 1660
     assert not tilted["qc_over_clearsky"].any()
+    # A diagnostic, not a fault: the flagged row stays in qc_ok.
+    assert horizontal.loc[5, "qc_over_clearsky"] and horizontal.loc[5, "qc_ok"]
+    assert "qc_over_clearsky" not in bd.QC_BAD
 
 
 # ----------------------------------------------------------------- end to end --

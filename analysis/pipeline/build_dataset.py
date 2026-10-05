@@ -87,11 +87,15 @@ OVER_CLEARSKY_FACTOR = 1.6                # real > factor * ceiling + offset, wh
                                           # not held to the horizontal GHI
 OVER_CLEARSKY_OFFSET = 50.0
 
+# Hard faults: any of these removes the row from qc_ok.
 QC_BAD = [
     "qc_real_sparse", "qc_dup_conflict", "qc_sensor_dead", "qc_flatline",
-    "qc_neg_large", "qc_night_nonzero", "qc_over_clearsky", "qc_zero_daylight",
-    "qc_channel_dropout",
+    "qc_neg_large", "qc_night_nonzero", "qc_zero_daylight", "qc_channel_dropout",
 ]
+# Diagnostics: reported but never excluded. A reading above the ceiling is not a
+# fault by itself (cloud-edge enhancement, low-sun tilted-plane response), and
+# dropping such rows would trim the upper tail of the error.
+QC_DIAGNOSTIC = ["qc_over_clearsky"]
 
 
 # ------------------------------------------------------------------ loading --
@@ -269,6 +273,16 @@ def _git_commit() -> str:
         return "unknown"
 
 
+def _pipeline_dirty() -> bool | None:
+    """True if analysis/pipeline has uncommitted changes, so the recorded commit
+    would not reproduce the dataset. None if git is unavailable."""
+    try:
+        out = subprocess.check_output(["git", "-C", str(REPO), "status", "--porcelain", "--", "analysis/pipeline"], text=True)
+        return bool(out.strip())
+    except Exception:
+        return None
+
+
 def manifest(df: pd.DataFrame, sim_dir: Path, real_dir: Path, meteo_path: Path) -> dict:
     inputs = {
         "simulation": {p.name: _sha256(p) for p in sorted(Path(sim_dir).glob("campaign_*.csv"))},
@@ -279,6 +293,8 @@ def manifest(df: pd.DataFrame, sim_dir: Path, real_dir: Path, meteo_path: Path) 
     }
     return {
         "git_commit": _git_commit(),
+        "pipeline_uncommitted_changes": _pipeline_dirty(),
+        "pipeline_sha256": _sha256(Path(__file__).resolve()),
         "rows": int(len(df)),
         "days": int(df["date_local"].nunique()),
         "sensors": sorted(df["sensor"].unique()),
@@ -290,7 +306,7 @@ def manifest(df: pd.DataFrame, sim_dir: Path, real_dir: Path, meteo_path: Path) 
             "flatline_min_bins": FLATLINE_MIN_BINS, "flatline_min_wm2": FLATLINE_MIN_WM2,
             "over_clearsky_factor": OVER_CLEARSKY_FACTOR, "over_clearsky_offset": OVER_CLEARSKY_OFFSET,
         },
-        "qc_counts": {c: int(df[c].sum()) for c in [*QC_BAD, "qc_ok"]},
+        "qc_counts": {c: int(df[c].sum()) for c in [*QC_BAD, *QC_DIAGNOSTIC, "qc_ok"]},
         "inputs": inputs,
     }
 
@@ -309,7 +325,7 @@ def main() -> None:
     man_path = args.out.with_name(args.out.stem + "_manifest.json")
     man_path.write_text(json.dumps(manifest(df, args.sim_dir, args.real_dir, args.meteo), indent=2))
     print(f"{len(df)} rows -> {args.out}\nmanifest -> {man_path}")
-    print(df[[*QC_BAD, "qc_ok"]].sum().to_string())
+    print(df[[*QC_BAD, *QC_DIAGNOSTIC, "qc_ok"]].sum().to_string())
 
 
 if __name__ == "__main__":
