@@ -161,6 +161,15 @@ def test_the_mae_gain_is_a_gain_in_mae_and_differs_from_the_rmse_gain():
     assert g["gain"] != pytest.approx(mt.paired_gain(df, "A", "H", metric="rmse")["gain"])
 
 
+def test_cloudy_and_rainy_can_be_pooled_into_one_group():
+    df = table(n_days=8)
+    masks = mt.group_masks(df)
+    assert (masks["sky:cloudy+rainy"] == (masks["sky:cloudy"] | masks["sky:rainy"])).all()
+    assert masks["sky:cloudy+rainy"].sum() == masks["sky:cloudy"].sum() + masks["sky:rainy"].sum()
+    only_sunny = df.assign(sky="sunny")
+    assert "sky:cloudy+rainy" not in mt.group_masks(only_sunny)
+
+
 def test_a_model_is_scored_on_a_group_only_if_it_has_every_prediction_in_it():
     df = table(seed=8)
     df.loc[df.sensor == "Pinc", "H"] = np.nan             # like S, which is not scored on the tilted sensor

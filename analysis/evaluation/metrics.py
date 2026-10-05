@@ -99,6 +99,8 @@ def group_masks(df: pd.DataFrame) -> dict[str, np.ndarray]:
     for c in SKY_CLASSES:
         if (df["sky"] == c).any():
             masks[f"sky:{c}"] = (df["sky"] == c).to_numpy()
+    if all((df["sky"] == c).any() for c in ("cloudy", "rainy")):       # sensitivity 3: their boundary is arbitrary
+        masks["sky:cloudy+rainy"] = df["sky"].isin(["cloudy", "rainy"]).to_numpy()
     vis = df["sun_visibility"].to_numpy(float)
     masks["shade:shaded"], masks["shade:unshaded"] = vis < 0.5, vis == 1.0
     masks["horizontals"] = (df["sensor"] != "Pinc").to_numpy()
