@@ -4,8 +4,9 @@
 below may change in response to a result; anything changed afterwards is reported as
 exploratory.
 
-The aim is the TFG's method, evaluated properly. Model structure, features, target
-and hyperparameters are the TFG's. What changes is how the models are compared.
+The aim is the TFG's method, evaluated properly. Model structure, features and target are
+the TFG's. What changes is how the hyperparameters are chosen (section 2) and how the models
+are compared.
 
 ## 1. Data
 
@@ -64,13 +65,28 @@ Details:
 - P models: `c = cloud_opacity/100`. `a` in [0, 1] and `b` in [0.1, 5] are fitted by least
   squares (RMSE) on the training rows, started at `a = 0.8, b = 1`. Rows need `base ≥ 1`
   as for H. There is nothing to tune.
-- Hyperparameters, inherited unchanged from the TFG and **fixed**:
-  - H and D: `n_estimators=800, learning_rate=0.01, max_depth=4, min_child_weight=70,
-    subsample=0.5, colsample_bytree=0.5, reg_alpha=0.1, reg_lambda=1.0, gamma=0.1,
-    random_state=42`.
-  - C: `n_estimators=800, learning_rate=0.01, max_depth=5, min_child_weight=60,
-    subsample=0.8, colsample_bytree=0.8, reg_alpha=0.1, reg_lambda=4.0, gamma=0.0,
-    random_state=42`.
+- **Hyperparameters (H, D, C) are chosen once, inside the training days, and then frozen**
+  for every experiment. Nothing is tuned on a test day.
+  - **Grid (36 configurations, complete, no random draws):** `max_depth` {2, 3, 4, 5} ×
+    `n_estimators` {100, 300, 800} × `min_child_weight` {20, 70, 200}. Every other parameter
+    keeps the TFG's value for that model:
+    - H and D: `learning_rate=0.01, subsample=0.5, colsample_bytree=0.5, reg_alpha=0.1,
+      reg_lambda=1.0, gamma=0.1, random_state=42`.
+    - C: `learning_rate=0.01, subsample=0.8, colsample_bytree=0.8, reg_alpha=0.1,
+      reg_lambda=4.0, gamma=0.0, random_state=42`.
+  - **Selection:** leave-one-month-out folds over the 43 training days (blocked
+    cross-validation, because the days of a month share weather); score = mean over the folds
+    of the pooled RMSE on the common mask. **One-standard-error rule:** among the
+    configurations whose mean RMSE is within one standard error (across folds) of the best,
+    choose the simplest: fewest trees, then smallest depth, then largest `min_child_weight`.
+  - Same grid and same procedure for H, D and C, so the comparison is fair.
+  - The TFG's own parameters (H and D: depth 4, 800 trees, `min_child_weight` 70; C: depth 5,
+    800 trees, `min_child_weight` 60) are run as a reference variant (section 5).
+  - **Overfitting diagnostic:** every table for a learned model also reports its RMSE on its
+    own training rows, in cross-validation and on the scored rows. The gap between the three
+    is the evidence for or against overfitting.
+  - E4 holds one month out, but that month was already seen when the hyperparameters were
+    chosen, so E4 is slightly optimistic about the hyperparameters. This is stated with E4.
 - `zenith` and `azimuth` for C come from the simulator's sun position (`90 - sun_altitude_deg`,
   `sun_azimuth_deg`). `precipitable_water` comes from Solcast.
 
@@ -139,19 +155,8 @@ E2–E4. Secondary results are reported in full but are not used to make the hea
    `> 5`, for the training rows, the test rows and every model. Only the cut changes. It
    answers: do the conclusions hold when the low-sun hours, where the simulator is least
    reliable, are left out?
-2. XGBoost hyperparameters (H, D, C) re-tuned inside the training days, fully specified:
-   - **Search:** 30 configurations per model: the model's own TFG parameters (configuration 0)
-     plus 29 random draws (numpy `RandomState(42)`, same draw order for H, D and C) from
-     `n_estimators` {400, 800, 1200}, `learning_rate` {0.01, 0.02, 0.05}, `max_depth`
-     {3, 4, 5, 6}, `min_child_weight` {30, 50, 70, 100}, `subsample` {0.5, 0.8},
-     `colsample_bytree` {0.5, 0.8}, `reg_lambda` {1, 4}, `gamma` {0, 0.1}; `reg_alpha` stays 0.1.
-   - **Folds:** the nine leave-one-month-out folds of E4 over the training days.
-   - **Selection metric:** mean over the folds of the pooled RMSE (W/m²) on the common mask.
-   - **Selection and ties:** take the minimum mean RMSE; among the configurations within
-     0.01 W/m² of that minimum, take the TFG's if it is among them, otherwise the one drawn
-     first.
-   - The selected configuration is retrained on all 43 training days and scored once on the
-     test days, for this sensitivity table only.
+2. The TFG's own XGBoost parameters for H, D and C (listed in section 2) instead of the
+   selected ones: do the conclusions depend on the hyperparameter choice?
 3. Cloudy and rainy classes pooled (their boundary is arbitrary).
 4. `ε` in {1, 10, 50} and the upper clip bound in {1.2, 1.5, 2.0}, for H and D: does the
    H-against-D conclusion move?
@@ -160,9 +165,11 @@ E2–E4. Secondary results are reported in full but are not used to make the hea
 ## 6. What was fixed relative to the TFG
 
 Kept: model structure, features, target, `eps`, clipping, `sim ≥ 1` training rows,
-training altitude cut, hyperparameters, no sensor dummies in the final model.
+training altitude cut, no sensor dummies in the final model.
 
 Fixed:
+- Hyperparameters chosen by blocked cross-validation inside the training days, with a
+  simplicity rule, before any test day is scored.
 - A consistent target/prediction pair for H and D (see section 2).
 - One evaluation mask for all models (the TFG scored baselines and hybrid on different
   row sets, and kept night rows in the test set).
