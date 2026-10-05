@@ -61,7 +61,21 @@ Details:
 
 ## 3. Experiments
 
-Every model is trained and scored in each experiment, always on the common mask.
+The four experiments are four ways of splitting the data into "what a model is trained on"
+and "what it is tested on". They all start from the day split (43 training days, 15 test
+days) and use the sensors, sun-visibility and months already marked in the dataset. Each one
+tests a different claim:
+
+- **E1** is the main result: does it work on days it has not seen?
+- **E2** asks whether it works at a place on the roof it has never seen.
+- **E3** asks whether a model that has never seen a shadow still predicts one.
+- **E4** asks whether the relation with cloudiness holds across the year.
+
+The models do not change between experiments; only the split does. In every experiment
+the scored rows come from days the model was not trained on (E4 scores training days of
+the held-out month; the 15 test days are not touched there). Every model is trained and
+scored in each experiment, always on the common mask. The count is 16 runs per model
+(E1 once, E2 five times, E3 once, E4 nine times).
 
 | ID | Train | Score on | What it shows |
 |---|---|---|---|
