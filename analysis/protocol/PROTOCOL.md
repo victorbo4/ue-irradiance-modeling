@@ -123,6 +123,9 @@ slightly optimistic about them. The selection is not repeated inside each experi
   bootstrap.
 - **Row-level predictions are saved** for every model and experiment, with the sensor, time
   and fold of each scored row, so that later (exploratory) analyses need no retraining.
+- **Fitted parameters are saved** for every training run: the `a` and `b` of the parametric
+  models, the selected hyperparameter configuration, and the feature importances of the
+  XGBoost models.
 - **Overfitting diagnostic:** every table for a learned model also reports its RMSE on its
   own training rows, in cross-validation and on the scored rows; the gap between the three
   is the evidence for or against overfitting.
