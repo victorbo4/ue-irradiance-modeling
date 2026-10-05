@@ -19,7 +19,7 @@ and does the geometry still matter once clouds are accounted for?
 
 - **Data:** 60 simulated days, nine pyranometers, 2-minute steps; 43 days to train and 15 to
   test, the test days fixed beforehand by sky type and shadow situation.
-- **Models:** eight, from plain references to the full two-layer method **H**. The headline
+- **Models:** nine, from plain references to the full two-layer method **H**. The headline
   compares H with **D**, the same correction layer without the simulation (section 2).
 - **Experiments:** four splits: unseen days (E1), an unseen sensor (E2), shade the model was
   not trained on (E3) and an unseen month (E4) (section 3).
@@ -40,7 +40,7 @@ and does the geometry still matter once clouds are accounted for?
 
 ## 2. Models
 
-Eight models in three groups. Only the learned ones are trained; the references are just
+Nine models in three groups. Only the learned ones are trained; the references are just
 scored. `base` below is `sim_irradiance_wm2` for H and `clearsky_ghi_wm2` for D; `k̂` is the
 model's output; the details are in Appendix A.
 
@@ -48,6 +48,7 @@ model's output; the details are in Appendix A.
 |---|---|---|---|---|---|
 | A | Physical simulation | no | `sim_irradiance_wm2` | `max(sim, 0)` | What does the 3D engine give on its own? |
 | B | Clear-sky | no | `clearsky_ghi_wm2` | `max(cs, 0)` | What does the clear-sky physics give, with no clouds and no geometry? |
+| R | Analytic ray-cast shading | no | `clearsky_dni_wm2`, `clearsky_dhi_wm2`, `geometric_factor`, `sky_view_factor` | `max(dni·geometric_factor + dhi·svf, 0)` | Do the cubemaps add anything over standard shading and diffuse formulas? |
 | S | Solcast GHI | no | `solcast_ghi_wm2` | `max(solcast_ghi_wm2, 0)` | Does the method beat an operational weather product? |
 | P-cs | Parametric, clear-sky | 2 parameters | `clearsky_ghi_wm2`, `cloud_opacity` | `max(cs·(1 − a·c^b), 0)` | Clouds on top of clear-sky, no 3D, no trees |
 | P-sim | Parametric, simulator | 2 parameters | `sim_irradiance_wm2`, `cloud_opacity` | `max(sim·(1 − a·c^b), 0)` | The same with 3D. Does the 3D gain survive a simple formula? |
@@ -65,6 +66,12 @@ How the comparisons read:
 - **A against B** is the simulation on its own against the clear-sky formula. Neither knows
   about clouds, so the difference comes from the geometry and calibration alone. It is read
   overall and especially on shaded rows and sunny days.
+- **A against R** is the cubemap-integrated ambient against the standard diffuse formula. A and
+  R share the same direct term (clear-sky DNI times the incidence cosine times the sun
+  visibility, see Appendix A) and differ only in the diffuse part: A integrates the rendered
+  cubemaps, R uses `DHI × sky view factor`. It says what the render adds over analytic
+  shading, whichever way it comes out. **R against B** says how much of the benefit of
+  shading is already captured by the analytic formulas.
 - **H against A** is what the correction layer adds to the simulation.
 - **H against P-sim** says whether XGBoost adds anything over a 2-parameter formula.
 - **H against S** says whether the method beats Solcast's own GHI estimate, an external
@@ -114,6 +121,8 @@ slightly optimistic about them. The selection is not repeated inside each experi
   (2000 resamples, seed 42). Rows within a day are not independent, and the effective sample
   is the number of days. Differences between models are paired differences with the same
   bootstrap.
+- **Row-level predictions are saved** for every model and experiment, with the sensor, time
+  and fold of each scored row, so that later (exploratory) analyses need no retraining.
 - **Overfitting diagnostic:** every table for a learned model also reports its RMSE on its
   own training rows, in cross-validation and on the scored rows; the gap between the three
   is the evidence for or against overfitting.
@@ -132,7 +141,7 @@ well as of shadows. The horizontals-only contrast separates the two and is repor
 to the headline.
 
 Everything else is secondary: the same contrast on the horizontals only, per sensor, per sky
-class, shaded against unshaded rows, the contrasts A − B, H − A, P-sim − P-cs, H − C, H − P-sim and H − S,
+class, shaded against unshaded rows, the contrasts A − B, A − R, R − B, H − A, P-sim − P-cs, H − C, H − P-sim and H − S,
 and E2–E4. Secondary results are reported in full and are not used to make the headline claim.
 
 ## 5. Sensitivity analyses (reported, never used to choose anything)
@@ -202,6 +211,13 @@ deviation, or any analysis added after seeing a result, is reported as explorato
   training rows by least squares on the residual `real − prediction` in W/m², with
   `scipy.optimize.least_squares` (method `trf`, those bounds, default tolerances), started
   at `a = 0.8, b = 1`. There is nothing to tune.
+- **Model R.** `geometric_factor` is the plugin's incidence cosine times the sun visibility
+  (`GeometricFactor = Dot * SunVisibility`), so it is already zero when the sun is hidden and
+  the visibility must not be multiplied in again. `sky_view_factor` is computed per sensor pose
+  and normal. `clearsky_dni_wm2` and `clearsky_dhi_wm2` are the same Ineichen–Pérez values as B.
+  R uses the same analytic direct term as the simulator (`DNI × GeometricFactor`) and replaces
+  the cubemap-integrated ambient by `DHI × sky view factor`. R is scored on all nine sensors,
+  with no learning.
 - **Inputs of C.** `zenith` and `azimuth` come from the simulator's sun position
   (`90 - sun_altitude_deg`, `sun_azimuth_deg`); `precipitable_water` comes from Solcast.
 
