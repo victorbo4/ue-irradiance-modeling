@@ -91,3 +91,8 @@ projectsettings.json
 
 # Built dataset embeds real pyranometer measurements (university data)
 /analysis/data/dataset_v2.csv
+
+# Stage 1 of the evaluation: per-row predictions embed real measurements; smoke runs are throwaway
+/analysis/results/**/predictions.csv
+/analysis/results_smoke/
+/analysis/results/**/done.json
