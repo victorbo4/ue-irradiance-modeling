@@ -25,8 +25,8 @@ and does the geometry still matter once clouds are accounted for?
   not trained on (E3) and an unseen month (E4) (section 3).
 - **Primary result:** the RMSE difference between D and H in E1, with an interval that treats
   each day as one observation (section 4).
-- **Rules:** one evaluation mask for every model, hyperparameters chosen only on training
-  days, test days never used for any choice.
+- **Rules:** one evaluation mask for every model, hyperparameters chosen inside every run
+  using only that run's own training data, test days never used for any choice.
 
 ## 1. Data and mask
 
@@ -103,10 +103,10 @@ That is 20 runs per model (E1 once, E2 nine times, E3 once, E4 nine times), with
 exceptions: C is not scored in E2 (its dummy for an unseen sensor is undefined; that is the
 point of E2), and S is not scored on Pinc.
 
-**Declared limitation of E2, E3 and E4.** The hyperparameters were chosen using all the
-sensors, rows and months of the training days. A model's weights never see the held-out
-sensor, occlusion rows or month, but its hyperparameters did, so these experiments are
-slightly optimistic about them. The selection is not repeated inside each experiment.
+**Nothing held out informs a choice.** The hyperparameters are selected inside every run
+(Appendix B), using only the data that run is trained on, so a held-out sensor, held-out
+occlusion rows, a held-out month or a test day never influence the weights or the
+hyperparameters of the model that is scored on them.
 
 ## 4. Metrics, reporting and the primary result
 
@@ -181,8 +181,8 @@ Changed:
   the same denominator in the target and in the reconstruction. Dropping ε as well removes an
   unneeded constant (Appendix A).
 - **A clip of `k` at 2 instead of 1.5**, and no `sim ≥ 1` training rule (redundant with the mask).
-- **Hyperparameters chosen by blocked cross-validation inside the training days**, with a
-  simplicity rule, before any test day is scored, and including `colsample_bytree`
+- **Hyperparameters chosen by blocked cross-validation inside each run's own training data**,
+  with a simplicity rule, before any test day is scored, and including `colsample_bytree`
   (Appendix B).
 - **A clean ablation** (D, and P-cs/P-sim) alongside the TFG's baseline C.
 - **A rebuilt dataset:** corrected simulator, UTC, explicit QC flags.
@@ -226,8 +226,9 @@ deviation, or any analysis added after seeing a result, is reported as explorato
 
 ## Appendix B. Hyperparameter selection (H, D, C)
 
-Chosen once, inside the training days, and then frozen for every experiment. Nothing is tuned
-on a test day.
+Chosen inside every training run (E1, each E2 fold, E3, each E4 fold), using only the data that
+run is trained on, with the procedure below. Nothing is tuned on a test day, a held-out sensor,
+held-out occlusion rows or a held-out month.
 
 - **Grid, complete (no random draws).** For H and D (two inputs): `max_depth` {2, 3, 4, 5} ×
   `n_estimators` {100, 300, 800} × `min_child_weight` {20, 70, 200} × `colsample_bytree`
@@ -243,8 +244,11 @@ on a test day.
   `sim`. That can act as a regulariser or as a limitation; cross-validation inside the
   training days decides, not an assumption.
 - **Selection for H and D, jointly.** H and D must differ only in the geometry signal, so they
-  share **one** configuration. Leave-one-month-out folds over the 43 training days (blocked
-  cross-validation, because the days of a month share weather). For each configuration both H
+  share **one** configuration. Leave-one-month-out folds over the training data of the run being
+  evaluated (blocked cross-validation, because the days of a month share weather): for E1 the
+  43 training days; for E2 those days without the held-out sensor; for E3 those days restricted
+  to the rows with `sun_visibility == 1`; for E4 the training days outside the held-out month
+  (eight folds). For each configuration both H
   and D are validated on every fold; the configuration's score on a fold is the mean of the
   two RMSEs on the common mask, and its score overall is the mean over the folds.
   **One-standard-error rule** on that joint score: among the configurations whose mean is
@@ -252,4 +256,6 @@ on a test day.
   order: fewest trees, then smallest depth, then largest `min_child_weight`, then
   `colsample_bytree` 0.5 before 1.0. The chosen configuration is used for both models.
 - **C is selected on its own**, with the same procedure on its own 36-configuration grid.
+- The configuration selected in each run is saved and reported. How often it changes across
+  runs is itself a stability result; if it rarely changes, the choice is robust.
 - The TFG's own configuration (section 5) is run as a reference variant, shared by H and D.
