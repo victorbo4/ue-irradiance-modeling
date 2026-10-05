@@ -20,20 +20,35 @@ and hyperparameters are the TFG's. What changes is how the models are compared.
 
 ## 2. Models
 
-| ID | Name | Inputs | Target / prediction | Notes |
-|---|---|---|---|---|
-| A | Physical simulation | `sim_irradiance_wm2` | prediction = `max(sim, 0)` | no learning |
-| B | Clear-sky | `clearsky_ghi_wm2` | prediction = `max(cs, 0)` | no learning |
-| C | XGBoost meteo (TFG baseline) | `cloud_opacity`, `zenith`, `azimuth`, `precipitable_water`, sensor dummies | target = `real` | TFG parameters of baseline C |
-| D | XGBoost clear-sky (clean ablation) | `clearsky_ghi_wm2`, `cloud_opacity` | `k = real/(cs+10)` | **identical to H except the geometry signal** |
-| **H** | **Hybrid (TFG final model)** | `sim_irradiance_wm2`, `cloud_opacity` | `k = clip(real/(sim+10), 0, 1.5)`; prediction = `max(clip(k̂)·sim, 0)` | training rows need `sim ≥ 1` |
+Seven models, in three groups. Only the learned ones are trained; the references are just scored.
 
-- H and D share the same learner, parameters, target form and rows. The only difference
-  is `sim_irradiance_wm2` against `clearsky_ghi_wm2`. That difference is the measured
-  contribution of the 3D geometry.
-- C is kept as the TFG's own reference baseline. It carries per-sensor dummies, sun
-  angles and water vapour, so it can in principle memorise each sensor's shadow
-  pattern; it is the rival the geometry has to beat. It is *not* an ablation of H.
+| ID | Name | Learned? | Inputs | Prediction | Question it answers |
+|---|---|---|---|---|---|
+| A | Physical simulation | no | `sim_irradiance_wm2` | `max(sim, 0)` | What does the 3D engine give on its own? |
+| B | Clear-sky | no | `clearsky_ghi_wm2` | `max(cs, 0)` | What does the clear-sky physics give, with no clouds and no geometry? |
+| P-cs | Parametric, clear-sky | 2 parameters | `clearsky_ghi_wm2`, `cloud_opacity` | `max(cs·(1 − a·c^b), 0)` | Clouds on top of clear-sky, no 3D, no trees |
+| P-sim | Parametric, simulator | 2 parameters | `sim_irradiance_wm2`, `cloud_opacity` | `max(sim·(1 − a·c^b), 0)` | The same with 3D. Does the 3D gain survive a simple formula? |
+| D | XGBoost, clear-sky | XGBoost | `clearsky_ghi_wm2`, `cloud_opacity` | `max(clip(k̂)·cs, 0)`, `k = real/(cs+10)` | **Clean ablation of H** (no 3D) |
+| **H** | **XGBoost, hybrid (TFG final model)** | XGBoost | `sim_irradiance_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 1.5)·sim, 0)`, `k = clip(real/(sim+10), 0, 1.5)` | **The proposed method** |
+| C | XGBoost meteo (TFG baseline C) | XGBoost | `cloud_opacity`, `zenith`, `azimuth`, `precipitable_water`, sensor dummies | `real` directly | Can the data alone learn each sensor's shadow, with no 3D? |
+
+How the pairs read:
+
+- **H against D** is the headline: the only difference is the geometry signal
+  (`sim_irradiance_wm2` against `clearsky_ghi_wm2`); learner, parameters, target form and
+  rows are the same. **P-sim against P-cs** is the same comparison with a 2-parameter
+  formula, so the 3D gain does not depend on the learner.
+- **H against P-sim** says whether XGBoost adds anything over a 2-parameter formula.
+- **H against C** says whether the 3D adds anything over a model that can memorise each
+  sensor's shadow. C carries per-sensor dummies and sun angles, so it can in principle learn
+  where shade falls; it is a rival, not an ablation. C cannot be scored on an unseen sensor,
+  which is what E2 tests.
+
+Details:
+
+- P models: `c = cloud_opacity/100`. `a` in [0, 1] and `b` in [0.1, 5] are fitted by least
+  squares (RMSE) on the training rows, started at `a = 0.8, b = 1`. Rows need `base ≥ 1`
+  as for H. There is nothing to tune.
 - Hyperparameters, inherited unchanged from the TFG and **fixed**:
   - H and D: `n_estimators=800, learning_rate=0.01, max_depth=4, min_child_weight=70,
     subsample=0.5, colsample_bytree=0.5, reg_alpha=0.1, reg_lambda=1.0, gamma=0.1,
@@ -42,7 +57,7 @@ and hyperparameters are the TFG's. What changes is how the models are compared.
     subsample=0.8, colsample_bytree=0.8, reg_alpha=0.1, reg_lambda=4.0, gamma=0.0,
     random_state=42`.
 - `zenith` and `azimuth` for C come from the simulator's sun position (`90 - sun_altitude_deg`,
-  `sun_azimuth_deg`). `precipitable_water` comes from Solcast and is added to the dataset.
+  `sun_azimuth_deg`). `precipitable_water` comes from Solcast.
 
 ## 3. Experiments
 
@@ -75,9 +90,9 @@ it is reported as "not applicable" there. That is the point of E2.
 ## 5. Sensitivity analyses (reported, never used to choose anything)
 
 1. Altitude mask 10° instead of 5°.
-2. Hyperparameters re-tuned by day-blocked cross-validation inside the training days
-   (a small random search of at most 30 configurations around the TFG's, the same
-   budget for H, D and C), to show whether the inherited parameters matter.
+2. XGBoost hyperparameters (H, D, C) re-tuned by day-blocked cross-validation inside the
+   training days (a small random search of at most 30 configurations around the TFG's, the
+   same budget for the three), to show whether the inherited parameters matter.
 3. Cloudy and rainy classes pooled (their boundary is arbitrary).
 4. Horizontals only (already in every table).
 
@@ -90,7 +105,7 @@ Fixed:
 - One evaluation mask for all models (the TFG scored baselines and hybrid on different
   row sets, and kept night rows in the test set).
 - The test days are fixed before any model is run, by sky class and shadow regime.
-- A clean ablation (D) alongside the TFG's baseline C.
+- A clean ablation (D, and P-cs/P-sim) alongside the TFG's baseline C.
 - A dataset rebuilt from the corrected simulator, in UTC, with explicit QC flags.
 - Per-sensor reporting, block-bootstrap intervals and paired differences.
 - Generalisation tests (E2–E4) designed in advance.
