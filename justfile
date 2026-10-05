@@ -18,3 +18,7 @@ dataset:
 # Run the dataset pipeline tests.
 test-pipeline:
     analysis/.venv/bin/python -m pytest analysis/pipeline/tests -q
+
+# Draw the 15 test days (writes analysis/data/split_v2.{csv,md}).
+split:
+    analysis/.venv/bin/python analysis/pipeline/split_days.py
