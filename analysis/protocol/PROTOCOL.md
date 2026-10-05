@@ -28,8 +28,8 @@ Seven models, in three groups. Only the learned ones are trained; the references
 | B | Clear-sky | no | `clearsky_ghi_wm2` | `max(cs, 0)` | What does the clear-sky physics give, with no clouds and no geometry? |
 | P-cs | Parametric, clear-sky | 2 parameters | `clearsky_ghi_wm2`, `cloud_opacity` | `max(cs·(1 − a·c^b), 0)` | Clouds on top of clear-sky, no 3D, no trees |
 | P-sim | Parametric, simulator | 2 parameters | `sim_irradiance_wm2`, `cloud_opacity` | `max(sim·(1 − a·c^b), 0)` | The same with 3D. Does the 3D gain survive a simple formula? |
-| D | XGBoost, clear-sky | XGBoost | `clearsky_ghi_wm2`, `cloud_opacity` | `max(clip(k̂)·cs, 0)`, `k = real/(cs+10)` | **Clean ablation of H** (no 3D) |
-| **H** | **XGBoost, hybrid (TFG final model)** | XGBoost | `sim_irradiance_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 1.5)·sim, 0)`, `k = clip(real/(sim+10), 0, 1.5)` | **The proposed method** |
+| D | XGBoost, clear-sky | XGBoost | `clearsky_ghi_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 1.5)·(cs+ε), 0)`, `k = clip(real/(cs+ε), 0, 1.5)` | **Clean ablation of H** (no 3D) |
+| **H** | **XGBoost, hybrid (TFG final model)** | XGBoost | `sim_irradiance_wm2`, `cloud_opacity` | `max(clip(k̂, 0, 1.5)·(sim+ε), 0)`, `k = clip(real/(sim+ε), 0, 1.5)` | **The proposed method** |
 | C | XGBoost meteo (TFG baseline C) | XGBoost | `cloud_opacity`, `zenith`, `azimuth`, `precipitable_water`, sensor dummies | `real` directly | Can the data alone learn each sensor's shadow, with no 3D? |
 
 How the pairs read:
@@ -46,6 +46,10 @@ How the pairs read:
 
 Details:
 
+- `ε = 10 W/m²`, as in the TFG. The target and the prediction use the **same** denominator
+  `base + ε`, so they are inverses of each other. (The TFG trained on `real/(sim+ε)` but
+  predicted `k̂·sim`; even a perfect `k̂` then under-predicted by 7.2 W/m² on average, RMSE
+  8.1, and the references A and B did not carry that error.)
 - P models: `c = cloud_opacity/100`. `a` in [0, 1] and `b` in [0.1, 5] are fitted by least
   squares (RMSE) on the training rows, started at `a = 0.8, b = 1`. Rows need `base ≥ 1`
   as for H. There is nothing to tune.
@@ -108,7 +112,9 @@ it is reported as "not applicable" there. That is the point of E2.
    training days (a small random search of at most 30 configurations around the TFG's, the
    same budget for the three), to show whether the inherited parameters matter.
 3. Cloudy and rainy classes pooled (their boundary is arbitrary).
-4. Horizontals only (already in every table).
+4. `ε` in {1, 10, 50} and the upper clip bound in {1.2, 1.5, 2.0}, for H and D: does the
+   H-against-D conclusion move?
+5. Horizontals only (already in every table).
 
 ## 6. What was fixed relative to the TFG
 
@@ -116,6 +122,7 @@ Kept: model structure, features, target, `eps`, clipping, `sim ≥ 1` training r
 training altitude cut, hyperparameters, no sensor dummies in the final model.
 
 Fixed:
+- A consistent target/prediction pair for H and D (see section 2).
 - One evaluation mask for all models (the TFG scored baselines and hybrid on different
   row sets, and kept night rows in the test set).
 - The test days are fixed before any model is run, by sky class and shadow regime.
