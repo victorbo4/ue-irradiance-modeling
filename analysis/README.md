@@ -20,6 +20,8 @@ pyranometers on the ETSIDI rooftop.
   `figures/`, `final_model/` (the pickled model + its metadata), and
   `iterations/` (stored metadata for 10 of the 37 tuning iterations, plus
   `analyze_iterations.ipynb`).
+- `KNOWN_ISSUES.md` — known data, simulator and evaluation-design limitations, with evidence and treatment.
+- `pipeline/` — the v2 dataset builder, QC flags, day split and tests (see its README).
 - `normalization/` — scripts for Pyrano's internal radiometric normalization
   (fitting the lux → W/m² coefficients).
 
