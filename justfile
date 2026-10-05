@@ -22,3 +22,15 @@ test-pipeline:
 # Draw the 15 test days (writes analysis/data/split_v2.{csv,md}).
 split:
     analysis/.venv/bin/python analysis/pipeline/split_days.py
+
+# Evaluation stage 1: train and predict for every run of the protocol (about an hour; resumable).
+run:
+    cd analysis && .venv/bin/python -m evaluation.run
+
+# The same pipeline on synthetic data and tiny grids, in seconds. Writes to analysis/results_smoke.
+run-smoke:
+    cd analysis && .venv/bin/python -m evaluation.run --smoke
+
+# Run the evaluation package tests.
+test-evaluation:
+    analysis/.venv/bin/python -m pytest analysis/evaluation/tests -q
