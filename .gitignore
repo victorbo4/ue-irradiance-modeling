@@ -95,3 +95,4 @@ projectsettings.json
 # Stage 1 of the evaluation: per-row predictions embed real measurements; smoke runs are throwaway
 /analysis/results/**/predictions.csv
 /analysis/results_smoke/
+/analysis/results/**/done.json

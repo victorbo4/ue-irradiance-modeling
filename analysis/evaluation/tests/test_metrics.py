@@ -189,3 +189,11 @@ def test_summarize_returns_metrics_and_contrasts_with_intervals():
     c = con[(con.group == "overall") & (con.a == "A") & (con.b == "B") & (con.metric == "rmse")].iloc[0]
     assert c.lo <= c.gain <= c.hi
     assert set(con.metric) == {"rmse", "mae"}
+
+
+def test_summarize_can_be_limited_to_some_groups():
+    df = table(seed=11)
+    met, con = mt.summarize(df, ["A", "H"], contrasts=[("A", "H")], n_boot=30, groups=["overall"])
+    assert set(met.group) == {"overall"} and set(con.group) == {"overall"}
+    full, _ = mt.summarize(df, ["A", "H"], contrasts=[], n_boot=30)
+    assert len(set(full.group)) > 3

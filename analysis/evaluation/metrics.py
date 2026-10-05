@@ -153,15 +153,19 @@ def paired_gain(df_g: pd.DataFrame, a: str, b: str, metric: str = "rmse",
     return out
 
 
-def summarize(df: pd.DataFrame, models: list[str], contrasts=CONTRASTS, n_boot: int = N_BOOT, seed: int = SEED):
+def summarize(df: pd.DataFrame, models: list[str], contrasts=CONTRASTS, n_boot: int = N_BOOT, seed: int = SEED,
+              groups: list[str] | None = None):
     """The metric table and the contrast table of one run.
 
     ``df`` has one row per scored (sensor, time): ``date_local``, ``sensor``, ``sky``,
     ``sun_visibility``, ``real_wm2`` and one prediction column per model (NaN where the model
-    was not scored). Returns ``(metrics, contrasts)`` as DataFrames with a ``group`` column.
+    was not scored). ``groups`` limits the report to the named groups. Returns ``(metrics, contrasts)``
+    as DataFrames with a ``group`` column.
     """
     met, con = [], []
     for name, mask in group_masks(df).items():
+        if groups is not None and name not in groups:
+            continue
         sub = df.loc[mask]
         met += [{"group": name, **r} for r in summarize_group(sub, models, n_boot, seed)]
         for a, b in contrasts:

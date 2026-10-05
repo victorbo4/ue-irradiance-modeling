@@ -14,3 +14,10 @@ MIN_ALTITUDE_DEG = 5.0          # common evaluation mask (protocol section 1)
 ROBUSTNESS_ALTITUDE_DEG = 10.0  # sensitivity 1
 
 TARGET = "real_wm2"
+
+# Names for tables and figures; the one-letter IDs of the protocol stay internal.
+LABELS = {
+    "A": "Simulation", "B": "Clear-sky", "S": "Solcast GHI", "R": "Ray-cast shading",
+    "P-cs": "Formula, clear-sky", "P-sim": "Formula, simulation",
+    "D": "XGBoost, clear-sky", "H": "XGBoost, simulation (proposed)", "C": "XGBoost, meteo + sensor",
+}

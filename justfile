@@ -34,3 +34,11 @@ run-smoke:
 # Run the evaluation package tests.
 test-evaluation:
     analysis/.venv/bin/python -m pytest analysis/evaluation/tests -q
+
+# Evaluation stage 2: metrics, intervals and tables from the saved predictions (minutes).
+evaluate:
+    cd analysis && .venv/bin/python -m evaluation.evaluate
+
+# Stage 2 on the synthetic smoke results.
+evaluate-smoke:
+    cd analysis && .venv/bin/python -m evaluation.evaluate --smoke
