@@ -47,7 +47,7 @@ TAG = "protocol-v1"
 
 NEEDED = ["utc", "date_local", "sensor", "qc_ok", "sun_altitude_deg", "sun_azimuth_deg", "sun_visibility",
           "clearsky_ghi_wm2", "clearsky_dni_wm2", "clearsky_dhi_wm2", "geometric_factor", "sky_view_factor",
-          "sim_irradiance_wm2", "solcast_ghi_wm2", "cloud_opacity", "precipitable_water", TARGET]
+          "sim_irradiance_wm2", "solcast_ghi_wm2", "solcast_dni_wm2", "solcast_dhi_wm2", "cloud_opacity", "precipitable_water", TARGET]
 KEEP = ["utc", "date_local", "sensor", "sky", "split", "sun_altitude_deg", "sun_azimuth_deg", "sun_visibility",
         "cloud_opacity", "sim_irradiance_wm2", "clearsky_ghi_wm2", TARGET]
 ALL_MODELS = M.ALL_MODEL_IDS

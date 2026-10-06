@@ -81,7 +81,7 @@ def evaluate_units(units, models: list[str], n_boot: int, seed: int) -> tuple[pd
     met, con = [], []
     for name, df, groups in units:
         present = [m for m in models if m in df.columns]
-        m, c = mt.summarize(df, present, n_boot=n_boot, seed=seed, groups=groups)
+        m, c = mt.summarize(df, present, contrasts=mt.CONTRASTS + mt.POSTHOC_CONTRASTS, n_boot=n_boot, seed=seed, groups=groups)
         for out, t in ((met, m), (con, c)):
             if len(t):
                 out.append(t.assign(unit=name, experiment=name.split(":")[0]))
@@ -198,6 +198,18 @@ def build_summary(tables: dict[str, dict[str, pd.DataFrame]], manifest: dict | N
     rows = [{"contrast": f"{a} over {b}", "all nine sensors": _gain_text(_gain(con, "E1", "overall", a, b)),
              "horizontals only": _gain_text(_gain(con, "E1", "horizontals", a, b))} for a, b in pairs]
     out += ["## E1 contrasts", "", _md(pd.DataFrame(rows))]
+
+    if "S-geo" in set(met.model):
+        rows = []
+        for b in ("S", "R", "A", "P-sim", "H", "D"):
+            rows.append({"S-geo over": b, "E1, nine sensors": _gain_text(_gain(con, "E1", "overall", "S-geo", b)),
+                         "E1, horizontals": _gain_text(_gain(con, "E1", "horizontals", "S-geo", b)),
+                         "E4 pooled, nine sensors": _gain_text(_gain(con, "E4:pooled", "overall", "S-geo", b)),
+                         "E4 pooled, horizontals": _gain_text(_gain(con, "E4:pooled", "horizontals", "S-geo", b))})
+        out += ["## S-geo (added after protocol-v1)", "",
+                "Solcast's DNI and DHI with the plugin's geometry (beam times `geometric_factor`, diffuse times the sky view factor); "
+                "nothing is learned. It was defined after the protocol-v1 results had been seen: see `analysis/protocol/ADDENDUM-1.md`.", "",
+                _md(pd.DataFrame(rows))]
 
     out += ["## E1 by sky class and shade (RMSE)", ""]
     groups = [g for g in ["sky:sunny", "sky:mixed", "sky:cloudy", "sky:rainy", "sky:cloudy+rainy", "shade:unshaded", "shade:shaded"]

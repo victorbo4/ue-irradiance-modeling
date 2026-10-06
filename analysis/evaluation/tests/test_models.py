@@ -35,6 +35,29 @@ def test_ray_cast_formula_does_not_count_the_visibility_twice():
     assert "sun_visibility" not in df.columns
 
 
+# --------------------------------------------------------------------- S-geo ---
+
+def test_s_geo_is_the_solcast_beam_and_diffuse_put_on_the_sensor_with_the_plugin_geometry():
+    df = make_df(6)
+    df["solcast_dni_wm2"], df["solcast_dhi_wm2"], df["sky_view_factor"] = 800.0, 100.0, 0.9
+    df["geometric_factor"] = [0.0, 0.0, 0.5, 0.5, 1.0, 1.0]          # sun hidden, half, full
+    p = m.build_models(SMALL, SMALL)["S-geo"].fit(df).predict(df)
+    np.testing.assert_allclose(p, [90, 90, 490, 490, 890, 890])        # beam * gf + diffuse * svf
+    assert m.solcast_geometry(df).tolist() == p.tolist()
+
+
+def test_s_geo_never_goes_negative_and_reads_no_measurement_nor_cloud_column():
+    df = make_df(60, seed=3)
+    df["solcast_dni_wm2"] = -5.0
+    assert (m.build_models(SMALL, SMALL)["S-geo"].predict(df) >= 0).all()
+    base = m.build_models(SMALL, SMALL)["S-geo"].predict(make_df(60, seed=4))
+    scrambled = make_df(60, seed=4)
+    rng = np.random.RandomState(0)
+    for c in ["real_wm2", "cloud_opacity", "sensor", "sim_irradiance_wm2", "clearsky_ghi_wm2", "precipitable_water"]:
+        scrambled[c] = rng.permutation(scrambled[c].to_numpy())
+    np.testing.assert_array_equal(base, m.build_models(SMALL, SMALL)["S-geo"].predict(scrambled))
+
+
 # ---------------------------------------------------------------- parametric ---
 
 @pytest.mark.parametrize("a,b", [(0.7, 1.5), (0.9, 0.6), (0.4, 2.5)])
@@ -182,10 +205,10 @@ def test_c_cannot_be_scored_on_a_sensor_it_was_not_trained_on():
 
 # ----------------------------------------------------------- all nine together ---
 
-def test_the_nine_models_have_the_protocol_ids_and_learned_flags():
+def test_the_models_have_the_expected_ids_and_learned_flags():
     mods = m.build_models(SMALL, SMALL)
-    assert list(mods) == ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C"] == m.ALL_MODEL_IDS
-    assert {k for k, v in mods.items() if not v.learned} == {"A", "B", "S", "R"}
+    assert list(mods) == ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C", "S-geo"] == m.ALL_MODEL_IDS   # S-geo last: added after protocol-v1
+    assert {k for k, v in mods.items() if not v.learned} == {"A", "B", "S", "R", "S-geo"}
 
 
 def test_every_model_fits_and_predicts_finite_non_negative_values():
