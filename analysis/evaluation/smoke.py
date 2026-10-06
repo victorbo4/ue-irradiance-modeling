@@ -42,7 +42,7 @@ def make_dataset(seed: int = 0, rows_per: int = 6, a: float = 0.0075) -> tuple[p
                     "sun_altitude_deg": alt, "sun_azimuth_deg": rng.uniform(80, 280), "sun_visibility": vis,
                     "clearsky_ghi_wm2": cs, "clearsky_dni_wm2": 0.8 * cs, "clearsky_dhi_wm2": 0.2 * cs,
                     "geometric_factor": np.sin(np.radians(alt)) * (vis == 1.0), "sky_view_factor": 0.95,
-                    "sim_irradiance_wm2": sim, "solcast_ghi_wm2": 0.9 * cs, "cloud_opacity": cloud,
+                    "sim_irradiance_wm2": sim, "solcast_ghi_wm2": 0.9 * cs, "solcast_dni_wm2": 0.75 * cs, "solcast_dhi_wm2": 0.18 * cs, "cloud_opacity": cloud,
                     "precipitable_water": rng.uniform(10, 30), "real_wm2": sim * (1 - a * cloud),
                 })
     return pd.DataFrame(rows), pd.DataFrame({"split": pd.Series(split), "sky": pd.Series(sky)})

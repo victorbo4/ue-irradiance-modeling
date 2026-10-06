@@ -19,6 +19,7 @@ def make_df(n=1500, seed=0, sensors=("P0", "P1", "P3"), a=0.0075, months=("2025-
         "clearsky_ghi_wm2": cs, "clearsky_dni_wm2": 0.8 * cs, "clearsky_dhi_wm2": 0.2 * cs,
         "geometric_factor": np.sin(np.radians(alt)) * (rng.rand(n) < 0.9),
         "sky_view_factor": 0.95, "sim_irradiance_wm2": sim, "solcast_ghi_wm2": cs * 0.9,
+        "solcast_dni_wm2": 0.75 * cs, "solcast_dhi_wm2": 0.18 * cs,
         "cloud_opacity": cloud, "precipitable_water": rng.uniform(10, 30, n),
         "real_wm2": sim * (1 - a * cloud),
     })

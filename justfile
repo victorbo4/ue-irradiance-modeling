@@ -24,8 +24,8 @@ split:
     analysis/.venv/bin/python analysis/pipeline/split_days.py
 
 # Evaluation stage 1: train and predict for every run of the protocol (about an hour; resumable).
-run:
-    cd analysis && .venv/bin/python -m evaluation.run
+run *ARGS:
+    cd analysis && .venv/bin/python -m evaluation.run {{ARGS}}
 
 # The same pipeline on synthetic data and tiny grids, in seconds. Writes to analysis/results_smoke.
 run-smoke:
@@ -36,8 +36,12 @@ test-evaluation:
     analysis/.venv/bin/python -m pytest analysis/evaluation/tests -q
 
 # Evaluation stage 2: metrics, intervals and tables from the saved predictions (minutes).
-evaluate:
-    cd analysis && .venv/bin/python -m evaluation.evaluate
+evaluate *ARGS:
+    cd analysis && .venv/bin/python -m evaluation.evaluate {{ARGS}}
+
+# Add the S-geo column to the saved predictions (no models are refitted; see protocol/ADDENDUM-1.md).
+posthoc *ARGS:
+    cd analysis && .venv/bin/python -m evaluation.posthoc {{ARGS}}
 
 # Stage 2 on the synthetic smoke results.
 evaluate-smoke:

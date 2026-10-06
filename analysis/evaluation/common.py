@@ -20,4 +20,5 @@ LABELS = {
     "A": "Simulation", "B": "Clear-sky", "S": "Solcast GHI", "R": "Ray-cast shading",
     "P-cs": "Formula, clear-sky", "P-sim": "Formula, simulation",
     "D": "XGBoost, clear-sky", "H": "XGBoost, simulation (proposed)", "C": "XGBoost, meteo + sensor",
+    "S-geo": "Solcast DNI/DHI + local geometry (added after protocol-v1)",
 }

@@ -28,6 +28,8 @@ TAILS = ["p90", "p95", "p99", "max_abs"]
 # (a, b): the gain of a over b. The first is the main comparison (protocol section 4).
 CONTRASTS = [("H", "D"), ("A", "B"), ("A", "R"), ("R", "B"), ("H", "A"),
              ("P-sim", "P-cs"), ("H", "C"), ("H", "P-sim"), ("H", "S")]
+# Contrasts of S-geo, the model added after protocol-v1 (ADDENDUM-1).
+POSTHOC_CONTRASTS = [("S-geo", "S"), ("S-geo", "R"), ("S-geo", "A"), ("S-geo", "P-sim"), ("S-geo", "H"), ("S-geo", "D")]
 SKY_CLASSES = ["sunny", "mixed", "cloudy", "rainy"]
 
 

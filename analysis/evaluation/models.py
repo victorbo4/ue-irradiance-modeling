@@ -32,6 +32,11 @@ C_FIXED = dict(learning_rate=0.01, subsample=0.8, reg_alpha=0.1, reg_lambda=4.0,
 
 K_MAX = 2.0  # upper clip of k = real/base (protocol Appendix A); None means no upper clip
 
+# The models of the evaluation, in the order every table uses. The single place where the list lives.
+# The first nine are those of protocol-v1; S-geo was added after its results had been seen
+# (analysis/protocol/ADDENDUM-1.md).
+ALL_MODEL_IDS = ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C", "S-geo"]
+
 
 class NotApplicable(Exception):
     """The model cannot be scored on these rows (C on a sensor it was not trained on)."""
@@ -71,6 +76,14 @@ def _ray_cast(df: pd.DataFrame) -> pd.Series:
     # (GeometricFactor = Dot * SunVisibility), so it is already zero when the sun is hidden:
     # the visibility must not be multiplied in again.
     return df["clearsky_dni_wm2"] * df["geometric_factor"] + df["clearsky_dhi_wm2"] * df["sky_view_factor"]
+
+
+def solcast_geometry(df: pd.DataFrame) -> pd.Series:
+    """S-geo: Solcast's all-sky beam and diffuse, which already carry its cloud information, put on
+    the sensor with the plugin's geometry. The beam is multiplied by ``geometric_factor`` (incidence
+    cosine times sun visibility, so the visibility is not applied twice) and the diffuse by the sky
+    view factor. On a horizontal plane with a clear view it is Solcast's GHI. Nothing is learned."""
+    return df["solcast_dni_wm2"] * df["geometric_factor"] + df["solcast_dhi_wm2"] * df["sky_view_factor"]
 
 
 # ---------------------------------------------------------------------------- parametric --
@@ -228,4 +241,5 @@ def build_models(hd_config: XGBConfig, c_config: XGBConfig, k_max: float | None 
         "D": RatioXGB("D", "clearsky_ghi_wm2", hd_config, k_max, n_jobs),
         "H": RatioXGB("H", "sim_irradiance_wm2", hd_config, k_max, n_jobs),
         "C": MeteoXGB(c_config, n_jobs),
+        "S-geo": Reference("S-geo", solcast_geometry),
     }
