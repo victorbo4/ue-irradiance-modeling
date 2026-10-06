@@ -27,13 +27,14 @@ import numpy as np
 import pandas as pd
 
 from . import metrics as mt
+from . import models as M
 from .common import LABELS, OPEN_SENSORS, SHADED_SENSORS, TILTED_SENSORS
 
 RESULTS = Path(__file__).resolve().parents[1] / "results"
 SMOKE_RESULTS = Path(__file__).resolve().parents[1] / "results_smoke"
 EXPECTED_RUNS = 20
 E2_GROUPS = {"shaded": SHADED_SENSORS, "open": OPEN_SENSORS, "tilted": TILTED_SENSORS}
-ALL_MODELS = ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C"]
+ALL_MODELS = M.ALL_MODEL_IDS
 
 
 # --------------------------------------------------------------------------- loading ---

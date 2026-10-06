@@ -32,6 +32,9 @@ C_FIXED = dict(learning_rate=0.01, subsample=0.8, reg_alpha=0.1, reg_lambda=4.0,
 
 K_MAX = 2.0  # upper clip of k = real/base (protocol Appendix A); None means no upper clip
 
+# The models of the evaluation, in the order every table uses. The single place where the list lives.
+ALL_MODEL_IDS = ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C"]
+
 
 class NotApplicable(Exception):
     """The model cannot be scored on these rows (C on a sensor it was not trained on)."""

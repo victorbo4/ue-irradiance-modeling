@@ -50,7 +50,7 @@ NEEDED = ["utc", "date_local", "sensor", "qc_ok", "sun_altitude_deg", "sun_azimu
           "sim_irradiance_wm2", "solcast_ghi_wm2", "cloud_opacity", "precipitable_water", TARGET]
 KEEP = ["utc", "date_local", "sensor", "sky", "split", "sun_altitude_deg", "sun_azimuth_deg", "sun_visibility",
         "cloud_opacity", "sim_irradiance_wm2", "clearsky_ghi_wm2", TARGET]
-ALL_MODELS = ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C"]
+ALL_MODELS = M.ALL_MODEL_IDS
 
 
 @dataclass(frozen=True)

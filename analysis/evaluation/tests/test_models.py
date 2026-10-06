@@ -184,7 +184,7 @@ def test_c_cannot_be_scored_on_a_sensor_it_was_not_trained_on():
 
 def test_the_nine_models_have_the_protocol_ids_and_learned_flags():
     mods = m.build_models(SMALL, SMALL)
-    assert list(mods) == ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C"]
+    assert list(mods) == ["A", "B", "S", "R", "P-cs", "P-sim", "D", "H", "C"] == m.ALL_MODEL_IDS
     assert {k for k, v in mods.items() if not v.learned} == {"A", "B", "S", "R"}
 
 
