@@ -1,0 +1,25 @@
+{
+  "smoke": false,
+  "tag": "protocol-v1",
+  "tag_verified": true,
+  "git_commit": "25c893dd7f78f090ede7c8e32c1482fe89faa627",
+  "evaluation_code_uncommitted_changes": false,
+  "finished": "2026-10-05T22:21:23.721858+00:00",
+  "argv": [
+    "--n-jobs",
+    "10"
+  ],
+  "variants": [
+    "alt10",
+    "clip3",
+    "clipnone",
+    "main"
+  ],
+  "versions": {
+    "python": "3.14.7",
+    "numpy": "2.4.0",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "xgboost": "3.1.2"
+  }
+}

@@ -1,0 +1,6 @@
+family,max_depth,n_estimators,min_child_weight,colsample_bytree,n_runs
+C,3,300,200,0.8,9
+C,2,800,200,0.8,1
+C,4,300,200,0.8,1
+H+D,2,300,200,0.5,18
+H+D,2,300,200,1.0,2
