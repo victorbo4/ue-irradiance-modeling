@@ -1,0 +1,109 @@
+{
+  "run": "E4:2025-05",
+  "experiment": "E4",
+  "variant": "alt10",
+  "held_out": "2025-05",
+  "altitude_min": 10.0,
+  "k_max": 2.0,
+  "n_train": 105432,
+  "n_score": 16522,
+  "train_days": 38,
+  "score_days": 5,
+  "configs": {
+    "hd": {
+      "max_depth": 2,
+      "n_estimators": 300,
+      "min_child_weight": 200,
+      "colsample_bytree": 1.0
+    },
+    "c": {
+      "max_depth": 2,
+      "n_estimators": 800,
+      "min_child_weight": 200,
+      "colsample_bytree": 0.8
+    }
+  },
+  "selection": {},
+  "cv_rmse": {},
+  "train_rmse": {
+    "P-cs": 89.4543714444606,
+    "P-sim": 84.14921167917294,
+    "D": 88.32736247259287,
+    "H": 83.84612663983285,
+    "C": 81.79481431694862
+  },
+  "models": {
+    "A": {},
+    "B": {},
+    "S": {},
+    "R": {},
+    "P-cs": {
+      "a": 0.9758881892375418,
+      "b": 0.8016671560762554
+    },
+    "P-sim": {
+      "a": 0.9806878139493151,
+      "b": 0.7861477339502925
+    },
+    "D": {
+      "config": {
+        "max_depth": 2,
+        "n_estimators": 300,
+        "min_child_weight": 200,
+        "colsample_bytree": 1.0
+      },
+      "k_max": 2.0,
+      "feature_importances": {
+        "clearsky_ghi_wm2": 13.915610313415527,
+        "cloud_opacity": 364.1889343261719
+      }
+    },
+    "H": {
+      "config": {
+        "max_depth": 2,
+        "n_estimators": 300,
+        "min_child_weight": 200,
+        "colsample_bytree": 1.0
+      },
+      "k_max": 2.0,
+      "feature_importances": {
+        "sim_irradiance_wm2": 21.381641387939453,
+        "cloud_opacity": 360.69781494140625
+      }
+    },
+    "C": {
+      "config": {
+        "max_depth": 2,
+        "n_estimators": 800,
+        "min_child_weight": 200,
+        "colsample_bytree": 0.8
+      },
+      "sensors": [
+        "P0",
+        "P1",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "Pinc"
+      ],
+      "feature_importances": {
+        "cloud_opacity": 197374656.0,
+        "zenith": 231056896.0,
+        "azimuth": 34318188.0,
+        "precipitable_water": 4560067.0,
+        "sensor_P0": 235428.625,
+        "sensor_P1": 0.0,
+        "sensor_P3": 0.0,
+        "sensor_P4": 0.0,
+        "sensor_P5": 0.0,
+        "sensor_P6": 0.0,
+        "sensor_P7": 0.0,
+        "sensor_P8": 0.0,
+        "sensor_Pinc": 6323342.5
+      }
+    }
+  }
+}

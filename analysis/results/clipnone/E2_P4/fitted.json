@@ -1,0 +1,55 @@
+{
+  "run": "E2:P4",
+  "experiment": "E2",
+  "variant": "clipnone",
+  "held_out": "P4",
+  "altitude_min": 5.0,
+  "k_max": null,
+  "n_train": 117912,
+  "n_score": 5038,
+  "train_days": 43,
+  "score_days": 15,
+  "configs": {
+    "hd": {
+      "max_depth": 2,
+      "n_estimators": 300,
+      "min_child_weight": 200,
+      "colsample_bytree": 0.5
+    },
+    "c": null
+  },
+  "selection": {},
+  "cv_rmse": {},
+  "train_rmse": {
+    "D": 101.82111991646056,
+    "H": 99.23085304629245
+  },
+  "models": {
+    "D": {
+      "config": {
+        "max_depth": 2,
+        "n_estimators": 300,
+        "min_child_weight": 200,
+        "colsample_bytree": 0.5
+      },
+      "k_max": null,
+      "feature_importances": {
+        "clearsky_ghi_wm2": 52.382667541503906,
+        "cloud_opacity": 538.1860961914062
+      }
+    },
+    "H": {
+      "config": {
+        "max_depth": 2,
+        "n_estimators": 300,
+        "min_child_weight": 200,
+        "colsample_bytree": 0.5
+      },
+      "k_max": null,
+      "feature_importances": {
+        "sim_irradiance_wm2": 15.179096221923828,
+        "cloud_opacity": 508.7139892578125
+      }
+    }
+  }
+}
