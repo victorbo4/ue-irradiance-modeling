@@ -27,6 +27,7 @@ RMSE in W/m² with its interval; S is not scored on Pinc, so it is not applicabl
 | D XGBoost, clear-sky | 107.7 [78.0, 133.5] | 67.0 | -0.4 | 0.865 |
 | H XGBoost, simulation (proposed) | 107.5 [76.5, 134.1] | 68.4 | -0.5 | 0.866 |
 | C XGBoost, meteo + sensor | 108.9 [79.7, 133.7] | 69.9 | -4.0 | 0.862 |
+| S-geo Solcast DNI/DHI + local geometry (added after protocol-v1) | 98.0 [67.2, 123.3] | 57.1 | 7.8 | 0.888 |
 
 ### Horizontal sensors only
 
@@ -41,6 +42,7 @@ RMSE in W/m² with its interval; S is not scored on Pinc, so it is not applicabl
 | D XGBoost, clear-sky | 102.8 [70.9, 129.8] | 64.0 | 1.0 | 0.874 |
 | H XGBoost, simulation (proposed) | 103.8 [71.5, 131.3] | 65.4 | -4.5 | 0.872 |
 | C XGBoost, meteo + sensor | 104.8 [75.0, 130.5] | 67.3 | -2.8 | 0.869 |
+| S-geo Solcast DNI/DHI + local geometry (added after protocol-v1) | 96.6 [66.3, 121.7] | 56.9 | 8.0 | 0.889 |
 
 ## E1 contrasts
 
@@ -55,27 +57,40 @@ RMSE in W/m² with its interval; S is not scored on Pinc, so it is not applicabl
 | H over P-sim | -6.24 W/m² (95 % interval -11.27 to -1.50; 45342 rows, 15 days) | -4.77 W/m² (95 % interval -9.69 to -0.22; 40304 rows, 15 days) |
 | H over S | not applicable | -6.84 W/m² (95 % interval -11.53 to -1.86; 40304 rows, 15 days) |
 
+## S-geo (added after protocol-v1)
+
+Solcast's DNI and DHI with the plugin's geometry (beam times `geometric_factor`, diffuse times the sky view factor); nothing is learned. It was defined after the protocol-v1 results had been seen: see `analysis/protocol/ADDENDUM-1.md`.
+
+| S-geo over | E1, nine sensors | E1, horizontals | E4 pooled, nine sensors | E4 pooled, horizontals |
+|---|---|---|---|---|
+| S | not applicable | +0.39 W/m² (95 % interval -0.07 to +1.32; 40304 rows, 15 days) | not applicable | +0.93 W/m² (95 % interval +0.59 to +1.43; 117896 rows, 43 days) |
+| R | +140.58 W/m² (95 % interval +77.22 to +199.05; 45342 rows, 15 days) | +132.09 W/m² (95 % interval +68.41 to +190.39; 40304 rows, 15 days) | +138.89 W/m² (95 % interval +102.31 to +174.29; 132826 rows, 43 days) | +133.59 W/m² (95 % interval +97.50 to +168.46; 117896 rows, 43 days) |
+| A | +141.19 W/m² (95 % interval +78.79 to +199.18; 45342 rows, 15 days) | +130.86 W/m² (95 % interval +67.58 to +188.63; 40304 rows, 15 days) | +139.07 W/m² (95 % interval +102.97 to +174.33; 132826 rows, 43 days) | +132.32 W/m² (95 % interval +96.40 to +167.01; 117896 rows, 43 days) |
+| P-sim | +3.19 W/m² (95 % interval +0.57 to +5.81; 45342 rows, 15 days) | +2.47 W/m² (95 % interval -1.07 to +5.73; 40304 rows, 15 days) | +0.10 W/m² (95 % interval -1.68 to +1.62; 132826 rows, 43 days) | -0.64 W/m² (95 % interval -2.57 to +0.94; 117896 rows, 43 days) |
+| H | +9.43 W/m² (95 % interval +5.24 to +14.14; 45342 rows, 15 days) | +7.23 W/m² (95 % interval +2.48 to +11.82; 40304 rows, 15 days) | +7.48 W/m² (95 % interval +3.62 to +12.36; 132826 rows, 43 days) | +6.00 W/m² (95 % interval +2.38 to +10.75; 117896 rows, 43 days) |
+| D | +9.71 W/m² (95 % interval +4.08 to +16.31; 45342 rows, 15 days) | +6.18 W/m² (95 % interval +1.73 to +10.54; 40304 rows, 15 days) | +10.27 W/m² (95 % interval +6.12 to +15.60; 132826 rows, 43 days) | +5.49 W/m² (95 % interval +2.06 to +9.82; 117896 rows, 43 days) |
+
 ## E1 by sky class and shade (RMSE)
 
-| group | A | B | R | P-cs | P-sim | D | H | C |
-|---|---|---|---|---|---|---|---|---|
-| sky:sunny | 40.6 | 58.7 | 41.8 | 60.2 | 42.7 | 65.1 | 50.7 | 64.7 |
-| sky:mixed | 166.6 | 165.9 | 166.1 | 129.3 | 127.1 | 129.4 | 128.3 | 135.7 |
-| sky:cloudy | 323.2 | 314.4 | 322.8 | 113.4 | 114.1 | 120.8 | 123.5 | 120.8 |
-| sky:rainy | 312.1 | 295.2 | 310.7 | 85.3 | 87.8 | 93.9 | 99.0 | 88.3 |
-| sky:cloudy+rainy | 318.0 | 305.5 | 317.2 | 101.2 | 102.6 | 109.0 | 112.7 | 106.8 |
-| shade:unshaded | 243.5 | 235.9 | 242.8 | 105.0 | 102.9 | 109.5 | 109.3 | 110.2 |
-| shade:shaded | 26.0 | 50.8 | 25.3 | 29.9 | 28.9 | 30.9 | 26.2 | 65.3 |
+| group | A | B | R | P-cs | P-sim | D | H | C | S-geo |
+|---|---|---|---|---|---|---|---|---|---|
+| sky:sunny | 40.6 | 58.7 | 41.8 | 60.2 | 42.7 | 65.1 | 50.7 | 64.7 | 40.9 |
+| sky:mixed | 166.6 | 165.9 | 166.1 | 129.3 | 127.1 | 129.4 | 128.3 | 135.7 | 120.6 |
+| sky:cloudy | 323.2 | 314.4 | 322.8 | 113.4 | 114.1 | 120.8 | 123.5 | 120.8 | 112.6 |
+| sky:rainy | 312.1 | 295.2 | 310.7 | 85.3 | 87.8 | 93.9 | 99.0 | 88.3 | 86.7 |
+| sky:cloudy+rainy | 318.0 | 305.5 | 317.2 | 101.2 | 102.6 | 109.0 | 112.7 | 106.8 | 101.3 |
+| shade:unshaded | 243.5 | 235.9 | 242.8 | 105.0 | 102.9 | 109.5 | 109.3 | 110.2 | 99.7 |
+| shade:shaded | 26.0 | 50.8 | 25.3 | 29.9 | 28.9 | 30.9 | 26.2 | 65.3 | 20.6 |
 
 ## E2: an unseen sensor (RMSE by group fixed in advance)
 
 C is not applicable in E2 (its dummy for an unseen sensor is undefined). Pinc is an orientation extrapolation.
 
-| unit | A | B | S | R | P-cs | P-sim | D | H |
-|---|---|---|---|---|---|---|---|---|
-| E2:shaded | 227.0 | 229.8 | 97.4 | 228.4 | 99.0 | 99.6 | 103.1 | 104.2 |
-| E2:open | 227.9 | 229.4 | 96.6 | 229.0 | 98.3 | 98.8 | 102.7 | 103.6 |
-| E2:tilted | 318.1 | 250.0 | n/a | 306.6 | 135.3 | 117.9 | 141.6 | 137.0 |
+| unit | A | B | S | R | P-cs | P-sim | D | H | S-geo |
+|---|---|---|---|---|---|---|---|---|---|
+| E2:shaded | 227.0 | 229.8 | 97.4 | 228.4 | 99.0 | 99.6 | 103.1 | 104.2 | 96.8 |
+| E2:open | 227.9 | 229.4 | 96.6 | 229.0 | 98.3 | 98.8 | 102.7 | 103.6 | 96.4 |
+| E2:tilted | 318.1 | 250.0 | n/a | 306.6 | 135.3 | 117.9 | 141.6 | 137.0 | 108.8 |
 
 ## E3: shade rows after training without simulated occlusion
 
@@ -89,6 +104,7 @@ C is not applicable in E2 (its dummy for an unseen sensor is undefined). Pinc is
 | D XGBoost, clear-sky | 33.0 [22.2, 45.8] | 23.6 | 18.6 | -0.254 |
 | H XGBoost, simulation (proposed) | 26.6 [20.0, 32.6] | 17.7 | -8.8 | 0.185 |
 | C XGBoost, meteo + sensor | 76.1 [58.2, 97.7] | 66.3 | 65.5 | -5.668 |
+| S-geo Solcast DNI/DHI + local geometry (added after protocol-v1) | 20.6 [16.9, 24.2] | 16.0 | 9.7 | 0.513 |
 
 ## E4: an unseen month (all nine months pooled)
 
@@ -102,6 +118,7 @@ C is not applicable in E2 (its dummy for an unseen sensor is undefined). Pinc is
 | D XGBoost, clear-sky | 102.0 [86.7, 117.2] | 66.7 | 2.9 | 0.893 |
 | H XGBoost, simulation (proposed) | 99.2 [83.5, 114.3] | 65.6 | -0.2 | 0.899 |
 | C XGBoost, meteo + sensor | 102.9 [88.4, 117.3] | 70.9 | 2.3 | 0.891 |
+| S-geo Solcast DNI/DHI + local geometry (added after protocol-v1) | 91.8 [73.4, 108.7] | 50.9 | 17.3 | 0.914 |
 
 ## Overfitting diagnostic (E1)
 
@@ -146,3 +163,4 @@ Cloudy and rainy pooled (E1, RMSE):
 | D XGBoost, clear-sky | 109.0 [64.6, 141.7] | 68.3 | 25.3 | 0.647 |
 | H XGBoost, simulation (proposed) | 112.7 [71.4, 144.3] | 72.5 | 29.7 | 0.623 |
 | C XGBoost, meteo + sensor | 106.8 [70.8, 135.9] | 70.1 | 19.9 | 0.661 |
+| S-geo Solcast DNI/DHI + local geometry (added after protocol-v1) | 101.3 [63.8, 128.8] | 61.3 | 15.9 | 0.695 |
