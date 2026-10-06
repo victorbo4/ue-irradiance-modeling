@@ -96,3 +96,6 @@ projectsettings.json
 /analysis/results/**/predictions.csv
 /analysis/results_smoke/
 /analysis/results/**/done.json
+
+# Personal working material (notebooks, figures, drafts for the professors); never tracked
+/local/

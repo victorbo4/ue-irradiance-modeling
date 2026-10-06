@@ -11,5 +11,8 @@ parameters. Because it needs no training, it is added as a column on the saved p
 It was chosen after seeing the E1 and E4 results, not before. Its contrasts (S-geo against S, R, A,
 P-sim, H, D) are reported next to the protocol ones and labelled as added afterwards.
 
-Besides S-geo, about five other variants were tried locally while exploring the results; none of
-them improved on the models above and they are not part of the evaluation.
+S-geo was explored in the same round as five variants of the corrector (an exponential cloud term,
+precipitable water in the formula and in XGBoost, and two direct/diffuse splits). They were screened on
+the 43 development days, not on the test days; the code and its output are in
+`analysis/exploration/variants_screen.py` and `variants_screen_output.md`. Only precipitable water in the
+formula gave a gain over P-sim (about 1 W/m2); the others did not. None of them is part of the evaluation.
